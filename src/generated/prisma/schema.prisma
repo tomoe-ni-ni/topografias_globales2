@@ -9,20 +9,14 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model Zona {
-  ID_zona  Int       @id @default(autoincrement())
-  nombre   String
-  clientes Cliente[]
-}
-
 model Cliente {
-  ID_cliente Int                 @id @default(autoincrement())
-  nombre     String
-  apellido   String
-  ID_zona    Int?
-  zona       Zona?               @relation(fields: [ID_zona], references: [ID_zona])
-  detalles   Detalle_historial[]
-  documentos Documento[]
+  ID_cliente          Int                 @id @default(autoincrement())
+  nombre              String
+  apellido            String
+  nombre_departamento String
+  nombre_provincia    String
+  detalles            Detalle_historial[]
+  documentos          Documento[]
 }
 
 model Proyecto {

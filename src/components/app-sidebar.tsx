@@ -73,6 +73,30 @@ const data = {
       items: [],
     },
     {
+      title: "Proyectos",
+      url: "/dashboard/proyectos",
+      icon: WalletCards,
+      items: [],
+    },
+    {
+      title: "Estados de documentos",
+      url: "/dashboard/estado_documento",
+      icon: WalletCards,
+      items: [],
+    },
+    {
+      title: "Area",
+      url: "/dashboard/area",
+      icon: WalletCards,
+      items: [],
+    },
+    {
+      title: "Zonas",
+      url: "/dashboard/zona",
+      icon: WalletCards,
+      items: [],
+    },
+    {
       title: "Usuarios",
       url: "/dashboard/usuarios",
       icon: WalletCards,

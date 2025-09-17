@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
-
+import { useZona } from "./hooks/useZona";
 import {
   Dialog,
   DialogContent,
@@ -15,62 +15,42 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { useCliente } from "./hooks/useCliente";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 
-export default function Cliente() {
+export default function zonas() {
   const {
-    clientes,
+    zonas,
     loading,
     modalAbierto,
     setModalAbierto,
-    agregarCliente,
-    nombreCliente,
-    setNombreCliente,
-    apellidoCliente,
-    setApellidoCliente,
+    agregarZona,
+    nombreDepartamento,
+    setNombreDepartamento,
+    nombreDistrito,
+    setNombreDistrito,
     departamento,
     setDepartamento,
     provincia,
     setProvincia,
     departamentos,
     provincias,
-  } = useCliente();
-  console.log(clientes);
+  } = useZona();
   return (
     <>
       <div className="flex items-center justify-between mb-4">
         <Typography size="large" variant="h1">
-          Mis clientes
+          Mis zonas
         </Typography>
-        <Button onClick={() => setModalAbierto(true)}>Agregar cliente</Button>
+        <Button onClick={() => setModalAbierto(true)}>Agregar zona</Button>
       </div>
       <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
         <DialogContent className="w-full">
           <DialogHeader>
-            <DialogTitle>Agregar nuevo cliente</DialogTitle>
+            <DialogTitle>Agregar nueva tarea</DialogTitle>
           </DialogHeader>
           <div className="flex flex-col gap-2">
-            <div>
-              <Label className="block mb-1 font-semibold">Nombre</Label>
-              <Input
-                value={nombreCliente}
-                onChange={(e) => setNombreCliente(e.target.value)}
-                placeholder="Nombre del cliente..."
-              />
-            </div>
-            <div>
-              <Label className="block mb-1 font-semibold">Apellido</Label>
-              <Input
-                value={apellidoCliente}
-                onChange={(e) => setApellidoCliente(e.target.value)}
-                placeholder="Apellido del cliente..."
-              />
-            </div>
             {/* Select Departamento */}
             <div>
-              <Label className="block mb-1 font-semibold">Departamento</Label>
+              <label className="block mb-1 font-semibold">Departamento</label>
               <Select
                 value={departamento}
                 onValueChange={(value) => {
@@ -112,7 +92,7 @@ export default function Cliente() {
               </Select>
             </div>
 
-            <Button onClick={agregarCliente}>Agregar</Button>
+            <Button onClick={agregarZona}>Agregar</Button>
           </div>
         </DialogContent>
       </Dialog>

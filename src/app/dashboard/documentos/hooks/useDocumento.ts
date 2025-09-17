@@ -16,7 +16,7 @@ export function useDocumento() {
     TipoDocumento.planos
   );
   const [fecha_ingreso, setFecha_ingreso] = useState("");
-  const [archivo, setArchivo] = useState<File|null>(null);
+  const [archivo, setArchivo] = useState("");
   const [folio, setFolio] = useState("");
   const [descripcion, setDescripcion] = useState("");
   const [ID_cliente, setID_cliente] = useState(0);

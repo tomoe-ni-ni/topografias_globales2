@@ -92,6 +92,35 @@ export default function Documentos() {
               placeholder="Fecha de ingreso..."
               type="date"
             />
+            <Input
+              value={folio}
+              onChange={(e) => setFolio(e.target.value)}
+              placeholder="Folio..."
+            />
+            <Input
+              value={ID_cliente}
+              onChange={(e) => setID_cliente(e.target.valueAsNumber)}
+              placeholder="ID cliente..."
+              type="number"
+            />
+            <Input
+              value={ID_proyecto}
+              onChange={(e) => setID_proyecto(e.target.valueAsNumber)}
+              placeholder="ID proyecto..."
+              type="number"
+            />
+            <Input
+              value={ID_estado_documento}
+              onChange={(e) => setID_estado_documento(e.target.valueAsNumber)}
+              placeholder="ID estado documento..."
+              type="number"
+            />
+            <Input
+            value={ID_area}
+            onChange={(e) => setID_area(e.target.valueAsNumber)}
+            placeholder="ID area..."
+            type="number"
+            />
 
             <Button onClick={agregarDocumento}>Agregar</Button>
           </div>

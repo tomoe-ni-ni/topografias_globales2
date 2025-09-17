@@ -120,16 +120,12 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
   Serializable: 'Serializable'
 });
 
-exports.Prisma.ZonaScalarFieldEnum = {
-  ID_zona: 'ID_zona',
-  nombre: 'nombre'
-};
-
 exports.Prisma.ClienteScalarFieldEnum = {
   ID_cliente: 'ID_cliente',
   nombre: 'nombre',
   apellido: 'apellido',
-  ID_zona: 'ID_zona'
+  nombre_departamento: 'nombre_departamento',
+  nombre_provincia: 'nombre_provincia'
 };
 
 exports.Prisma.ProyectoScalarFieldEnum = {
@@ -216,7 +212,6 @@ exports.Prisma.NullsOrder = {
 
 
 exports.Prisma.ModelName = {
-  Zona: 'Zona',
   Cliente: 'Cliente',
   Proyecto: 'Proyecto',
   Estado_documento: 'Estado_documento',
