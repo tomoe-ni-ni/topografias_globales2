@@ -11,6 +11,7 @@ import {
   PieChart,
   Settings2,
   SquareTerminal,
+  WalletCards,
 } from "lucide-react";
 import * as React from "react";
 
@@ -65,6 +66,19 @@ const data = {
       icon: BookOpen,
       items: [],
     },
+    {
+      title: "Documentos",
+      url: "/dashboard/documentos",
+      icon: WalletCards,
+      items: [],
+    },
+    {
+      title: "Usuarios",
+      url: "/dashboard/usuarios",
+      icon: WalletCards,
+      items: [],
+    }
+
     // {
     //   title: "Tipos de Permiso",
     //   url: "#",

@@ -8911,6 +8911,7 @@ export namespace Prisma {
 
   export type DocumentoMinAggregateOutputType = {
     ID_documento: number | null
+    nombre_documento: string | null
     tipo_documento: string | null
     fecha_ingreso: Date | null
     archivo: string | null
@@ -8924,6 +8925,7 @@ export namespace Prisma {
 
   export type DocumentoMaxAggregateOutputType = {
     ID_documento: number | null
+    nombre_documento: string | null
     tipo_documento: string | null
     fecha_ingreso: Date | null
     archivo: string | null
@@ -8937,6 +8939,7 @@ export namespace Prisma {
 
   export type DocumentoCountAggregateOutputType = {
     ID_documento: number
+    nombre_documento: number
     tipo_documento: number
     fecha_ingreso: number
     archivo: number
@@ -8968,6 +8971,7 @@ export namespace Prisma {
 
   export type DocumentoMinAggregateInputType = {
     ID_documento?: true
+    nombre_documento?: true
     tipo_documento?: true
     fecha_ingreso?: true
     archivo?: true
@@ -8981,6 +8985,7 @@ export namespace Prisma {
 
   export type DocumentoMaxAggregateInputType = {
     ID_documento?: true
+    nombre_documento?: true
     tipo_documento?: true
     fecha_ingreso?: true
     archivo?: true
@@ -8994,6 +8999,7 @@ export namespace Prisma {
 
   export type DocumentoCountAggregateInputType = {
     ID_documento?: true
+    nombre_documento?: true
     tipo_documento?: true
     fecha_ingreso?: true
     archivo?: true
@@ -9094,6 +9100,7 @@ export namespace Prisma {
 
   export type DocumentoGroupByOutputType = {
     ID_documento: number
+    nombre_documento: string
     tipo_documento: string | null
     fecha_ingreso: Date | null
     archivo: string | null
@@ -9126,6 +9133,7 @@ export namespace Prisma {
 
   export type DocumentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_documento?: boolean
+    nombre_documento?: boolean
     tipo_documento?: boolean
     fecha_ingreso?: boolean
     archivo?: boolean
@@ -9145,6 +9153,7 @@ export namespace Prisma {
 
   export type DocumentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_documento?: boolean
+    nombre_documento?: boolean
     tipo_documento?: boolean
     fecha_ingreso?: boolean
     archivo?: boolean
@@ -9162,6 +9171,7 @@ export namespace Prisma {
 
   export type DocumentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_documento?: boolean
+    nombre_documento?: boolean
     tipo_documento?: boolean
     fecha_ingreso?: boolean
     archivo?: boolean
@@ -9179,6 +9189,7 @@ export namespace Prisma {
 
   export type DocumentoSelectScalar = {
     ID_documento?: boolean
+    nombre_documento?: boolean
     tipo_documento?: boolean
     fecha_ingreso?: boolean
     archivo?: boolean
@@ -9190,7 +9201,7 @@ export namespace Prisma {
     ID_area?: boolean
   }
 
-  export type DocumentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_documento" | "tipo_documento" | "fecha_ingreso" | "archivo" | "descripcion" | "folio" | "ID_cliente" | "ID_proyecto" | "ID_estado_documento" | "ID_area", ExtArgs["result"]["documento"]>
+  export type DocumentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_documento" | "nombre_documento" | "tipo_documento" | "fecha_ingreso" | "archivo" | "descripcion" | "folio" | "ID_cliente" | "ID_proyecto" | "ID_estado_documento" | "ID_area", ExtArgs["result"]["documento"]>
   export type DocumentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     area?: boolean | Documento$areaArgs<ExtArgs>
     cliente?: boolean | Documento$clienteArgs<ExtArgs>
@@ -9223,6 +9234,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_documento: number
+      nombre_documento: string
       tipo_documento: string | null
       fecha_ingreso: Date | null
       archivo: string | null
@@ -9661,6 +9673,7 @@ export namespace Prisma {
    */
   interface DocumentoFieldRefs {
     readonly ID_documento: FieldRef<"Documento", 'Int'>
+    readonly nombre_documento: FieldRef<"Documento", 'String'>
     readonly tipo_documento: FieldRef<"Documento", 'String'>
     readonly fecha_ingreso: FieldRef<"Documento", 'DateTime'>
     readonly archivo: FieldRef<"Documento", 'String'>
@@ -9888,7 +9901,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Documento.
      */
-    data?: XOR<DocumentoCreateInput, DocumentoUncheckedCreateInput>
+    data: XOR<DocumentoCreateInput, DocumentoUncheckedCreateInput>
   }
 
   /**
@@ -13949,6 +13962,7 @@ export namespace Prisma {
 
   export const DocumentoScalarFieldEnum: {
     ID_documento: 'ID_documento',
+    nombre_documento: 'nombre_documento',
     tipo_documento: 'tipo_documento',
     fecha_ingreso: 'fecha_ingreso',
     archivo: 'archivo',
@@ -14420,6 +14434,7 @@ export namespace Prisma {
     OR?: DocumentoWhereInput[]
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
     ID_documento?: IntFilter<"Documento"> | number
+    nombre_documento?: StringFilter<"Documento"> | string
     tipo_documento?: StringNullableFilter<"Documento"> | string | null
     fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
     archivo?: StringNullableFilter<"Documento"> | string | null
@@ -14438,6 +14453,7 @@ export namespace Prisma {
 
   export type DocumentoOrderByWithRelationInput = {
     ID_documento?: SortOrder
+    nombre_documento?: SortOrder
     tipo_documento?: SortOrderInput | SortOrder
     fecha_ingreso?: SortOrderInput | SortOrder
     archivo?: SortOrderInput | SortOrder
@@ -14459,6 +14475,7 @@ export namespace Prisma {
     AND?: DocumentoWhereInput | DocumentoWhereInput[]
     OR?: DocumentoWhereInput[]
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
+    nombre_documento?: StringFilter<"Documento"> | string
     tipo_documento?: StringNullableFilter<"Documento"> | string | null
     fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
     archivo?: StringNullableFilter<"Documento"> | string | null
@@ -14477,6 +14494,7 @@ export namespace Prisma {
 
   export type DocumentoOrderByWithAggregationInput = {
     ID_documento?: SortOrder
+    nombre_documento?: SortOrder
     tipo_documento?: SortOrderInput | SortOrder
     fecha_ingreso?: SortOrderInput | SortOrder
     archivo?: SortOrderInput | SortOrder
@@ -14498,6 +14516,7 @@ export namespace Prisma {
     OR?: DocumentoScalarWhereWithAggregatesInput[]
     NOT?: DocumentoScalarWhereWithAggregatesInput | DocumentoScalarWhereWithAggregatesInput[]
     ID_documento?: IntWithAggregatesFilter<"Documento"> | number
+    nombre_documento?: StringWithAggregatesFilter<"Documento"> | string
     tipo_documento?: StringNullableWithAggregatesFilter<"Documento"> | string | null
     fecha_ingreso?: DateTimeNullableWithAggregatesFilter<"Documento"> | Date | string | null
     archivo?: StringNullableWithAggregatesFilter<"Documento"> | string | null
@@ -15036,6 +15055,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -15050,6 +15070,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -15063,6 +15084,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15077,6 +15099,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15091,6 +15114,7 @@ export namespace Prisma {
 
   export type DocumentoCreateManyInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -15103,6 +15127,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateManyMutationInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15112,6 +15137,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateManyInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15685,6 +15711,7 @@ export namespace Prisma {
 
   export type DocumentoCountOrderByAggregateInput = {
     ID_documento?: SortOrder
+    nombre_documento?: SortOrder
     tipo_documento?: SortOrder
     fecha_ingreso?: SortOrder
     archivo?: SortOrder
@@ -15706,6 +15733,7 @@ export namespace Prisma {
 
   export type DocumentoMaxOrderByAggregateInput = {
     ID_documento?: SortOrder
+    nombre_documento?: SortOrder
     tipo_documento?: SortOrder
     fecha_ingreso?: SortOrder
     archivo?: SortOrder
@@ -15719,6 +15747,7 @@ export namespace Prisma {
 
   export type DocumentoMinOrderByAggregateInput = {
     ID_documento?: SortOrder
+    nombre_documento?: SortOrder
     tipo_documento?: SortOrder
     fecha_ingreso?: SortOrder
     archivo?: SortOrder
@@ -17222,6 +17251,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutClienteInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17235,6 +17265,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateWithoutClienteInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17325,6 +17356,7 @@ export namespace Prisma {
     OR?: DocumentoScalarWhereInput[]
     NOT?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
     ID_documento?: IntFilter<"Documento"> | number
+    nombre_documento?: StringFilter<"Documento"> | string
     tipo_documento?: StringNullableFilter<"Documento"> | string | null
     fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
     archivo?: StringNullableFilter<"Documento"> | string | null
@@ -17362,6 +17394,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutProyectoInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17375,6 +17408,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateWithoutProyectoInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17479,6 +17513,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutEstadoInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17492,6 +17527,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateWithoutEstadoInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17613,6 +17649,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutAreaInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -17626,6 +17663,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateWithoutAreaInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -18273,6 +18311,7 @@ export namespace Prisma {
   }
 
   export type DocumentoCreateWithoutHistorialesInput = {
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -18286,6 +18325,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedCreateWithoutHistorialesInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -18402,6 +18442,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutHistorialesInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18415,6 +18456,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateWithoutHistorialesInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18935,6 +18977,7 @@ export namespace Prisma {
 
   export type DocumentoCreateManyClienteInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -18969,6 +19012,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutClienteInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18982,6 +19026,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateWithoutClienteInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -18995,6 +19040,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateManyWithoutClienteInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19015,6 +19061,7 @@ export namespace Prisma {
 
   export type DocumentoCreateManyProyectoInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -19056,6 +19103,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutProyectoInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19069,6 +19117,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateWithoutProyectoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19082,6 +19131,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateManyWithoutProyectoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19114,6 +19164,7 @@ export namespace Prisma {
 
   export type DocumentoCreateManyEstadoInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -19134,6 +19185,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutEstadoInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19147,6 +19199,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateWithoutEstadoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19160,6 +19213,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateManyWithoutEstadoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19208,6 +19262,7 @@ export namespace Prisma {
 
   export type DocumentoCreateManyAreaInput = {
     ID_documento?: number
+    nombre_documento: string
     tipo_documento?: string | null
     fecha_ingreso?: Date | string | null
     archivo?: string | null
@@ -19267,6 +19322,7 @@ export namespace Prisma {
   }
 
   export type DocumentoUpdateWithoutAreaInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19280,6 +19336,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateWithoutAreaInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null
@@ -19293,6 +19350,7 @@ export namespace Prisma {
 
   export type DocumentoUncheckedUpdateManyWithoutAreaInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
     tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
     fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     archivo?: NullableStringFieldUpdateOperationsInput | string | null

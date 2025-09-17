@@ -160,6 +160,7 @@ exports.Prisma.UsuarioScalarFieldEnum = {
 
 exports.Prisma.DocumentoScalarFieldEnum = {
   ID_documento: 'ID_documento',
+  nombre_documento: 'nombre_documento',
   tipo_documento: 'tipo_documento',
   fecha_ingreso: 'fecha_ingreso',
   archivo: 'archivo',

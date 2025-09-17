@@ -67,6 +67,7 @@ model Usuario {
 
 model Documento {
   ID_documento        Int                    @id @default(autoincrement())
+  nombre_documento    String
   tipo_documento      String?
   fecha_ingreso       DateTime?
   archivo             String?
