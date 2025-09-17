@@ -1,0 +1,124 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+
+model Zona {
+  ID_zona  Int       @id @default(autoincrement())
+  nombre   String
+  clientes Cliente[]
+}
+
+model Cliente {
+  ID_cliente Int                 @id @default(autoincrement())
+  nombre     String
+  apellido   String
+  ID_zona    Int?
+  zona       Zona?               @relation(fields: [ID_zona], references: [ID_zona])
+  detalles   Detalle_historial[]
+  documentos Documento[]
+}
+
+model Proyecto {
+  ID_proyecto Int                 @id @default(autoincrement())
+  nombre      String
+  descripcion String?
+  detalles    Detalle_historial[]
+  documentos  Documento[]
+  permisos    Permiso[]
+}
+
+model Estado_documento {
+  ID_estado   Int                    @id @default(autoincrement())
+  estado      String
+  documentos  Documento[]
+  historiales Historial_documentos[]
+}
+
+model Area {
+  ID_area     Int                    @id @default(autoincrement())
+  nombre      String
+  detalles    Detalle_historial[]
+  documentos  Documento[]
+  historiales Historial_documentos[]
+  permisos    Permiso[]
+  usuarios    Usuario[]
+}
+
+model Usuario {
+  ID_usuario  Int                    @id @default(autoincrement())
+  nombre      String
+  apellido    String?
+  correo      String                 @unique
+  contrasena  String
+  rol         String
+  ID_area     Int?
+  detalles    Detalle_historial[]
+  historiales Historial_documentos[]
+  permisos    Permiso[]
+  area        Area?                  @relation(fields: [ID_area], references: [ID_area])
+}
+
+model Documento {
+  ID_documento        Int                    @id @default(autoincrement())
+  tipo_documento      String?
+  fecha_ingreso       DateTime?
+  archivo             String?
+  descripcion         String?
+  folio               String?                @db.VarChar(50)
+  ID_cliente          Int?
+  ID_proyecto         Int?
+  ID_estado_documento Int?
+  ID_area             Int?
+  area                Area?                  @relation(fields: [ID_area], references: [ID_area])
+  cliente             Cliente?               @relation(fields: [ID_cliente], references: [ID_cliente])
+  estado              Estado_documento?      @relation(fields: [ID_estado_documento], references: [ID_estado])
+  proyecto            Proyecto?              @relation(fields: [ID_proyecto], references: [ID_proyecto])
+  historiales         Historial_documentos[]
+}
+
+model Historial_documentos {
+  ID_historial        Int                 @id @default(autoincrement())
+  fecha               DateTime?
+  hora                DateTime?
+  ID_documento        Int?
+  ID_usuario          Int?
+  ID_area             Int?
+  ID_estado_documento Int?
+  detalles            Detalle_historial[]
+  area                Area?               @relation(fields: [ID_area], references: [ID_area])
+  documento           Documento?          @relation(fields: [ID_documento], references: [ID_documento])
+  estado              Estado_documento?   @relation(fields: [ID_estado_documento], references: [ID_estado])
+  usuario             Usuario?            @relation(fields: [ID_usuario], references: [ID_usuario])
+}
+
+model Detalle_historial {
+  ID_detalle   Int                   @id @default(autoincrement())
+  ID_usuario   Int?
+  ID_historial Int?
+  ID_proyecto  Int?
+  ID_area      Int?
+  ID_cliente   Int?
+  area         Area?                 @relation(fields: [ID_area], references: [ID_area])
+  cliente      Cliente?              @relation(fields: [ID_cliente], references: [ID_cliente])
+  historial    Historial_documentos? @relation(fields: [ID_historial], references: [ID_historial])
+  proyecto     Proyecto?             @relation(fields: [ID_proyecto], references: [ID_proyecto])
+  usuario      Usuario?              @relation(fields: [ID_usuario], references: [ID_usuario])
+}
+
+model Permiso {
+  ID_permiso   Int       @id @default(autoincrement())
+  tipo_permiso String?
+  ID_usuario   Int?
+  ID_area      Int?
+  ID_proyecto  Int?
+  area         Area?     @relation(fields: [ID_area], references: [ID_area])
+  proyecto     Proyecto? @relation(fields: [ID_proyecto], references: [ID_proyecto])
+  usuario      Usuario?  @relation(fields: [ID_usuario], references: [ID_usuario])
+}
