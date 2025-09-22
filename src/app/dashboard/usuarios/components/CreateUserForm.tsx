@@ -21,6 +21,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog";
 import { Fragment, useState } from "react";
+import { useArea } from "@/app/dashboard/area/hooks/usearea";
 import { Usuarios } from "@/types/usuarios";
 import {
   CreateUserSchema,
@@ -45,19 +46,30 @@ export default function CreateUserForm({
   const form = useForm<CreateUserSchema>({
     resolver: zodResolver(createUserSchema),
     defaultValues: {
-      password: "",
-      rol: RolUsuario.client,
       nombre: "",
+      apellido: "",
+      correo: "",
+      contrasena: "",
+      rol: RolUsuario.client,
       estado: EstadoUsuario.activo,
+  ID_area: "",
     },
   });
+  const { areas, loading } = useArea();
 
   const onSubmit = async (data: CreateUserSchema) => {
     try {
+      // Mapear password -> contrasena si el esquema aún usa 'password'
+      const payload = {
+        ...data,
+        contrasena: (data as any).contrasena ?? (data as any).password ?? "",
+  ID_area: data.ID_area && data.ID_area !== "" ? Number(data.ID_area) : null,
+      };
+      delete (payload as any).password;
       const res = await fetch("/api/users", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const error = await res.json();
@@ -81,7 +93,6 @@ export default function CreateUserForm({
         textButton="Agregar Usuario"
         title="Usuarios"
       />
-
       <Dialog open={modalCrear} onOpenChange={setModalCrear}>
         <DialogContent>
           <DialogHeader>
@@ -110,7 +121,33 @@ export default function CreateUserForm({
               />
               <FormField
                 control={form.control}
-                name="password"
+                name="apellido"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Apellido</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Apellido (opcional)" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="correo"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Correo</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Correo" type="email" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="contrasena"
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Contraseña</FormLabel>
@@ -132,8 +169,8 @@ export default function CreateUserForm({
                   <FormItem>
                     <FormLabel>Rol</FormLabel>
                     <Select
+                      value={field.value}
                       onValueChange={field.onChange}
-                      defaultValue={field.value}
                     >
                       <FormControl className="w-full">
                         <SelectTrigger>
@@ -149,12 +186,10 @@ export default function CreateUserForm({
                         </SelectItem>
                       </SelectContent>
                     </Select>
-
                     <FormMessage />
                   </FormItem>
                 )}
               />
-
               <FormField
                 control={form.control}
                 name="estado"
@@ -179,7 +214,40 @@ export default function CreateUserForm({
                         </SelectItem>
                       </SelectContent>
                     </Select>
-
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+              <FormField
+                control={form.control}
+                name="ID_area"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormLabel>Área</FormLabel>
+                    <Select
+                      onValueChange={field.onChange}
+                      value={field.value}
+                      disabled={loading}
+                    >
+                      <FormControl className="w-full">
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecciona un área" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {areas && areas.length > 0 ? (
+                          areas.map((area) => (
+                            <SelectItem key={area.ID_area} value={String(area.ID_area)}>
+                              {area.nombre}
+                            </SelectItem>
+                          ))
+                        ) : (
+                          <SelectItem value="" disabled>
+                            No hay áreas disponibles
+                          </SelectItem>
+                        )}
+                      </SelectContent>
+                    </Select>
                     <FormMessage />
                   </FormItem>
                 )}

@@ -40,18 +40,20 @@ export const authOptions = {
         contrasena: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
+        console.log("credentials", credentials);
         const userFound = await prisma.usuario.findUnique({
           where: {
             correo: credentials?.correo,
           },
         });
+        console.log("userFound", userFound);
         if (!userFound) throw new Error("Usuario no encontrado");
-
+console.log("userFound", userFound);
         const isPasswordValid = await bcrypt.compare(
           credentials?.contrasena || "",
           userFound.contrasena
         );
-
+console.log("isPasswordValid", isPasswordValid);
         if (!isPasswordValid) throw new Error("Contraseña incorrecta");
 
         return {

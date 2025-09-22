@@ -48,16 +48,6 @@ export type Documento = $Result.DefaultSelection<Prisma.$DocumentoPayload>
  * 
  */
 export type Historial_documentos = $Result.DefaultSelection<Prisma.$Historial_documentosPayload>
-/**
- * Model Detalle_historial
- * 
- */
-export type Detalle_historial = $Result.DefaultSelection<Prisma.$Detalle_historialPayload>
-/**
- * Model Permiso
- * 
- */
-export type Permiso = $Result.DefaultSelection<Prisma.$PermisoPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -253,26 +243,6 @@ export class PrismaClient<
     * ```
     */
   get historial_documentos(): Prisma.Historial_documentosDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.detalle_historial`: Exposes CRUD operations for the **Detalle_historial** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Detalle_historials
-    * const detalle_historials = await prisma.detalle_historial.findMany()
-    * ```
-    */
-  get detalle_historial(): Prisma.Detalle_historialDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.permiso`: Exposes CRUD operations for the **Permiso** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Permisos
-    * const permisos = await prisma.permiso.findMany()
-    * ```
-    */
-  get permiso(): Prisma.PermisoDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -719,9 +689,7 @@ export namespace Prisma {
     Area: 'Area',
     Usuario: 'Usuario',
     Documento: 'Documento',
-    Historial_documentos: 'Historial_documentos',
-    Detalle_historial: 'Detalle_historial',
-    Permiso: 'Permiso'
+    Historial_documentos: 'Historial_documentos'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -740,7 +708,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "cliente" | "proyecto" | "estado_documento" | "area" | "usuario" | "documento" | "historial_documentos" | "detalle_historial" | "permiso"
+      modelProps: "cliente" | "proyecto" | "estado_documento" | "area" | "usuario" | "documento" | "historial_documentos"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1262,154 +1230,6 @@ export namespace Prisma {
           }
         }
       }
-      Detalle_historial: {
-        payload: Prisma.$Detalle_historialPayload<ExtArgs>
-        fields: Prisma.Detalle_historialFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.Detalle_historialFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.Detalle_historialFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          findFirst: {
-            args: Prisma.Detalle_historialFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.Detalle_historialFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          findMany: {
-            args: Prisma.Detalle_historialFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>[]
-          }
-          create: {
-            args: Prisma.Detalle_historialCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          createMany: {
-            args: Prisma.Detalle_historialCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.Detalle_historialCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>[]
-          }
-          delete: {
-            args: Prisma.Detalle_historialDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          update: {
-            args: Prisma.Detalle_historialUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          deleteMany: {
-            args: Prisma.Detalle_historialDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.Detalle_historialUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.Detalle_historialUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>[]
-          }
-          upsert: {
-            args: Prisma.Detalle_historialUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$Detalle_historialPayload>
-          }
-          aggregate: {
-            args: Prisma.Detalle_historialAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateDetalle_historial>
-          }
-          groupBy: {
-            args: Prisma.Detalle_historialGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Detalle_historialGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.Detalle_historialCountArgs<ExtArgs>
-            result: $Utils.Optional<Detalle_historialCountAggregateOutputType> | number
-          }
-        }
-      }
-      Permiso: {
-        payload: Prisma.$PermisoPayload<ExtArgs>
-        fields: Prisma.PermisoFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.PermisoFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.PermisoFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          findFirst: {
-            args: Prisma.PermisoFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.PermisoFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          findMany: {
-            args: Prisma.PermisoFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>[]
-          }
-          create: {
-            args: Prisma.PermisoCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          createMany: {
-            args: Prisma.PermisoCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.PermisoCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>[]
-          }
-          delete: {
-            args: Prisma.PermisoDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          update: {
-            args: Prisma.PermisoUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          deleteMany: {
-            args: Prisma.PermisoDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.PermisoUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.PermisoUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>[]
-          }
-          upsert: {
-            args: Prisma.PermisoUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$PermisoPayload>
-          }
-          aggregate: {
-            args: Prisma.PermisoAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePermiso>
-          }
-          groupBy: {
-            args: Prisma.PermisoGroupByArgs<ExtArgs>
-            result: $Utils.Optional<PermisoGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.PermisoCountArgs<ExtArgs>
-            result: $Utils.Optional<PermisoCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -1501,8 +1321,6 @@ export namespace Prisma {
     usuario?: UsuarioOmit
     documento?: DocumentoOmit
     historial_documentos?: Historial_documentosOmit
-    detalle_historial?: Detalle_historialOmit
-    permiso?: PermisoOmit
   }
 
   /* Types for Logging */
@@ -1597,12 +1415,10 @@ export namespace Prisma {
    */
 
   export type ClienteCountOutputType = {
-    detalles: number
     documentos: number
   }
 
   export type ClienteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | ClienteCountOutputTypeCountDetallesArgs
     documentos?: boolean | ClienteCountOutputTypeCountDocumentosArgs
   }
 
@@ -1620,13 +1436,6 @@ export namespace Prisma {
   /**
    * ClienteCountOutputType without action
    */
-  export type ClienteCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
-  }
-
-  /**
-   * ClienteCountOutputType without action
-   */
   export type ClienteCountOutputTypeCountDocumentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DocumentoWhereInput
   }
@@ -1637,15 +1446,11 @@ export namespace Prisma {
    */
 
   export type ProyectoCountOutputType = {
-    detalles: number
     documentos: number
-    permisos: number
   }
 
   export type ProyectoCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | ProyectoCountOutputTypeCountDetallesArgs
     documentos?: boolean | ProyectoCountOutputTypeCountDocumentosArgs
-    permisos?: boolean | ProyectoCountOutputTypeCountPermisosArgs
   }
 
   // Custom InputTypes
@@ -1662,22 +1467,8 @@ export namespace Prisma {
   /**
    * ProyectoCountOutputType without action
    */
-  export type ProyectoCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
-  }
-
-  /**
-   * ProyectoCountOutputType without action
-   */
   export type ProyectoCountOutputTypeCountDocumentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DocumentoWhereInput
-  }
-
-  /**
-   * ProyectoCountOutputType without action
-   */
-  export type ProyectoCountOutputTypeCountPermisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermisoWhereInput
   }
 
 
@@ -1726,18 +1517,12 @@ export namespace Prisma {
    */
 
   export type AreaCountOutputType = {
-    detalles: number
     documentos: number
-    historiales: number
-    permisos: number
     usuarios: number
   }
 
   export type AreaCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | AreaCountOutputTypeCountDetallesArgs
     documentos?: boolean | AreaCountOutputTypeCountDocumentosArgs
-    historiales?: boolean | AreaCountOutputTypeCountHistorialesArgs
-    permisos?: boolean | AreaCountOutputTypeCountPermisosArgs
     usuarios?: boolean | AreaCountOutputTypeCountUsuariosArgs
   }
 
@@ -1755,29 +1540,8 @@ export namespace Prisma {
   /**
    * AreaCountOutputType without action
    */
-  export type AreaCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
-  }
-
-  /**
-   * AreaCountOutputType without action
-   */
   export type AreaCountOutputTypeCountDocumentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: DocumentoWhereInput
-  }
-
-  /**
-   * AreaCountOutputType without action
-   */
-  export type AreaCountOutputTypeCountHistorialesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Historial_documentosWhereInput
-  }
-
-  /**
-   * AreaCountOutputType without action
-   */
-  export type AreaCountOutputTypeCountPermisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermisoWhereInput
   }
 
   /**
@@ -1793,15 +1557,13 @@ export namespace Prisma {
    */
 
   export type UsuarioCountOutputType = {
-    detalles: number
+    documentos: number
     historiales: number
-    permisos: number
   }
 
   export type UsuarioCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | UsuarioCountOutputTypeCountDetallesArgs
+    documentos?: boolean | UsuarioCountOutputTypeCountDocumentosArgs
     historiales?: boolean | UsuarioCountOutputTypeCountHistorialesArgs
-    permisos?: boolean | UsuarioCountOutputTypeCountPermisosArgs
   }
 
   // Custom InputTypes
@@ -1818,8 +1580,8 @@ export namespace Prisma {
   /**
    * UsuarioCountOutputType without action
    */
-  export type UsuarioCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
+  export type UsuarioCountOutputTypeCountDocumentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: DocumentoWhereInput
   }
 
   /**
@@ -1827,13 +1589,6 @@ export namespace Prisma {
    */
   export type UsuarioCountOutputTypeCountHistorialesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: Historial_documentosWhereInput
-  }
-
-  /**
-   * UsuarioCountOutputType without action
-   */
-  export type UsuarioCountOutputTypeCountPermisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermisoWhereInput
   }
 
 
@@ -1869,37 +1624,6 @@ export namespace Prisma {
 
 
   /**
-   * Count Type Historial_documentosCountOutputType
-   */
-
-  export type Historial_documentosCountOutputType = {
-    detalles: number
-  }
-
-  export type Historial_documentosCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Historial_documentosCountOutputTypeCountDetallesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * Historial_documentosCountOutputType without action
-   */
-  export type Historial_documentosCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Historial_documentosCountOutputType
-     */
-    select?: Historial_documentosCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * Historial_documentosCountOutputType without action
-   */
-  export type Historial_documentosCountOutputTypeCountDetallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
-  }
-
-
-  /**
    * Models
    */
 
@@ -1929,6 +1653,9 @@ export namespace Prisma {
     apellido: string | null
     nombre_departamento: string | null
     nombre_provincia: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type ClienteMaxAggregateOutputType = {
@@ -1937,6 +1664,9 @@ export namespace Prisma {
     apellido: string | null
     nombre_departamento: string | null
     nombre_provincia: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type ClienteCountAggregateOutputType = {
@@ -1945,6 +1675,9 @@ export namespace Prisma {
     apellido: number
     nombre_departamento: number
     nombre_provincia: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -1963,6 +1696,9 @@ export namespace Prisma {
     apellido?: true
     nombre_departamento?: true
     nombre_provincia?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type ClienteMaxAggregateInputType = {
@@ -1971,6 +1707,9 @@ export namespace Prisma {
     apellido?: true
     nombre_departamento?: true
     nombre_provincia?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type ClienteCountAggregateInputType = {
@@ -1979,6 +1718,9 @@ export namespace Prisma {
     apellido?: true
     nombre_departamento?: true
     nombre_provincia?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -2074,6 +1816,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: ClienteCountAggregateOutputType | null
     _avg: ClienteAvgAggregateOutputType | null
     _sum: ClienteSumAggregateOutputType | null
@@ -2101,7 +1846,9 @@ export namespace Prisma {
     apellido?: boolean
     nombre_departamento?: boolean
     nombre_provincia?: boolean
-    detalles?: boolean | Cliente$detallesArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
     documentos?: boolean | Cliente$documentosArgs<ExtArgs>
     _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["cliente"]>
@@ -2112,6 +1859,9 @@ export namespace Prisma {
     apellido?: boolean
     nombre_departamento?: boolean
     nombre_provincia?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["cliente"]>
 
   export type ClienteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -2120,6 +1870,9 @@ export namespace Prisma {
     apellido?: boolean
     nombre_departamento?: boolean
     nombre_provincia?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["cliente"]>
 
   export type ClienteSelectScalar = {
@@ -2128,11 +1881,13 @@ export namespace Prisma {
     apellido?: boolean
     nombre_departamento?: boolean
     nombre_provincia?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type ClienteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_cliente" | "nombre" | "apellido" | "nombre_departamento" | "nombre_provincia", ExtArgs["result"]["cliente"]>
+  export type ClienteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_cliente" | "nombre" | "apellido" | "nombre_departamento" | "nombre_provincia" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["cliente"]>
   export type ClienteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Cliente$detallesArgs<ExtArgs>
     documentos?: boolean | Cliente$documentosArgs<ExtArgs>
     _count?: boolean | ClienteCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -2142,7 +1897,6 @@ export namespace Prisma {
   export type $ClientePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Cliente"
     objects: {
-      detalles: Prisma.$Detalle_historialPayload<ExtArgs>[]
       documentos: Prisma.$DocumentoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -2151,6 +1905,9 @@ export namespace Prisma {
       apellido: string
       nombre_departamento: string
       nombre_provincia: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["cliente"]>
     composites: {}
   }
@@ -2545,7 +2302,6 @@ export namespace Prisma {
    */
   export interface Prisma__ClienteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detalles<T extends Cliente$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Cliente$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentos<T extends Cliente$documentosArgs<ExtArgs> = {}>(args?: Subset<T, Cliente$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -2581,6 +2337,9 @@ export namespace Prisma {
     readonly apellido: FieldRef<"Cliente", 'String'>
     readonly nombre_departamento: FieldRef<"Cliente", 'String'>
     readonly nombre_provincia: FieldRef<"Cliente", 'String'>
+    readonly created_at: FieldRef<"Cliente", 'DateTime'>
+    readonly updated_at: FieldRef<"Cliente", 'DateTime'>
+    readonly deleted_at: FieldRef<"Cliente", 'DateTime'>
   }
     
 
@@ -2969,30 +2728,6 @@ export namespace Prisma {
   }
 
   /**
-   * Cliente.detalles
-   */
-  export type Cliente$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    cursor?: Detalle_historialWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
    * Cliente.documentos
    */
   export type Cliente$documentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3059,18 +2794,27 @@ export namespace Prisma {
     ID_proyecto: number | null
     nombre: string | null
     descripcion: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type ProyectoMaxAggregateOutputType = {
     ID_proyecto: number | null
     nombre: string | null
     descripcion: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type ProyectoCountAggregateOutputType = {
     ID_proyecto: number
     nombre: number
     descripcion: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -3087,18 +2831,27 @@ export namespace Prisma {
     ID_proyecto?: true
     nombre?: true
     descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type ProyectoMaxAggregateInputType = {
     ID_proyecto?: true
     nombre?: true
     descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type ProyectoCountAggregateInputType = {
     ID_proyecto?: true
     nombre?: true
     descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -3191,7 +2944,10 @@ export namespace Prisma {
   export type ProyectoGroupByOutputType = {
     ID_proyecto: number
     nombre: string
-    descripcion: string | null
+    descripcion: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: ProyectoCountAggregateOutputType | null
     _avg: ProyectoAvgAggregateOutputType | null
     _sum: ProyectoSumAggregateOutputType | null
@@ -3217,9 +2973,10 @@ export namespace Prisma {
     ID_proyecto?: boolean
     nombre?: boolean
     descripcion?: boolean
-    detalles?: boolean | Proyecto$detallesArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
     documentos?: boolean | Proyecto$documentosArgs<ExtArgs>
-    permisos?: boolean | Proyecto$permisosArgs<ExtArgs>
     _count?: boolean | ProyectoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["proyecto"]>
 
@@ -3227,25 +2984,32 @@ export namespace Prisma {
     ID_proyecto?: boolean
     nombre?: boolean
     descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["proyecto"]>
 
   export type ProyectoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_proyecto?: boolean
     nombre?: boolean
     descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["proyecto"]>
 
   export type ProyectoSelectScalar = {
     ID_proyecto?: boolean
     nombre?: boolean
     descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type ProyectoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_proyecto" | "nombre" | "descripcion", ExtArgs["result"]["proyecto"]>
+  export type ProyectoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_proyecto" | "nombre" | "descripcion" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["proyecto"]>
   export type ProyectoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Proyecto$detallesArgs<ExtArgs>
     documentos?: boolean | Proyecto$documentosArgs<ExtArgs>
-    permisos?: boolean | Proyecto$permisosArgs<ExtArgs>
     _count?: boolean | ProyectoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type ProyectoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
@@ -3254,14 +3018,15 @@ export namespace Prisma {
   export type $ProyectoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Proyecto"
     objects: {
-      detalles: Prisma.$Detalle_historialPayload<ExtArgs>[]
       documentos: Prisma.$DocumentoPayload<ExtArgs>[]
-      permisos: Prisma.$PermisoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_proyecto: number
       nombre: string
-      descripcion: string | null
+      descripcion: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["proyecto"]>
     composites: {}
   }
@@ -3656,9 +3421,7 @@ export namespace Prisma {
    */
   export interface Prisma__ProyectoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detalles<T extends Proyecto$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Proyecto$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentos<T extends Proyecto$documentosArgs<ExtArgs> = {}>(args?: Subset<T, Proyecto$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    permisos<T extends Proyecto$permisosArgs<ExtArgs> = {}>(args?: Subset<T, Proyecto$permisosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3691,6 +3454,9 @@ export namespace Prisma {
     readonly ID_proyecto: FieldRef<"Proyecto", 'Int'>
     readonly nombre: FieldRef<"Proyecto", 'String'>
     readonly descripcion: FieldRef<"Proyecto", 'String'>
+    readonly created_at: FieldRef<"Proyecto", 'DateTime'>
+    readonly updated_at: FieldRef<"Proyecto", 'DateTime'>
+    readonly deleted_at: FieldRef<"Proyecto", 'DateTime'>
   }
     
 
@@ -4079,30 +3845,6 @@ export namespace Prisma {
   }
 
   /**
-   * Proyecto.detalles
-   */
-  export type Proyecto$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    cursor?: Detalle_historialWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
    * Proyecto.documentos
    */
   export type Proyecto$documentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -4124,30 +3866,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DocumentoScalarFieldEnum | DocumentoScalarFieldEnum[]
-  }
-
-  /**
-   * Proyecto.permisos
-   */
-  export type Proyecto$permisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    where?: PermisoWhereInput
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    cursor?: PermisoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
   }
 
   /**
@@ -4192,16 +3910,25 @@ export namespace Prisma {
   export type Estado_documentoMinAggregateOutputType = {
     ID_estado: number | null
     estado: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type Estado_documentoMaxAggregateOutputType = {
     ID_estado: number | null
     estado: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type Estado_documentoCountAggregateOutputType = {
     ID_estado: number
     estado: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -4217,16 +3944,25 @@ export namespace Prisma {
   export type Estado_documentoMinAggregateInputType = {
     ID_estado?: true
     estado?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type Estado_documentoMaxAggregateInputType = {
     ID_estado?: true
     estado?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type Estado_documentoCountAggregateInputType = {
     ID_estado?: true
     estado?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -4319,6 +4055,9 @@ export namespace Prisma {
   export type Estado_documentoGroupByOutputType = {
     ID_estado: number
     estado: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: Estado_documentoCountAggregateOutputType | null
     _avg: Estado_documentoAvgAggregateOutputType | null
     _sum: Estado_documentoSumAggregateOutputType | null
@@ -4343,6 +4082,9 @@ export namespace Prisma {
   export type Estado_documentoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_estado?: boolean
     estado?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
     documentos?: boolean | Estado_documento$documentosArgs<ExtArgs>
     historiales?: boolean | Estado_documento$historialesArgs<ExtArgs>
     _count?: boolean | Estado_documentoCountOutputTypeDefaultArgs<ExtArgs>
@@ -4351,19 +4093,28 @@ export namespace Prisma {
   export type Estado_documentoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_estado?: boolean
     estado?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["estado_documento"]>
 
   export type Estado_documentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_estado?: boolean
     estado?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["estado_documento"]>
 
   export type Estado_documentoSelectScalar = {
     ID_estado?: boolean
     estado?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type Estado_documentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_estado" | "estado", ExtArgs["result"]["estado_documento"]>
+  export type Estado_documentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_estado" | "estado" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["estado_documento"]>
   export type Estado_documentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     documentos?: boolean | Estado_documento$documentosArgs<ExtArgs>
     historiales?: boolean | Estado_documento$historialesArgs<ExtArgs>
@@ -4381,6 +4132,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       ID_estado: number
       estado: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["estado_documento"]>
     composites: {}
   }
@@ -4808,6 +4562,9 @@ export namespace Prisma {
   interface Estado_documentoFieldRefs {
     readonly ID_estado: FieldRef<"Estado_documento", 'Int'>
     readonly estado: FieldRef<"Estado_documento", 'String'>
+    readonly created_at: FieldRef<"Estado_documento", 'DateTime'>
+    readonly updated_at: FieldRef<"Estado_documento", 'DateTime'>
+    readonly deleted_at: FieldRef<"Estado_documento", 'DateTime'>
   }
     
 
@@ -5285,16 +5042,25 @@ export namespace Prisma {
   export type AreaMinAggregateOutputType = {
     ID_area: number | null
     nombre: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type AreaMaxAggregateOutputType = {
     ID_area: number | null
     nombre: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type AreaCountAggregateOutputType = {
     ID_area: number
     nombre: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -5310,16 +5076,25 @@ export namespace Prisma {
   export type AreaMinAggregateInputType = {
     ID_area?: true
     nombre?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type AreaMaxAggregateInputType = {
     ID_area?: true
     nombre?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type AreaCountAggregateInputType = {
     ID_area?: true
     nombre?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -5412,6 +5187,9 @@ export namespace Prisma {
   export type AreaGroupByOutputType = {
     ID_area: number
     nombre: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: AreaCountAggregateOutputType | null
     _avg: AreaAvgAggregateOutputType | null
     _sum: AreaSumAggregateOutputType | null
@@ -5436,10 +5214,10 @@ export namespace Prisma {
   export type AreaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_area?: boolean
     nombre?: boolean
-    detalles?: boolean | Area$detallesArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
     documentos?: boolean | Area$documentosArgs<ExtArgs>
-    historiales?: boolean | Area$historialesArgs<ExtArgs>
-    permisos?: boolean | Area$permisosArgs<ExtArgs>
     usuarios?: boolean | Area$usuariosArgs<ExtArgs>
     _count?: boolean | AreaCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["area"]>
@@ -5447,24 +5225,30 @@ export namespace Prisma {
   export type AreaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_area?: boolean
     nombre?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["area"]>
 
   export type AreaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_area?: boolean
     nombre?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }, ExtArgs["result"]["area"]>
 
   export type AreaSelectScalar = {
     ID_area?: boolean
     nombre?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type AreaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_area" | "nombre", ExtArgs["result"]["area"]>
+  export type AreaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_area" | "nombre" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["area"]>
   export type AreaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Area$detallesArgs<ExtArgs>
     documentos?: boolean | Area$documentosArgs<ExtArgs>
-    historiales?: boolean | Area$historialesArgs<ExtArgs>
-    permisos?: boolean | Area$permisosArgs<ExtArgs>
     usuarios?: boolean | Area$usuariosArgs<ExtArgs>
     _count?: boolean | AreaCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -5474,15 +5258,15 @@ export namespace Prisma {
   export type $AreaPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Area"
     objects: {
-      detalles: Prisma.$Detalle_historialPayload<ExtArgs>[]
       documentos: Prisma.$DocumentoPayload<ExtArgs>[]
-      historiales: Prisma.$Historial_documentosPayload<ExtArgs>[]
-      permisos: Prisma.$PermisoPayload<ExtArgs>[]
       usuarios: Prisma.$UsuarioPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_area: number
       nombre: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["area"]>
     composites: {}
   }
@@ -5877,10 +5661,7 @@ export namespace Prisma {
    */
   export interface Prisma__AreaClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detalles<T extends Area$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Area$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentos<T extends Area$documentosArgs<ExtArgs> = {}>(args?: Subset<T, Area$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    historiales<T extends Area$historialesArgs<ExtArgs> = {}>(args?: Subset<T, Area$historialesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Historial_documentosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    permisos<T extends Area$permisosArgs<ExtArgs> = {}>(args?: Subset<T, Area$permisosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     usuarios<T extends Area$usuariosArgs<ExtArgs> = {}>(args?: Subset<T, Area$usuariosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -5913,6 +5694,9 @@ export namespace Prisma {
   interface AreaFieldRefs {
     readonly ID_area: FieldRef<"Area", 'Int'>
     readonly nombre: FieldRef<"Area", 'String'>
+    readonly created_at: FieldRef<"Area", 'DateTime'>
+    readonly updated_at: FieldRef<"Area", 'DateTime'>
+    readonly deleted_at: FieldRef<"Area", 'DateTime'>
   }
     
 
@@ -6301,30 +6085,6 @@ export namespace Prisma {
   }
 
   /**
-   * Area.detalles
-   */
-  export type Area$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    cursor?: Detalle_historialWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
    * Area.documentos
    */
   export type Area$documentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6346,54 +6106,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: DocumentoScalarFieldEnum | DocumentoScalarFieldEnum[]
-  }
-
-  /**
-   * Area.historiales
-   */
-  export type Area$historialesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Historial_documentos
-     */
-    select?: Historial_documentosSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Historial_documentos
-     */
-    omit?: Historial_documentosOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Historial_documentosInclude<ExtArgs> | null
-    where?: Historial_documentosWhereInput
-    orderBy?: Historial_documentosOrderByWithRelationInput | Historial_documentosOrderByWithRelationInput[]
-    cursor?: Historial_documentosWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Historial_documentosScalarFieldEnum | Historial_documentosScalarFieldEnum[]
-  }
-
-  /**
-   * Area.permisos
-   */
-  export type Area$permisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    where?: PermisoWhereInput
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    cursor?: PermisoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
   }
 
   /**
@@ -6468,7 +6180,12 @@ export namespace Prisma {
     correo: string | null
     contrasena: string | null
     rol: string | null
+    estado: string | null
+    fecha_ingreso: Date | null
     ID_area: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type UsuarioMaxAggregateOutputType = {
@@ -6478,7 +6195,12 @@ export namespace Prisma {
     correo: string | null
     contrasena: string | null
     rol: string | null
+    estado: string | null
+    fecha_ingreso: Date | null
     ID_area: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type UsuarioCountAggregateOutputType = {
@@ -6488,7 +6210,13 @@ export namespace Prisma {
     correo: number
     contrasena: number
     rol: number
+    permisos: number
+    estado: number
+    fecha_ingreso: number
     ID_area: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -6510,7 +6238,12 @@ export namespace Prisma {
     correo?: true
     contrasena?: true
     rol?: true
+    estado?: true
+    fecha_ingreso?: true
     ID_area?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type UsuarioMaxAggregateInputType = {
@@ -6520,7 +6253,12 @@ export namespace Prisma {
     correo?: true
     contrasena?: true
     rol?: true
+    estado?: true
+    fecha_ingreso?: true
     ID_area?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type UsuarioCountAggregateInputType = {
@@ -6530,7 +6268,13 @@ export namespace Prisma {
     correo?: true
     contrasena?: true
     rol?: true
+    permisos?: true
+    estado?: true
+    fecha_ingreso?: true
     ID_area?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -6623,11 +6367,17 @@ export namespace Prisma {
   export type UsuarioGroupByOutputType = {
     ID_usuario: number
     nombre: string
-    apellido: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    ID_area: number | null
+    permisos: string[]
+    estado: string
+    fecha_ingreso: Date
+    ID_area: number
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: UsuarioCountAggregateOutputType | null
     _avg: UsuarioAvgAggregateOutputType | null
     _sum: UsuarioSumAggregateOutputType | null
@@ -6656,11 +6406,16 @@ export namespace Prisma {
     correo?: boolean
     contrasena?: boolean
     rol?: boolean
+    permisos?: boolean
+    estado?: boolean
+    fecha_ingreso?: boolean
     ID_area?: boolean
-    detalles?: boolean | Usuario$detallesArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    documentos?: boolean | Usuario$documentosArgs<ExtArgs>
     historiales?: boolean | Usuario$historialesArgs<ExtArgs>
-    permisos?: boolean | Usuario$permisosArgs<ExtArgs>
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
@@ -6671,8 +6426,14 @@ export namespace Prisma {
     correo?: boolean
     contrasena?: boolean
     rol?: boolean
+    permisos?: boolean
+    estado?: boolean
+    fecha_ingreso?: boolean
     ID_area?: boolean
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    area?: boolean | AreaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
@@ -6682,8 +6443,14 @@ export namespace Prisma {
     correo?: boolean
     contrasena?: boolean
     rol?: boolean
+    permisos?: boolean
+    estado?: boolean
+    fecha_ingreso?: boolean
     ID_area?: boolean
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    area?: boolean | AreaDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["usuario"]>
 
   export type UsuarioSelectScalar = {
@@ -6693,40 +6460,50 @@ export namespace Prisma {
     correo?: boolean
     contrasena?: boolean
     rol?: boolean
+    permisos?: boolean
+    estado?: boolean
+    fecha_ingreso?: boolean
     ID_area?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_usuario" | "nombre" | "apellido" | "correo" | "contrasena" | "rol" | "ID_area", ExtArgs["result"]["usuario"]>
+  export type UsuarioOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_usuario" | "nombre" | "apellido" | "correo" | "contrasena" | "rol" | "permisos" | "estado" | "fecha_ingreso" | "ID_area" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["usuario"]>
   export type UsuarioInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Usuario$detallesArgs<ExtArgs>
+    documentos?: boolean | Usuario$documentosArgs<ExtArgs>
     historiales?: boolean | Usuario$historialesArgs<ExtArgs>
-    permisos?: boolean | Usuario$permisosArgs<ExtArgs>
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
     _count?: boolean | UsuarioCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type UsuarioIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
   }
   export type UsuarioIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Usuario$areaArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
   }
 
   export type $UsuarioPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Usuario"
     objects: {
-      detalles: Prisma.$Detalle_historialPayload<ExtArgs>[]
+      documentos: Prisma.$DocumentoPayload<ExtArgs>[]
       historiales: Prisma.$Historial_documentosPayload<ExtArgs>[]
-      permisos: Prisma.$PermisoPayload<ExtArgs>[]
-      area: Prisma.$AreaPayload<ExtArgs> | null
+      area: Prisma.$AreaPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_usuario: number
       nombre: string
-      apellido: string | null
+      apellido: string
       correo: string
       contrasena: string
       rol: string
-      ID_area: number | null
+      permisos: string[]
+      estado: string
+      fecha_ingreso: Date
+      ID_area: number
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["usuario"]>
     composites: {}
   }
@@ -7121,10 +6898,9 @@ export namespace Prisma {
    */
   export interface Prisma__UsuarioClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detalles<T extends Usuario$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    documentos<T extends Usuario$documentosArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$documentosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     historiales<T extends Usuario$historialesArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$historialesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Historial_documentosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    permisos<T extends Usuario$permisosArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$permisosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    area<T extends Usuario$areaArgs<ExtArgs> = {}>(args?: Subset<T, Usuario$areaArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    area<T extends AreaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AreaDefaultArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7160,7 +6936,13 @@ export namespace Prisma {
     readonly correo: FieldRef<"Usuario", 'String'>
     readonly contrasena: FieldRef<"Usuario", 'String'>
     readonly rol: FieldRef<"Usuario", 'String'>
+    readonly permisos: FieldRef<"Usuario", 'String[]'>
+    readonly estado: FieldRef<"Usuario", 'String'>
+    readonly fecha_ingreso: FieldRef<"Usuario", 'DateTime'>
     readonly ID_area: FieldRef<"Usuario", 'Int'>
+    readonly created_at: FieldRef<"Usuario", 'DateTime'>
+    readonly updated_at: FieldRef<"Usuario", 'DateTime'>
+    readonly deleted_at: FieldRef<"Usuario", 'DateTime'>
   }
     
 
@@ -7557,27 +7339,27 @@ export namespace Prisma {
   }
 
   /**
-   * Usuario.detalles
+   * Usuario.documentos
    */
-  export type Usuario$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Usuario$documentosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Detalle_historial
+     * Select specific fields to fetch from the Documento
      */
-    select?: Detalle_historialSelect<ExtArgs> | null
+    select?: DocumentoSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Detalle_historial
+     * Omit specific fields from the Documento
      */
-    omit?: Detalle_historialOmit<ExtArgs> | null
+    omit?: DocumentoOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    cursor?: Detalle_historialWhereUniqueInput
+    include?: DocumentoInclude<ExtArgs> | null
+    where?: DocumentoWhereInput
+    orderBy?: DocumentoOrderByWithRelationInput | DocumentoOrderByWithRelationInput[]
+    cursor?: DocumentoWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
+    distinct?: DocumentoScalarFieldEnum | DocumentoScalarFieldEnum[]
   }
 
   /**
@@ -7602,49 +7384,6 @@ export namespace Prisma {
     take?: number
     skip?: number
     distinct?: Historial_documentosScalarFieldEnum | Historial_documentosScalarFieldEnum[]
-  }
-
-  /**
-   * Usuario.permisos
-   */
-  export type Usuario$permisosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    where?: PermisoWhereInput
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    cursor?: PermisoWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
-  }
-
-  /**
-   * Usuario.area
-   */
-  export type Usuario$areaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Area
-     */
-    select?: AreaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Area
-     */
-    omit?: AreaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AreaInclude<ExtArgs> | null
-    where?: AreaWhereInput
   }
 
   /**
@@ -7684,6 +7423,7 @@ export namespace Prisma {
     ID_proyecto: number | null
     ID_estado_documento: number | null
     ID_area: number | null
+    ID_usuario: number | null
   }
 
   export type DocumentoSumAggregateOutputType = {
@@ -7692,13 +7432,13 @@ export namespace Prisma {
     ID_proyecto: number | null
     ID_estado_documento: number | null
     ID_area: number | null
+    ID_usuario: number | null
   }
 
   export type DocumentoMinAggregateOutputType = {
     ID_documento: number | null
     nombre_documento: string | null
     tipo_documento: string | null
-    fecha_ingreso: Date | null
     archivo: string | null
     descripcion: string | null
     folio: string | null
@@ -7706,13 +7446,16 @@ export namespace Prisma {
     ID_proyecto: number | null
     ID_estado_documento: number | null
     ID_area: number | null
+    ID_usuario: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type DocumentoMaxAggregateOutputType = {
     ID_documento: number | null
     nombre_documento: string | null
     tipo_documento: string | null
-    fecha_ingreso: Date | null
     archivo: string | null
     descripcion: string | null
     folio: string | null
@@ -7720,13 +7463,16 @@ export namespace Prisma {
     ID_proyecto: number | null
     ID_estado_documento: number | null
     ID_area: number | null
+    ID_usuario: number | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type DocumentoCountAggregateOutputType = {
     ID_documento: number
     nombre_documento: number
     tipo_documento: number
-    fecha_ingreso: number
     archivo: number
     descripcion: number
     folio: number
@@ -7734,6 +7480,10 @@ export namespace Prisma {
     ID_proyecto: number
     ID_estado_documento: number
     ID_area: number
+    ID_usuario: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -7744,6 +7494,7 @@ export namespace Prisma {
     ID_proyecto?: true
     ID_estado_documento?: true
     ID_area?: true
+    ID_usuario?: true
   }
 
   export type DocumentoSumAggregateInputType = {
@@ -7752,13 +7503,13 @@ export namespace Prisma {
     ID_proyecto?: true
     ID_estado_documento?: true
     ID_area?: true
+    ID_usuario?: true
   }
 
   export type DocumentoMinAggregateInputType = {
     ID_documento?: true
     nombre_documento?: true
     tipo_documento?: true
-    fecha_ingreso?: true
     archivo?: true
     descripcion?: true
     folio?: true
@@ -7766,13 +7517,16 @@ export namespace Prisma {
     ID_proyecto?: true
     ID_estado_documento?: true
     ID_area?: true
+    ID_usuario?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type DocumentoMaxAggregateInputType = {
     ID_documento?: true
     nombre_documento?: true
     tipo_documento?: true
-    fecha_ingreso?: true
     archivo?: true
     descripcion?: true
     folio?: true
@@ -7780,13 +7534,16 @@ export namespace Prisma {
     ID_proyecto?: true
     ID_estado_documento?: true
     ID_area?: true
+    ID_usuario?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type DocumentoCountAggregateInputType = {
     ID_documento?: true
     nombre_documento?: true
     tipo_documento?: true
-    fecha_ingreso?: true
     archivo?: true
     descripcion?: true
     folio?: true
@@ -7794,6 +7551,10 @@ export namespace Prisma {
     ID_proyecto?: true
     ID_estado_documento?: true
     ID_area?: true
+    ID_usuario?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -7886,15 +7647,18 @@ export namespace Prisma {
   export type DocumentoGroupByOutputType = {
     ID_documento: number
     nombre_documento: string
-    tipo_documento: string | null
-    fecha_ingreso: Date | null
-    archivo: string | null
-    descripcion: string | null
-    folio: string | null
-    ID_cliente: number | null
-    ID_proyecto: number | null
-    ID_estado_documento: number | null
-    ID_area: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: DocumentoCountAggregateOutputType | null
     _avg: DocumentoAvgAggregateOutputType | null
     _sum: DocumentoSumAggregateOutputType | null
@@ -7920,7 +7684,6 @@ export namespace Prisma {
     ID_documento?: boolean
     nombre_documento?: boolean
     tipo_documento?: boolean
-    fecha_ingreso?: boolean
     archivo?: boolean
     descripcion?: boolean
     folio?: boolean
@@ -7928,10 +7691,15 @@ export namespace Prisma {
     ID_proyecto?: boolean
     ID_estado_documento?: boolean
     ID_area?: boolean
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    ID_usuario?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
     historiales?: boolean | Documento$historialesArgs<ExtArgs>
     _count?: boolean | DocumentoCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["documento"]>
@@ -7940,7 +7708,6 @@ export namespace Prisma {
     ID_documento?: boolean
     nombre_documento?: boolean
     tipo_documento?: boolean
-    fecha_ingreso?: boolean
     archivo?: boolean
     descripcion?: boolean
     folio?: boolean
@@ -7948,17 +7715,21 @@ export namespace Prisma {
     ID_proyecto?: boolean
     ID_estado_documento?: boolean
     ID_area?: boolean
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    ID_usuario?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["documento"]>
 
   export type DocumentoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_documento?: boolean
     nombre_documento?: boolean
     tipo_documento?: boolean
-    fecha_ingreso?: boolean
     archivo?: boolean
     descripcion?: boolean
     folio?: boolean
@@ -7966,17 +7737,21 @@ export namespace Prisma {
     ID_proyecto?: boolean
     ID_estado_documento?: boolean
     ID_area?: boolean
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    ID_usuario?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["documento"]>
 
   export type DocumentoSelectScalar = {
     ID_documento?: boolean
     nombre_documento?: boolean
     tipo_documento?: boolean
-    fecha_ingreso?: boolean
     archivo?: boolean
     descripcion?: boolean
     folio?: boolean
@@ -7984,51 +7759,62 @@ export namespace Prisma {
     ID_proyecto?: boolean
     ID_estado_documento?: boolean
     ID_area?: boolean
+    ID_usuario?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type DocumentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_documento" | "nombre_documento" | "tipo_documento" | "fecha_ingreso" | "archivo" | "descripcion" | "folio" | "ID_cliente" | "ID_proyecto" | "ID_estado_documento" | "ID_area", ExtArgs["result"]["documento"]>
+  export type DocumentoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_documento" | "nombre_documento" | "tipo_documento" | "archivo" | "descripcion" | "folio" | "ID_cliente" | "ID_proyecto" | "ID_estado_documento" | "ID_area" | "ID_usuario" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["documento"]>
   export type DocumentoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
     historiales?: boolean | Documento$historialesArgs<ExtArgs>
     _count?: boolean | DocumentoCountOutputTypeDefaultArgs<ExtArgs>
   }
   export type DocumentoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
   }
   export type DocumentoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Documento$areaArgs<ExtArgs>
-    cliente?: boolean | Documento$clienteArgs<ExtArgs>
-    estado?: boolean | Documento$estadoArgs<ExtArgs>
-    proyecto?: boolean | Documento$proyectoArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
+    area?: boolean | AreaDefaultArgs<ExtArgs>
+    cliente?: boolean | ClienteDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    proyecto?: boolean | ProyectoDefaultArgs<ExtArgs>
   }
 
   export type $DocumentoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Documento"
     objects: {
-      area: Prisma.$AreaPayload<ExtArgs> | null
-      cliente: Prisma.$ClientePayload<ExtArgs> | null
-      estado: Prisma.$Estado_documentoPayload<ExtArgs> | null
-      proyecto: Prisma.$ProyectoPayload<ExtArgs> | null
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
+      area: Prisma.$AreaPayload<ExtArgs>
+      cliente: Prisma.$ClientePayload<ExtArgs>
+      estado: Prisma.$Estado_documentoPayload<ExtArgs>
+      proyecto: Prisma.$ProyectoPayload<ExtArgs>
       historiales: Prisma.$Historial_documentosPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_documento: number
       nombre_documento: string
-      tipo_documento: string | null
-      fecha_ingreso: Date | null
-      archivo: string | null
-      descripcion: string | null
-      folio: string | null
-      ID_cliente: number | null
-      ID_proyecto: number | null
-      ID_estado_documento: number | null
-      ID_area: number | null
+      tipo_documento: string
+      archivo: string
+      descripcion: string
+      folio: string
+      ID_cliente: number
+      ID_proyecto: number
+      ID_estado_documento: number
+      ID_area: number
+      ID_usuario: number
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["documento"]>
     composites: {}
   }
@@ -8423,10 +8209,11 @@ export namespace Prisma {
    */
   export interface Prisma__DocumentoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    area<T extends Documento$areaArgs<ExtArgs> = {}>(args?: Subset<T, Documento$areaArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    cliente<T extends Documento$clienteArgs<ExtArgs> = {}>(args?: Subset<T, Documento$clienteArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    estado<T extends Documento$estadoArgs<ExtArgs> = {}>(args?: Subset<T, Documento$estadoArgs<ExtArgs>>): Prisma__Estado_documentoClient<$Result.GetResult<Prisma.$Estado_documentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    proyecto<T extends Documento$proyectoArgs<ExtArgs> = {}>(args?: Subset<T, Documento$proyectoArgs<ExtArgs>>): Prisma__ProyectoClient<$Result.GetResult<Prisma.$ProyectoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    area<T extends AreaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, AreaDefaultArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    cliente<T extends ClienteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClienteDefaultArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    estado<T extends Estado_documentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Estado_documentoDefaultArgs<ExtArgs>>): Prisma__Estado_documentoClient<$Result.GetResult<Prisma.$Estado_documentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    proyecto<T extends ProyectoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ProyectoDefaultArgs<ExtArgs>>): Prisma__ProyectoClient<$Result.GetResult<Prisma.$ProyectoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     historiales<T extends Documento$historialesArgs<ExtArgs> = {}>(args?: Subset<T, Documento$historialesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Historial_documentosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -8460,7 +8247,6 @@ export namespace Prisma {
     readonly ID_documento: FieldRef<"Documento", 'Int'>
     readonly nombre_documento: FieldRef<"Documento", 'String'>
     readonly tipo_documento: FieldRef<"Documento", 'String'>
-    readonly fecha_ingreso: FieldRef<"Documento", 'DateTime'>
     readonly archivo: FieldRef<"Documento", 'String'>
     readonly descripcion: FieldRef<"Documento", 'String'>
     readonly folio: FieldRef<"Documento", 'String'>
@@ -8468,6 +8254,10 @@ export namespace Prisma {
     readonly ID_proyecto: FieldRef<"Documento", 'Int'>
     readonly ID_estado_documento: FieldRef<"Documento", 'Int'>
     readonly ID_area: FieldRef<"Documento", 'Int'>
+    readonly ID_usuario: FieldRef<"Documento", 'Int'>
+    readonly created_at: FieldRef<"Documento", 'DateTime'>
+    readonly updated_at: FieldRef<"Documento", 'DateTime'>
+    readonly deleted_at: FieldRef<"Documento", 'DateTime'>
   }
     
 
@@ -8864,82 +8654,6 @@ export namespace Prisma {
   }
 
   /**
-   * Documento.area
-   */
-  export type Documento$areaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Area
-     */
-    select?: AreaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Area
-     */
-    omit?: AreaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AreaInclude<ExtArgs> | null
-    where?: AreaWhereInput
-  }
-
-  /**
-   * Documento.cliente
-   */
-  export type Documento$clienteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Cliente
-     */
-    select?: ClienteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Cliente
-     */
-    omit?: ClienteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClienteInclude<ExtArgs> | null
-    where?: ClienteWhereInput
-  }
-
-  /**
-   * Documento.estado
-   */
-  export type Documento$estadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Estado_documento
-     */
-    select?: Estado_documentoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Estado_documento
-     */
-    omit?: Estado_documentoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Estado_documentoInclude<ExtArgs> | null
-    where?: Estado_documentoWhereInput
-  }
-
-  /**
-   * Documento.proyecto
-   */
-  export type Documento$proyectoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Proyecto
-     */
-    select?: ProyectoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Proyecto
-     */
-    omit?: ProyectoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProyectoInclude<ExtArgs> | null
-    where?: ProyectoWhereInput
-  }
-
-  /**
    * Documento.historiales
    */
   export type Documento$historialesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8998,7 +8712,6 @@ export namespace Prisma {
     ID_historial: number | null
     ID_documento: number | null
     ID_usuario: number | null
-    ID_area: number | null
     ID_estado_documento: number | null
   }
 
@@ -9006,38 +8719,46 @@ export namespace Prisma {
     ID_historial: number | null
     ID_documento: number | null
     ID_usuario: number | null
-    ID_area: number | null
     ID_estado_documento: number | null
   }
 
   export type Historial_documentosMinAggregateOutputType = {
     ID_historial: number | null
     fecha: Date | null
-    hora: Date | null
     ID_documento: number | null
     ID_usuario: number | null
-    ID_area: number | null
     ID_estado_documento: number | null
+    documento_historial: string | null
+    descripcion: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type Historial_documentosMaxAggregateOutputType = {
     ID_historial: number | null
     fecha: Date | null
-    hora: Date | null
     ID_documento: number | null
     ID_usuario: number | null
-    ID_area: number | null
     ID_estado_documento: number | null
+    documento_historial: string | null
+    descripcion: string | null
+    created_at: Date | null
+    updated_at: Date | null
+    deleted_at: Date | null
   }
 
   export type Historial_documentosCountAggregateOutputType = {
     ID_historial: number
     fecha: number
-    hora: number
     ID_documento: number
     ID_usuario: number
-    ID_area: number
     ID_estado_documento: number
+    documento_historial: number
+    descripcion: number
+    created_at: number
+    updated_at: number
+    deleted_at: number
     _all: number
   }
 
@@ -9046,7 +8767,6 @@ export namespace Prisma {
     ID_historial?: true
     ID_documento?: true
     ID_usuario?: true
-    ID_area?: true
     ID_estado_documento?: true
   }
 
@@ -9054,38 +8774,46 @@ export namespace Prisma {
     ID_historial?: true
     ID_documento?: true
     ID_usuario?: true
-    ID_area?: true
     ID_estado_documento?: true
   }
 
   export type Historial_documentosMinAggregateInputType = {
     ID_historial?: true
     fecha?: true
-    hora?: true
     ID_documento?: true
     ID_usuario?: true
-    ID_area?: true
     ID_estado_documento?: true
+    documento_historial?: true
+    descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type Historial_documentosMaxAggregateInputType = {
     ID_historial?: true
     fecha?: true
-    hora?: true
     ID_documento?: true
     ID_usuario?: true
-    ID_area?: true
     ID_estado_documento?: true
+    documento_historial?: true
+    descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
   }
 
   export type Historial_documentosCountAggregateInputType = {
     ID_historial?: true
     fecha?: true
-    hora?: true
     ID_documento?: true
     ID_usuario?: true
-    ID_area?: true
     ID_estado_documento?: true
+    documento_historial?: true
+    descripcion?: true
+    created_at?: true
+    updated_at?: true
+    deleted_at?: true
     _all?: true
   }
 
@@ -9177,12 +8905,15 @@ export namespace Prisma {
 
   export type Historial_documentosGroupByOutputType = {
     ID_historial: number
-    fecha: Date | null
-    hora: Date | null
-    ID_documento: number | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_estado_documento: number | null
+    fecha: Date
+    ID_documento: number
+    ID_usuario: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at: Date
+    updated_at: Date
+    deleted_at: Date | null
     _count: Historial_documentosCountAggregateOutputType | null
     _avg: Historial_documentosAvgAggregateOutputType | null
     _sum: Historial_documentosSumAggregateOutputType | null
@@ -9207,96 +8938,99 @@ export namespace Prisma {
   export type Historial_documentosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
     fecha?: boolean
-    hora?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
-    ID_area?: boolean
     ID_estado_documento?: boolean
-    detalles?: boolean | Historial_documentos$detallesArgs<ExtArgs>
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
-    _count?: boolean | Historial_documentosCountOutputTypeDefaultArgs<ExtArgs>
+    documento_historial?: boolean
+    descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["historial_documentos"]>
 
   export type Historial_documentosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
     fecha?: boolean
-    hora?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
-    ID_area?: boolean
     ID_estado_documento?: boolean
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
+    documento_historial?: boolean
+    descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["historial_documentos"]>
 
   export type Historial_documentosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
     fecha?: boolean
-    hora?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
-    ID_area?: boolean
     ID_estado_documento?: boolean
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
+    documento_historial?: boolean
+    descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["historial_documentos"]>
 
   export type Historial_documentosSelectScalar = {
     ID_historial?: boolean
     fecha?: boolean
-    hora?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
-    ID_area?: boolean
     ID_estado_documento?: boolean
+    documento_historial?: boolean
+    descripcion?: boolean
+    created_at?: boolean
+    updated_at?: boolean
+    deleted_at?: boolean
   }
 
-  export type Historial_documentosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_historial" | "fecha" | "hora" | "ID_documento" | "ID_usuario" | "ID_area" | "ID_estado_documento", ExtArgs["result"]["historial_documentos"]>
+  export type Historial_documentosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_historial" | "fecha" | "ID_documento" | "ID_usuario" | "ID_estado_documento" | "documento_historial" | "descripcion" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["historial_documentos"]>
   export type Historial_documentosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    detalles?: boolean | Historial_documentos$detallesArgs<ExtArgs>
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
-    _count?: boolean | Historial_documentosCountOutputTypeDefaultArgs<ExtArgs>
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type Historial_documentosIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
   export type Historial_documentosIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Historial_documentos$areaArgs<ExtArgs>
-    documento?: boolean | Historial_documentos$documentoArgs<ExtArgs>
-    estado?: boolean | Historial_documentos$estadoArgs<ExtArgs>
-    usuario?: boolean | Historial_documentos$usuarioArgs<ExtArgs>
+    documento?: boolean | DocumentoDefaultArgs<ExtArgs>
+    estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
+    usuario?: boolean | UsuarioDefaultArgs<ExtArgs>
   }
 
   export type $Historial_documentosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "Historial_documentos"
     objects: {
-      detalles: Prisma.$Detalle_historialPayload<ExtArgs>[]
-      area: Prisma.$AreaPayload<ExtArgs> | null
-      documento: Prisma.$DocumentoPayload<ExtArgs> | null
-      estado: Prisma.$Estado_documentoPayload<ExtArgs> | null
-      usuario: Prisma.$UsuarioPayload<ExtArgs> | null
+      documento: Prisma.$DocumentoPayload<ExtArgs>
+      estado: Prisma.$Estado_documentoPayload<ExtArgs>
+      usuario: Prisma.$UsuarioPayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_historial: number
-      fecha: Date | null
-      hora: Date | null
-      ID_documento: number | null
-      ID_usuario: number | null
-      ID_area: number | null
-      ID_estado_documento: number | null
+      fecha: Date
+      ID_documento: number
+      ID_usuario: number
+      ID_estado_documento: number
+      documento_historial: string
+      descripcion: string
+      created_at: Date
+      updated_at: Date
+      deleted_at: Date | null
     }, ExtArgs["result"]["historial_documentos"]>
     composites: {}
   }
@@ -9691,11 +9425,9 @@ export namespace Prisma {
    */
   export interface Prisma__Historial_documentosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
-    detalles<T extends Historial_documentos$detallesArgs<ExtArgs> = {}>(args?: Subset<T, Historial_documentos$detallesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    area<T extends Historial_documentos$areaArgs<ExtArgs> = {}>(args?: Subset<T, Historial_documentos$areaArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    documento<T extends Historial_documentos$documentoArgs<ExtArgs> = {}>(args?: Subset<T, Historial_documentos$documentoArgs<ExtArgs>>): Prisma__DocumentoClient<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    estado<T extends Historial_documentos$estadoArgs<ExtArgs> = {}>(args?: Subset<T, Historial_documentos$estadoArgs<ExtArgs>>): Prisma__Estado_documentoClient<$Result.GetResult<Prisma.$Estado_documentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    usuario<T extends Historial_documentos$usuarioArgs<ExtArgs> = {}>(args?: Subset<T, Historial_documentos$usuarioArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    documento<T extends DocumentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, DocumentoDefaultArgs<ExtArgs>>): Prisma__DocumentoClient<$Result.GetResult<Prisma.$DocumentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    estado<T extends Estado_documentoDefaultArgs<ExtArgs> = {}>(args?: Subset<T, Estado_documentoDefaultArgs<ExtArgs>>): Prisma__Estado_documentoClient<$Result.GetResult<Prisma.$Estado_documentoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    usuario<T extends UsuarioDefaultArgs<ExtArgs> = {}>(args?: Subset<T, UsuarioDefaultArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9727,11 +9459,14 @@ export namespace Prisma {
   interface Historial_documentosFieldRefs {
     readonly ID_historial: FieldRef<"Historial_documentos", 'Int'>
     readonly fecha: FieldRef<"Historial_documentos", 'DateTime'>
-    readonly hora: FieldRef<"Historial_documentos", 'DateTime'>
     readonly ID_documento: FieldRef<"Historial_documentos", 'Int'>
     readonly ID_usuario: FieldRef<"Historial_documentos", 'Int'>
-    readonly ID_area: FieldRef<"Historial_documentos", 'Int'>
     readonly ID_estado_documento: FieldRef<"Historial_documentos", 'Int'>
+    readonly documento_historial: FieldRef<"Historial_documentos", 'String'>
+    readonly descripcion: FieldRef<"Historial_documentos", 'String'>
+    readonly created_at: FieldRef<"Historial_documentos", 'DateTime'>
+    readonly updated_at: FieldRef<"Historial_documentos", 'DateTime'>
+    readonly deleted_at: FieldRef<"Historial_documentos", 'DateTime'>
   }
     
 
@@ -9950,7 +9685,7 @@ export namespace Prisma {
     /**
      * The data needed to create a Historial_documentos.
      */
-    data?: XOR<Historial_documentosCreateInput, Historial_documentosUncheckedCreateInput>
+    data: XOR<Historial_documentosCreateInput, Historial_documentosUncheckedCreateInput>
   }
 
   /**
@@ -10128,106 +9863,6 @@ export namespace Prisma {
   }
 
   /**
-   * Historial_documentos.detalles
-   */
-  export type Historial_documentos$detallesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    cursor?: Detalle_historialWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
-   * Historial_documentos.area
-   */
-  export type Historial_documentos$areaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Area
-     */
-    select?: AreaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Area
-     */
-    omit?: AreaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AreaInclude<ExtArgs> | null
-    where?: AreaWhereInput
-  }
-
-  /**
-   * Historial_documentos.documento
-   */
-  export type Historial_documentos$documentoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Documento
-     */
-    select?: DocumentoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Documento
-     */
-    omit?: DocumentoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: DocumentoInclude<ExtArgs> | null
-    where?: DocumentoWhereInput
-  }
-
-  /**
-   * Historial_documentos.estado
-   */
-  export type Historial_documentos$estadoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Estado_documento
-     */
-    select?: Estado_documentoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Estado_documento
-     */
-    omit?: Estado_documentoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Estado_documentoInclude<ExtArgs> | null
-    where?: Estado_documentoWhereInput
-  }
-
-  /**
-   * Historial_documentos.usuario
-   */
-  export type Historial_documentos$usuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Usuario
-     */
-    select?: UsuarioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Usuario
-     */
-    omit?: UsuarioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UsuarioInclude<ExtArgs> | null
-    where?: UsuarioWhereInput
-  }
-
-  /**
    * Historial_documentos without action
    */
   export type Historial_documentosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10243,2435 +9878,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: Historial_documentosInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Detalle_historial
-   */
-
-  export type AggregateDetalle_historial = {
-    _count: Detalle_historialCountAggregateOutputType | null
-    _avg: Detalle_historialAvgAggregateOutputType | null
-    _sum: Detalle_historialSumAggregateOutputType | null
-    _min: Detalle_historialMinAggregateOutputType | null
-    _max: Detalle_historialMaxAggregateOutputType | null
-  }
-
-  export type Detalle_historialAvgAggregateOutputType = {
-    ID_detalle: number | null
-    ID_usuario: number | null
-    ID_historial: number | null
-    ID_proyecto: number | null
-    ID_area: number | null
-    ID_cliente: number | null
-  }
-
-  export type Detalle_historialSumAggregateOutputType = {
-    ID_detalle: number | null
-    ID_usuario: number | null
-    ID_historial: number | null
-    ID_proyecto: number | null
-    ID_area: number | null
-    ID_cliente: number | null
-  }
-
-  export type Detalle_historialMinAggregateOutputType = {
-    ID_detalle: number | null
-    ID_usuario: number | null
-    ID_historial: number | null
-    ID_proyecto: number | null
-    ID_area: number | null
-    ID_cliente: number | null
-  }
-
-  export type Detalle_historialMaxAggregateOutputType = {
-    ID_detalle: number | null
-    ID_usuario: number | null
-    ID_historial: number | null
-    ID_proyecto: number | null
-    ID_area: number | null
-    ID_cliente: number | null
-  }
-
-  export type Detalle_historialCountAggregateOutputType = {
-    ID_detalle: number
-    ID_usuario: number
-    ID_historial: number
-    ID_proyecto: number
-    ID_area: number
-    ID_cliente: number
-    _all: number
-  }
-
-
-  export type Detalle_historialAvgAggregateInputType = {
-    ID_detalle?: true
-    ID_usuario?: true
-    ID_historial?: true
-    ID_proyecto?: true
-    ID_area?: true
-    ID_cliente?: true
-  }
-
-  export type Detalle_historialSumAggregateInputType = {
-    ID_detalle?: true
-    ID_usuario?: true
-    ID_historial?: true
-    ID_proyecto?: true
-    ID_area?: true
-    ID_cliente?: true
-  }
-
-  export type Detalle_historialMinAggregateInputType = {
-    ID_detalle?: true
-    ID_usuario?: true
-    ID_historial?: true
-    ID_proyecto?: true
-    ID_area?: true
-    ID_cliente?: true
-  }
-
-  export type Detalle_historialMaxAggregateInputType = {
-    ID_detalle?: true
-    ID_usuario?: true
-    ID_historial?: true
-    ID_proyecto?: true
-    ID_area?: true
-    ID_cliente?: true
-  }
-
-  export type Detalle_historialCountAggregateInputType = {
-    ID_detalle?: true
-    ID_usuario?: true
-    ID_historial?: true
-    ID_proyecto?: true
-    ID_area?: true
-    ID_cliente?: true
-    _all?: true
-  }
-
-  export type Detalle_historialAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Detalle_historial to aggregate.
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Detalle_historials to fetch.
-     */
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: Detalle_historialWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Detalle_historials from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Detalle_historials.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Detalle_historials
-    **/
-    _count?: true | Detalle_historialCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Detalle_historialAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Detalle_historialSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Detalle_historialMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Detalle_historialMaxAggregateInputType
-  }
-
-  export type GetDetalle_historialAggregateType<T extends Detalle_historialAggregateArgs> = {
-        [P in keyof T & keyof AggregateDetalle_historial]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateDetalle_historial[P]>
-      : GetScalarType<T[P], AggregateDetalle_historial[P]>
-  }
-
-
-
-
-  export type Detalle_historialGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: Detalle_historialWhereInput
-    orderBy?: Detalle_historialOrderByWithAggregationInput | Detalle_historialOrderByWithAggregationInput[]
-    by: Detalle_historialScalarFieldEnum[] | Detalle_historialScalarFieldEnum
-    having?: Detalle_historialScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Detalle_historialCountAggregateInputType | true
-    _avg?: Detalle_historialAvgAggregateInputType
-    _sum?: Detalle_historialSumAggregateInputType
-    _min?: Detalle_historialMinAggregateInputType
-    _max?: Detalle_historialMaxAggregateInputType
-  }
-
-  export type Detalle_historialGroupByOutputType = {
-    ID_detalle: number
-    ID_usuario: number | null
-    ID_historial: number | null
-    ID_proyecto: number | null
-    ID_area: number | null
-    ID_cliente: number | null
-    _count: Detalle_historialCountAggregateOutputType | null
-    _avg: Detalle_historialAvgAggregateOutputType | null
-    _sum: Detalle_historialSumAggregateOutputType | null
-    _min: Detalle_historialMinAggregateOutputType | null
-    _max: Detalle_historialMaxAggregateOutputType | null
-  }
-
-  type GetDetalle_historialGroupByPayload<T extends Detalle_historialGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Detalle_historialGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Detalle_historialGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Detalle_historialGroupByOutputType[P]>
-            : GetScalarType<T[P], Detalle_historialGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type Detalle_historialSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_detalle?: boolean
-    ID_usuario?: boolean
-    ID_historial?: boolean
-    ID_proyecto?: boolean
-    ID_area?: boolean
-    ID_cliente?: boolean
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["detalle_historial"]>
-
-  export type Detalle_historialSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_detalle?: boolean
-    ID_usuario?: boolean
-    ID_historial?: boolean
-    ID_proyecto?: boolean
-    ID_area?: boolean
-    ID_cliente?: boolean
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["detalle_historial"]>
-
-  export type Detalle_historialSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_detalle?: boolean
-    ID_usuario?: boolean
-    ID_historial?: boolean
-    ID_proyecto?: boolean
-    ID_area?: boolean
-    ID_cliente?: boolean
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["detalle_historial"]>
-
-  export type Detalle_historialSelectScalar = {
-    ID_detalle?: boolean
-    ID_usuario?: boolean
-    ID_historial?: boolean
-    ID_proyecto?: boolean
-    ID_area?: boolean
-    ID_cliente?: boolean
-  }
-
-  export type Detalle_historialOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_detalle" | "ID_usuario" | "ID_historial" | "ID_proyecto" | "ID_area" | "ID_cliente", ExtArgs["result"]["detalle_historial"]>
-  export type Detalle_historialInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }
-  export type Detalle_historialIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }
-  export type Detalle_historialIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Detalle_historial$areaArgs<ExtArgs>
-    cliente?: boolean | Detalle_historial$clienteArgs<ExtArgs>
-    historial?: boolean | Detalle_historial$historialArgs<ExtArgs>
-    proyecto?: boolean | Detalle_historial$proyectoArgs<ExtArgs>
-    usuario?: boolean | Detalle_historial$usuarioArgs<ExtArgs>
-  }
-
-  export type $Detalle_historialPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Detalle_historial"
-    objects: {
-      area: Prisma.$AreaPayload<ExtArgs> | null
-      cliente: Prisma.$ClientePayload<ExtArgs> | null
-      historial: Prisma.$Historial_documentosPayload<ExtArgs> | null
-      proyecto: Prisma.$ProyectoPayload<ExtArgs> | null
-      usuario: Prisma.$UsuarioPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      ID_detalle: number
-      ID_usuario: number | null
-      ID_historial: number | null
-      ID_proyecto: number | null
-      ID_area: number | null
-      ID_cliente: number | null
-    }, ExtArgs["result"]["detalle_historial"]>
-    composites: {}
-  }
-
-  type Detalle_historialGetPayload<S extends boolean | null | undefined | Detalle_historialDefaultArgs> = $Result.GetResult<Prisma.$Detalle_historialPayload, S>
-
-  type Detalle_historialCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<Detalle_historialFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Detalle_historialCountAggregateInputType | true
-    }
-
-  export interface Detalle_historialDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Detalle_historial'], meta: { name: 'Detalle_historial' } }
-    /**
-     * Find zero or one Detalle_historial that matches the filter.
-     * @param {Detalle_historialFindUniqueArgs} args - Arguments to find a Detalle_historial
-     * @example
-     * // Get one Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends Detalle_historialFindUniqueArgs>(args: SelectSubset<T, Detalle_historialFindUniqueArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Detalle_historial that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {Detalle_historialFindUniqueOrThrowArgs} args - Arguments to find a Detalle_historial
-     * @example
-     * // Get one Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends Detalle_historialFindUniqueOrThrowArgs>(args: SelectSubset<T, Detalle_historialFindUniqueOrThrowArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Detalle_historial that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialFindFirstArgs} args - Arguments to find a Detalle_historial
-     * @example
-     * // Get one Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends Detalle_historialFindFirstArgs>(args?: SelectSubset<T, Detalle_historialFindFirstArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Detalle_historial that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialFindFirstOrThrowArgs} args - Arguments to find a Detalle_historial
-     * @example
-     * // Get one Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends Detalle_historialFindFirstOrThrowArgs>(args?: SelectSubset<T, Detalle_historialFindFirstOrThrowArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Detalle_historials that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Detalle_historials
-     * const detalle_historials = await prisma.detalle_historial.findMany()
-     * 
-     * // Get first 10 Detalle_historials
-     * const detalle_historials = await prisma.detalle_historial.findMany({ take: 10 })
-     * 
-     * // Only select the `ID_detalle`
-     * const detalle_historialWithID_detalleOnly = await prisma.detalle_historial.findMany({ select: { ID_detalle: true } })
-     * 
-     */
-    findMany<T extends Detalle_historialFindManyArgs>(args?: SelectSubset<T, Detalle_historialFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Detalle_historial.
-     * @param {Detalle_historialCreateArgs} args - Arguments to create a Detalle_historial.
-     * @example
-     * // Create one Detalle_historial
-     * const Detalle_historial = await prisma.detalle_historial.create({
-     *   data: {
-     *     // ... data to create a Detalle_historial
-     *   }
-     * })
-     * 
-     */
-    create<T extends Detalle_historialCreateArgs>(args: SelectSubset<T, Detalle_historialCreateArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Detalle_historials.
-     * @param {Detalle_historialCreateManyArgs} args - Arguments to create many Detalle_historials.
-     * @example
-     * // Create many Detalle_historials
-     * const detalle_historial = await prisma.detalle_historial.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends Detalle_historialCreateManyArgs>(args?: SelectSubset<T, Detalle_historialCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Detalle_historials and returns the data saved in the database.
-     * @param {Detalle_historialCreateManyAndReturnArgs} args - Arguments to create many Detalle_historials.
-     * @example
-     * // Create many Detalle_historials
-     * const detalle_historial = await prisma.detalle_historial.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Detalle_historials and only return the `ID_detalle`
-     * const detalle_historialWithID_detalleOnly = await prisma.detalle_historial.createManyAndReturn({
-     *   select: { ID_detalle: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends Detalle_historialCreateManyAndReturnArgs>(args?: SelectSubset<T, Detalle_historialCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Detalle_historial.
-     * @param {Detalle_historialDeleteArgs} args - Arguments to delete one Detalle_historial.
-     * @example
-     * // Delete one Detalle_historial
-     * const Detalle_historial = await prisma.detalle_historial.delete({
-     *   where: {
-     *     // ... filter to delete one Detalle_historial
-     *   }
-     * })
-     * 
-     */
-    delete<T extends Detalle_historialDeleteArgs>(args: SelectSubset<T, Detalle_historialDeleteArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Detalle_historial.
-     * @param {Detalle_historialUpdateArgs} args - Arguments to update one Detalle_historial.
-     * @example
-     * // Update one Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends Detalle_historialUpdateArgs>(args: SelectSubset<T, Detalle_historialUpdateArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Detalle_historials.
-     * @param {Detalle_historialDeleteManyArgs} args - Arguments to filter Detalle_historials to delete.
-     * @example
-     * // Delete a few Detalle_historials
-     * const { count } = await prisma.detalle_historial.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends Detalle_historialDeleteManyArgs>(args?: SelectSubset<T, Detalle_historialDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Detalle_historials.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Detalle_historials
-     * const detalle_historial = await prisma.detalle_historial.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends Detalle_historialUpdateManyArgs>(args: SelectSubset<T, Detalle_historialUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Detalle_historials and returns the data updated in the database.
-     * @param {Detalle_historialUpdateManyAndReturnArgs} args - Arguments to update many Detalle_historials.
-     * @example
-     * // Update many Detalle_historials
-     * const detalle_historial = await prisma.detalle_historial.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Detalle_historials and only return the `ID_detalle`
-     * const detalle_historialWithID_detalleOnly = await prisma.detalle_historial.updateManyAndReturn({
-     *   select: { ID_detalle: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends Detalle_historialUpdateManyAndReturnArgs>(args: SelectSubset<T, Detalle_historialUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Detalle_historial.
-     * @param {Detalle_historialUpsertArgs} args - Arguments to update or create a Detalle_historial.
-     * @example
-     * // Update or create a Detalle_historial
-     * const detalle_historial = await prisma.detalle_historial.upsert({
-     *   create: {
-     *     // ... data to create a Detalle_historial
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Detalle_historial we want to update
-     *   }
-     * })
-     */
-    upsert<T extends Detalle_historialUpsertArgs>(args: SelectSubset<T, Detalle_historialUpsertArgs<ExtArgs>>): Prisma__Detalle_historialClient<$Result.GetResult<Prisma.$Detalle_historialPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Detalle_historials.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialCountArgs} args - Arguments to filter Detalle_historials to count.
-     * @example
-     * // Count the number of Detalle_historials
-     * const count = await prisma.detalle_historial.count({
-     *   where: {
-     *     // ... the filter for the Detalle_historials we want to count
-     *   }
-     * })
-    **/
-    count<T extends Detalle_historialCountArgs>(
-      args?: Subset<T, Detalle_historialCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Detalle_historialCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Detalle_historial.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Detalle_historialAggregateArgs>(args: Subset<T, Detalle_historialAggregateArgs>): Prisma.PrismaPromise<GetDetalle_historialAggregateType<T>>
-
-    /**
-     * Group by Detalle_historial.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Detalle_historialGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends Detalle_historialGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: Detalle_historialGroupByArgs['orderBy'] }
-        : { orderBy?: Detalle_historialGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, Detalle_historialGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetDetalle_historialGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Detalle_historial model
-   */
-  readonly fields: Detalle_historialFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Detalle_historial.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__Detalle_historialClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    area<T extends Detalle_historial$areaArgs<ExtArgs> = {}>(args?: Subset<T, Detalle_historial$areaArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    cliente<T extends Detalle_historial$clienteArgs<ExtArgs> = {}>(args?: Subset<T, Detalle_historial$clienteArgs<ExtArgs>>): Prisma__ClienteClient<$Result.GetResult<Prisma.$ClientePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    historial<T extends Detalle_historial$historialArgs<ExtArgs> = {}>(args?: Subset<T, Detalle_historial$historialArgs<ExtArgs>>): Prisma__Historial_documentosClient<$Result.GetResult<Prisma.$Historial_documentosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    proyecto<T extends Detalle_historial$proyectoArgs<ExtArgs> = {}>(args?: Subset<T, Detalle_historial$proyectoArgs<ExtArgs>>): Prisma__ProyectoClient<$Result.GetResult<Prisma.$ProyectoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    usuario<T extends Detalle_historial$usuarioArgs<ExtArgs> = {}>(args?: Subset<T, Detalle_historial$usuarioArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Detalle_historial model
-   */
-  interface Detalle_historialFieldRefs {
-    readonly ID_detalle: FieldRef<"Detalle_historial", 'Int'>
-    readonly ID_usuario: FieldRef<"Detalle_historial", 'Int'>
-    readonly ID_historial: FieldRef<"Detalle_historial", 'Int'>
-    readonly ID_proyecto: FieldRef<"Detalle_historial", 'Int'>
-    readonly ID_area: FieldRef<"Detalle_historial", 'Int'>
-    readonly ID_cliente: FieldRef<"Detalle_historial", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Detalle_historial findUnique
-   */
-  export type Detalle_historialFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter, which Detalle_historial to fetch.
-     */
-    where: Detalle_historialWhereUniqueInput
-  }
-
-  /**
-   * Detalle_historial findUniqueOrThrow
-   */
-  export type Detalle_historialFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter, which Detalle_historial to fetch.
-     */
-    where: Detalle_historialWhereUniqueInput
-  }
-
-  /**
-   * Detalle_historial findFirst
-   */
-  export type Detalle_historialFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter, which Detalle_historial to fetch.
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Detalle_historials to fetch.
-     */
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Detalle_historials.
-     */
-    cursor?: Detalle_historialWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Detalle_historials from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Detalle_historials.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Detalle_historials.
-     */
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
-   * Detalle_historial findFirstOrThrow
-   */
-  export type Detalle_historialFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter, which Detalle_historial to fetch.
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Detalle_historials to fetch.
-     */
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Detalle_historials.
-     */
-    cursor?: Detalle_historialWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Detalle_historials from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Detalle_historials.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Detalle_historials.
-     */
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
-   * Detalle_historial findMany
-   */
-  export type Detalle_historialFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter, which Detalle_historials to fetch.
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Detalle_historials to fetch.
-     */
-    orderBy?: Detalle_historialOrderByWithRelationInput | Detalle_historialOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Detalle_historials.
-     */
-    cursor?: Detalle_historialWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Detalle_historials from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Detalle_historials.
-     */
-    skip?: number
-    distinct?: Detalle_historialScalarFieldEnum | Detalle_historialScalarFieldEnum[]
-  }
-
-  /**
-   * Detalle_historial create
-   */
-  export type Detalle_historialCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Detalle_historial.
-     */
-    data?: XOR<Detalle_historialCreateInput, Detalle_historialUncheckedCreateInput>
-  }
-
-  /**
-   * Detalle_historial createMany
-   */
-  export type Detalle_historialCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Detalle_historials.
-     */
-    data: Detalle_historialCreateManyInput | Detalle_historialCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Detalle_historial createManyAndReturn
-   */
-  export type Detalle_historialCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * The data used to create many Detalle_historials.
-     */
-    data: Detalle_historialCreateManyInput | Detalle_historialCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Detalle_historial update
-   */
-  export type Detalle_historialUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Detalle_historial.
-     */
-    data: XOR<Detalle_historialUpdateInput, Detalle_historialUncheckedUpdateInput>
-    /**
-     * Choose, which Detalle_historial to update.
-     */
-    where: Detalle_historialWhereUniqueInput
-  }
-
-  /**
-   * Detalle_historial updateMany
-   */
-  export type Detalle_historialUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Detalle_historials.
-     */
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyInput>
-    /**
-     * Filter which Detalle_historials to update
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * Limit how many Detalle_historials to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Detalle_historial updateManyAndReturn
-   */
-  export type Detalle_historialUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * The data used to update Detalle_historials.
-     */
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyInput>
-    /**
-     * Filter which Detalle_historials to update
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * Limit how many Detalle_historials to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Detalle_historial upsert
-   */
-  export type Detalle_historialUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Detalle_historial to update in case it exists.
-     */
-    where: Detalle_historialWhereUniqueInput
-    /**
-     * In case the Detalle_historial found by the `where` argument doesn't exist, create a new Detalle_historial with this data.
-     */
-    create: XOR<Detalle_historialCreateInput, Detalle_historialUncheckedCreateInput>
-    /**
-     * In case the Detalle_historial was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<Detalle_historialUpdateInput, Detalle_historialUncheckedUpdateInput>
-  }
-
-  /**
-   * Detalle_historial delete
-   */
-  export type Detalle_historialDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-    /**
-     * Filter which Detalle_historial to delete.
-     */
-    where: Detalle_historialWhereUniqueInput
-  }
-
-  /**
-   * Detalle_historial deleteMany
-   */
-  export type Detalle_historialDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Detalle_historials to delete
-     */
-    where?: Detalle_historialWhereInput
-    /**
-     * Limit how many Detalle_historials to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Detalle_historial.area
-   */
-  export type Detalle_historial$areaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Area
-     */
-    select?: AreaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Area
-     */
-    omit?: AreaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AreaInclude<ExtArgs> | null
-    where?: AreaWhereInput
-  }
-
-  /**
-   * Detalle_historial.cliente
-   */
-  export type Detalle_historial$clienteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Cliente
-     */
-    select?: ClienteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Cliente
-     */
-    omit?: ClienteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ClienteInclude<ExtArgs> | null
-    where?: ClienteWhereInput
-  }
-
-  /**
-   * Detalle_historial.historial
-   */
-  export type Detalle_historial$historialArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Historial_documentos
-     */
-    select?: Historial_documentosSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Historial_documentos
-     */
-    omit?: Historial_documentosOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Historial_documentosInclude<ExtArgs> | null
-    where?: Historial_documentosWhereInput
-  }
-
-  /**
-   * Detalle_historial.proyecto
-   */
-  export type Detalle_historial$proyectoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Proyecto
-     */
-    select?: ProyectoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Proyecto
-     */
-    omit?: ProyectoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProyectoInclude<ExtArgs> | null
-    where?: ProyectoWhereInput
-  }
-
-  /**
-   * Detalle_historial.usuario
-   */
-  export type Detalle_historial$usuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Usuario
-     */
-    select?: UsuarioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Usuario
-     */
-    omit?: UsuarioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UsuarioInclude<ExtArgs> | null
-    where?: UsuarioWhereInput
-  }
-
-  /**
-   * Detalle_historial without action
-   */
-  export type Detalle_historialDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Detalle_historial
-     */
-    select?: Detalle_historialSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Detalle_historial
-     */
-    omit?: Detalle_historialOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: Detalle_historialInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Permiso
-   */
-
-  export type AggregatePermiso = {
-    _count: PermisoCountAggregateOutputType | null
-    _avg: PermisoAvgAggregateOutputType | null
-    _sum: PermisoSumAggregateOutputType | null
-    _min: PermisoMinAggregateOutputType | null
-    _max: PermisoMaxAggregateOutputType | null
-  }
-
-  export type PermisoAvgAggregateOutputType = {
-    ID_permiso: number | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_proyecto: number | null
-  }
-
-  export type PermisoSumAggregateOutputType = {
-    ID_permiso: number | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_proyecto: number | null
-  }
-
-  export type PermisoMinAggregateOutputType = {
-    ID_permiso: number | null
-    tipo_permiso: string | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_proyecto: number | null
-  }
-
-  export type PermisoMaxAggregateOutputType = {
-    ID_permiso: number | null
-    tipo_permiso: string | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_proyecto: number | null
-  }
-
-  export type PermisoCountAggregateOutputType = {
-    ID_permiso: number
-    tipo_permiso: number
-    ID_usuario: number
-    ID_area: number
-    ID_proyecto: number
-    _all: number
-  }
-
-
-  export type PermisoAvgAggregateInputType = {
-    ID_permiso?: true
-    ID_usuario?: true
-    ID_area?: true
-    ID_proyecto?: true
-  }
-
-  export type PermisoSumAggregateInputType = {
-    ID_permiso?: true
-    ID_usuario?: true
-    ID_area?: true
-    ID_proyecto?: true
-  }
-
-  export type PermisoMinAggregateInputType = {
-    ID_permiso?: true
-    tipo_permiso?: true
-    ID_usuario?: true
-    ID_area?: true
-    ID_proyecto?: true
-  }
-
-  export type PermisoMaxAggregateInputType = {
-    ID_permiso?: true
-    tipo_permiso?: true
-    ID_usuario?: true
-    ID_area?: true
-    ID_proyecto?: true
-  }
-
-  export type PermisoCountAggregateInputType = {
-    ID_permiso?: true
-    tipo_permiso?: true
-    ID_usuario?: true
-    ID_area?: true
-    ID_proyecto?: true
-    _all?: true
-  }
-
-  export type PermisoAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Permiso to aggregate.
-     */
-    where?: PermisoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Permisos to fetch.
-     */
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: PermisoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Permisos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Permisos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Permisos
-    **/
-    _count?: true | PermisoCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: PermisoAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: PermisoSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: PermisoMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: PermisoMaxAggregateInputType
-  }
-
-  export type GetPermisoAggregateType<T extends PermisoAggregateArgs> = {
-        [P in keyof T & keyof AggregatePermiso]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePermiso[P]>
-      : GetScalarType<T[P], AggregatePermiso[P]>
-  }
-
-
-
-
-  export type PermisoGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: PermisoWhereInput
-    orderBy?: PermisoOrderByWithAggregationInput | PermisoOrderByWithAggregationInput[]
-    by: PermisoScalarFieldEnum[] | PermisoScalarFieldEnum
-    having?: PermisoScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: PermisoCountAggregateInputType | true
-    _avg?: PermisoAvgAggregateInputType
-    _sum?: PermisoSumAggregateInputType
-    _min?: PermisoMinAggregateInputType
-    _max?: PermisoMaxAggregateInputType
-  }
-
-  export type PermisoGroupByOutputType = {
-    ID_permiso: number
-    tipo_permiso: string | null
-    ID_usuario: number | null
-    ID_area: number | null
-    ID_proyecto: number | null
-    _count: PermisoCountAggregateOutputType | null
-    _avg: PermisoAvgAggregateOutputType | null
-    _sum: PermisoSumAggregateOutputType | null
-    _min: PermisoMinAggregateOutputType | null
-    _max: PermisoMaxAggregateOutputType | null
-  }
-
-  type GetPermisoGroupByPayload<T extends PermisoGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<PermisoGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof PermisoGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], PermisoGroupByOutputType[P]>
-            : GetScalarType<T[P], PermisoGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type PermisoSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_permiso?: boolean
-    tipo_permiso?: boolean
-    ID_usuario?: boolean
-    ID_area?: boolean
-    ID_proyecto?: boolean
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["permiso"]>
-
-  export type PermisoSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_permiso?: boolean
-    tipo_permiso?: boolean
-    ID_usuario?: boolean
-    ID_area?: boolean
-    ID_proyecto?: boolean
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["permiso"]>
-
-  export type PermisoSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    ID_permiso?: boolean
-    tipo_permiso?: boolean
-    ID_usuario?: boolean
-    ID_area?: boolean
-    ID_proyecto?: boolean
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }, ExtArgs["result"]["permiso"]>
-
-  export type PermisoSelectScalar = {
-    ID_permiso?: boolean
-    tipo_permiso?: boolean
-    ID_usuario?: boolean
-    ID_area?: boolean
-    ID_proyecto?: boolean
-  }
-
-  export type PermisoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_permiso" | "tipo_permiso" | "ID_usuario" | "ID_area" | "ID_proyecto", ExtArgs["result"]["permiso"]>
-  export type PermisoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }
-  export type PermisoIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }
-  export type PermisoIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    area?: boolean | Permiso$areaArgs<ExtArgs>
-    proyecto?: boolean | Permiso$proyectoArgs<ExtArgs>
-    usuario?: boolean | Permiso$usuarioArgs<ExtArgs>
-  }
-
-  export type $PermisoPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Permiso"
-    objects: {
-      area: Prisma.$AreaPayload<ExtArgs> | null
-      proyecto: Prisma.$ProyectoPayload<ExtArgs> | null
-      usuario: Prisma.$UsuarioPayload<ExtArgs> | null
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      ID_permiso: number
-      tipo_permiso: string | null
-      ID_usuario: number | null
-      ID_area: number | null
-      ID_proyecto: number | null
-    }, ExtArgs["result"]["permiso"]>
-    composites: {}
-  }
-
-  type PermisoGetPayload<S extends boolean | null | undefined | PermisoDefaultArgs> = $Result.GetResult<Prisma.$PermisoPayload, S>
-
-  type PermisoCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<PermisoFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: PermisoCountAggregateInputType | true
-    }
-
-  export interface PermisoDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Permiso'], meta: { name: 'Permiso' } }
-    /**
-     * Find zero or one Permiso that matches the filter.
-     * @param {PermisoFindUniqueArgs} args - Arguments to find a Permiso
-     * @example
-     * // Get one Permiso
-     * const permiso = await prisma.permiso.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends PermisoFindUniqueArgs>(args: SelectSubset<T, PermisoFindUniqueArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Permiso that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {PermisoFindUniqueOrThrowArgs} args - Arguments to find a Permiso
-     * @example
-     * // Get one Permiso
-     * const permiso = await prisma.permiso.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends PermisoFindUniqueOrThrowArgs>(args: SelectSubset<T, PermisoFindUniqueOrThrowArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Permiso that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoFindFirstArgs} args - Arguments to find a Permiso
-     * @example
-     * // Get one Permiso
-     * const permiso = await prisma.permiso.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends PermisoFindFirstArgs>(args?: SelectSubset<T, PermisoFindFirstArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Permiso that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoFindFirstOrThrowArgs} args - Arguments to find a Permiso
-     * @example
-     * // Get one Permiso
-     * const permiso = await prisma.permiso.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends PermisoFindFirstOrThrowArgs>(args?: SelectSubset<T, PermisoFindFirstOrThrowArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Permisos that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Permisos
-     * const permisos = await prisma.permiso.findMany()
-     * 
-     * // Get first 10 Permisos
-     * const permisos = await prisma.permiso.findMany({ take: 10 })
-     * 
-     * // Only select the `ID_permiso`
-     * const permisoWithID_permisoOnly = await prisma.permiso.findMany({ select: { ID_permiso: true } })
-     * 
-     */
-    findMany<T extends PermisoFindManyArgs>(args?: SelectSubset<T, PermisoFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Permiso.
-     * @param {PermisoCreateArgs} args - Arguments to create a Permiso.
-     * @example
-     * // Create one Permiso
-     * const Permiso = await prisma.permiso.create({
-     *   data: {
-     *     // ... data to create a Permiso
-     *   }
-     * })
-     * 
-     */
-    create<T extends PermisoCreateArgs>(args: SelectSubset<T, PermisoCreateArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Permisos.
-     * @param {PermisoCreateManyArgs} args - Arguments to create many Permisos.
-     * @example
-     * // Create many Permisos
-     * const permiso = await prisma.permiso.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends PermisoCreateManyArgs>(args?: SelectSubset<T, PermisoCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Permisos and returns the data saved in the database.
-     * @param {PermisoCreateManyAndReturnArgs} args - Arguments to create many Permisos.
-     * @example
-     * // Create many Permisos
-     * const permiso = await prisma.permiso.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Permisos and only return the `ID_permiso`
-     * const permisoWithID_permisoOnly = await prisma.permiso.createManyAndReturn({
-     *   select: { ID_permiso: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends PermisoCreateManyAndReturnArgs>(args?: SelectSubset<T, PermisoCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Permiso.
-     * @param {PermisoDeleteArgs} args - Arguments to delete one Permiso.
-     * @example
-     * // Delete one Permiso
-     * const Permiso = await prisma.permiso.delete({
-     *   where: {
-     *     // ... filter to delete one Permiso
-     *   }
-     * })
-     * 
-     */
-    delete<T extends PermisoDeleteArgs>(args: SelectSubset<T, PermisoDeleteArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Permiso.
-     * @param {PermisoUpdateArgs} args - Arguments to update one Permiso.
-     * @example
-     * // Update one Permiso
-     * const permiso = await prisma.permiso.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends PermisoUpdateArgs>(args: SelectSubset<T, PermisoUpdateArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Permisos.
-     * @param {PermisoDeleteManyArgs} args - Arguments to filter Permisos to delete.
-     * @example
-     * // Delete a few Permisos
-     * const { count } = await prisma.permiso.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends PermisoDeleteManyArgs>(args?: SelectSubset<T, PermisoDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Permisos.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Permisos
-     * const permiso = await prisma.permiso.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends PermisoUpdateManyArgs>(args: SelectSubset<T, PermisoUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Permisos and returns the data updated in the database.
-     * @param {PermisoUpdateManyAndReturnArgs} args - Arguments to update many Permisos.
-     * @example
-     * // Update many Permisos
-     * const permiso = await prisma.permiso.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Permisos and only return the `ID_permiso`
-     * const permisoWithID_permisoOnly = await prisma.permiso.updateManyAndReturn({
-     *   select: { ID_permiso: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends PermisoUpdateManyAndReturnArgs>(args: SelectSubset<T, PermisoUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Permiso.
-     * @param {PermisoUpsertArgs} args - Arguments to update or create a Permiso.
-     * @example
-     * // Update or create a Permiso
-     * const permiso = await prisma.permiso.upsert({
-     *   create: {
-     *     // ... data to create a Permiso
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Permiso we want to update
-     *   }
-     * })
-     */
-    upsert<T extends PermisoUpsertArgs>(args: SelectSubset<T, PermisoUpsertArgs<ExtArgs>>): Prisma__PermisoClient<$Result.GetResult<Prisma.$PermisoPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Permisos.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoCountArgs} args - Arguments to filter Permisos to count.
-     * @example
-     * // Count the number of Permisos
-     * const count = await prisma.permiso.count({
-     *   where: {
-     *     // ... the filter for the Permisos we want to count
-     *   }
-     * })
-    **/
-    count<T extends PermisoCountArgs>(
-      args?: Subset<T, PermisoCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], PermisoCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Permiso.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends PermisoAggregateArgs>(args: Subset<T, PermisoAggregateArgs>): Prisma.PrismaPromise<GetPermisoAggregateType<T>>
-
-    /**
-     * Group by Permiso.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {PermisoGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends PermisoGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: PermisoGroupByArgs['orderBy'] }
-        : { orderBy?: PermisoGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, PermisoGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPermisoGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Permiso model
-   */
-  readonly fields: PermisoFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Permiso.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__PermisoClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    area<T extends Permiso$areaArgs<ExtArgs> = {}>(args?: Subset<T, Permiso$areaArgs<ExtArgs>>): Prisma__AreaClient<$Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    proyecto<T extends Permiso$proyectoArgs<ExtArgs> = {}>(args?: Subset<T, Permiso$proyectoArgs<ExtArgs>>): Prisma__ProyectoClient<$Result.GetResult<Prisma.$ProyectoPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    usuario<T extends Permiso$usuarioArgs<ExtArgs> = {}>(args?: Subset<T, Permiso$usuarioArgs<ExtArgs>>): Prisma__UsuarioClient<$Result.GetResult<Prisma.$UsuarioPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Permiso model
-   */
-  interface PermisoFieldRefs {
-    readonly ID_permiso: FieldRef<"Permiso", 'Int'>
-    readonly tipo_permiso: FieldRef<"Permiso", 'String'>
-    readonly ID_usuario: FieldRef<"Permiso", 'Int'>
-    readonly ID_area: FieldRef<"Permiso", 'Int'>
-    readonly ID_proyecto: FieldRef<"Permiso", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Permiso findUnique
-   */
-  export type PermisoFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter, which Permiso to fetch.
-     */
-    where: PermisoWhereUniqueInput
-  }
-
-  /**
-   * Permiso findUniqueOrThrow
-   */
-  export type PermisoFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter, which Permiso to fetch.
-     */
-    where: PermisoWhereUniqueInput
-  }
-
-  /**
-   * Permiso findFirst
-   */
-  export type PermisoFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter, which Permiso to fetch.
-     */
-    where?: PermisoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Permisos to fetch.
-     */
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Permisos.
-     */
-    cursor?: PermisoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Permisos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Permisos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Permisos.
-     */
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
-  }
-
-  /**
-   * Permiso findFirstOrThrow
-   */
-  export type PermisoFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter, which Permiso to fetch.
-     */
-    where?: PermisoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Permisos to fetch.
-     */
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Permisos.
-     */
-    cursor?: PermisoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Permisos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Permisos.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Permisos.
-     */
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
-  }
-
-  /**
-   * Permiso findMany
-   */
-  export type PermisoFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter, which Permisos to fetch.
-     */
-    where?: PermisoWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Permisos to fetch.
-     */
-    orderBy?: PermisoOrderByWithRelationInput | PermisoOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Permisos.
-     */
-    cursor?: PermisoWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Permisos from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Permisos.
-     */
-    skip?: number
-    distinct?: PermisoScalarFieldEnum | PermisoScalarFieldEnum[]
-  }
-
-  /**
-   * Permiso create
-   */
-  export type PermisoCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Permiso.
-     */
-    data?: XOR<PermisoCreateInput, PermisoUncheckedCreateInput>
-  }
-
-  /**
-   * Permiso createMany
-   */
-  export type PermisoCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Permisos.
-     */
-    data: PermisoCreateManyInput | PermisoCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Permiso createManyAndReturn
-   */
-  export type PermisoCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * The data used to create many Permisos.
-     */
-    data: PermisoCreateManyInput | PermisoCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Permiso update
-   */
-  export type PermisoUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Permiso.
-     */
-    data: XOR<PermisoUpdateInput, PermisoUncheckedUpdateInput>
-    /**
-     * Choose, which Permiso to update.
-     */
-    where: PermisoWhereUniqueInput
-  }
-
-  /**
-   * Permiso updateMany
-   */
-  export type PermisoUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Permisos.
-     */
-    data: XOR<PermisoUpdateManyMutationInput, PermisoUncheckedUpdateManyInput>
-    /**
-     * Filter which Permisos to update
-     */
-    where?: PermisoWhereInput
-    /**
-     * Limit how many Permisos to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Permiso updateManyAndReturn
-   */
-  export type PermisoUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * The data used to update Permisos.
-     */
-    data: XOR<PermisoUpdateManyMutationInput, PermisoUncheckedUpdateManyInput>
-    /**
-     * Filter which Permisos to update
-     */
-    where?: PermisoWhereInput
-    /**
-     * Limit how many Permisos to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Permiso upsert
-   */
-  export type PermisoUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Permiso to update in case it exists.
-     */
-    where: PermisoWhereUniqueInput
-    /**
-     * In case the Permiso found by the `where` argument doesn't exist, create a new Permiso with this data.
-     */
-    create: XOR<PermisoCreateInput, PermisoUncheckedCreateInput>
-    /**
-     * In case the Permiso was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<PermisoUpdateInput, PermisoUncheckedUpdateInput>
-  }
-
-  /**
-   * Permiso delete
-   */
-  export type PermisoDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
-    /**
-     * Filter which Permiso to delete.
-     */
-    where: PermisoWhereUniqueInput
-  }
-
-  /**
-   * Permiso deleteMany
-   */
-  export type PermisoDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Permisos to delete
-     */
-    where?: PermisoWhereInput
-    /**
-     * Limit how many Permisos to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Permiso.area
-   */
-  export type Permiso$areaArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Area
-     */
-    select?: AreaSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Area
-     */
-    omit?: AreaOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: AreaInclude<ExtArgs> | null
-    where?: AreaWhereInput
-  }
-
-  /**
-   * Permiso.proyecto
-   */
-  export type Permiso$proyectoArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Proyecto
-     */
-    select?: ProyectoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Proyecto
-     */
-    omit?: ProyectoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: ProyectoInclude<ExtArgs> | null
-    where?: ProyectoWhereInput
-  }
-
-  /**
-   * Permiso.usuario
-   */
-  export type Permiso$usuarioArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Usuario
-     */
-    select?: UsuarioSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Usuario
-     */
-    omit?: UsuarioOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: UsuarioInclude<ExtArgs> | null
-    where?: UsuarioWhereInput
-  }
-
-  /**
-   * Permiso without action
-   */
-  export type PermisoDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Permiso
-     */
-    select?: PermisoSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Permiso
-     */
-    omit?: PermisoOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: PermisoInclude<ExtArgs> | null
   }
 
 
@@ -12694,7 +9900,10 @@ export namespace Prisma {
     nombre: 'nombre',
     apellido: 'apellido',
     nombre_departamento: 'nombre_departamento',
-    nombre_provincia: 'nombre_provincia'
+    nombre_provincia: 'nombre_provincia',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type ClienteScalarFieldEnum = (typeof ClienteScalarFieldEnum)[keyof typeof ClienteScalarFieldEnum]
@@ -12703,7 +9912,10 @@ export namespace Prisma {
   export const ProyectoScalarFieldEnum: {
     ID_proyecto: 'ID_proyecto',
     nombre: 'nombre',
-    descripcion: 'descripcion'
+    descripcion: 'descripcion',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type ProyectoScalarFieldEnum = (typeof ProyectoScalarFieldEnum)[keyof typeof ProyectoScalarFieldEnum]
@@ -12711,7 +9923,10 @@ export namespace Prisma {
 
   export const Estado_documentoScalarFieldEnum: {
     ID_estado: 'ID_estado',
-    estado: 'estado'
+    estado: 'estado',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type Estado_documentoScalarFieldEnum = (typeof Estado_documentoScalarFieldEnum)[keyof typeof Estado_documentoScalarFieldEnum]
@@ -12719,7 +9934,10 @@ export namespace Prisma {
 
   export const AreaScalarFieldEnum: {
     ID_area: 'ID_area',
-    nombre: 'nombre'
+    nombre: 'nombre',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type AreaScalarFieldEnum = (typeof AreaScalarFieldEnum)[keyof typeof AreaScalarFieldEnum]
@@ -12732,7 +9950,13 @@ export namespace Prisma {
     correo: 'correo',
     contrasena: 'contrasena',
     rol: 'rol',
-    ID_area: 'ID_area'
+    permisos: 'permisos',
+    estado: 'estado',
+    fecha_ingreso: 'fecha_ingreso',
+    ID_area: 'ID_area',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type UsuarioScalarFieldEnum = (typeof UsuarioScalarFieldEnum)[keyof typeof UsuarioScalarFieldEnum]
@@ -12742,14 +9966,17 @@ export namespace Prisma {
     ID_documento: 'ID_documento',
     nombre_documento: 'nombre_documento',
     tipo_documento: 'tipo_documento',
-    fecha_ingreso: 'fecha_ingreso',
     archivo: 'archivo',
     descripcion: 'descripcion',
     folio: 'folio',
     ID_cliente: 'ID_cliente',
     ID_proyecto: 'ID_proyecto',
     ID_estado_documento: 'ID_estado_documento',
-    ID_area: 'ID_area'
+    ID_area: 'ID_area',
+    ID_usuario: 'ID_usuario',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type DocumentoScalarFieldEnum = (typeof DocumentoScalarFieldEnum)[keyof typeof DocumentoScalarFieldEnum]
@@ -12758,37 +9985,17 @@ export namespace Prisma {
   export const Historial_documentosScalarFieldEnum: {
     ID_historial: 'ID_historial',
     fecha: 'fecha',
-    hora: 'hora',
     ID_documento: 'ID_documento',
     ID_usuario: 'ID_usuario',
-    ID_area: 'ID_area',
-    ID_estado_documento: 'ID_estado_documento'
+    ID_estado_documento: 'ID_estado_documento',
+    documento_historial: 'documento_historial',
+    descripcion: 'descripcion',
+    created_at: 'created_at',
+    updated_at: 'updated_at',
+    deleted_at: 'deleted_at'
   };
 
   export type Historial_documentosScalarFieldEnum = (typeof Historial_documentosScalarFieldEnum)[keyof typeof Historial_documentosScalarFieldEnum]
-
-
-  export const Detalle_historialScalarFieldEnum: {
-    ID_detalle: 'ID_detalle',
-    ID_usuario: 'ID_usuario',
-    ID_historial: 'ID_historial',
-    ID_proyecto: 'ID_proyecto',
-    ID_area: 'ID_area',
-    ID_cliente: 'ID_cliente'
-  };
-
-  export type Detalle_historialScalarFieldEnum = (typeof Detalle_historialScalarFieldEnum)[keyof typeof Detalle_historialScalarFieldEnum]
-
-
-  export const PermisoScalarFieldEnum: {
-    ID_permiso: 'ID_permiso',
-    tipo_permiso: 'tipo_permiso',
-    ID_usuario: 'ID_usuario',
-    ID_area: 'ID_area',
-    ID_proyecto: 'ID_proyecto'
-  };
-
-  export type PermisoScalarFieldEnum = (typeof PermisoScalarFieldEnum)[keyof typeof PermisoScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -12888,7 +10095,9 @@ export namespace Prisma {
     apellido?: StringFilter<"Cliente"> | string
     nombre_departamento?: StringFilter<"Cliente"> | string
     nombre_provincia?: StringFilter<"Cliente"> | string
-    detalles?: Detalle_historialListRelationFilter
+    created_at?: DateTimeFilter<"Cliente"> | Date | string
+    updated_at?: DateTimeFilter<"Cliente"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
     documentos?: DocumentoListRelationFilter
   }
 
@@ -12898,7 +10107,9 @@ export namespace Prisma {
     apellido?: SortOrder
     nombre_departamento?: SortOrder
     nombre_provincia?: SortOrder
-    detalles?: Detalle_historialOrderByRelationAggregateInput
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     documentos?: DocumentoOrderByRelationAggregateInput
   }
 
@@ -12911,7 +10122,9 @@ export namespace Prisma {
     apellido?: StringFilter<"Cliente"> | string
     nombre_departamento?: StringFilter<"Cliente"> | string
     nombre_provincia?: StringFilter<"Cliente"> | string
-    detalles?: Detalle_historialListRelationFilter
+    created_at?: DateTimeFilter<"Cliente"> | Date | string
+    updated_at?: DateTimeFilter<"Cliente"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Cliente"> | Date | string | null
     documentos?: DocumentoListRelationFilter
   }, "ID_cliente">
 
@@ -12921,6 +10134,9 @@ export namespace Prisma {
     apellido?: SortOrder
     nombre_departamento?: SortOrder
     nombre_provincia?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: ClienteCountOrderByAggregateInput
     _avg?: ClienteAvgOrderByAggregateInput
     _max?: ClienteMaxOrderByAggregateInput
@@ -12937,6 +10153,9 @@ export namespace Prisma {
     apellido?: StringWithAggregatesFilter<"Cliente"> | string
     nombre_departamento?: StringWithAggregatesFilter<"Cliente"> | string
     nombre_provincia?: StringWithAggregatesFilter<"Cliente"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Cliente"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Cliente"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Cliente"> | Date | string | null
   }
 
   export type ProyectoWhereInput = {
@@ -12945,19 +10164,21 @@ export namespace Prisma {
     NOT?: ProyectoWhereInput | ProyectoWhereInput[]
     ID_proyecto?: IntFilter<"Proyecto"> | number
     nombre?: StringFilter<"Proyecto"> | string
-    descripcion?: StringNullableFilter<"Proyecto"> | string | null
-    detalles?: Detalle_historialListRelationFilter
+    descripcion?: StringFilter<"Proyecto"> | string
+    created_at?: DateTimeFilter<"Proyecto"> | Date | string
+    updated_at?: DateTimeFilter<"Proyecto"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Proyecto"> | Date | string | null
     documentos?: DocumentoListRelationFilter
-    permisos?: PermisoListRelationFilter
   }
 
   export type ProyectoOrderByWithRelationInput = {
     ID_proyecto?: SortOrder
     nombre?: SortOrder
-    descripcion?: SortOrderInput | SortOrder
-    detalles?: Detalle_historialOrderByRelationAggregateInput
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     documentos?: DocumentoOrderByRelationAggregateInput
-    permisos?: PermisoOrderByRelationAggregateInput
   }
 
   export type ProyectoWhereUniqueInput = Prisma.AtLeast<{
@@ -12966,16 +10187,20 @@ export namespace Prisma {
     OR?: ProyectoWhereInput[]
     NOT?: ProyectoWhereInput | ProyectoWhereInput[]
     nombre?: StringFilter<"Proyecto"> | string
-    descripcion?: StringNullableFilter<"Proyecto"> | string | null
-    detalles?: Detalle_historialListRelationFilter
+    descripcion?: StringFilter<"Proyecto"> | string
+    created_at?: DateTimeFilter<"Proyecto"> | Date | string
+    updated_at?: DateTimeFilter<"Proyecto"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Proyecto"> | Date | string | null
     documentos?: DocumentoListRelationFilter
-    permisos?: PermisoListRelationFilter
   }, "ID_proyecto">
 
   export type ProyectoOrderByWithAggregationInput = {
     ID_proyecto?: SortOrder
     nombre?: SortOrder
-    descripcion?: SortOrderInput | SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: ProyectoCountOrderByAggregateInput
     _avg?: ProyectoAvgOrderByAggregateInput
     _max?: ProyectoMaxOrderByAggregateInput
@@ -12989,7 +10214,10 @@ export namespace Prisma {
     NOT?: ProyectoScalarWhereWithAggregatesInput | ProyectoScalarWhereWithAggregatesInput[]
     ID_proyecto?: IntWithAggregatesFilter<"Proyecto"> | number
     nombre?: StringWithAggregatesFilter<"Proyecto"> | string
-    descripcion?: StringNullableWithAggregatesFilter<"Proyecto"> | string | null
+    descripcion?: StringWithAggregatesFilter<"Proyecto"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Proyecto"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Proyecto"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Proyecto"> | Date | string | null
   }
 
   export type Estado_documentoWhereInput = {
@@ -12998,6 +10226,9 @@ export namespace Prisma {
     NOT?: Estado_documentoWhereInput | Estado_documentoWhereInput[]
     ID_estado?: IntFilter<"Estado_documento"> | number
     estado?: StringFilter<"Estado_documento"> | string
+    created_at?: DateTimeFilter<"Estado_documento"> | Date | string
+    updated_at?: DateTimeFilter<"Estado_documento"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Estado_documento"> | Date | string | null
     documentos?: DocumentoListRelationFilter
     historiales?: Historial_documentosListRelationFilter
   }
@@ -13005,6 +10236,9 @@ export namespace Prisma {
   export type Estado_documentoOrderByWithRelationInput = {
     ID_estado?: SortOrder
     estado?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     documentos?: DocumentoOrderByRelationAggregateInput
     historiales?: Historial_documentosOrderByRelationAggregateInput
   }
@@ -13015,6 +10249,9 @@ export namespace Prisma {
     OR?: Estado_documentoWhereInput[]
     NOT?: Estado_documentoWhereInput | Estado_documentoWhereInput[]
     estado?: StringFilter<"Estado_documento"> | string
+    created_at?: DateTimeFilter<"Estado_documento"> | Date | string
+    updated_at?: DateTimeFilter<"Estado_documento"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Estado_documento"> | Date | string | null
     documentos?: DocumentoListRelationFilter
     historiales?: Historial_documentosListRelationFilter
   }, "ID_estado">
@@ -13022,6 +10259,9 @@ export namespace Prisma {
   export type Estado_documentoOrderByWithAggregationInput = {
     ID_estado?: SortOrder
     estado?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: Estado_documentoCountOrderByAggregateInput
     _avg?: Estado_documentoAvgOrderByAggregateInput
     _max?: Estado_documentoMaxOrderByAggregateInput
@@ -13035,6 +10275,9 @@ export namespace Prisma {
     NOT?: Estado_documentoScalarWhereWithAggregatesInput | Estado_documentoScalarWhereWithAggregatesInput[]
     ID_estado?: IntWithAggregatesFilter<"Estado_documento"> | number
     estado?: StringWithAggregatesFilter<"Estado_documento"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Estado_documento"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Estado_documento"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Estado_documento"> | Date | string | null
   }
 
   export type AreaWhereInput = {
@@ -13043,20 +10286,20 @@ export namespace Prisma {
     NOT?: AreaWhereInput | AreaWhereInput[]
     ID_area?: IntFilter<"Area"> | number
     nombre?: StringFilter<"Area"> | string
-    detalles?: Detalle_historialListRelationFilter
+    created_at?: DateTimeFilter<"Area"> | Date | string
+    updated_at?: DateTimeFilter<"Area"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Area"> | Date | string | null
     documentos?: DocumentoListRelationFilter
-    historiales?: Historial_documentosListRelationFilter
-    permisos?: PermisoListRelationFilter
     usuarios?: UsuarioListRelationFilter
   }
 
   export type AreaOrderByWithRelationInput = {
     ID_area?: SortOrder
     nombre?: SortOrder
-    detalles?: Detalle_historialOrderByRelationAggregateInput
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     documentos?: DocumentoOrderByRelationAggregateInput
-    historiales?: Historial_documentosOrderByRelationAggregateInput
-    permisos?: PermisoOrderByRelationAggregateInput
     usuarios?: UsuarioOrderByRelationAggregateInput
   }
 
@@ -13066,16 +10309,19 @@ export namespace Prisma {
     OR?: AreaWhereInput[]
     NOT?: AreaWhereInput | AreaWhereInput[]
     nombre?: StringFilter<"Area"> | string
-    detalles?: Detalle_historialListRelationFilter
+    created_at?: DateTimeFilter<"Area"> | Date | string
+    updated_at?: DateTimeFilter<"Area"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Area"> | Date | string | null
     documentos?: DocumentoListRelationFilter
-    historiales?: Historial_documentosListRelationFilter
-    permisos?: PermisoListRelationFilter
     usuarios?: UsuarioListRelationFilter
   }, "ID_area">
 
   export type AreaOrderByWithAggregationInput = {
     ID_area?: SortOrder
     nombre?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: AreaCountOrderByAggregateInput
     _avg?: AreaAvgOrderByAggregateInput
     _max?: AreaMaxOrderByAggregateInput
@@ -13089,6 +10335,9 @@ export namespace Prisma {
     NOT?: AreaScalarWhereWithAggregatesInput | AreaScalarWhereWithAggregatesInput[]
     ID_area?: IntWithAggregatesFilter<"Area"> | number
     nombre?: StringWithAggregatesFilter<"Area"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Area"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Area"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Area"> | Date | string | null
   }
 
   export type UsuarioWhereInput = {
@@ -13097,28 +10346,38 @@ export namespace Prisma {
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     ID_usuario?: IntFilter<"Usuario"> | number
     nombre?: StringFilter<"Usuario"> | string
-    apellido?: StringNullableFilter<"Usuario"> | string | null
+    apellido?: StringFilter<"Usuario"> | string
     correo?: StringFilter<"Usuario"> | string
     contrasena?: StringFilter<"Usuario"> | string
     rol?: StringFilter<"Usuario"> | string
-    ID_area?: IntNullableFilter<"Usuario"> | number | null
-    detalles?: Detalle_historialListRelationFilter
+    permisos?: StringNullableListFilter<"Usuario">
+    estado?: StringFilter<"Usuario"> | string
+    fecha_ingreso?: DateTimeFilter<"Usuario"> | Date | string
+    ID_area?: IntFilter<"Usuario"> | number
+    created_at?: DateTimeFilter<"Usuario"> | Date | string
+    updated_at?: DateTimeFilter<"Usuario"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Usuario"> | Date | string | null
+    documentos?: DocumentoListRelationFilter
     historiales?: Historial_documentosListRelationFilter
-    permisos?: PermisoListRelationFilter
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
+    area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
   }
 
   export type UsuarioOrderByWithRelationInput = {
     ID_usuario?: SortOrder
     nombre?: SortOrder
-    apellido?: SortOrderInput | SortOrder
+    apellido?: SortOrder
     correo?: SortOrder
     contrasena?: SortOrder
     rol?: SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    detalles?: Detalle_historialOrderByRelationAggregateInput
+    permisos?: SortOrder
+    estado?: SortOrder
+    fecha_ingreso?: SortOrder
+    ID_area?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    documentos?: DocumentoOrderByRelationAggregateInput
     historiales?: Historial_documentosOrderByRelationAggregateInput
-    permisos?: PermisoOrderByRelationAggregateInput
     area?: AreaOrderByWithRelationInput
   }
 
@@ -13129,24 +10388,35 @@ export namespace Prisma {
     OR?: UsuarioWhereInput[]
     NOT?: UsuarioWhereInput | UsuarioWhereInput[]
     nombre?: StringFilter<"Usuario"> | string
-    apellido?: StringNullableFilter<"Usuario"> | string | null
+    apellido?: StringFilter<"Usuario"> | string
     contrasena?: StringFilter<"Usuario"> | string
     rol?: StringFilter<"Usuario"> | string
-    ID_area?: IntNullableFilter<"Usuario"> | number | null
-    detalles?: Detalle_historialListRelationFilter
+    permisos?: StringNullableListFilter<"Usuario">
+    estado?: StringFilter<"Usuario"> | string
+    fecha_ingreso?: DateTimeFilter<"Usuario"> | Date | string
+    ID_area?: IntFilter<"Usuario"> | number
+    created_at?: DateTimeFilter<"Usuario"> | Date | string
+    updated_at?: DateTimeFilter<"Usuario"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Usuario"> | Date | string | null
+    documentos?: DocumentoListRelationFilter
     historiales?: Historial_documentosListRelationFilter
-    permisos?: PermisoListRelationFilter
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
+    area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
   }, "ID_usuario" | "correo">
 
   export type UsuarioOrderByWithAggregationInput = {
     ID_usuario?: SortOrder
     nombre?: SortOrder
-    apellido?: SortOrderInput | SortOrder
+    apellido?: SortOrder
     correo?: SortOrder
     contrasena?: SortOrder
     rol?: SortOrder
-    ID_area?: SortOrderInput | SortOrder
+    permisos?: SortOrder
+    estado?: SortOrder
+    fecha_ingreso?: SortOrder
+    ID_area?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: UsuarioCountOrderByAggregateInput
     _avg?: UsuarioAvgOrderByAggregateInput
     _max?: UsuarioMaxOrderByAggregateInput
@@ -13160,11 +10430,17 @@ export namespace Prisma {
     NOT?: UsuarioScalarWhereWithAggregatesInput | UsuarioScalarWhereWithAggregatesInput[]
     ID_usuario?: IntWithAggregatesFilter<"Usuario"> | number
     nombre?: StringWithAggregatesFilter<"Usuario"> | string
-    apellido?: StringNullableWithAggregatesFilter<"Usuario"> | string | null
+    apellido?: StringWithAggregatesFilter<"Usuario"> | string
     correo?: StringWithAggregatesFilter<"Usuario"> | string
     contrasena?: StringWithAggregatesFilter<"Usuario"> | string
     rol?: StringWithAggregatesFilter<"Usuario"> | string
-    ID_area?: IntNullableWithAggregatesFilter<"Usuario"> | number | null
+    permisos?: StringNullableListFilter<"Usuario">
+    estado?: StringWithAggregatesFilter<"Usuario"> | string
+    fecha_ingreso?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    ID_area?: IntWithAggregatesFilter<"Usuario"> | number
+    created_at?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Usuario"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Usuario"> | Date | string | null
   }
 
   export type DocumentoWhereInput = {
@@ -13173,34 +10449,42 @@ export namespace Prisma {
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
     ID_documento?: IntFilter<"Documento"> | number
     nombre_documento?: StringFilter<"Documento"> | string
-    tipo_documento?: StringNullableFilter<"Documento"> | string | null
-    fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
-    archivo?: StringNullableFilter<"Documento"> | string | null
-    descripcion?: StringNullableFilter<"Documento"> | string | null
-    folio?: StringNullableFilter<"Documento"> | string | null
-    ID_cliente?: IntNullableFilter<"Documento"> | number | null
-    ID_proyecto?: IntNullableFilter<"Documento"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Documento"> | number | null
-    ID_area?: IntNullableFilter<"Documento"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    cliente?: XOR<ClienteNullableScalarRelationFilter, ClienteWhereInput> | null
-    estado?: XOR<Estado_documentoNullableScalarRelationFilter, Estado_documentoWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
+    tipo_documento?: StringFilter<"Documento"> | string
+    archivo?: StringFilter<"Documento"> | string
+    descripcion?: StringFilter<"Documento"> | string
+    folio?: StringFilter<"Documento"> | string
+    ID_cliente?: IntFilter<"Documento"> | number
+    ID_proyecto?: IntFilter<"Documento"> | number
+    ID_estado_documento?: IntFilter<"Documento"> | number
+    ID_area?: IntFilter<"Documento"> | number
+    ID_usuario?: IntFilter<"Documento"> | number
+    created_at?: DateTimeFilter<"Documento"> | Date | string
+    updated_at?: DateTimeFilter<"Documento"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Documento"> | Date | string | null
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    estado?: XOR<Estado_documentoScalarRelationFilter, Estado_documentoWhereInput>
+    proyecto?: XOR<ProyectoScalarRelationFilter, ProyectoWhereInput>
     historiales?: Historial_documentosListRelationFilter
   }
 
   export type DocumentoOrderByWithRelationInput = {
     ID_documento?: SortOrder
     nombre_documento?: SortOrder
-    tipo_documento?: SortOrderInput | SortOrder
-    fecha_ingreso?: SortOrderInput | SortOrder
-    archivo?: SortOrderInput | SortOrder
-    descripcion?: SortOrderInput | SortOrder
-    folio?: SortOrderInput | SortOrder
-    ID_cliente?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    ID_estado_documento?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
+    tipo_documento?: SortOrder
+    archivo?: SortOrder
+    descripcion?: SortOrder
+    folio?: SortOrder
+    ID_cliente?: SortOrder
+    ID_proyecto?: SortOrder
+    ID_estado_documento?: SortOrder
+    ID_area?: SortOrder
+    ID_usuario?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
+    usuario?: UsuarioOrderByWithRelationInput
     area?: AreaOrderByWithRelationInput
     cliente?: ClienteOrderByWithRelationInput
     estado?: Estado_documentoOrderByWithRelationInput
@@ -13214,34 +10498,41 @@ export namespace Prisma {
     OR?: DocumentoWhereInput[]
     NOT?: DocumentoWhereInput | DocumentoWhereInput[]
     nombre_documento?: StringFilter<"Documento"> | string
-    tipo_documento?: StringNullableFilter<"Documento"> | string | null
-    fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
-    archivo?: StringNullableFilter<"Documento"> | string | null
-    descripcion?: StringNullableFilter<"Documento"> | string | null
-    folio?: StringNullableFilter<"Documento"> | string | null
-    ID_cliente?: IntNullableFilter<"Documento"> | number | null
-    ID_proyecto?: IntNullableFilter<"Documento"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Documento"> | number | null
-    ID_area?: IntNullableFilter<"Documento"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    cliente?: XOR<ClienteNullableScalarRelationFilter, ClienteWhereInput> | null
-    estado?: XOR<Estado_documentoNullableScalarRelationFilter, Estado_documentoWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
+    tipo_documento?: StringFilter<"Documento"> | string
+    archivo?: StringFilter<"Documento"> | string
+    descripcion?: StringFilter<"Documento"> | string
+    folio?: StringFilter<"Documento"> | string
+    ID_cliente?: IntFilter<"Documento"> | number
+    ID_proyecto?: IntFilter<"Documento"> | number
+    ID_estado_documento?: IntFilter<"Documento"> | number
+    ID_area?: IntFilter<"Documento"> | number
+    ID_usuario?: IntFilter<"Documento"> | number
+    created_at?: DateTimeFilter<"Documento"> | Date | string
+    updated_at?: DateTimeFilter<"Documento"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Documento"> | Date | string | null
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
+    area?: XOR<AreaScalarRelationFilter, AreaWhereInput>
+    cliente?: XOR<ClienteScalarRelationFilter, ClienteWhereInput>
+    estado?: XOR<Estado_documentoScalarRelationFilter, Estado_documentoWhereInput>
+    proyecto?: XOR<ProyectoScalarRelationFilter, ProyectoWhereInput>
     historiales?: Historial_documentosListRelationFilter
   }, "ID_documento">
 
   export type DocumentoOrderByWithAggregationInput = {
     ID_documento?: SortOrder
     nombre_documento?: SortOrder
-    tipo_documento?: SortOrderInput | SortOrder
-    fecha_ingreso?: SortOrderInput | SortOrder
-    archivo?: SortOrderInput | SortOrder
-    descripcion?: SortOrderInput | SortOrder
-    folio?: SortOrderInput | SortOrder
-    ID_cliente?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    ID_estado_documento?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
+    tipo_documento?: SortOrder
+    archivo?: SortOrder
+    descripcion?: SortOrder
+    folio?: SortOrder
+    ID_cliente?: SortOrder
+    ID_proyecto?: SortOrder
+    ID_estado_documento?: SortOrder
+    ID_area?: SortOrder
+    ID_usuario?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: DocumentoCountOrderByAggregateInput
     _avg?: DocumentoAvgOrderByAggregateInput
     _max?: DocumentoMaxOrderByAggregateInput
@@ -13255,15 +10546,18 @@ export namespace Prisma {
     NOT?: DocumentoScalarWhereWithAggregatesInput | DocumentoScalarWhereWithAggregatesInput[]
     ID_documento?: IntWithAggregatesFilter<"Documento"> | number
     nombre_documento?: StringWithAggregatesFilter<"Documento"> | string
-    tipo_documento?: StringNullableWithAggregatesFilter<"Documento"> | string | null
-    fecha_ingreso?: DateTimeNullableWithAggregatesFilter<"Documento"> | Date | string | null
-    archivo?: StringNullableWithAggregatesFilter<"Documento"> | string | null
-    descripcion?: StringNullableWithAggregatesFilter<"Documento"> | string | null
-    folio?: StringNullableWithAggregatesFilter<"Documento"> | string | null
-    ID_cliente?: IntNullableWithAggregatesFilter<"Documento"> | number | null
-    ID_proyecto?: IntNullableWithAggregatesFilter<"Documento"> | number | null
-    ID_estado_documento?: IntNullableWithAggregatesFilter<"Documento"> | number | null
-    ID_area?: IntNullableWithAggregatesFilter<"Documento"> | number | null
+    tipo_documento?: StringWithAggregatesFilter<"Documento"> | string
+    archivo?: StringWithAggregatesFilter<"Documento"> | string
+    descripcion?: StringWithAggregatesFilter<"Documento"> | string
+    folio?: StringWithAggregatesFilter<"Documento"> | string
+    ID_cliente?: IntWithAggregatesFilter<"Documento"> | number
+    ID_proyecto?: IntWithAggregatesFilter<"Documento"> | number
+    ID_estado_documento?: IntWithAggregatesFilter<"Documento"> | number
+    ID_area?: IntWithAggregatesFilter<"Documento"> | number
+    ID_usuario?: IntWithAggregatesFilter<"Documento"> | number
+    created_at?: DateTimeWithAggregatesFilter<"Documento"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Documento"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Documento"> | Date | string | null
   }
 
   export type Historial_documentosWhereInput = {
@@ -13271,29 +10565,31 @@ export namespace Prisma {
     OR?: Historial_documentosWhereInput[]
     NOT?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
     ID_historial?: IntFilter<"Historial_documentos"> | number
-    fecha?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    hora?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    ID_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_usuario?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_area?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-    detalles?: Detalle_historialListRelationFilter
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    documento?: XOR<DocumentoNullableScalarRelationFilter, DocumentoWhereInput> | null
-    estado?: XOR<Estado_documentoNullableScalarRelationFilter, Estado_documentoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
+    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
+    ID_documento?: IntFilter<"Historial_documentos"> | number
+    ID_usuario?: IntFilter<"Historial_documentos"> | number
+    ID_estado_documento?: IntFilter<"Historial_documentos"> | number
+    documento_historial?: StringFilter<"Historial_documentos"> | string
+    descripcion?: StringFilter<"Historial_documentos"> | string
+    created_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    updated_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
+    documento?: XOR<DocumentoScalarRelationFilter, DocumentoWhereInput>
+    estado?: XOR<Estado_documentoScalarRelationFilter, Estado_documentoWhereInput>
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }
 
   export type Historial_documentosOrderByWithRelationInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrderInput | SortOrder
-    hora?: SortOrderInput | SortOrder
-    ID_documento?: SortOrderInput | SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_estado_documento?: SortOrderInput | SortOrder
-    detalles?: Detalle_historialOrderByRelationAggregateInput
-    area?: AreaOrderByWithRelationInput
+    fecha?: SortOrder
+    ID_documento?: SortOrder
+    ID_usuario?: SortOrder
+    ID_estado_documento?: SortOrder
+    documento_historial?: SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     documento?: DocumentoOrderByWithRelationInput
     estado?: Estado_documentoOrderByWithRelationInput
     usuario?: UsuarioOrderByWithRelationInput
@@ -13304,27 +10600,31 @@ export namespace Prisma {
     AND?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
     OR?: Historial_documentosWhereInput[]
     NOT?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
-    fecha?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    hora?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    ID_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_usuario?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_area?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-    detalles?: Detalle_historialListRelationFilter
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    documento?: XOR<DocumentoNullableScalarRelationFilter, DocumentoWhereInput> | null
-    estado?: XOR<Estado_documentoNullableScalarRelationFilter, Estado_documentoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
+    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
+    ID_documento?: IntFilter<"Historial_documentos"> | number
+    ID_usuario?: IntFilter<"Historial_documentos"> | number
+    ID_estado_documento?: IntFilter<"Historial_documentos"> | number
+    documento_historial?: StringFilter<"Historial_documentos"> | string
+    descripcion?: StringFilter<"Historial_documentos"> | string
+    created_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    updated_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
+    documento?: XOR<DocumentoScalarRelationFilter, DocumentoWhereInput>
+    estado?: XOR<Estado_documentoScalarRelationFilter, Estado_documentoWhereInput>
+    usuario?: XOR<UsuarioScalarRelationFilter, UsuarioWhereInput>
   }, "ID_historial">
 
   export type Historial_documentosOrderByWithAggregationInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrderInput | SortOrder
-    hora?: SortOrderInput | SortOrder
-    ID_documento?: SortOrderInput | SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_estado_documento?: SortOrderInput | SortOrder
+    fecha?: SortOrder
+    ID_documento?: SortOrder
+    ID_usuario?: SortOrder
+    ID_estado_documento?: SortOrder
+    documento_historial?: SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrderInput | SortOrder
     _count?: Historial_documentosCountOrderByAggregateInput
     _avg?: Historial_documentosAvgOrderByAggregateInput
     _max?: Historial_documentosMaxOrderByAggregateInput
@@ -13337,149 +10637,15 @@ export namespace Prisma {
     OR?: Historial_documentosScalarWhereWithAggregatesInput[]
     NOT?: Historial_documentosScalarWhereWithAggregatesInput | Historial_documentosScalarWhereWithAggregatesInput[]
     ID_historial?: IntWithAggregatesFilter<"Historial_documentos"> | number
-    fecha?: DateTimeNullableWithAggregatesFilter<"Historial_documentos"> | Date | string | null
-    hora?: DateTimeNullableWithAggregatesFilter<"Historial_documentos"> | Date | string | null
-    ID_documento?: IntNullableWithAggregatesFilter<"Historial_documentos"> | number | null
-    ID_usuario?: IntNullableWithAggregatesFilter<"Historial_documentos"> | number | null
-    ID_area?: IntNullableWithAggregatesFilter<"Historial_documentos"> | number | null
-    ID_estado_documento?: IntNullableWithAggregatesFilter<"Historial_documentos"> | number | null
-  }
-
-  export type Detalle_historialWhereInput = {
-    AND?: Detalle_historialWhereInput | Detalle_historialWhereInput[]
-    OR?: Detalle_historialWhereInput[]
-    NOT?: Detalle_historialWhereInput | Detalle_historialWhereInput[]
-    ID_detalle?: IntFilter<"Detalle_historial"> | number
-    ID_usuario?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_historial?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_proyecto?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_area?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_cliente?: IntNullableFilter<"Detalle_historial"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    cliente?: XOR<ClienteNullableScalarRelationFilter, ClienteWhereInput> | null
-    historial?: XOR<Historial_documentosNullableScalarRelationFilter, Historial_documentosWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
-  }
-
-  export type Detalle_historialOrderByWithRelationInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_historial?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_cliente?: SortOrderInput | SortOrder
-    area?: AreaOrderByWithRelationInput
-    cliente?: ClienteOrderByWithRelationInput
-    historial?: Historial_documentosOrderByWithRelationInput
-    proyecto?: ProyectoOrderByWithRelationInput
-    usuario?: UsuarioOrderByWithRelationInput
-  }
-
-  export type Detalle_historialWhereUniqueInput = Prisma.AtLeast<{
-    ID_detalle?: number
-    AND?: Detalle_historialWhereInput | Detalle_historialWhereInput[]
-    OR?: Detalle_historialWhereInput[]
-    NOT?: Detalle_historialWhereInput | Detalle_historialWhereInput[]
-    ID_usuario?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_historial?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_proyecto?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_area?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_cliente?: IntNullableFilter<"Detalle_historial"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    cliente?: XOR<ClienteNullableScalarRelationFilter, ClienteWhereInput> | null
-    historial?: XOR<Historial_documentosNullableScalarRelationFilter, Historial_documentosWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
-  }, "ID_detalle">
-
-  export type Detalle_historialOrderByWithAggregationInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_historial?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_cliente?: SortOrderInput | SortOrder
-    _count?: Detalle_historialCountOrderByAggregateInput
-    _avg?: Detalle_historialAvgOrderByAggregateInput
-    _max?: Detalle_historialMaxOrderByAggregateInput
-    _min?: Detalle_historialMinOrderByAggregateInput
-    _sum?: Detalle_historialSumOrderByAggregateInput
-  }
-
-  export type Detalle_historialScalarWhereWithAggregatesInput = {
-    AND?: Detalle_historialScalarWhereWithAggregatesInput | Detalle_historialScalarWhereWithAggregatesInput[]
-    OR?: Detalle_historialScalarWhereWithAggregatesInput[]
-    NOT?: Detalle_historialScalarWhereWithAggregatesInput | Detalle_historialScalarWhereWithAggregatesInput[]
-    ID_detalle?: IntWithAggregatesFilter<"Detalle_historial"> | number
-    ID_usuario?: IntNullableWithAggregatesFilter<"Detalle_historial"> | number | null
-    ID_historial?: IntNullableWithAggregatesFilter<"Detalle_historial"> | number | null
-    ID_proyecto?: IntNullableWithAggregatesFilter<"Detalle_historial"> | number | null
-    ID_area?: IntNullableWithAggregatesFilter<"Detalle_historial"> | number | null
-    ID_cliente?: IntNullableWithAggregatesFilter<"Detalle_historial"> | number | null
-  }
-
-  export type PermisoWhereInput = {
-    AND?: PermisoWhereInput | PermisoWhereInput[]
-    OR?: PermisoWhereInput[]
-    NOT?: PermisoWhereInput | PermisoWhereInput[]
-    ID_permiso?: IntFilter<"Permiso"> | number
-    tipo_permiso?: StringNullableFilter<"Permiso"> | string | null
-    ID_usuario?: IntNullableFilter<"Permiso"> | number | null
-    ID_area?: IntNullableFilter<"Permiso"> | number | null
-    ID_proyecto?: IntNullableFilter<"Permiso"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
-  }
-
-  export type PermisoOrderByWithRelationInput = {
-    ID_permiso?: SortOrder
-    tipo_permiso?: SortOrderInput | SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    area?: AreaOrderByWithRelationInput
-    proyecto?: ProyectoOrderByWithRelationInput
-    usuario?: UsuarioOrderByWithRelationInput
-  }
-
-  export type PermisoWhereUniqueInput = Prisma.AtLeast<{
-    ID_permiso?: number
-    AND?: PermisoWhereInput | PermisoWhereInput[]
-    OR?: PermisoWhereInput[]
-    NOT?: PermisoWhereInput | PermisoWhereInput[]
-    tipo_permiso?: StringNullableFilter<"Permiso"> | string | null
-    ID_usuario?: IntNullableFilter<"Permiso"> | number | null
-    ID_area?: IntNullableFilter<"Permiso"> | number | null
-    ID_proyecto?: IntNullableFilter<"Permiso"> | number | null
-    area?: XOR<AreaNullableScalarRelationFilter, AreaWhereInput> | null
-    proyecto?: XOR<ProyectoNullableScalarRelationFilter, ProyectoWhereInput> | null
-    usuario?: XOR<UsuarioNullableScalarRelationFilter, UsuarioWhereInput> | null
-  }, "ID_permiso">
-
-  export type PermisoOrderByWithAggregationInput = {
-    ID_permiso?: SortOrder
-    tipo_permiso?: SortOrderInput | SortOrder
-    ID_usuario?: SortOrderInput | SortOrder
-    ID_area?: SortOrderInput | SortOrder
-    ID_proyecto?: SortOrderInput | SortOrder
-    _count?: PermisoCountOrderByAggregateInput
-    _avg?: PermisoAvgOrderByAggregateInput
-    _max?: PermisoMaxOrderByAggregateInput
-    _min?: PermisoMinOrderByAggregateInput
-    _sum?: PermisoSumOrderByAggregateInput
-  }
-
-  export type PermisoScalarWhereWithAggregatesInput = {
-    AND?: PermisoScalarWhereWithAggregatesInput | PermisoScalarWhereWithAggregatesInput[]
-    OR?: PermisoScalarWhereWithAggregatesInput[]
-    NOT?: PermisoScalarWhereWithAggregatesInput | PermisoScalarWhereWithAggregatesInput[]
-    ID_permiso?: IntWithAggregatesFilter<"Permiso"> | number
-    tipo_permiso?: StringNullableWithAggregatesFilter<"Permiso"> | string | null
-    ID_usuario?: IntNullableWithAggregatesFilter<"Permiso"> | number | null
-    ID_area?: IntNullableWithAggregatesFilter<"Permiso"> | number | null
-    ID_proyecto?: IntNullableWithAggregatesFilter<"Permiso"> | number | null
+    fecha?: DateTimeWithAggregatesFilter<"Historial_documentos"> | Date | string
+    ID_documento?: IntWithAggregatesFilter<"Historial_documentos"> | number
+    ID_usuario?: IntWithAggregatesFilter<"Historial_documentos"> | number
+    ID_estado_documento?: IntWithAggregatesFilter<"Historial_documentos"> | number
+    documento_historial?: StringWithAggregatesFilter<"Historial_documentos"> | string
+    descripcion?: StringWithAggregatesFilter<"Historial_documentos"> | string
+    created_at?: DateTimeWithAggregatesFilter<"Historial_documentos"> | Date | string
+    updated_at?: DateTimeWithAggregatesFilter<"Historial_documentos"> | Date | string
+    deleted_at?: DateTimeNullableWithAggregatesFilter<"Historial_documentos"> | Date | string | null
   }
 
   export type ClienteCreateInput = {
@@ -13487,7 +10653,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
-    detalles?: Detalle_historialCreateNestedManyWithoutClienteInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutClienteInput
   }
 
@@ -13497,7 +10665,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutClienteInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutClienteInput
   }
 
@@ -13506,7 +10676,9 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutClienteNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutClienteNestedInput
   }
 
@@ -13516,7 +10688,9 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutClienteNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutClienteNestedInput
   }
 
@@ -13526,6 +10700,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ClienteUpdateManyMutationInput = {
@@ -13533,6 +10710,9 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ClienteUncheckedUpdateManyInput = {
@@ -13541,61 +10721,80 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProyectoCreateInput = {
     nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutProyectoInput
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoCreateNestedManyWithoutProyectoInput
   }
 
   export type ProyectoUncheckedCreateInput = {
     ID_proyecto?: number
     nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutProyectoInput
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutProyectoInput
   }
 
   export type ProyectoUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUpdateManyWithoutProyectoNestedInput
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUpdateManyWithoutProyectoNestedInput
   }
 
   export type ProyectoUncheckedUpdateInput = {
     ID_proyecto?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutProyectoNestedInput
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutProyectoNestedInput
   }
 
   export type ProyectoCreateManyInput = {
     ID_proyecto?: number
     nombre: string
-    descripcion?: string | null
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ProyectoUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProyectoUncheckedUpdateManyInput = {
     ID_proyecto?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Estado_documentoCreateInput = {
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutEstadoInput
     historiales?: Historial_documentosCreateNestedManyWithoutEstadoInput
   }
@@ -13603,12 +10802,18 @@ export namespace Prisma {
   export type Estado_documentoUncheckedCreateInput = {
     ID_estado?: number
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutEstadoInput
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutEstadoInput
   }
 
   export type Estado_documentoUpdateInput = {
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutEstadoNestedInput
     historiales?: Historial_documentosUpdateManyWithoutEstadoNestedInput
   }
@@ -13616,6 +10821,9 @@ export namespace Prisma {
   export type Estado_documentoUncheckedUpdateInput = {
     ID_estado?: IntFieldUpdateOperationsInput | number
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutEstadoNestedInput
     historiales?: Historial_documentosUncheckedUpdateManyWithoutEstadoNestedInput
   }
@@ -13623,413 +10831,401 @@ export namespace Prisma {
   export type Estado_documentoCreateManyInput = {
     ID_estado?: number
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Estado_documentoUpdateManyMutationInput = {
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Estado_documentoUncheckedUpdateManyInput = {
     ID_estado?: IntFieldUpdateOperationsInput | number
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AreaCreateInput = {
     nombre: string
-    detalles?: Detalle_historialCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosCreateNestedManyWithoutAreaInput
-    permisos?: PermisoCreateNestedManyWithoutAreaInput
     usuarios?: UsuarioCreateNestedManyWithoutAreaInput
   }
 
   export type AreaUncheckedCreateInput = {
     ID_area?: number
     nombre: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutAreaInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutAreaInput
     usuarios?: UsuarioUncheckedCreateNestedManyWithoutAreaInput
   }
 
   export type AreaUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUpdateManyWithoutAreaNestedInput
     usuarios?: UsuarioUpdateManyWithoutAreaNestedInput
   }
 
   export type AreaUncheckedUpdateInput = {
     ID_area?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutAreaNestedInput
     usuarios?: UsuarioUncheckedUpdateManyWithoutAreaNestedInput
   }
 
   export type AreaCreateManyInput = {
     ID_area?: number
     nombre: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type AreaUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type AreaUncheckedUpdateManyInput = {
     ID_area?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UsuarioCreateInput = {
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    detalles?: Detalle_historialCreateNestedManyWithoutUsuarioInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoCreateNestedManyWithoutUsuarioInput
     historiales?: Historial_documentosCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoCreateNestedManyWithoutUsuarioInput
-    area?: AreaCreateNestedOneWithoutUsuariosInput
+    area: AreaCreateNestedOneWithoutUsuariosInput
   }
 
   export type UsuarioUncheckedCreateInput = {
     ID_usuario?: number
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    ID_area?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutUsuarioInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutUsuarioInput
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUpdateInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutUsuarioNestedInput
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUpdateManyWithoutUsuarioNestedInput
     historiales?: Historial_documentosUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUpdateManyWithoutUsuarioNestedInput
-    area?: AreaUpdateOneWithoutUsuariosNestedInput
+    area?: AreaUpdateOneRequiredWithoutUsuariosNestedInput
   }
 
   export type UsuarioUncheckedUpdateInput = {
     ID_usuario?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutUsuarioNestedInput
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_area?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
     historiales?: Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioCreateManyInput = {
     ID_usuario?: number
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    ID_area?: number | null
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type UsuarioUpdateManyMutationInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UsuarioUncheckedUpdateManyInput = {
     ID_usuario?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_area?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DocumentoCreateInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    area?: AreaCreateNestedOneWithoutDocumentosInput
-    cliente?: ClienteCreateNestedOneWithoutDocumentosInput
-    estado?: Estado_documentoCreateNestedOneWithoutDocumentosInput
-    proyecto?: ProyectoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
     historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUncheckedCreateInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUpdateInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutDocumentosNestedInput
-    cliente?: ClienteUpdateOneWithoutDocumentosNestedInput
-    estado?: Estado_documentoUpdateOneWithoutDocumentosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
     historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoCreateManyInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoUpdateManyMutationInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DocumentoUncheckedUpdateManyInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosCreateInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutHistorialInput
-    area?: AreaCreateNestedOneWithoutHistorialesInput
-    documento?: DocumentoCreateNestedOneWithoutHistorialesInput
-    estado?: Estado_documentoCreateNestedOneWithoutHistorialesInput
-    usuario?: UsuarioCreateNestedOneWithoutHistorialesInput
+    fecha: Date | string
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documento: DocumentoCreateNestedOneWithoutHistorialesInput
+    estado: Estado_documentoCreateNestedOneWithoutHistorialesInput
+    usuario: UsuarioCreateNestedOneWithoutHistorialesInput
   }
 
   export type Historial_documentosUncheckedCreateInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput
+    fecha: Date | string
+    ID_documento: number
+    ID_usuario: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosUpdateInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detalles?: Detalle_historialUpdateManyWithoutHistorialNestedInput
-    area?: AreaUpdateOneWithoutHistorialesNestedInput
-    documento?: DocumentoUpdateOneWithoutHistorialesNestedInput
-    estado?: Estado_documentoUpdateOneWithoutHistorialesNestedInput
-    usuario?: UsuarioUpdateOneWithoutHistorialesNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documento?: DocumentoUpdateOneRequiredWithoutHistorialesNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutHistorialesNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutHistorialesNestedInput
   }
 
   export type Historial_documentosUncheckedUpdateInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosCreateManyInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
+    fecha: Date | string
+    ID_documento: number
+    ID_usuario: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosUpdateManyMutationInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUncheckedUpdateManyInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialCreateInput = {
-    area?: AreaCreateNestedOneWithoutDetallesInput
-    cliente?: ClienteCreateNestedOneWithoutDetallesInput
-    historial?: Historial_documentosCreateNestedOneWithoutDetallesInput
-    proyecto?: ProyectoCreateNestedOneWithoutDetallesInput
-    usuario?: UsuarioCreateNestedOneWithoutDetallesInput
-  }
-
-  export type Detalle_historialUncheckedCreateInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialUpdateInput = {
-    area?: AreaUpdateOneWithoutDetallesNestedInput
-    cliente?: ClienteUpdateOneWithoutDetallesNestedInput
-    historial?: Historial_documentosUpdateOneWithoutDetallesNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDetallesNestedInput
-    usuario?: UsuarioUpdateOneWithoutDetallesNestedInput
-  }
-
-  export type Detalle_historialUncheckedUpdateInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialCreateManyInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialUpdateManyMutationInput = {
-
-  }
-
-  export type Detalle_historialUncheckedUpdateManyInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoCreateInput = {
-    tipo_permiso?: string | null
-    area?: AreaCreateNestedOneWithoutPermisosInput
-    proyecto?: ProyectoCreateNestedOneWithoutPermisosInput
-    usuario?: UsuarioCreateNestedOneWithoutPermisosInput
-  }
-
-  export type PermisoUncheckedCreateInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_proyecto?: number | null
-  }
-
-  export type PermisoUpdateInput = {
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutPermisosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutPermisosNestedInput
-    usuario?: UsuarioUpdateOneWithoutPermisosNestedInput
-  }
-
-  export type PermisoUncheckedUpdateInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoCreateManyInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_proyecto?: number | null
-  }
-
-  export type PermisoUpdateManyMutationInput = {
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type PermisoUncheckedUpdateManyInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -14058,10 +11254,26 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type Detalle_historialListRelationFilter = {
-    every?: Detalle_historialWhereInput
-    some?: Detalle_historialWhereInput
-    none?: Detalle_historialWhereInput
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type DocumentoListRelationFilter = {
@@ -14070,8 +11282,9 @@ export namespace Prisma {
     none?: DocumentoWhereInput
   }
 
-  export type Detalle_historialOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
   }
 
   export type DocumentoOrderByRelationAggregateInput = {
@@ -14084,6 +11297,9 @@ export namespace Prisma {
     apellido?: SortOrder
     nombre_departamento?: SortOrder
     nombre_provincia?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ClienteAvgOrderByAggregateInput = {
@@ -14096,6 +11312,9 @@ export namespace Prisma {
     apellido?: SortOrder
     nombre_departamento?: SortOrder
     nombre_provincia?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ClienteMinOrderByAggregateInput = {
@@ -14104,6 +11323,9 @@ export namespace Prisma {
     apellido?: SortOrder
     nombre_departamento?: SortOrder
     nombre_provincia?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ClienteSumOrderByAggregateInput = {
@@ -14144,40 +11366,41 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type PermisoListRelationFilter = {
-    every?: PermisoWhereInput
-    some?: PermisoWhereInput
-    none?: PermisoWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
-  export type PermisoOrderByRelationAggregateInput = {
-    _count?: SortOrder
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
   export type ProyectoCountOrderByAggregateInput = {
     ID_proyecto?: SortOrder
     nombre?: SortOrder
     descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ProyectoAvgOrderByAggregateInput = {
@@ -14188,34 +11411,22 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     nombre?: SortOrder
     descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ProyectoMinOrderByAggregateInput = {
     ID_proyecto?: SortOrder
     nombre?: SortOrder
     descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type ProyectoSumOrderByAggregateInput = {
     ID_proyecto?: SortOrder
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type Historial_documentosListRelationFilter = {
@@ -14231,6 +11442,9 @@ export namespace Prisma {
   export type Estado_documentoCountOrderByAggregateInput = {
     ID_estado?: SortOrder
     estado?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Estado_documentoAvgOrderByAggregateInput = {
@@ -14240,11 +11454,17 @@ export namespace Prisma {
   export type Estado_documentoMaxOrderByAggregateInput = {
     ID_estado?: SortOrder
     estado?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Estado_documentoMinOrderByAggregateInput = {
     ID_estado?: SortOrder
     estado?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Estado_documentoSumOrderByAggregateInput = {
@@ -14264,6 +11484,9 @@ export namespace Prisma {
   export type AreaCountOrderByAggregateInput = {
     ID_area?: SortOrder
     nombre?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type AreaAvgOrderByAggregateInput = {
@@ -14273,31 +11496,34 @@ export namespace Prisma {
   export type AreaMaxOrderByAggregateInput = {
     ID_area?: SortOrder
     nombre?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type AreaMinOrderByAggregateInput = {
     ID_area?: SortOrder
     nombre?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type AreaSumOrderByAggregateInput = {
     ID_area?: SortOrder
   }
 
-  export type IntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  export type StringNullableListFilter<$PrismaModel = never> = {
+    equals?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    has?: string | StringFieldRefInput<$PrismaModel> | null
+    hasEvery?: string[] | ListStringFieldRefInput<$PrismaModel>
+    hasSome?: string[] | ListStringFieldRefInput<$PrismaModel>
+    isEmpty?: boolean
   }
 
-  export type AreaNullableScalarRelationFilter = {
-    is?: AreaWhereInput | null
-    isNot?: AreaWhereInput | null
+  export type AreaScalarRelationFilter = {
+    is?: AreaWhereInput
+    isNot?: AreaWhereInput
   }
 
   export type UsuarioCountOrderByAggregateInput = {
@@ -14307,7 +11533,13 @@ export namespace Prisma {
     correo?: SortOrder
     contrasena?: SortOrder
     rol?: SortOrder
+    permisos?: SortOrder
+    estado?: SortOrder
+    fecha_ingreso?: SortOrder
     ID_area?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type UsuarioAvgOrderByAggregateInput = {
@@ -14322,7 +11554,12 @@ export namespace Prisma {
     correo?: SortOrder
     contrasena?: SortOrder
     rol?: SortOrder
+    estado?: SortOrder
+    fecha_ingreso?: SortOrder
     ID_area?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type UsuarioMinOrderByAggregateInput = {
@@ -14332,7 +11569,12 @@ export namespace Prisma {
     correo?: SortOrder
     contrasena?: SortOrder
     rol?: SortOrder
+    estado?: SortOrder
+    fecha_ingreso?: SortOrder
     ID_area?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type UsuarioSumOrderByAggregateInput = {
@@ -14340,53 +11582,30 @@ export namespace Prisma {
     ID_area?: SortOrder
   }
 
-  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
+  export type UsuarioScalarRelationFilter = {
+    is?: UsuarioWhereInput
+    isNot?: UsuarioWhereInput
   }
 
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  export type ClienteScalarRelationFilter = {
+    is?: ClienteWhereInput
+    isNot?: ClienteWhereInput
   }
 
-  export type ClienteNullableScalarRelationFilter = {
-    is?: ClienteWhereInput | null
-    isNot?: ClienteWhereInput | null
+  export type Estado_documentoScalarRelationFilter = {
+    is?: Estado_documentoWhereInput
+    isNot?: Estado_documentoWhereInput
   }
 
-  export type Estado_documentoNullableScalarRelationFilter = {
-    is?: Estado_documentoWhereInput | null
-    isNot?: Estado_documentoWhereInput | null
-  }
-
-  export type ProyectoNullableScalarRelationFilter = {
-    is?: ProyectoWhereInput | null
-    isNot?: ProyectoWhereInput | null
+  export type ProyectoScalarRelationFilter = {
+    is?: ProyectoWhereInput
+    isNot?: ProyectoWhereInput
   }
 
   export type DocumentoCountOrderByAggregateInput = {
     ID_documento?: SortOrder
     nombre_documento?: SortOrder
     tipo_documento?: SortOrder
-    fecha_ingreso?: SortOrder
     archivo?: SortOrder
     descripcion?: SortOrder
     folio?: SortOrder
@@ -14394,6 +11613,10 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     ID_estado_documento?: SortOrder
     ID_area?: SortOrder
+    ID_usuario?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type DocumentoAvgOrderByAggregateInput = {
@@ -14402,13 +11625,13 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     ID_estado_documento?: SortOrder
     ID_area?: SortOrder
+    ID_usuario?: SortOrder
   }
 
   export type DocumentoMaxOrderByAggregateInput = {
     ID_documento?: SortOrder
     nombre_documento?: SortOrder
     tipo_documento?: SortOrder
-    fecha_ingreso?: SortOrder
     archivo?: SortOrder
     descripcion?: SortOrder
     folio?: SortOrder
@@ -14416,13 +11639,16 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     ID_estado_documento?: SortOrder
     ID_area?: SortOrder
+    ID_usuario?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type DocumentoMinOrderByAggregateInput = {
     ID_documento?: SortOrder
     nombre_documento?: SortOrder
     tipo_documento?: SortOrder
-    fecha_ingreso?: SortOrder
     archivo?: SortOrder
     descripcion?: SortOrder
     folio?: SortOrder
@@ -14430,6 +11656,10 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     ID_estado_documento?: SortOrder
     ID_area?: SortOrder
+    ID_usuario?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type DocumentoSumOrderByAggregateInput = {
@@ -14438,171 +11668,65 @@ export namespace Prisma {
     ID_proyecto?: SortOrder
     ID_estado_documento?: SortOrder
     ID_area?: SortOrder
+    ID_usuario?: SortOrder
   }
 
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-  }
-
-  export type DocumentoNullableScalarRelationFilter = {
-    is?: DocumentoWhereInput | null
-    isNot?: DocumentoWhereInput | null
-  }
-
-  export type UsuarioNullableScalarRelationFilter = {
-    is?: UsuarioWhereInput | null
-    isNot?: UsuarioWhereInput | null
+  export type DocumentoScalarRelationFilter = {
+    is?: DocumentoWhereInput
+    isNot?: DocumentoWhereInput
   }
 
   export type Historial_documentosCountOrderByAggregateInput = {
     ID_historial?: SortOrder
     fecha?: SortOrder
-    hora?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
-    ID_area?: SortOrder
     ID_estado_documento?: SortOrder
+    documento_historial?: SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Historial_documentosAvgOrderByAggregateInput = {
     ID_historial?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
-    ID_area?: SortOrder
     ID_estado_documento?: SortOrder
   }
 
   export type Historial_documentosMaxOrderByAggregateInput = {
     ID_historial?: SortOrder
     fecha?: SortOrder
-    hora?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
-    ID_area?: SortOrder
     ID_estado_documento?: SortOrder
+    documento_historial?: SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Historial_documentosMinOrderByAggregateInput = {
     ID_historial?: SortOrder
     fecha?: SortOrder
-    hora?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
-    ID_area?: SortOrder
     ID_estado_documento?: SortOrder
+    documento_historial?: SortOrder
+    descripcion?: SortOrder
+    created_at?: SortOrder
+    updated_at?: SortOrder
+    deleted_at?: SortOrder
   }
 
   export type Historial_documentosSumOrderByAggregateInput = {
     ID_historial?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
-    ID_area?: SortOrder
     ID_estado_documento?: SortOrder
-  }
-
-  export type Historial_documentosNullableScalarRelationFilter = {
-    is?: Historial_documentosWhereInput | null
-    isNot?: Historial_documentosWhereInput | null
-  }
-
-  export type Detalle_historialCountOrderByAggregateInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrder
-    ID_historial?: SortOrder
-    ID_proyecto?: SortOrder
-    ID_area?: SortOrder
-    ID_cliente?: SortOrder
-  }
-
-  export type Detalle_historialAvgOrderByAggregateInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrder
-    ID_historial?: SortOrder
-    ID_proyecto?: SortOrder
-    ID_area?: SortOrder
-    ID_cliente?: SortOrder
-  }
-
-  export type Detalle_historialMaxOrderByAggregateInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrder
-    ID_historial?: SortOrder
-    ID_proyecto?: SortOrder
-    ID_area?: SortOrder
-    ID_cliente?: SortOrder
-  }
-
-  export type Detalle_historialMinOrderByAggregateInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrder
-    ID_historial?: SortOrder
-    ID_proyecto?: SortOrder
-    ID_area?: SortOrder
-    ID_cliente?: SortOrder
-  }
-
-  export type Detalle_historialSumOrderByAggregateInput = {
-    ID_detalle?: SortOrder
-    ID_usuario?: SortOrder
-    ID_historial?: SortOrder
-    ID_proyecto?: SortOrder
-    ID_area?: SortOrder
-    ID_cliente?: SortOrder
-  }
-
-  export type PermisoCountOrderByAggregateInput = {
-    ID_permiso?: SortOrder
-    tipo_permiso?: SortOrder
-    ID_usuario?: SortOrder
-    ID_area?: SortOrder
-    ID_proyecto?: SortOrder
-  }
-
-  export type PermisoAvgOrderByAggregateInput = {
-    ID_permiso?: SortOrder
-    ID_usuario?: SortOrder
-    ID_area?: SortOrder
-    ID_proyecto?: SortOrder
-  }
-
-  export type PermisoMaxOrderByAggregateInput = {
-    ID_permiso?: SortOrder
-    tipo_permiso?: SortOrder
-    ID_usuario?: SortOrder
-    ID_area?: SortOrder
-    ID_proyecto?: SortOrder
-  }
-
-  export type PermisoMinOrderByAggregateInput = {
-    ID_permiso?: SortOrder
-    tipo_permiso?: SortOrder
-    ID_usuario?: SortOrder
-    ID_area?: SortOrder
-    ID_proyecto?: SortOrder
-  }
-
-  export type PermisoSumOrderByAggregateInput = {
-    ID_permiso?: SortOrder
-    ID_usuario?: SortOrder
-    ID_area?: SortOrder
-    ID_proyecto?: SortOrder
-  }
-
-  export type Detalle_historialCreateNestedManyWithoutClienteInput = {
-    create?: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput> | Detalle_historialCreateWithoutClienteInput[] | Detalle_historialUncheckedCreateWithoutClienteInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutClienteInput | Detalle_historialCreateOrConnectWithoutClienteInput[]
-    createMany?: Detalle_historialCreateManyClienteInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
   }
 
   export type DocumentoCreateNestedManyWithoutClienteInput = {
@@ -14610,13 +11734,6 @@ export namespace Prisma {
     connectOrCreate?: DocumentoCreateOrConnectWithoutClienteInput | DocumentoCreateOrConnectWithoutClienteInput[]
     createMany?: DocumentoCreateManyClienteInputEnvelope
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
-  }
-
-  export type Detalle_historialUncheckedCreateNestedManyWithoutClienteInput = {
-    create?: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput> | Detalle_historialCreateWithoutClienteInput[] | Detalle_historialUncheckedCreateWithoutClienteInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutClienteInput | Detalle_historialCreateOrConnectWithoutClienteInput[]
-    createMany?: Detalle_historialCreateManyClienteInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
   }
 
   export type DocumentoUncheckedCreateNestedManyWithoutClienteInput = {
@@ -14630,18 +11747,12 @@ export namespace Prisma {
     set?: string
   }
 
-  export type Detalle_historialUpdateManyWithoutClienteNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput> | Detalle_historialCreateWithoutClienteInput[] | Detalle_historialUncheckedCreateWithoutClienteInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutClienteInput | Detalle_historialCreateOrConnectWithoutClienteInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutClienteInput | Detalle_historialUpsertWithWhereUniqueWithoutClienteInput[]
-    createMany?: Detalle_historialCreateManyClienteInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutClienteInput | Detalle_historialUpdateWithWhereUniqueWithoutClienteInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutClienteInput | Detalle_historialUpdateManyWithWhereWithoutClienteInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
+  }
+
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
   }
 
   export type DocumentoUpdateManyWithoutClienteNestedInput = {
@@ -14666,20 +11777,6 @@ export namespace Prisma {
     divide?: number
   }
 
-  export type Detalle_historialUncheckedUpdateManyWithoutClienteNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput> | Detalle_historialCreateWithoutClienteInput[] | Detalle_historialUncheckedCreateWithoutClienteInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutClienteInput | Detalle_historialCreateOrConnectWithoutClienteInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutClienteInput | Detalle_historialUpsertWithWhereUniqueWithoutClienteInput[]
-    createMany?: Detalle_historialCreateManyClienteInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutClienteInput | Detalle_historialUpdateWithWhereUniqueWithoutClienteInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutClienteInput | Detalle_historialUpdateManyWithWhereWithoutClienteInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-  }
-
   export type DocumentoUncheckedUpdateManyWithoutClienteNestedInput = {
     create?: XOR<DocumentoCreateWithoutClienteInput, DocumentoUncheckedCreateWithoutClienteInput> | DocumentoCreateWithoutClienteInput[] | DocumentoUncheckedCreateWithoutClienteInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutClienteInput | DocumentoCreateOrConnectWithoutClienteInput[]
@@ -14694,13 +11791,6 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
-  export type Detalle_historialCreateNestedManyWithoutProyectoInput = {
-    create?: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput> | Detalle_historialCreateWithoutProyectoInput[] | Detalle_historialUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutProyectoInput | Detalle_historialCreateOrConnectWithoutProyectoInput[]
-    createMany?: Detalle_historialCreateManyProyectoInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
   export type DocumentoCreateNestedManyWithoutProyectoInput = {
     create?: XOR<DocumentoCreateWithoutProyectoInput, DocumentoUncheckedCreateWithoutProyectoInput> | DocumentoCreateWithoutProyectoInput[] | DocumentoUncheckedCreateWithoutProyectoInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutProyectoInput | DocumentoCreateOrConnectWithoutProyectoInput[]
@@ -14708,50 +11798,11 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
-  export type PermisoCreateNestedManyWithoutProyectoInput = {
-    create?: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput> | PermisoCreateWithoutProyectoInput[] | PermisoUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutProyectoInput | PermisoCreateOrConnectWithoutProyectoInput[]
-    createMany?: PermisoCreateManyProyectoInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-  }
-
-  export type Detalle_historialUncheckedCreateNestedManyWithoutProyectoInput = {
-    create?: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput> | Detalle_historialCreateWithoutProyectoInput[] | Detalle_historialUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutProyectoInput | Detalle_historialCreateOrConnectWithoutProyectoInput[]
-    createMany?: Detalle_historialCreateManyProyectoInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
   export type DocumentoUncheckedCreateNestedManyWithoutProyectoInput = {
     create?: XOR<DocumentoCreateWithoutProyectoInput, DocumentoUncheckedCreateWithoutProyectoInput> | DocumentoCreateWithoutProyectoInput[] | DocumentoUncheckedCreateWithoutProyectoInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutProyectoInput | DocumentoCreateOrConnectWithoutProyectoInput[]
     createMany?: DocumentoCreateManyProyectoInputEnvelope
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
-  }
-
-  export type PermisoUncheckedCreateNestedManyWithoutProyectoInput = {
-    create?: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput> | PermisoCreateWithoutProyectoInput[] | PermisoUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutProyectoInput | PermisoCreateOrConnectWithoutProyectoInput[]
-    createMany?: PermisoCreateManyProyectoInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type Detalle_historialUpdateManyWithoutProyectoNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput> | Detalle_historialCreateWithoutProyectoInput[] | Detalle_historialUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutProyectoInput | Detalle_historialCreateOrConnectWithoutProyectoInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutProyectoInput | Detalle_historialUpsertWithWhereUniqueWithoutProyectoInput[]
-    createMany?: Detalle_historialCreateManyProyectoInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutProyectoInput | Detalle_historialUpdateWithWhereUniqueWithoutProyectoInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutProyectoInput | Detalle_historialUpdateManyWithWhereWithoutProyectoInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
   }
 
   export type DocumentoUpdateManyWithoutProyectoNestedInput = {
@@ -14768,34 +11819,6 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
-  export type PermisoUpdateManyWithoutProyectoNestedInput = {
-    create?: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput> | PermisoCreateWithoutProyectoInput[] | PermisoUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutProyectoInput | PermisoCreateOrConnectWithoutProyectoInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutProyectoInput | PermisoUpsertWithWhereUniqueWithoutProyectoInput[]
-    createMany?: PermisoCreateManyProyectoInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutProyectoInput | PermisoUpdateWithWhereUniqueWithoutProyectoInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutProyectoInput | PermisoUpdateManyWithWhereWithoutProyectoInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutProyectoNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput> | Detalle_historialCreateWithoutProyectoInput[] | Detalle_historialUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutProyectoInput | Detalle_historialCreateOrConnectWithoutProyectoInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutProyectoInput | Detalle_historialUpsertWithWhereUniqueWithoutProyectoInput[]
-    createMany?: Detalle_historialCreateManyProyectoInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutProyectoInput | Detalle_historialUpdateWithWhereUniqueWithoutProyectoInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutProyectoInput | Detalle_historialUpdateManyWithWhereWithoutProyectoInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-  }
-
   export type DocumentoUncheckedUpdateManyWithoutProyectoNestedInput = {
     create?: XOR<DocumentoCreateWithoutProyectoInput, DocumentoUncheckedCreateWithoutProyectoInput> | DocumentoCreateWithoutProyectoInput[] | DocumentoUncheckedCreateWithoutProyectoInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutProyectoInput | DocumentoCreateOrConnectWithoutProyectoInput[]
@@ -14808,20 +11831,6 @@ export namespace Prisma {
     update?: DocumentoUpdateWithWhereUniqueWithoutProyectoInput | DocumentoUpdateWithWhereUniqueWithoutProyectoInput[]
     updateMany?: DocumentoUpdateManyWithWhereWithoutProyectoInput | DocumentoUpdateManyWithWhereWithoutProyectoInput[]
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
-  }
-
-  export type PermisoUncheckedUpdateManyWithoutProyectoNestedInput = {
-    create?: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput> | PermisoCreateWithoutProyectoInput[] | PermisoUncheckedCreateWithoutProyectoInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutProyectoInput | PermisoCreateOrConnectWithoutProyectoInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutProyectoInput | PermisoUpsertWithWhereUniqueWithoutProyectoInput[]
-    createMany?: PermisoCreateManyProyectoInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutProyectoInput | PermisoUpdateWithWhereUniqueWithoutProyectoInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutProyectoInput | PermisoUpdateManyWithWhereWithoutProyectoInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
   }
 
   export type DocumentoCreateNestedManyWithoutEstadoInput = {
@@ -14908,32 +11917,11 @@ export namespace Prisma {
     deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
   }
 
-  export type Detalle_historialCreateNestedManyWithoutAreaInput = {
-    create?: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput> | Detalle_historialCreateWithoutAreaInput[] | Detalle_historialUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutAreaInput | Detalle_historialCreateOrConnectWithoutAreaInput[]
-    createMany?: Detalle_historialCreateManyAreaInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
   export type DocumentoCreateNestedManyWithoutAreaInput = {
     create?: XOR<DocumentoCreateWithoutAreaInput, DocumentoUncheckedCreateWithoutAreaInput> | DocumentoCreateWithoutAreaInput[] | DocumentoUncheckedCreateWithoutAreaInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutAreaInput | DocumentoCreateOrConnectWithoutAreaInput[]
     createMany?: DocumentoCreateManyAreaInputEnvelope
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
-  }
-
-  export type Historial_documentosCreateNestedManyWithoutAreaInput = {
-    create?: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput> | Historial_documentosCreateWithoutAreaInput[] | Historial_documentosUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutAreaInput | Historial_documentosCreateOrConnectWithoutAreaInput[]
-    createMany?: Historial_documentosCreateManyAreaInputEnvelope
-    connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-  }
-
-  export type PermisoCreateNestedManyWithoutAreaInput = {
-    create?: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput> | PermisoCreateWithoutAreaInput[] | PermisoUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutAreaInput | PermisoCreateOrConnectWithoutAreaInput[]
-    createMany?: PermisoCreateManyAreaInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
   }
 
   export type UsuarioCreateNestedManyWithoutAreaInput = {
@@ -14943,13 +11931,6 @@ export namespace Prisma {
     connect?: UsuarioWhereUniqueInput | UsuarioWhereUniqueInput[]
   }
 
-  export type Detalle_historialUncheckedCreateNestedManyWithoutAreaInput = {
-    create?: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput> | Detalle_historialCreateWithoutAreaInput[] | Detalle_historialUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutAreaInput | Detalle_historialCreateOrConnectWithoutAreaInput[]
-    createMany?: Detalle_historialCreateManyAreaInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
   export type DocumentoUncheckedCreateNestedManyWithoutAreaInput = {
     create?: XOR<DocumentoCreateWithoutAreaInput, DocumentoUncheckedCreateWithoutAreaInput> | DocumentoCreateWithoutAreaInput[] | DocumentoUncheckedCreateWithoutAreaInput[]
     connectOrCreate?: DocumentoCreateOrConnectWithoutAreaInput | DocumentoCreateOrConnectWithoutAreaInput[]
@@ -14957,39 +11938,11 @@ export namespace Prisma {
     connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
-  export type Historial_documentosUncheckedCreateNestedManyWithoutAreaInput = {
-    create?: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput> | Historial_documentosCreateWithoutAreaInput[] | Historial_documentosUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutAreaInput | Historial_documentosCreateOrConnectWithoutAreaInput[]
-    createMany?: Historial_documentosCreateManyAreaInputEnvelope
-    connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-  }
-
-  export type PermisoUncheckedCreateNestedManyWithoutAreaInput = {
-    create?: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput> | PermisoCreateWithoutAreaInput[] | PermisoUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutAreaInput | PermisoCreateOrConnectWithoutAreaInput[]
-    createMany?: PermisoCreateManyAreaInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-  }
-
   export type UsuarioUncheckedCreateNestedManyWithoutAreaInput = {
     create?: XOR<UsuarioCreateWithoutAreaInput, UsuarioUncheckedCreateWithoutAreaInput> | UsuarioCreateWithoutAreaInput[] | UsuarioUncheckedCreateWithoutAreaInput[]
     connectOrCreate?: UsuarioCreateOrConnectWithoutAreaInput | UsuarioCreateOrConnectWithoutAreaInput[]
     createMany?: UsuarioCreateManyAreaInputEnvelope
     connect?: UsuarioWhereUniqueInput | UsuarioWhereUniqueInput[]
-  }
-
-  export type Detalle_historialUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput> | Detalle_historialCreateWithoutAreaInput[] | Detalle_historialUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutAreaInput | Detalle_historialCreateOrConnectWithoutAreaInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutAreaInput | Detalle_historialUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: Detalle_historialCreateManyAreaInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutAreaInput | Detalle_historialUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutAreaInput | Detalle_historialUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
   }
 
   export type DocumentoUpdateManyWithoutAreaNestedInput = {
@@ -15006,34 +11959,6 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
-  export type Historial_documentosUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput> | Historial_documentosCreateWithoutAreaInput[] | Historial_documentosUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutAreaInput | Historial_documentosCreateOrConnectWithoutAreaInput[]
-    upsert?: Historial_documentosUpsertWithWhereUniqueWithoutAreaInput | Historial_documentosUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: Historial_documentosCreateManyAreaInputEnvelope
-    set?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    disconnect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    delete?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    update?: Historial_documentosUpdateWithWhereUniqueWithoutAreaInput | Historial_documentosUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: Historial_documentosUpdateManyWithWhereWithoutAreaInput | Historial_documentosUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
-  }
-
-  export type PermisoUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput> | PermisoCreateWithoutAreaInput[] | PermisoUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutAreaInput | PermisoCreateOrConnectWithoutAreaInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutAreaInput | PermisoUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: PermisoCreateManyAreaInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutAreaInput | PermisoUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutAreaInput | PermisoUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-  }
-
   export type UsuarioUpdateManyWithoutAreaNestedInput = {
     create?: XOR<UsuarioCreateWithoutAreaInput, UsuarioUncheckedCreateWithoutAreaInput> | UsuarioCreateWithoutAreaInput[] | UsuarioUncheckedCreateWithoutAreaInput[]
     connectOrCreate?: UsuarioCreateOrConnectWithoutAreaInput | UsuarioCreateOrConnectWithoutAreaInput[]
@@ -15046,20 +11971,6 @@ export namespace Prisma {
     update?: UsuarioUpdateWithWhereUniqueWithoutAreaInput | UsuarioUpdateWithWhereUniqueWithoutAreaInput[]
     updateMany?: UsuarioUpdateManyWithWhereWithoutAreaInput | UsuarioUpdateManyWithWhereWithoutAreaInput[]
     deleteMany?: UsuarioScalarWhereInput | UsuarioScalarWhereInput[]
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput> | Detalle_historialCreateWithoutAreaInput[] | Detalle_historialUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutAreaInput | Detalle_historialCreateOrConnectWithoutAreaInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutAreaInput | Detalle_historialUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: Detalle_historialCreateManyAreaInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutAreaInput | Detalle_historialUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutAreaInput | Detalle_historialUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
   }
 
   export type DocumentoUncheckedUpdateManyWithoutAreaNestedInput = {
@@ -15076,34 +11987,6 @@ export namespace Prisma {
     deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
-  export type Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput> | Historial_documentosCreateWithoutAreaInput[] | Historial_documentosUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutAreaInput | Historial_documentosCreateOrConnectWithoutAreaInput[]
-    upsert?: Historial_documentosUpsertWithWhereUniqueWithoutAreaInput | Historial_documentosUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: Historial_documentosCreateManyAreaInputEnvelope
-    set?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    disconnect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    delete?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
-    update?: Historial_documentosUpdateWithWhereUniqueWithoutAreaInput | Historial_documentosUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: Historial_documentosUpdateManyWithWhereWithoutAreaInput | Historial_documentosUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
-  }
-
-  export type PermisoUncheckedUpdateManyWithoutAreaNestedInput = {
-    create?: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput> | PermisoCreateWithoutAreaInput[] | PermisoUncheckedCreateWithoutAreaInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutAreaInput | PermisoCreateOrConnectWithoutAreaInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutAreaInput | PermisoUpsertWithWhereUniqueWithoutAreaInput[]
-    createMany?: PermisoCreateManyAreaInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutAreaInput | PermisoUpdateWithWhereUniqueWithoutAreaInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutAreaInput | PermisoUpdateManyWithWhereWithoutAreaInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-  }
-
   export type UsuarioUncheckedUpdateManyWithoutAreaNestedInput = {
     create?: XOR<UsuarioCreateWithoutAreaInput, UsuarioUncheckedCreateWithoutAreaInput> | UsuarioCreateWithoutAreaInput[] | UsuarioUncheckedCreateWithoutAreaInput[]
     connectOrCreate?: UsuarioCreateOrConnectWithoutAreaInput | UsuarioCreateOrConnectWithoutAreaInput[]
@@ -15118,11 +12001,15 @@ export namespace Prisma {
     deleteMany?: UsuarioScalarWhereInput | UsuarioScalarWhereInput[]
   }
 
-  export type Detalle_historialCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput> | Detalle_historialCreateWithoutUsuarioInput[] | Detalle_historialUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutUsuarioInput | Detalle_historialCreateOrConnectWithoutUsuarioInput[]
-    createMany?: Detalle_historialCreateManyUsuarioInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
+  export type UsuarioCreatepermisosInput = {
+    set: string[]
+  }
+
+  export type DocumentoCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput> | DocumentoCreateWithoutUsuarioInput[] | DocumentoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DocumentoCreateOrConnectWithoutUsuarioInput | DocumentoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: DocumentoCreateManyUsuarioInputEnvelope
+    connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
   export type Historial_documentosCreateNestedManyWithoutUsuarioInput = {
@@ -15132,24 +12019,17 @@ export namespace Prisma {
     connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
   }
 
-  export type PermisoCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput> | PermisoCreateWithoutUsuarioInput[] | PermisoUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutUsuarioInput | PermisoCreateOrConnectWithoutUsuarioInput[]
-    createMany?: PermisoCreateManyUsuarioInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-  }
-
   export type AreaCreateNestedOneWithoutUsuariosInput = {
     create?: XOR<AreaCreateWithoutUsuariosInput, AreaUncheckedCreateWithoutUsuariosInput>
     connectOrCreate?: AreaCreateOrConnectWithoutUsuariosInput
     connect?: AreaWhereUniqueInput
   }
 
-  export type Detalle_historialUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput> | Detalle_historialCreateWithoutUsuarioInput[] | Detalle_historialUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutUsuarioInput | Detalle_historialCreateOrConnectWithoutUsuarioInput[]
-    createMany?: Detalle_historialCreateManyUsuarioInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
+  export type DocumentoUncheckedCreateNestedManyWithoutUsuarioInput = {
+    create?: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput> | DocumentoCreateWithoutUsuarioInput[] | DocumentoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DocumentoCreateOrConnectWithoutUsuarioInput | DocumentoCreateOrConnectWithoutUsuarioInput[]
+    createMany?: DocumentoCreateManyUsuarioInputEnvelope
+    connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
   }
 
   export type Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput = {
@@ -15159,25 +12039,23 @@ export namespace Prisma {
     connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
   }
 
-  export type PermisoUncheckedCreateNestedManyWithoutUsuarioInput = {
-    create?: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput> | PermisoCreateWithoutUsuarioInput[] | PermisoUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutUsuarioInput | PermisoCreateOrConnectWithoutUsuarioInput[]
-    createMany?: PermisoCreateManyUsuarioInputEnvelope
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
+  export type UsuarioUpdatepermisosInput = {
+    set?: string[]
+    push?: string | string[]
   }
 
-  export type Detalle_historialUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput> | Detalle_historialCreateWithoutUsuarioInput[] | Detalle_historialUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutUsuarioInput | Detalle_historialCreateOrConnectWithoutUsuarioInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutUsuarioInput | Detalle_historialUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: Detalle_historialCreateManyUsuarioInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutUsuarioInput | Detalle_historialUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutUsuarioInput | Detalle_historialUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
+  export type DocumentoUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput> | DocumentoCreateWithoutUsuarioInput[] | DocumentoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DocumentoCreateOrConnectWithoutUsuarioInput | DocumentoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: DocumentoUpsertWithWhereUniqueWithoutUsuarioInput | DocumentoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: DocumentoCreateManyUsuarioInputEnvelope
+    set?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    disconnect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    delete?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    update?: DocumentoUpdateWithWhereUniqueWithoutUsuarioInput | DocumentoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: DocumentoUpdateManyWithWhereWithoutUsuarioInput | DocumentoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
   export type Historial_documentosUpdateManyWithoutUsuarioNestedInput = {
@@ -15194,50 +12072,26 @@ export namespace Prisma {
     deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
   }
 
-  export type PermisoUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput> | PermisoCreateWithoutUsuarioInput[] | PermisoUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutUsuarioInput | PermisoCreateOrConnectWithoutUsuarioInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutUsuarioInput | PermisoUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: PermisoCreateManyUsuarioInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutUsuarioInput | PermisoUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutUsuarioInput | PermisoUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-  }
-
-  export type AreaUpdateOneWithoutUsuariosNestedInput = {
+  export type AreaUpdateOneRequiredWithoutUsuariosNestedInput = {
     create?: XOR<AreaCreateWithoutUsuariosInput, AreaUncheckedCreateWithoutUsuariosInput>
     connectOrCreate?: AreaCreateOrConnectWithoutUsuariosInput
     upsert?: AreaUpsertWithoutUsuariosInput
-    disconnect?: AreaWhereInput | boolean
-    delete?: AreaWhereInput | boolean
     connect?: AreaWhereUniqueInput
     update?: XOR<XOR<AreaUpdateToOneWithWhereWithoutUsuariosInput, AreaUpdateWithoutUsuariosInput>, AreaUncheckedUpdateWithoutUsuariosInput>
   }
 
-  export type NullableIntFieldUpdateOperationsInput = {
-    set?: number | null
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput> | Detalle_historialCreateWithoutUsuarioInput[] | Detalle_historialUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutUsuarioInput | Detalle_historialCreateOrConnectWithoutUsuarioInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutUsuarioInput | Detalle_historialUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: Detalle_historialCreateManyUsuarioInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutUsuarioInput | Detalle_historialUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutUsuarioInput | Detalle_historialUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
+  export type DocumentoUncheckedUpdateManyWithoutUsuarioNestedInput = {
+    create?: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput> | DocumentoCreateWithoutUsuarioInput[] | DocumentoUncheckedCreateWithoutUsuarioInput[]
+    connectOrCreate?: DocumentoCreateOrConnectWithoutUsuarioInput | DocumentoCreateOrConnectWithoutUsuarioInput[]
+    upsert?: DocumentoUpsertWithWhereUniqueWithoutUsuarioInput | DocumentoUpsertWithWhereUniqueWithoutUsuarioInput[]
+    createMany?: DocumentoCreateManyUsuarioInputEnvelope
+    set?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    disconnect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    delete?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    connect?: DocumentoWhereUniqueInput | DocumentoWhereUniqueInput[]
+    update?: DocumentoUpdateWithWhereUniqueWithoutUsuarioInput | DocumentoUpdateWithWhereUniqueWithoutUsuarioInput[]
+    updateMany?: DocumentoUpdateManyWithWhereWithoutUsuarioInput | DocumentoUpdateManyWithWhereWithoutUsuarioInput[]
+    deleteMany?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
   }
 
   export type Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput = {
@@ -15254,18 +12108,10 @@ export namespace Prisma {
     deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
   }
 
-  export type PermisoUncheckedUpdateManyWithoutUsuarioNestedInput = {
-    create?: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput> | PermisoCreateWithoutUsuarioInput[] | PermisoUncheckedCreateWithoutUsuarioInput[]
-    connectOrCreate?: PermisoCreateOrConnectWithoutUsuarioInput | PermisoCreateOrConnectWithoutUsuarioInput[]
-    upsert?: PermisoUpsertWithWhereUniqueWithoutUsuarioInput | PermisoUpsertWithWhereUniqueWithoutUsuarioInput[]
-    createMany?: PermisoCreateManyUsuarioInputEnvelope
-    set?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    disconnect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    delete?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    connect?: PermisoWhereUniqueInput | PermisoWhereUniqueInput[]
-    update?: PermisoUpdateWithWhereUniqueWithoutUsuarioInput | PermisoUpdateWithWhereUniqueWithoutUsuarioInput[]
-    updateMany?: PermisoUpdateManyWithWhereWithoutUsuarioInput | PermisoUpdateManyWithWhereWithoutUsuarioInput[]
-    deleteMany?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
+  export type UsuarioCreateNestedOneWithoutDocumentosInput = {
+    create?: XOR<UsuarioCreateWithoutDocumentosInput, UsuarioUncheckedCreateWithoutDocumentosInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutDocumentosInput
+    connect?: UsuarioWhereUniqueInput
   }
 
   export type AreaCreateNestedOneWithoutDocumentosInput = {
@@ -15306,46 +12152,42 @@ export namespace Prisma {
     connect?: Historial_documentosWhereUniqueInput | Historial_documentosWhereUniqueInput[]
   }
 
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
+  export type UsuarioUpdateOneRequiredWithoutDocumentosNestedInput = {
+    create?: XOR<UsuarioCreateWithoutDocumentosInput, UsuarioUncheckedCreateWithoutDocumentosInput>
+    connectOrCreate?: UsuarioCreateOrConnectWithoutDocumentosInput
+    upsert?: UsuarioUpsertWithoutDocumentosInput
+    connect?: UsuarioWhereUniqueInput
+    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutDocumentosInput, UsuarioUpdateWithoutDocumentosInput>, UsuarioUncheckedUpdateWithoutDocumentosInput>
   }
 
-  export type AreaUpdateOneWithoutDocumentosNestedInput = {
+  export type AreaUpdateOneRequiredWithoutDocumentosNestedInput = {
     create?: XOR<AreaCreateWithoutDocumentosInput, AreaUncheckedCreateWithoutDocumentosInput>
     connectOrCreate?: AreaCreateOrConnectWithoutDocumentosInput
     upsert?: AreaUpsertWithoutDocumentosInput
-    disconnect?: AreaWhereInput | boolean
-    delete?: AreaWhereInput | boolean
     connect?: AreaWhereUniqueInput
     update?: XOR<XOR<AreaUpdateToOneWithWhereWithoutDocumentosInput, AreaUpdateWithoutDocumentosInput>, AreaUncheckedUpdateWithoutDocumentosInput>
   }
 
-  export type ClienteUpdateOneWithoutDocumentosNestedInput = {
+  export type ClienteUpdateOneRequiredWithoutDocumentosNestedInput = {
     create?: XOR<ClienteCreateWithoutDocumentosInput, ClienteUncheckedCreateWithoutDocumentosInput>
     connectOrCreate?: ClienteCreateOrConnectWithoutDocumentosInput
     upsert?: ClienteUpsertWithoutDocumentosInput
-    disconnect?: ClienteWhereInput | boolean
-    delete?: ClienteWhereInput | boolean
     connect?: ClienteWhereUniqueInput
     update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutDocumentosInput, ClienteUpdateWithoutDocumentosInput>, ClienteUncheckedUpdateWithoutDocumentosInput>
   }
 
-  export type Estado_documentoUpdateOneWithoutDocumentosNestedInput = {
+  export type Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput = {
     create?: XOR<Estado_documentoCreateWithoutDocumentosInput, Estado_documentoUncheckedCreateWithoutDocumentosInput>
     connectOrCreate?: Estado_documentoCreateOrConnectWithoutDocumentosInput
     upsert?: Estado_documentoUpsertWithoutDocumentosInput
-    disconnect?: Estado_documentoWhereInput | boolean
-    delete?: Estado_documentoWhereInput | boolean
     connect?: Estado_documentoWhereUniqueInput
     update?: XOR<XOR<Estado_documentoUpdateToOneWithWhereWithoutDocumentosInput, Estado_documentoUpdateWithoutDocumentosInput>, Estado_documentoUncheckedUpdateWithoutDocumentosInput>
   }
 
-  export type ProyectoUpdateOneWithoutDocumentosNestedInput = {
+  export type ProyectoUpdateOneRequiredWithoutDocumentosNestedInput = {
     create?: XOR<ProyectoCreateWithoutDocumentosInput, ProyectoUncheckedCreateWithoutDocumentosInput>
     connectOrCreate?: ProyectoCreateOrConnectWithoutDocumentosInput
     upsert?: ProyectoUpsertWithoutDocumentosInput
-    disconnect?: ProyectoWhereInput | boolean
-    delete?: ProyectoWhereInput | boolean
     connect?: ProyectoWhereUniqueInput
     update?: XOR<XOR<ProyectoUpdateToOneWithWhereWithoutDocumentosInput, ProyectoUpdateWithoutDocumentosInput>, ProyectoUncheckedUpdateWithoutDocumentosInput>
   }
@@ -15378,19 +12220,6 @@ export namespace Prisma {
     deleteMany?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
   }
 
-  export type Detalle_historialCreateNestedManyWithoutHistorialInput = {
-    create?: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput> | Detalle_historialCreateWithoutHistorialInput[] | Detalle_historialUncheckedCreateWithoutHistorialInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutHistorialInput | Detalle_historialCreateOrConnectWithoutHistorialInput[]
-    createMany?: Detalle_historialCreateManyHistorialInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
-  export type AreaCreateNestedOneWithoutHistorialesInput = {
-    create?: XOR<AreaCreateWithoutHistorialesInput, AreaUncheckedCreateWithoutHistorialesInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutHistorialesInput
-    connect?: AreaWhereUniqueInput
-  }
-
   export type DocumentoCreateNestedOneWithoutHistorialesInput = {
     create?: XOR<DocumentoCreateWithoutHistorialesInput, DocumentoUncheckedCreateWithoutHistorialesInput>
     connectOrCreate?: DocumentoCreateOrConnectWithoutHistorialesInput
@@ -15409,207 +12238,28 @@ export namespace Prisma {
     connect?: UsuarioWhereUniqueInput
   }
 
-  export type Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput = {
-    create?: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput> | Detalle_historialCreateWithoutHistorialInput[] | Detalle_historialUncheckedCreateWithoutHistorialInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutHistorialInput | Detalle_historialCreateOrConnectWithoutHistorialInput[]
-    createMany?: Detalle_historialCreateManyHistorialInputEnvelope
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-  }
-
-  export type Detalle_historialUpdateManyWithoutHistorialNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput> | Detalle_historialCreateWithoutHistorialInput[] | Detalle_historialUncheckedCreateWithoutHistorialInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutHistorialInput | Detalle_historialCreateOrConnectWithoutHistorialInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutHistorialInput | Detalle_historialUpsertWithWhereUniqueWithoutHistorialInput[]
-    createMany?: Detalle_historialCreateManyHistorialInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutHistorialInput | Detalle_historialUpdateWithWhereUniqueWithoutHistorialInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutHistorialInput | Detalle_historialUpdateManyWithWhereWithoutHistorialInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-  }
-
-  export type AreaUpdateOneWithoutHistorialesNestedInput = {
-    create?: XOR<AreaCreateWithoutHistorialesInput, AreaUncheckedCreateWithoutHistorialesInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutHistorialesInput
-    upsert?: AreaUpsertWithoutHistorialesInput
-    disconnect?: AreaWhereInput | boolean
-    delete?: AreaWhereInput | boolean
-    connect?: AreaWhereUniqueInput
-    update?: XOR<XOR<AreaUpdateToOneWithWhereWithoutHistorialesInput, AreaUpdateWithoutHistorialesInput>, AreaUncheckedUpdateWithoutHistorialesInput>
-  }
-
-  export type DocumentoUpdateOneWithoutHistorialesNestedInput = {
+  export type DocumentoUpdateOneRequiredWithoutHistorialesNestedInput = {
     create?: XOR<DocumentoCreateWithoutHistorialesInput, DocumentoUncheckedCreateWithoutHistorialesInput>
     connectOrCreate?: DocumentoCreateOrConnectWithoutHistorialesInput
     upsert?: DocumentoUpsertWithoutHistorialesInput
-    disconnect?: DocumentoWhereInput | boolean
-    delete?: DocumentoWhereInput | boolean
     connect?: DocumentoWhereUniqueInput
     update?: XOR<XOR<DocumentoUpdateToOneWithWhereWithoutHistorialesInput, DocumentoUpdateWithoutHistorialesInput>, DocumentoUncheckedUpdateWithoutHistorialesInput>
   }
 
-  export type Estado_documentoUpdateOneWithoutHistorialesNestedInput = {
+  export type Estado_documentoUpdateOneRequiredWithoutHistorialesNestedInput = {
     create?: XOR<Estado_documentoCreateWithoutHistorialesInput, Estado_documentoUncheckedCreateWithoutHistorialesInput>
     connectOrCreate?: Estado_documentoCreateOrConnectWithoutHistorialesInput
     upsert?: Estado_documentoUpsertWithoutHistorialesInput
-    disconnect?: Estado_documentoWhereInput | boolean
-    delete?: Estado_documentoWhereInput | boolean
     connect?: Estado_documentoWhereUniqueInput
     update?: XOR<XOR<Estado_documentoUpdateToOneWithWhereWithoutHistorialesInput, Estado_documentoUpdateWithoutHistorialesInput>, Estado_documentoUncheckedUpdateWithoutHistorialesInput>
   }
 
-  export type UsuarioUpdateOneWithoutHistorialesNestedInput = {
+  export type UsuarioUpdateOneRequiredWithoutHistorialesNestedInput = {
     create?: XOR<UsuarioCreateWithoutHistorialesInput, UsuarioUncheckedCreateWithoutHistorialesInput>
     connectOrCreate?: UsuarioCreateOrConnectWithoutHistorialesInput
     upsert?: UsuarioUpsertWithoutHistorialesInput
-    disconnect?: UsuarioWhereInput | boolean
-    delete?: UsuarioWhereInput | boolean
     connect?: UsuarioWhereUniqueInput
     update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutHistorialesInput, UsuarioUpdateWithoutHistorialesInput>, UsuarioUncheckedUpdateWithoutHistorialesInput>
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput = {
-    create?: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput> | Detalle_historialCreateWithoutHistorialInput[] | Detalle_historialUncheckedCreateWithoutHistorialInput[]
-    connectOrCreate?: Detalle_historialCreateOrConnectWithoutHistorialInput | Detalle_historialCreateOrConnectWithoutHistorialInput[]
-    upsert?: Detalle_historialUpsertWithWhereUniqueWithoutHistorialInput | Detalle_historialUpsertWithWhereUniqueWithoutHistorialInput[]
-    createMany?: Detalle_historialCreateManyHistorialInputEnvelope
-    set?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    disconnect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    delete?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    connect?: Detalle_historialWhereUniqueInput | Detalle_historialWhereUniqueInput[]
-    update?: Detalle_historialUpdateWithWhereUniqueWithoutHistorialInput | Detalle_historialUpdateWithWhereUniqueWithoutHistorialInput[]
-    updateMany?: Detalle_historialUpdateManyWithWhereWithoutHistorialInput | Detalle_historialUpdateManyWithWhereWithoutHistorialInput[]
-    deleteMany?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-  }
-
-  export type AreaCreateNestedOneWithoutDetallesInput = {
-    create?: XOR<AreaCreateWithoutDetallesInput, AreaUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutDetallesInput
-    connect?: AreaWhereUniqueInput
-  }
-
-  export type ClienteCreateNestedOneWithoutDetallesInput = {
-    create?: XOR<ClienteCreateWithoutDetallesInput, ClienteUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: ClienteCreateOrConnectWithoutDetallesInput
-    connect?: ClienteWhereUniqueInput
-  }
-
-  export type Historial_documentosCreateNestedOneWithoutDetallesInput = {
-    create?: XOR<Historial_documentosCreateWithoutDetallesInput, Historial_documentosUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutDetallesInput
-    connect?: Historial_documentosWhereUniqueInput
-  }
-
-  export type ProyectoCreateNestedOneWithoutDetallesInput = {
-    create?: XOR<ProyectoCreateWithoutDetallesInput, ProyectoUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: ProyectoCreateOrConnectWithoutDetallesInput
-    connect?: ProyectoWhereUniqueInput
-  }
-
-  export type UsuarioCreateNestedOneWithoutDetallesInput = {
-    create?: XOR<UsuarioCreateWithoutDetallesInput, UsuarioUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutDetallesInput
-    connect?: UsuarioWhereUniqueInput
-  }
-
-  export type AreaUpdateOneWithoutDetallesNestedInput = {
-    create?: XOR<AreaCreateWithoutDetallesInput, AreaUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutDetallesInput
-    upsert?: AreaUpsertWithoutDetallesInput
-    disconnect?: AreaWhereInput | boolean
-    delete?: AreaWhereInput | boolean
-    connect?: AreaWhereUniqueInput
-    update?: XOR<XOR<AreaUpdateToOneWithWhereWithoutDetallesInput, AreaUpdateWithoutDetallesInput>, AreaUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type ClienteUpdateOneWithoutDetallesNestedInput = {
-    create?: XOR<ClienteCreateWithoutDetallesInput, ClienteUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: ClienteCreateOrConnectWithoutDetallesInput
-    upsert?: ClienteUpsertWithoutDetallesInput
-    disconnect?: ClienteWhereInput | boolean
-    delete?: ClienteWhereInput | boolean
-    connect?: ClienteWhereUniqueInput
-    update?: XOR<XOR<ClienteUpdateToOneWithWhereWithoutDetallesInput, ClienteUpdateWithoutDetallesInput>, ClienteUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type Historial_documentosUpdateOneWithoutDetallesNestedInput = {
-    create?: XOR<Historial_documentosCreateWithoutDetallesInput, Historial_documentosUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: Historial_documentosCreateOrConnectWithoutDetallesInput
-    upsert?: Historial_documentosUpsertWithoutDetallesInput
-    disconnect?: Historial_documentosWhereInput | boolean
-    delete?: Historial_documentosWhereInput | boolean
-    connect?: Historial_documentosWhereUniqueInput
-    update?: XOR<XOR<Historial_documentosUpdateToOneWithWhereWithoutDetallesInput, Historial_documentosUpdateWithoutDetallesInput>, Historial_documentosUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type ProyectoUpdateOneWithoutDetallesNestedInput = {
-    create?: XOR<ProyectoCreateWithoutDetallesInput, ProyectoUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: ProyectoCreateOrConnectWithoutDetallesInput
-    upsert?: ProyectoUpsertWithoutDetallesInput
-    disconnect?: ProyectoWhereInput | boolean
-    delete?: ProyectoWhereInput | boolean
-    connect?: ProyectoWhereUniqueInput
-    update?: XOR<XOR<ProyectoUpdateToOneWithWhereWithoutDetallesInput, ProyectoUpdateWithoutDetallesInput>, ProyectoUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type UsuarioUpdateOneWithoutDetallesNestedInput = {
-    create?: XOR<UsuarioCreateWithoutDetallesInput, UsuarioUncheckedCreateWithoutDetallesInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutDetallesInput
-    upsert?: UsuarioUpsertWithoutDetallesInput
-    disconnect?: UsuarioWhereInput | boolean
-    delete?: UsuarioWhereInput | boolean
-    connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutDetallesInput, UsuarioUpdateWithoutDetallesInput>, UsuarioUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type AreaCreateNestedOneWithoutPermisosInput = {
-    create?: XOR<AreaCreateWithoutPermisosInput, AreaUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutPermisosInput
-    connect?: AreaWhereUniqueInput
-  }
-
-  export type ProyectoCreateNestedOneWithoutPermisosInput = {
-    create?: XOR<ProyectoCreateWithoutPermisosInput, ProyectoUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: ProyectoCreateOrConnectWithoutPermisosInput
-    connect?: ProyectoWhereUniqueInput
-  }
-
-  export type UsuarioCreateNestedOneWithoutPermisosInput = {
-    create?: XOR<UsuarioCreateWithoutPermisosInput, UsuarioUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutPermisosInput
-    connect?: UsuarioWhereUniqueInput
-  }
-
-  export type AreaUpdateOneWithoutPermisosNestedInput = {
-    create?: XOR<AreaCreateWithoutPermisosInput, AreaUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: AreaCreateOrConnectWithoutPermisosInput
-    upsert?: AreaUpsertWithoutPermisosInput
-    disconnect?: AreaWhereInput | boolean
-    delete?: AreaWhereInput | boolean
-    connect?: AreaWhereUniqueInput
-    update?: XOR<XOR<AreaUpdateToOneWithWhereWithoutPermisosInput, AreaUpdateWithoutPermisosInput>, AreaUncheckedUpdateWithoutPermisosInput>
-  }
-
-  export type ProyectoUpdateOneWithoutPermisosNestedInput = {
-    create?: XOR<ProyectoCreateWithoutPermisosInput, ProyectoUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: ProyectoCreateOrConnectWithoutPermisosInput
-    upsert?: ProyectoUpsertWithoutPermisosInput
-    disconnect?: ProyectoWhereInput | boolean
-    delete?: ProyectoWhereInput | boolean
-    connect?: ProyectoWhereUniqueInput
-    update?: XOR<XOR<ProyectoUpdateToOneWithWhereWithoutPermisosInput, ProyectoUpdateWithoutPermisosInput>, ProyectoUncheckedUpdateWithoutPermisosInput>
-  }
-
-  export type UsuarioUpdateOneWithoutPermisosNestedInput = {
-    create?: XOR<UsuarioCreateWithoutPermisosInput, UsuarioUncheckedCreateWithoutPermisosInput>
-    connectOrCreate?: UsuarioCreateOrConnectWithoutPermisosInput
-    upsert?: UsuarioUpsertWithoutPermisosInput
-    disconnect?: UsuarioWhereInput | boolean
-    delete?: UsuarioWhereInput | boolean
-    connect?: UsuarioWhereUniqueInput
-    update?: XOR<XOR<UsuarioUpdateToOneWithWhereWithoutPermisosInput, UsuarioUpdateWithoutPermisosInput>, UsuarioUncheckedUpdateWithoutPermisosInput>
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -15635,6 +12285,28 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+  }
+
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -15681,84 +12353,18 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _avg?: NestedFloatNullableFilter<$PrismaModel>
-    _sum?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedIntNullableFilter<$PrismaModel>
-    _max?: NestedIntNullableFilter<$PrismaModel>
-  }
-
-  export type NestedFloatNullableFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel> | null
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -15775,55 +12381,47 @@ export namespace Prisma {
     _max?: NestedDateTimeNullableFilter<$PrismaModel>
   }
 
-  export type Detalle_historialCreateWithoutClienteInput = {
-    area?: AreaCreateNestedOneWithoutDetallesInput
-    historial?: Historial_documentosCreateNestedOneWithoutDetallesInput
-    proyecto?: ProyectoCreateNestedOneWithoutDetallesInput
-    usuario?: UsuarioCreateNestedOneWithoutDetallesInput
-  }
-
-  export type Detalle_historialUncheckedCreateWithoutClienteInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-  }
-
-  export type Detalle_historialCreateOrConnectWithoutClienteInput = {
-    where: Detalle_historialWhereUniqueInput
-    create: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput>
-  }
-
-  export type Detalle_historialCreateManyClienteInputEnvelope = {
-    data: Detalle_historialCreateManyClienteInput | Detalle_historialCreateManyClienteInput[]
-    skipDuplicates?: boolean
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
   export type DocumentoCreateWithoutClienteInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    area?: AreaCreateNestedOneWithoutDocumentosInput
-    estado?: Estado_documentoCreateNestedOneWithoutDocumentosInput
-    proyecto?: ProyectoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
     historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUncheckedCreateWithoutClienteInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
@@ -15835,34 +12433,6 @@ export namespace Prisma {
   export type DocumentoCreateManyClienteInputEnvelope = {
     data: DocumentoCreateManyClienteInput | DocumentoCreateManyClienteInput[]
     skipDuplicates?: boolean
-  }
-
-  export type Detalle_historialUpsertWithWhereUniqueWithoutClienteInput = {
-    where: Detalle_historialWhereUniqueInput
-    update: XOR<Detalle_historialUpdateWithoutClienteInput, Detalle_historialUncheckedUpdateWithoutClienteInput>
-    create: XOR<Detalle_historialCreateWithoutClienteInput, Detalle_historialUncheckedCreateWithoutClienteInput>
-  }
-
-  export type Detalle_historialUpdateWithWhereUniqueWithoutClienteInput = {
-    where: Detalle_historialWhereUniqueInput
-    data: XOR<Detalle_historialUpdateWithoutClienteInput, Detalle_historialUncheckedUpdateWithoutClienteInput>
-  }
-
-  export type Detalle_historialUpdateManyWithWhereWithoutClienteInput = {
-    where: Detalle_historialScalarWhereInput
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyWithoutClienteInput>
-  }
-
-  export type Detalle_historialScalarWhereInput = {
-    AND?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-    OR?: Detalle_historialScalarWhereInput[]
-    NOT?: Detalle_historialScalarWhereInput | Detalle_historialScalarWhereInput[]
-    ID_detalle?: IntFilter<"Detalle_historial"> | number
-    ID_usuario?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_historial?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_proyecto?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_area?: IntNullableFilter<"Detalle_historial"> | number | null
-    ID_cliente?: IntNullableFilter<"Detalle_historial"> | number | null
   }
 
   export type DocumentoUpsertWithWhereUniqueWithoutClienteInput = {
@@ -15887,66 +12457,50 @@ export namespace Prisma {
     NOT?: DocumentoScalarWhereInput | DocumentoScalarWhereInput[]
     ID_documento?: IntFilter<"Documento"> | number
     nombre_documento?: StringFilter<"Documento"> | string
-    tipo_documento?: StringNullableFilter<"Documento"> | string | null
-    fecha_ingreso?: DateTimeNullableFilter<"Documento"> | Date | string | null
-    archivo?: StringNullableFilter<"Documento"> | string | null
-    descripcion?: StringNullableFilter<"Documento"> | string | null
-    folio?: StringNullableFilter<"Documento"> | string | null
-    ID_cliente?: IntNullableFilter<"Documento"> | number | null
-    ID_proyecto?: IntNullableFilter<"Documento"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Documento"> | number | null
-    ID_area?: IntNullableFilter<"Documento"> | number | null
-  }
-
-  export type Detalle_historialCreateWithoutProyectoInput = {
-    area?: AreaCreateNestedOneWithoutDetallesInput
-    cliente?: ClienteCreateNestedOneWithoutDetallesInput
-    historial?: Historial_documentosCreateNestedOneWithoutDetallesInput
-    usuario?: UsuarioCreateNestedOneWithoutDetallesInput
-  }
-
-  export type Detalle_historialUncheckedCreateWithoutProyectoInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialCreateOrConnectWithoutProyectoInput = {
-    where: Detalle_historialWhereUniqueInput
-    create: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput>
-  }
-
-  export type Detalle_historialCreateManyProyectoInputEnvelope = {
-    data: Detalle_historialCreateManyProyectoInput | Detalle_historialCreateManyProyectoInput[]
-    skipDuplicates?: boolean
+    tipo_documento?: StringFilter<"Documento"> | string
+    archivo?: StringFilter<"Documento"> | string
+    descripcion?: StringFilter<"Documento"> | string
+    folio?: StringFilter<"Documento"> | string
+    ID_cliente?: IntFilter<"Documento"> | number
+    ID_proyecto?: IntFilter<"Documento"> | number
+    ID_estado_documento?: IntFilter<"Documento"> | number
+    ID_area?: IntFilter<"Documento"> | number
+    ID_usuario?: IntFilter<"Documento"> | number
+    created_at?: DateTimeFilter<"Documento"> | Date | string
+    updated_at?: DateTimeFilter<"Documento"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Documento"> | Date | string | null
   }
 
   export type DocumentoCreateWithoutProyectoInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    area?: AreaCreateNestedOneWithoutDocumentosInput
-    cliente?: ClienteCreateNestedOneWithoutDocumentosInput
-    estado?: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
     historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUncheckedCreateWithoutProyectoInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
@@ -15958,45 +12512,6 @@ export namespace Prisma {
   export type DocumentoCreateManyProyectoInputEnvelope = {
     data: DocumentoCreateManyProyectoInput | DocumentoCreateManyProyectoInput[]
     skipDuplicates?: boolean
-  }
-
-  export type PermisoCreateWithoutProyectoInput = {
-    tipo_permiso?: string | null
-    area?: AreaCreateNestedOneWithoutPermisosInput
-    usuario?: UsuarioCreateNestedOneWithoutPermisosInput
-  }
-
-  export type PermisoUncheckedCreateWithoutProyectoInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-  }
-
-  export type PermisoCreateOrConnectWithoutProyectoInput = {
-    where: PermisoWhereUniqueInput
-    create: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput>
-  }
-
-  export type PermisoCreateManyProyectoInputEnvelope = {
-    data: PermisoCreateManyProyectoInput | PermisoCreateManyProyectoInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type Detalle_historialUpsertWithWhereUniqueWithoutProyectoInput = {
-    where: Detalle_historialWhereUniqueInput
-    update: XOR<Detalle_historialUpdateWithoutProyectoInput, Detalle_historialUncheckedUpdateWithoutProyectoInput>
-    create: XOR<Detalle_historialCreateWithoutProyectoInput, Detalle_historialUncheckedCreateWithoutProyectoInput>
-  }
-
-  export type Detalle_historialUpdateWithWhereUniqueWithoutProyectoInput = {
-    where: Detalle_historialWhereUniqueInput
-    data: XOR<Detalle_historialUpdateWithoutProyectoInput, Detalle_historialUncheckedUpdateWithoutProyectoInput>
-  }
-
-  export type Detalle_historialUpdateManyWithWhereWithoutProyectoInput = {
-    where: Detalle_historialScalarWhereInput
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyWithoutProyectoInput>
   }
 
   export type DocumentoUpsertWithWhereUniqueWithoutProyectoInput = {
@@ -16015,57 +12530,36 @@ export namespace Prisma {
     data: XOR<DocumentoUpdateManyMutationInput, DocumentoUncheckedUpdateManyWithoutProyectoInput>
   }
 
-  export type PermisoUpsertWithWhereUniqueWithoutProyectoInput = {
-    where: PermisoWhereUniqueInput
-    update: XOR<PermisoUpdateWithoutProyectoInput, PermisoUncheckedUpdateWithoutProyectoInput>
-    create: XOR<PermisoCreateWithoutProyectoInput, PermisoUncheckedCreateWithoutProyectoInput>
-  }
-
-  export type PermisoUpdateWithWhereUniqueWithoutProyectoInput = {
-    where: PermisoWhereUniqueInput
-    data: XOR<PermisoUpdateWithoutProyectoInput, PermisoUncheckedUpdateWithoutProyectoInput>
-  }
-
-  export type PermisoUpdateManyWithWhereWithoutProyectoInput = {
-    where: PermisoScalarWhereInput
-    data: XOR<PermisoUpdateManyMutationInput, PermisoUncheckedUpdateManyWithoutProyectoInput>
-  }
-
-  export type PermisoScalarWhereInput = {
-    AND?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-    OR?: PermisoScalarWhereInput[]
-    NOT?: PermisoScalarWhereInput | PermisoScalarWhereInput[]
-    ID_permiso?: IntFilter<"Permiso"> | number
-    tipo_permiso?: StringNullableFilter<"Permiso"> | string | null
-    ID_usuario?: IntNullableFilter<"Permiso"> | number | null
-    ID_area?: IntNullableFilter<"Permiso"> | number | null
-    ID_proyecto?: IntNullableFilter<"Permiso"> | number | null
-  }
-
   export type DocumentoCreateWithoutEstadoInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    area?: AreaCreateNestedOneWithoutDocumentosInput
-    cliente?: ClienteCreateNestedOneWithoutDocumentosInput
-    proyecto?: ProyectoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
     historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUncheckedCreateWithoutEstadoInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
@@ -16080,22 +12574,26 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateWithoutEstadoInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutHistorialInput
-    area?: AreaCreateNestedOneWithoutHistorialesInput
-    documento?: DocumentoCreateNestedOneWithoutHistorialesInput
-    usuario?: UsuarioCreateNestedOneWithoutHistorialesInput
+    fecha: Date | string
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documento: DocumentoCreateNestedOneWithoutHistorialesInput
+    usuario: UsuarioCreateNestedOneWithoutHistorialesInput
   }
 
   export type Historial_documentosUncheckedCreateWithoutEstadoInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput
+    fecha: Date | string
+    ID_documento: number
+    ID_usuario: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosCreateOrConnectWithoutEstadoInput = {
@@ -16145,63 +12643,47 @@ export namespace Prisma {
     OR?: Historial_documentosScalarWhereInput[]
     NOT?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
     ID_historial?: IntFilter<"Historial_documentos"> | number
-    fecha?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    hora?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
-    ID_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_usuario?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_area?: IntNullableFilter<"Historial_documentos"> | number | null
-    ID_estado_documento?: IntNullableFilter<"Historial_documentos"> | number | null
-  }
-
-  export type Detalle_historialCreateWithoutAreaInput = {
-    cliente?: ClienteCreateNestedOneWithoutDetallesInput
-    historial?: Historial_documentosCreateNestedOneWithoutDetallesInput
-    proyecto?: ProyectoCreateNestedOneWithoutDetallesInput
-    usuario?: UsuarioCreateNestedOneWithoutDetallesInput
-  }
-
-  export type Detalle_historialUncheckedCreateWithoutAreaInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialCreateOrConnectWithoutAreaInput = {
-    where: Detalle_historialWhereUniqueInput
-    create: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput>
-  }
-
-  export type Detalle_historialCreateManyAreaInputEnvelope = {
-    data: Detalle_historialCreateManyAreaInput | Detalle_historialCreateManyAreaInput[]
-    skipDuplicates?: boolean
+    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
+    ID_documento?: IntFilter<"Historial_documentos"> | number
+    ID_usuario?: IntFilter<"Historial_documentos"> | number
+    ID_estado_documento?: IntFilter<"Historial_documentos"> | number
+    documento_historial?: StringFilter<"Historial_documentos"> | string
+    descripcion?: StringFilter<"Historial_documentos"> | string
+    created_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    updated_at?: DateTimeFilter<"Historial_documentos"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Historial_documentos"> | Date | string | null
   }
 
   export type DocumentoCreateWithoutAreaInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    cliente?: ClienteCreateNestedOneWithoutDocumentosInput
-    estado?: Estado_documentoCreateNestedOneWithoutDocumentosInput
-    proyecto?: ProyectoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
     historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
   export type DocumentoUncheckedCreateWithoutAreaInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
@@ -16215,79 +12697,37 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type Historial_documentosCreateWithoutAreaInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutHistorialInput
-    documento?: DocumentoCreateNestedOneWithoutHistorialesInput
-    estado?: Estado_documentoCreateNestedOneWithoutHistorialesInput
-    usuario?: UsuarioCreateNestedOneWithoutHistorialesInput
-  }
-
-  export type Historial_documentosUncheckedCreateWithoutAreaInput = {
-    ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_estado_documento?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput
-  }
-
-  export type Historial_documentosCreateOrConnectWithoutAreaInput = {
-    where: Historial_documentosWhereUniqueInput
-    create: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput>
-  }
-
-  export type Historial_documentosCreateManyAreaInputEnvelope = {
-    data: Historial_documentosCreateManyAreaInput | Historial_documentosCreateManyAreaInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type PermisoCreateWithoutAreaInput = {
-    tipo_permiso?: string | null
-    proyecto?: ProyectoCreateNestedOneWithoutPermisosInput
-    usuario?: UsuarioCreateNestedOneWithoutPermisosInput
-  }
-
-  export type PermisoUncheckedCreateWithoutAreaInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_proyecto?: number | null
-  }
-
-  export type PermisoCreateOrConnectWithoutAreaInput = {
-    where: PermisoWhereUniqueInput
-    create: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput>
-  }
-
-  export type PermisoCreateManyAreaInputEnvelope = {
-    data: PermisoCreateManyAreaInput | PermisoCreateManyAreaInput[]
-    skipDuplicates?: boolean
-  }
-
   export type UsuarioCreateWithoutAreaInput = {
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    detalles?: Detalle_historialCreateNestedManyWithoutUsuarioInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoCreateNestedManyWithoutUsuarioInput
     historiales?: Historial_documentosCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioUncheckedCreateWithoutAreaInput = {
     ID_usuario?: number
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutUsuarioInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutUsuarioInput
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutAreaInput = {
@@ -16298,22 +12738,6 @@ export namespace Prisma {
   export type UsuarioCreateManyAreaInputEnvelope = {
     data: UsuarioCreateManyAreaInput | UsuarioCreateManyAreaInput[]
     skipDuplicates?: boolean
-  }
-
-  export type Detalle_historialUpsertWithWhereUniqueWithoutAreaInput = {
-    where: Detalle_historialWhereUniqueInput
-    update: XOR<Detalle_historialUpdateWithoutAreaInput, Detalle_historialUncheckedUpdateWithoutAreaInput>
-    create: XOR<Detalle_historialCreateWithoutAreaInput, Detalle_historialUncheckedCreateWithoutAreaInput>
-  }
-
-  export type Detalle_historialUpdateWithWhereUniqueWithoutAreaInput = {
-    where: Detalle_historialWhereUniqueInput
-    data: XOR<Detalle_historialUpdateWithoutAreaInput, Detalle_historialUncheckedUpdateWithoutAreaInput>
-  }
-
-  export type Detalle_historialUpdateManyWithWhereWithoutAreaInput = {
-    where: Detalle_historialScalarWhereInput
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyWithoutAreaInput>
   }
 
   export type DocumentoUpsertWithWhereUniqueWithoutAreaInput = {
@@ -16330,38 +12754,6 @@ export namespace Prisma {
   export type DocumentoUpdateManyWithWhereWithoutAreaInput = {
     where: DocumentoScalarWhereInput
     data: XOR<DocumentoUpdateManyMutationInput, DocumentoUncheckedUpdateManyWithoutAreaInput>
-  }
-
-  export type Historial_documentosUpsertWithWhereUniqueWithoutAreaInput = {
-    where: Historial_documentosWhereUniqueInput
-    update: XOR<Historial_documentosUpdateWithoutAreaInput, Historial_documentosUncheckedUpdateWithoutAreaInput>
-    create: XOR<Historial_documentosCreateWithoutAreaInput, Historial_documentosUncheckedCreateWithoutAreaInput>
-  }
-
-  export type Historial_documentosUpdateWithWhereUniqueWithoutAreaInput = {
-    where: Historial_documentosWhereUniqueInput
-    data: XOR<Historial_documentosUpdateWithoutAreaInput, Historial_documentosUncheckedUpdateWithoutAreaInput>
-  }
-
-  export type Historial_documentosUpdateManyWithWhereWithoutAreaInput = {
-    where: Historial_documentosScalarWhereInput
-    data: XOR<Historial_documentosUpdateManyMutationInput, Historial_documentosUncheckedUpdateManyWithoutAreaInput>
-  }
-
-  export type PermisoUpsertWithWhereUniqueWithoutAreaInput = {
-    where: PermisoWhereUniqueInput
-    update: XOR<PermisoUpdateWithoutAreaInput, PermisoUncheckedUpdateWithoutAreaInput>
-    create: XOR<PermisoCreateWithoutAreaInput, PermisoUncheckedCreateWithoutAreaInput>
-  }
-
-  export type PermisoUpdateWithWhereUniqueWithoutAreaInput = {
-    where: PermisoWhereUniqueInput
-    data: XOR<PermisoUpdateWithoutAreaInput, PermisoUncheckedUpdateWithoutAreaInput>
-  }
-
-  export type PermisoUpdateManyWithWhereWithoutAreaInput = {
-    where: PermisoScalarWhereInput
-    data: XOR<PermisoUpdateManyMutationInput, PermisoUncheckedUpdateManyWithoutAreaInput>
   }
 
   export type UsuarioUpsertWithWhereUniqueWithoutAreaInput = {
@@ -16386,55 +12778,83 @@ export namespace Prisma {
     NOT?: UsuarioScalarWhereInput | UsuarioScalarWhereInput[]
     ID_usuario?: IntFilter<"Usuario"> | number
     nombre?: StringFilter<"Usuario"> | string
-    apellido?: StringNullableFilter<"Usuario"> | string | null
+    apellido?: StringFilter<"Usuario"> | string
     correo?: StringFilter<"Usuario"> | string
     contrasena?: StringFilter<"Usuario"> | string
     rol?: StringFilter<"Usuario"> | string
-    ID_area?: IntNullableFilter<"Usuario"> | number | null
+    permisos?: StringNullableListFilter<"Usuario">
+    estado?: StringFilter<"Usuario"> | string
+    fecha_ingreso?: DateTimeFilter<"Usuario"> | Date | string
+    ID_area?: IntFilter<"Usuario"> | number
+    created_at?: DateTimeFilter<"Usuario"> | Date | string
+    updated_at?: DateTimeFilter<"Usuario"> | Date | string
+    deleted_at?: DateTimeNullableFilter<"Usuario"> | Date | string | null
   }
 
-  export type Detalle_historialCreateWithoutUsuarioInput = {
-    area?: AreaCreateNestedOneWithoutDetallesInput
-    cliente?: ClienteCreateNestedOneWithoutDetallesInput
-    historial?: Historial_documentosCreateNestedOneWithoutDetallesInput
-    proyecto?: ProyectoCreateNestedOneWithoutDetallesInput
+  export type DocumentoCreateWithoutUsuarioInput = {
+    nombre_documento: string
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
+    historiales?: Historial_documentosCreateNestedManyWithoutDocumentoInput
   }
 
-  export type Detalle_historialUncheckedCreateWithoutUsuarioInput = {
-    ID_detalle?: number
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
+  export type DocumentoUncheckedCreateWithoutUsuarioInput = {
+    ID_documento?: number
+    nombre_documento: string
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutDocumentoInput
   }
 
-  export type Detalle_historialCreateOrConnectWithoutUsuarioInput = {
-    where: Detalle_historialWhereUniqueInput
-    create: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput>
+  export type DocumentoCreateOrConnectWithoutUsuarioInput = {
+    where: DocumentoWhereUniqueInput
+    create: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type Detalle_historialCreateManyUsuarioInputEnvelope = {
-    data: Detalle_historialCreateManyUsuarioInput | Detalle_historialCreateManyUsuarioInput[]
+  export type DocumentoCreateManyUsuarioInputEnvelope = {
+    data: DocumentoCreateManyUsuarioInput | DocumentoCreateManyUsuarioInput[]
     skipDuplicates?: boolean
   }
 
   export type Historial_documentosCreateWithoutUsuarioInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutHistorialInput
-    area?: AreaCreateNestedOneWithoutHistorialesInput
-    documento?: DocumentoCreateNestedOneWithoutHistorialesInput
-    estado?: Estado_documentoCreateNestedOneWithoutHistorialesInput
+    fecha: Date | string
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documento: DocumentoCreateNestedOneWithoutHistorialesInput
+    estado: Estado_documentoCreateNestedOneWithoutHistorialesInput
   }
 
   export type Historial_documentosUncheckedCreateWithoutUsuarioInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput
+    fecha: Date | string
+    ID_documento: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosCreateOrConnectWithoutUsuarioInput = {
@@ -16447,44 +12867,21 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type PermisoCreateWithoutUsuarioInput = {
-    tipo_permiso?: string | null
-    area?: AreaCreateNestedOneWithoutPermisosInput
-    proyecto?: ProyectoCreateNestedOneWithoutPermisosInput
-  }
-
-  export type PermisoUncheckedCreateWithoutUsuarioInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_area?: number | null
-    ID_proyecto?: number | null
-  }
-
-  export type PermisoCreateOrConnectWithoutUsuarioInput = {
-    where: PermisoWhereUniqueInput
-    create: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput>
-  }
-
-  export type PermisoCreateManyUsuarioInputEnvelope = {
-    data: PermisoCreateManyUsuarioInput | PermisoCreateManyUsuarioInput[]
-    skipDuplicates?: boolean
-  }
-
   export type AreaCreateWithoutUsuariosInput = {
     nombre: string
-    detalles?: Detalle_historialCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosCreateNestedManyWithoutAreaInput
-    permisos?: PermisoCreateNestedManyWithoutAreaInput
   }
 
   export type AreaUncheckedCreateWithoutUsuariosInput = {
     ID_area?: number
     nombre: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutAreaInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutAreaInput
   }
 
   export type AreaCreateOrConnectWithoutUsuariosInput = {
@@ -16492,20 +12889,20 @@ export namespace Prisma {
     create: XOR<AreaCreateWithoutUsuariosInput, AreaUncheckedCreateWithoutUsuariosInput>
   }
 
-  export type Detalle_historialUpsertWithWhereUniqueWithoutUsuarioInput = {
-    where: Detalle_historialWhereUniqueInput
-    update: XOR<Detalle_historialUpdateWithoutUsuarioInput, Detalle_historialUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<Detalle_historialCreateWithoutUsuarioInput, Detalle_historialUncheckedCreateWithoutUsuarioInput>
+  export type DocumentoUpsertWithWhereUniqueWithoutUsuarioInput = {
+    where: DocumentoWhereUniqueInput
+    update: XOR<DocumentoUpdateWithoutUsuarioInput, DocumentoUncheckedUpdateWithoutUsuarioInput>
+    create: XOR<DocumentoCreateWithoutUsuarioInput, DocumentoUncheckedCreateWithoutUsuarioInput>
   }
 
-  export type Detalle_historialUpdateWithWhereUniqueWithoutUsuarioInput = {
-    where: Detalle_historialWhereUniqueInput
-    data: XOR<Detalle_historialUpdateWithoutUsuarioInput, Detalle_historialUncheckedUpdateWithoutUsuarioInput>
+  export type DocumentoUpdateWithWhereUniqueWithoutUsuarioInput = {
+    where: DocumentoWhereUniqueInput
+    data: XOR<DocumentoUpdateWithoutUsuarioInput, DocumentoUncheckedUpdateWithoutUsuarioInput>
   }
 
-  export type Detalle_historialUpdateManyWithWhereWithoutUsuarioInput = {
-    where: Detalle_historialScalarWhereInput
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyWithoutUsuarioInput>
+  export type DocumentoUpdateManyWithWhereWithoutUsuarioInput = {
+    where: DocumentoScalarWhereInput
+    data: XOR<DocumentoUpdateManyMutationInput, DocumentoUncheckedUpdateManyWithoutUsuarioInput>
   }
 
   export type Historial_documentosUpsertWithWhereUniqueWithoutUsuarioInput = {
@@ -16524,22 +12921,6 @@ export namespace Prisma {
     data: XOR<Historial_documentosUpdateManyMutationInput, Historial_documentosUncheckedUpdateManyWithoutUsuarioInput>
   }
 
-  export type PermisoUpsertWithWhereUniqueWithoutUsuarioInput = {
-    where: PermisoWhereUniqueInput
-    update: XOR<PermisoUpdateWithoutUsuarioInput, PermisoUncheckedUpdateWithoutUsuarioInput>
-    create: XOR<PermisoCreateWithoutUsuarioInput, PermisoUncheckedCreateWithoutUsuarioInput>
-  }
-
-  export type PermisoUpdateWithWhereUniqueWithoutUsuarioInput = {
-    where: PermisoWhereUniqueInput
-    data: XOR<PermisoUpdateWithoutUsuarioInput, PermisoUncheckedUpdateWithoutUsuarioInput>
-  }
-
-  export type PermisoUpdateManyWithWhereWithoutUsuarioInput = {
-    where: PermisoScalarWhereInput
-    data: XOR<PermisoUpdateManyMutationInput, PermisoUncheckedUpdateManyWithoutUsuarioInput>
-  }
-
   export type AreaUpsertWithoutUsuariosInput = {
     update: XOR<AreaUpdateWithoutUsuariosInput, AreaUncheckedUpdateWithoutUsuariosInput>
     create: XOR<AreaCreateWithoutUsuariosInput, AreaUncheckedCreateWithoutUsuariosInput>
@@ -16553,35 +12934,73 @@ export namespace Prisma {
 
   export type AreaUpdateWithoutUsuariosInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUpdateManyWithoutAreaNestedInput
   }
 
   export type AreaUncheckedUpdateWithoutUsuariosInput = {
     ID_area?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutAreaNestedInput
+  }
+
+  export type UsuarioCreateWithoutDocumentosInput = {
+    nombre: string
+    apellido: string
+    correo: string
+    contrasena: string
+    rol: string
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    historiales?: Historial_documentosCreateNestedManyWithoutUsuarioInput
+    area: AreaCreateNestedOneWithoutUsuariosInput
+  }
+
+  export type UsuarioUncheckedCreateWithoutDocumentosInput = {
+    ID_usuario?: number
+    nombre: string
+    apellido: string
+    correo: string
+    contrasena: string
+    rol: string
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput
+  }
+
+  export type UsuarioCreateOrConnectWithoutDocumentosInput = {
+    where: UsuarioWhereUniqueInput
+    create: XOR<UsuarioCreateWithoutDocumentosInput, UsuarioUncheckedCreateWithoutDocumentosInput>
   }
 
   export type AreaCreateWithoutDocumentosInput = {
     nombre: string
-    detalles?: Detalle_historialCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosCreateNestedManyWithoutAreaInput
-    permisos?: PermisoCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     usuarios?: UsuarioCreateNestedManyWithoutAreaInput
   }
 
   export type AreaUncheckedCreateWithoutDocumentosInput = {
     ID_area?: number
     nombre: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutAreaInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutAreaInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     usuarios?: UsuarioUncheckedCreateNestedManyWithoutAreaInput
   }
 
@@ -16595,7 +13014,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
-    detalles?: Detalle_historialCreateNestedManyWithoutClienteInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ClienteUncheckedCreateWithoutDocumentosInput = {
@@ -16604,7 +13025,9 @@ export namespace Prisma {
     apellido: string
     nombre_departamento: string
     nombre_provincia: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutClienteInput
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ClienteCreateOrConnectWithoutDocumentosInput = {
@@ -16614,12 +13037,18 @@ export namespace Prisma {
 
   export type Estado_documentoCreateWithoutDocumentosInput = {
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosCreateNestedManyWithoutEstadoInput
   }
 
   export type Estado_documentoUncheckedCreateWithoutDocumentosInput = {
     ID_estado?: number
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     historiales?: Historial_documentosUncheckedCreateNestedManyWithoutEstadoInput
   }
 
@@ -16630,17 +13059,19 @@ export namespace Prisma {
 
   export type ProyectoCreateWithoutDocumentosInput = {
     nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoCreateNestedManyWithoutProyectoInput
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ProyectoUncheckedCreateWithoutDocumentosInput = {
     ID_proyecto?: number
     nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutProyectoInput
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type ProyectoCreateOrConnectWithoutDocumentosInput = {
@@ -16649,22 +13080,26 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateWithoutDocumentoInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutHistorialInput
-    area?: AreaCreateNestedOneWithoutHistorialesInput
-    estado?: Estado_documentoCreateNestedOneWithoutHistorialesInput
-    usuario?: UsuarioCreateNestedOneWithoutHistorialesInput
+    fecha: Date | string
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    estado: Estado_documentoCreateNestedOneWithoutHistorialesInput
+    usuario: UsuarioCreateNestedOneWithoutHistorialesInput
   }
 
   export type Historial_documentosUncheckedCreateWithoutDocumentoInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutHistorialInput
+    fecha: Date | string
+    ID_usuario: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosCreateOrConnectWithoutDocumentoInput = {
@@ -16675,6 +13110,50 @@ export namespace Prisma {
   export type Historial_documentosCreateManyDocumentoInputEnvelope = {
     data: Historial_documentosCreateManyDocumentoInput | Historial_documentosCreateManyDocumentoInput[]
     skipDuplicates?: boolean
+  }
+
+  export type UsuarioUpsertWithoutDocumentosInput = {
+    update: XOR<UsuarioUpdateWithoutDocumentosInput, UsuarioUncheckedUpdateWithoutDocumentosInput>
+    create: XOR<UsuarioCreateWithoutDocumentosInput, UsuarioUncheckedCreateWithoutDocumentosInput>
+    where?: UsuarioWhereInput
+  }
+
+  export type UsuarioUpdateToOneWithWhereWithoutDocumentosInput = {
+    where?: UsuarioWhereInput
+    data: XOR<UsuarioUpdateWithoutDocumentosInput, UsuarioUncheckedUpdateWithoutDocumentosInput>
+  }
+
+  export type UsuarioUpdateWithoutDocumentosInput = {
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    correo?: StringFieldUpdateOperationsInput | string
+    contrasena?: StringFieldUpdateOperationsInput | string
+    rol?: StringFieldUpdateOperationsInput | string
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    historiales?: Historial_documentosUpdateManyWithoutUsuarioNestedInput
+    area?: AreaUpdateOneRequiredWithoutUsuariosNestedInput
+  }
+
+  export type UsuarioUncheckedUpdateWithoutDocumentosInput = {
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    nombre?: StringFieldUpdateOperationsInput | string
+    apellido?: StringFieldUpdateOperationsInput | string
+    correo?: StringFieldUpdateOperationsInput | string
+    contrasena?: StringFieldUpdateOperationsInput | string
+    rol?: StringFieldUpdateOperationsInput | string
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_area?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    historiales?: Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type AreaUpsertWithoutDocumentosInput = {
@@ -16690,18 +13169,18 @@ export namespace Prisma {
 
   export type AreaUpdateWithoutDocumentosInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     usuarios?: UsuarioUpdateManyWithoutAreaNestedInput
   }
 
   export type AreaUncheckedUpdateWithoutDocumentosInput = {
     ID_area?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutAreaNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     usuarios?: UsuarioUncheckedUpdateManyWithoutAreaNestedInput
   }
 
@@ -16721,7 +13200,9 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutClienteNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ClienteUncheckedUpdateWithoutDocumentosInput = {
@@ -16730,7 +13211,9 @@ export namespace Prisma {
     apellido?: StringFieldUpdateOperationsInput | string
     nombre_departamento?: StringFieldUpdateOperationsInput | string
     nombre_provincia?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutClienteNestedInput
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Estado_documentoUpsertWithoutDocumentosInput = {
@@ -16746,12 +13229,18 @@ export namespace Prisma {
 
   export type Estado_documentoUpdateWithoutDocumentosInput = {
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUpdateManyWithoutEstadoNestedInput
   }
 
   export type Estado_documentoUncheckedUpdateWithoutDocumentosInput = {
     ID_estado?: IntFieldUpdateOperationsInput | number
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutEstadoNestedInput
   }
 
@@ -16768,17 +13257,19 @@ export namespace Prisma {
 
   export type ProyectoUpdateWithoutDocumentosInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUpdateManyWithoutProyectoNestedInput
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProyectoUncheckedUpdateWithoutDocumentosInput = {
     ID_proyecto?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutProyectoNestedInput
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUpsertWithWhereUniqueWithoutDocumentoInput = {
@@ -16797,78 +13288,37 @@ export namespace Prisma {
     data: XOR<Historial_documentosUpdateManyMutationInput, Historial_documentosUncheckedUpdateManyWithoutDocumentoInput>
   }
 
-  export type Detalle_historialCreateWithoutHistorialInput = {
-    area?: AreaCreateNestedOneWithoutDetallesInput
-    cliente?: ClienteCreateNestedOneWithoutDetallesInput
-    proyecto?: ProyectoCreateNestedOneWithoutDetallesInput
-    usuario?: UsuarioCreateNestedOneWithoutDetallesInput
-  }
-
-  export type Detalle_historialUncheckedCreateWithoutHistorialInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialCreateOrConnectWithoutHistorialInput = {
-    where: Detalle_historialWhereUniqueInput
-    create: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput>
-  }
-
-  export type Detalle_historialCreateManyHistorialInputEnvelope = {
-    data: Detalle_historialCreateManyHistorialInput | Detalle_historialCreateManyHistorialInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type AreaCreateWithoutHistorialesInput = {
-    nombre: string
-    detalles?: Detalle_historialCreateNestedManyWithoutAreaInput
-    documentos?: DocumentoCreateNestedManyWithoutAreaInput
-    permisos?: PermisoCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaUncheckedCreateWithoutHistorialesInput = {
-    ID_area?: number
-    nombre: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutAreaInput
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutAreaInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioUncheckedCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaCreateOrConnectWithoutHistorialesInput = {
-    where: AreaWhereUniqueInput
-    create: XOR<AreaCreateWithoutHistorialesInput, AreaUncheckedCreateWithoutHistorialesInput>
-  }
-
   export type DocumentoCreateWithoutHistorialesInput = {
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    area?: AreaCreateNestedOneWithoutDocumentosInput
-    cliente?: ClienteCreateNestedOneWithoutDocumentosInput
-    estado?: Estado_documentoCreateNestedOneWithoutDocumentosInput
-    proyecto?: ProyectoCreateNestedOneWithoutDocumentosInput
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    usuario: UsuarioCreateNestedOneWithoutDocumentosInput
+    area: AreaCreateNestedOneWithoutDocumentosInput
+    cliente: ClienteCreateNestedOneWithoutDocumentosInput
+    estado: Estado_documentoCreateNestedOneWithoutDocumentosInput
+    proyecto: ProyectoCreateNestedOneWithoutDocumentosInput
   }
 
   export type DocumentoUncheckedCreateWithoutHistorialesInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoCreateOrConnectWithoutHistorialesInput = {
@@ -16878,12 +13328,18 @@ export namespace Prisma {
 
   export type Estado_documentoCreateWithoutHistorialesInput = {
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoCreateNestedManyWithoutEstadoInput
   }
 
   export type Estado_documentoUncheckedCreateWithoutHistorialesInput = {
     ID_estado?: number
     estado: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
     documentos?: DocumentoUncheckedCreateNestedManyWithoutEstadoInput
   }
 
@@ -16894,74 +13350,40 @@ export namespace Prisma {
 
   export type UsuarioCreateWithoutHistorialesInput = {
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    detalles?: Detalle_historialCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoCreateNestedManyWithoutUsuarioInput
-    area?: AreaCreateNestedOneWithoutUsuariosInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoCreateNestedManyWithoutUsuarioInput
+    area: AreaCreateNestedOneWithoutUsuariosInput
   }
 
   export type UsuarioUncheckedCreateWithoutHistorialesInput = {
     ID_usuario?: number
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-    ID_area?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutUsuarioInput
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
+    documentos?: DocumentoUncheckedCreateNestedManyWithoutUsuarioInput
   }
 
   export type UsuarioCreateOrConnectWithoutHistorialesInput = {
     where: UsuarioWhereUniqueInput
     create: XOR<UsuarioCreateWithoutHistorialesInput, UsuarioUncheckedCreateWithoutHistorialesInput>
-  }
-
-  export type Detalle_historialUpsertWithWhereUniqueWithoutHistorialInput = {
-    where: Detalle_historialWhereUniqueInput
-    update: XOR<Detalle_historialUpdateWithoutHistorialInput, Detalle_historialUncheckedUpdateWithoutHistorialInput>
-    create: XOR<Detalle_historialCreateWithoutHistorialInput, Detalle_historialUncheckedCreateWithoutHistorialInput>
-  }
-
-  export type Detalle_historialUpdateWithWhereUniqueWithoutHistorialInput = {
-    where: Detalle_historialWhereUniqueInput
-    data: XOR<Detalle_historialUpdateWithoutHistorialInput, Detalle_historialUncheckedUpdateWithoutHistorialInput>
-  }
-
-  export type Detalle_historialUpdateManyWithWhereWithoutHistorialInput = {
-    where: Detalle_historialScalarWhereInput
-    data: XOR<Detalle_historialUpdateManyMutationInput, Detalle_historialUncheckedUpdateManyWithoutHistorialInput>
-  }
-
-  export type AreaUpsertWithoutHistorialesInput = {
-    update: XOR<AreaUpdateWithoutHistorialesInput, AreaUncheckedUpdateWithoutHistorialesInput>
-    create: XOR<AreaCreateWithoutHistorialesInput, AreaUncheckedCreateWithoutHistorialesInput>
-    where?: AreaWhereInput
-  }
-
-  export type AreaUpdateToOneWithWhereWithoutHistorialesInput = {
-    where?: AreaWhereInput
-    data: XOR<AreaUpdateWithoutHistorialesInput, AreaUncheckedUpdateWithoutHistorialesInput>
-  }
-
-  export type AreaUpdateWithoutHistorialesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutAreaNestedInput
-    documentos?: DocumentoUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUpdateManyWithoutAreaNestedInput
-  }
-
-  export type AreaUncheckedUpdateWithoutHistorialesInput = {
-    ID_area?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput
-    documentos?: DocumentoUncheckedUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUncheckedUpdateManyWithoutAreaNestedInput
   }
 
   export type DocumentoUpsertWithoutHistorialesInput = {
@@ -16977,29 +13399,35 @@ export namespace Prisma {
 
   export type DocumentoUpdateWithoutHistorialesInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutDocumentosNestedInput
-    cliente?: ClienteUpdateOneWithoutDocumentosNestedInput
-    estado?: Estado_documentoUpdateOneWithoutDocumentosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
   }
 
   export type DocumentoUncheckedUpdateWithoutHistorialesInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Estado_documentoUpsertWithoutHistorialesInput = {
@@ -17015,12 +13443,18 @@ export namespace Prisma {
 
   export type Estado_documentoUpdateWithoutHistorialesInput = {
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUpdateManyWithoutEstadoNestedInput
   }
 
   export type Estado_documentoUncheckedUpdateWithoutHistorialesInput = {
     ID_estado?: IntFieldUpdateOperationsInput | number
     estado?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     documentos?: DocumentoUncheckedUpdateManyWithoutEstadoNestedInput
   }
 
@@ -17037,1082 +13471,564 @@ export namespace Prisma {
 
   export type UsuarioUpdateWithoutHistorialesInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUpdateManyWithoutUsuarioNestedInput
-    area?: AreaUpdateOneWithoutUsuariosNestedInput
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUpdateManyWithoutUsuarioNestedInput
+    area?: AreaUpdateOneRequiredWithoutUsuariosNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutHistorialesInput = {
     ID_usuario?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: StringFieldUpdateOperationsInput | string
-    contrasena?: StringFieldUpdateOperationsInput | string
-    rol?: StringFieldUpdateOperationsInput | string
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutUsuarioNestedInput
-  }
-
-  export type AreaCreateWithoutDetallesInput = {
-    nombre: string
-    documentos?: DocumentoCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosCreateNestedManyWithoutAreaInput
-    permisos?: PermisoCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaUncheckedCreateWithoutDetallesInput = {
-    ID_area?: number
-    nombre: string
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutAreaInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioUncheckedCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaCreateOrConnectWithoutDetallesInput = {
-    where: AreaWhereUniqueInput
-    create: XOR<AreaCreateWithoutDetallesInput, AreaUncheckedCreateWithoutDetallesInput>
-  }
-
-  export type ClienteCreateWithoutDetallesInput = {
-    nombre: string
-    apellido: string
-    nombre_departamento: string
-    nombre_provincia: string
-    documentos?: DocumentoCreateNestedManyWithoutClienteInput
-  }
-
-  export type ClienteUncheckedCreateWithoutDetallesInput = {
-    ID_cliente?: number
-    nombre: string
-    apellido: string
-    nombre_departamento: string
-    nombre_provincia: string
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutClienteInput
-  }
-
-  export type ClienteCreateOrConnectWithoutDetallesInput = {
-    where: ClienteWhereUniqueInput
-    create: XOR<ClienteCreateWithoutDetallesInput, ClienteUncheckedCreateWithoutDetallesInput>
-  }
-
-  export type Historial_documentosCreateWithoutDetallesInput = {
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    area?: AreaCreateNestedOneWithoutHistorialesInput
-    documento?: DocumentoCreateNestedOneWithoutHistorialesInput
-    estado?: Estado_documentoCreateNestedOneWithoutHistorialesInput
-    usuario?: UsuarioCreateNestedOneWithoutHistorialesInput
-  }
-
-  export type Historial_documentosUncheckedCreateWithoutDetallesInput = {
-    ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
-  }
-
-  export type Historial_documentosCreateOrConnectWithoutDetallesInput = {
-    where: Historial_documentosWhereUniqueInput
-    create: XOR<Historial_documentosCreateWithoutDetallesInput, Historial_documentosUncheckedCreateWithoutDetallesInput>
-  }
-
-  export type ProyectoCreateWithoutDetallesInput = {
-    nombre: string
-    descripcion?: string | null
-    documentos?: DocumentoCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoCreateNestedManyWithoutProyectoInput
-  }
-
-  export type ProyectoUncheckedCreateWithoutDetallesInput = {
-    ID_proyecto?: number
-    nombre: string
-    descripcion?: string | null
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutProyectoInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutProyectoInput
-  }
-
-  export type ProyectoCreateOrConnectWithoutDetallesInput = {
-    where: ProyectoWhereUniqueInput
-    create: XOR<ProyectoCreateWithoutDetallesInput, ProyectoUncheckedCreateWithoutDetallesInput>
-  }
-
-  export type UsuarioCreateWithoutDetallesInput = {
-    nombre: string
-    apellido?: string | null
-    correo: string
-    contrasena: string
-    rol: string
-    historiales?: Historial_documentosCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoCreateNestedManyWithoutUsuarioInput
-    area?: AreaCreateNestedOneWithoutUsuariosInput
-  }
-
-  export type UsuarioUncheckedCreateWithoutDetallesInput = {
-    ID_usuario?: number
-    nombre: string
-    apellido?: string | null
-    correo: string
-    contrasena: string
-    rol: string
-    ID_area?: number | null
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput
-    permisos?: PermisoUncheckedCreateNestedManyWithoutUsuarioInput
-  }
-
-  export type UsuarioCreateOrConnectWithoutDetallesInput = {
-    where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutDetallesInput, UsuarioUncheckedCreateWithoutDetallesInput>
-  }
-
-  export type AreaUpsertWithoutDetallesInput = {
-    update: XOR<AreaUpdateWithoutDetallesInput, AreaUncheckedUpdateWithoutDetallesInput>
-    create: XOR<AreaCreateWithoutDetallesInput, AreaUncheckedCreateWithoutDetallesInput>
-    where?: AreaWhereInput
-  }
-
-  export type AreaUpdateToOneWithWhereWithoutDetallesInput = {
-    where?: AreaWhereInput
-    data: XOR<AreaUpdateWithoutDetallesInput, AreaUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type AreaUpdateWithoutDetallesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    documentos?: DocumentoUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUpdateManyWithoutAreaNestedInput
-  }
-
-  export type AreaUncheckedUpdateWithoutDetallesInput = {
-    ID_area?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    documentos?: DocumentoUncheckedUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUncheckedUpdateManyWithoutAreaNestedInput
-  }
-
-  export type ClienteUpsertWithoutDetallesInput = {
-    update: XOR<ClienteUpdateWithoutDetallesInput, ClienteUncheckedUpdateWithoutDetallesInput>
-    create: XOR<ClienteCreateWithoutDetallesInput, ClienteUncheckedCreateWithoutDetallesInput>
-    where?: ClienteWhereInput
-  }
-
-  export type ClienteUpdateToOneWithWhereWithoutDetallesInput = {
-    where?: ClienteWhereInput
-    data: XOR<ClienteUpdateWithoutDetallesInput, ClienteUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type ClienteUpdateWithoutDetallesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
     apellido?: StringFieldUpdateOperationsInput | string
-    nombre_departamento?: StringFieldUpdateOperationsInput | string
-    nombre_provincia?: StringFieldUpdateOperationsInput | string
-    documentos?: DocumentoUpdateManyWithoutClienteNestedInput
-  }
-
-  export type ClienteUncheckedUpdateWithoutDetallesInput = {
-    ID_cliente?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: StringFieldUpdateOperationsInput | string
-    nombre_departamento?: StringFieldUpdateOperationsInput | string
-    nombre_provincia?: StringFieldUpdateOperationsInput | string
-    documentos?: DocumentoUncheckedUpdateManyWithoutClienteNestedInput
-  }
-
-  export type Historial_documentosUpsertWithoutDetallesInput = {
-    update: XOR<Historial_documentosUpdateWithoutDetallesInput, Historial_documentosUncheckedUpdateWithoutDetallesInput>
-    create: XOR<Historial_documentosCreateWithoutDetallesInput, Historial_documentosUncheckedCreateWithoutDetallesInput>
-    where?: Historial_documentosWhereInput
-  }
-
-  export type Historial_documentosUpdateToOneWithWhereWithoutDetallesInput = {
-    where?: Historial_documentosWhereInput
-    data: XOR<Historial_documentosUpdateWithoutDetallesInput, Historial_documentosUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type Historial_documentosUpdateWithoutDetallesInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    area?: AreaUpdateOneWithoutHistorialesNestedInput
-    documento?: DocumentoUpdateOneWithoutHistorialesNestedInput
-    estado?: Estado_documentoUpdateOneWithoutHistorialesNestedInput
-    usuario?: UsuarioUpdateOneWithoutHistorialesNestedInput
-  }
-
-  export type Historial_documentosUncheckedUpdateWithoutDetallesInput = {
-    ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type ProyectoUpsertWithoutDetallesInput = {
-    update: XOR<ProyectoUpdateWithoutDetallesInput, ProyectoUncheckedUpdateWithoutDetallesInput>
-    create: XOR<ProyectoCreateWithoutDetallesInput, ProyectoUncheckedCreateWithoutDetallesInput>
-    where?: ProyectoWhereInput
-  }
-
-  export type ProyectoUpdateToOneWithWhereWithoutDetallesInput = {
-    where?: ProyectoWhereInput
-    data: XOR<ProyectoUpdateWithoutDetallesInput, ProyectoUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type ProyectoUpdateWithoutDetallesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    documentos?: DocumentoUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUpdateManyWithoutProyectoNestedInput
-  }
-
-  export type ProyectoUncheckedUpdateWithoutDetallesInput = {
-    ID_proyecto?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    documentos?: DocumentoUncheckedUpdateManyWithoutProyectoNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutProyectoNestedInput
-  }
-
-  export type UsuarioUpsertWithoutDetallesInput = {
-    update: XOR<UsuarioUpdateWithoutDetallesInput, UsuarioUncheckedUpdateWithoutDetallesInput>
-    create: XOR<UsuarioCreateWithoutDetallesInput, UsuarioUncheckedCreateWithoutDetallesInput>
-    where?: UsuarioWhereInput
-  }
-
-  export type UsuarioUpdateToOneWithWhereWithoutDetallesInput = {
-    where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutDetallesInput, UsuarioUncheckedUpdateWithoutDetallesInput>
-  }
-
-  export type UsuarioUpdateWithoutDetallesInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    historiales?: Historial_documentosUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUpdateManyWithoutUsuarioNestedInput
-    area?: AreaUpdateOneWithoutUsuariosNestedInput
-  }
-
-  export type UsuarioUncheckedUpdateWithoutDetallesInput = {
-    ID_usuario?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: StringFieldUpdateOperationsInput | string
-    contrasena?: StringFieldUpdateOperationsInput | string
-    rol?: StringFieldUpdateOperationsInput | string
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutUsuarioNestedInput
-  }
-
-  export type AreaCreateWithoutPermisosInput = {
-    nombre: string
-    detalles?: Detalle_historialCreateNestedManyWithoutAreaInput
-    documentos?: DocumentoCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaUncheckedCreateWithoutPermisosInput = {
-    ID_area?: number
-    nombre: string
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutAreaInput
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutAreaInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutAreaInput
-    usuarios?: UsuarioUncheckedCreateNestedManyWithoutAreaInput
-  }
-
-  export type AreaCreateOrConnectWithoutPermisosInput = {
-    where: AreaWhereUniqueInput
-    create: XOR<AreaCreateWithoutPermisosInput, AreaUncheckedCreateWithoutPermisosInput>
-  }
-
-  export type ProyectoCreateWithoutPermisosInput = {
-    nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialCreateNestedManyWithoutProyectoInput
-    documentos?: DocumentoCreateNestedManyWithoutProyectoInput
-  }
-
-  export type ProyectoUncheckedCreateWithoutPermisosInput = {
-    ID_proyecto?: number
-    nombre: string
-    descripcion?: string | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutProyectoInput
-    documentos?: DocumentoUncheckedCreateNestedManyWithoutProyectoInput
-  }
-
-  export type ProyectoCreateOrConnectWithoutPermisosInput = {
-    where: ProyectoWhereUniqueInput
-    create: XOR<ProyectoCreateWithoutPermisosInput, ProyectoUncheckedCreateWithoutPermisosInput>
-  }
-
-  export type UsuarioCreateWithoutPermisosInput = {
-    nombre: string
-    apellido?: string | null
-    correo: string
-    contrasena: string
-    rol: string
-    detalles?: Detalle_historialCreateNestedManyWithoutUsuarioInput
-    historiales?: Historial_documentosCreateNestedManyWithoutUsuarioInput
-    area?: AreaCreateNestedOneWithoutUsuariosInput
-  }
-
-  export type UsuarioUncheckedCreateWithoutPermisosInput = {
-    ID_usuario?: number
-    nombre: string
-    apellido?: string | null
-    correo: string
-    contrasena: string
-    rol: string
-    ID_area?: number | null
-    detalles?: Detalle_historialUncheckedCreateNestedManyWithoutUsuarioInput
-    historiales?: Historial_documentosUncheckedCreateNestedManyWithoutUsuarioInput
-  }
-
-  export type UsuarioCreateOrConnectWithoutPermisosInput = {
-    where: UsuarioWhereUniqueInput
-    create: XOR<UsuarioCreateWithoutPermisosInput, UsuarioUncheckedCreateWithoutPermisosInput>
-  }
-
-  export type AreaUpsertWithoutPermisosInput = {
-    update: XOR<AreaUpdateWithoutPermisosInput, AreaUncheckedUpdateWithoutPermisosInput>
-    create: XOR<AreaCreateWithoutPermisosInput, AreaUncheckedCreateWithoutPermisosInput>
-    where?: AreaWhereInput
-  }
-
-  export type AreaUpdateToOneWithWhereWithoutPermisosInput = {
-    where?: AreaWhereInput
-    data: XOR<AreaUpdateWithoutPermisosInput, AreaUncheckedUpdateWithoutPermisosInput>
-  }
-
-  export type AreaUpdateWithoutPermisosInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutAreaNestedInput
-    documentos?: DocumentoUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUpdateManyWithoutAreaNestedInput
-  }
-
-  export type AreaUncheckedUpdateWithoutPermisosInput = {
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_area?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutAreaNestedInput
-    documentos?: DocumentoUncheckedUpdateManyWithoutAreaNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutAreaNestedInput
-    usuarios?: UsuarioUncheckedUpdateManyWithoutAreaNestedInput
-  }
-
-  export type ProyectoUpsertWithoutPermisosInput = {
-    update: XOR<ProyectoUpdateWithoutPermisosInput, ProyectoUncheckedUpdateWithoutPermisosInput>
-    create: XOR<ProyectoCreateWithoutPermisosInput, ProyectoUncheckedCreateWithoutPermisosInput>
-    where?: ProyectoWhereInput
-  }
-
-  export type ProyectoUpdateToOneWithWhereWithoutPermisosInput = {
-    where?: ProyectoWhereInput
-    data: XOR<ProyectoUpdateWithoutPermisosInput, ProyectoUncheckedUpdateWithoutPermisosInput>
-  }
-
-  export type ProyectoUpdateWithoutPermisosInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUpdateManyWithoutProyectoNestedInput
-    documentos?: DocumentoUpdateManyWithoutProyectoNestedInput
-  }
-
-  export type ProyectoUncheckedUpdateWithoutPermisosInput = {
-    ID_proyecto?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutProyectoNestedInput
-    documentos?: DocumentoUncheckedUpdateManyWithoutProyectoNestedInput
-  }
-
-  export type UsuarioUpsertWithoutPermisosInput = {
-    update: XOR<UsuarioUpdateWithoutPermisosInput, UsuarioUncheckedUpdateWithoutPermisosInput>
-    create: XOR<UsuarioCreateWithoutPermisosInput, UsuarioUncheckedCreateWithoutPermisosInput>
-    where?: UsuarioWhereInput
-  }
-
-  export type UsuarioUpdateToOneWithWhereWithoutPermisosInput = {
-    where?: UsuarioWhereInput
-    data: XOR<UsuarioUpdateWithoutPermisosInput, UsuarioUncheckedUpdateWithoutPermisosInput>
-  }
-
-  export type UsuarioUpdateWithoutPermisosInput = {
-    nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: StringFieldUpdateOperationsInput | string
-    contrasena?: StringFieldUpdateOperationsInput | string
-    rol?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutUsuarioNestedInput
-    historiales?: Historial_documentosUpdateManyWithoutUsuarioNestedInput
-    area?: AreaUpdateOneWithoutUsuariosNestedInput
-  }
-
-  export type UsuarioUncheckedUpdateWithoutPermisosInput = {
-    ID_usuario?: IntFieldUpdateOperationsInput | number
-    nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
-    correo?: StringFieldUpdateOperationsInput | string
-    contrasena?: StringFieldUpdateOperationsInput | string
-    rol?: StringFieldUpdateOperationsInput | string
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutUsuarioNestedInput
-    historiales?: Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput
-  }
-
-  export type Detalle_historialCreateManyClienteInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type DocumentoCreateManyClienteInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
-  }
-
-  export type Detalle_historialUpdateWithoutClienteInput = {
-    area?: AreaUpdateOneWithoutDetallesNestedInput
-    historial?: Historial_documentosUpdateOneWithoutDetallesNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDetallesNestedInput
-    usuario?: UsuarioUpdateOneWithoutDetallesNestedInput
-  }
-
-  export type Detalle_historialUncheckedUpdateWithoutClienteInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutClienteInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoUpdateWithoutClienteInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutDocumentosNestedInput
-    estado?: Estado_documentoUpdateOneWithoutDocumentosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
     historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateWithoutClienteInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateManyWithoutClienteInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialCreateManyProyectoInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DocumentoCreateManyProyectoInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_estado_documento?: number | null
-    ID_area?: number | null
-  }
-
-  export type PermisoCreateManyProyectoInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-  }
-
-  export type Detalle_historialUpdateWithoutProyectoInput = {
-    area?: AreaUpdateOneWithoutDetallesNestedInput
-    cliente?: ClienteUpdateOneWithoutDetallesNestedInput
-    historial?: Historial_documentosUpdateOneWithoutDetallesNestedInput
-    usuario?: UsuarioUpdateOneWithoutDetallesNestedInput
-  }
-
-  export type Detalle_historialUncheckedUpdateWithoutProyectoInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutProyectoInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_estado_documento: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoUpdateWithoutProyectoInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutDocumentosNestedInput
-    cliente?: ClienteUpdateOneWithoutDocumentosNestedInput
-    estado?: Estado_documentoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
     historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateWithoutProyectoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateManyWithoutProyectoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUpdateWithoutProyectoInput = {
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutPermisosNestedInput
-    usuario?: UsuarioUpdateOneWithoutPermisosNestedInput
-  }
-
-  export type PermisoUncheckedUpdateWithoutProyectoInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUncheckedUpdateManyWithoutProyectoInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DocumentoCreateManyEstadoInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_area: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosCreateManyEstadoInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_area?: number | null
+    fecha: Date | string
+    ID_documento: number
+    ID_usuario: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoUpdateWithoutEstadoInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutDocumentosNestedInput
-    cliente?: ClienteUpdateOneWithoutDocumentosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
     historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateWithoutEstadoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateManyWithoutEstadoInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUpdateWithoutEstadoInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detalles?: Detalle_historialUpdateManyWithoutHistorialNestedInput
-    area?: AreaUpdateOneWithoutHistorialesNestedInput
-    documento?: DocumentoUpdateOneWithoutHistorialesNestedInput
-    usuario?: UsuarioUpdateOneWithoutHistorialesNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documento?: DocumentoUpdateOneRequiredWithoutHistorialesNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutHistorialesNestedInput
   }
 
   export type Historial_documentosUncheckedUpdateWithoutEstadoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUncheckedUpdateManyWithoutEstadoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialCreateManyAreaInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_cliente?: number | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type DocumentoCreateManyAreaInput = {
     ID_documento?: number
     nombre_documento: string
-    tipo_documento?: string | null
-    fecha_ingreso?: Date | string | null
-    archivo?: string | null
-    descripcion?: string | null
-    folio?: string | null
-    ID_cliente?: number | null
-    ID_proyecto?: number | null
-    ID_estado_documento?: number | null
-  }
-
-  export type Historial_documentosCreateManyAreaInput = {
-    ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_usuario?: number | null
-    ID_estado_documento?: number | null
-  }
-
-  export type PermisoCreateManyAreaInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_usuario?: number | null
-    ID_proyecto?: number | null
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_usuario: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type UsuarioCreateManyAreaInput = {
     ID_usuario?: number
     nombre: string
-    apellido?: string | null
+    apellido: string
     correo: string
     contrasena: string
     rol: string
-  }
-
-  export type Detalle_historialUpdateWithoutAreaInput = {
-    cliente?: ClienteUpdateOneWithoutDetallesNestedInput
-    historial?: Historial_documentosUpdateOneWithoutDetallesNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDetallesNestedInput
-    usuario?: UsuarioUpdateOneWithoutDetallesNestedInput
-  }
-
-  export type Detalle_historialUncheckedUpdateWithoutAreaInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutAreaInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
+    permisos?: UsuarioCreatepermisosInput | string[]
+    estado?: string
+    fecha_ingreso?: Date | string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type DocumentoUpdateWithoutAreaInput = {
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    cliente?: ClienteUpdateOneWithoutDocumentosNestedInput
-    estado?: Estado_documentoUpdateOneWithoutDocumentosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDocumentosNestedInput
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    usuario?: UsuarioUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
     historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateWithoutAreaInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
   export type DocumentoUncheckedUpdateManyWithoutAreaInput = {
     ID_documento?: IntFieldUpdateOperationsInput | number
     nombre_documento?: StringFieldUpdateOperationsInput | string
-    tipo_documento?: NullableStringFieldUpdateOperationsInput | string | null
-    fecha_ingreso?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    archivo?: NullableStringFieldUpdateOperationsInput | string | null
-    descripcion?: NullableStringFieldUpdateOperationsInput | string | null
-    folio?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Historial_documentosUpdateWithoutAreaInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detalles?: Detalle_historialUpdateManyWithoutHistorialNestedInput
-    documento?: DocumentoUpdateOneWithoutHistorialesNestedInput
-    estado?: Estado_documentoUpdateOneWithoutHistorialesNestedInput
-    usuario?: UsuarioUpdateOneWithoutHistorialesNestedInput
-  }
-
-  export type Historial_documentosUncheckedUpdateWithoutAreaInput = {
-    ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput
-  }
-
-  export type Historial_documentosUncheckedUpdateManyWithoutAreaInput = {
-    ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUpdateWithoutAreaInput = {
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    proyecto?: ProyectoUpdateOneWithoutPermisosNestedInput
-    usuario?: UsuarioUpdateOneWithoutPermisosNestedInput
-  }
-
-  export type PermisoUncheckedUpdateWithoutAreaInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUncheckedUpdateManyWithoutAreaInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type UsuarioUpdateWithoutAreaInput = {
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUpdateManyWithoutUsuarioNestedInput
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUpdateManyWithoutUsuarioNestedInput
     historiales?: Historial_documentosUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateWithoutAreaInput = {
     ID_usuario?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutUsuarioNestedInput
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documentos?: DocumentoUncheckedUpdateManyWithoutUsuarioNestedInput
     historiales?: Historial_documentosUncheckedUpdateManyWithoutUsuarioNestedInput
-    permisos?: PermisoUncheckedUpdateManyWithoutUsuarioNestedInput
   }
 
   export type UsuarioUncheckedUpdateManyWithoutAreaInput = {
     ID_usuario?: IntFieldUpdateOperationsInput | number
     nombre?: StringFieldUpdateOperationsInput | string
-    apellido?: NullableStringFieldUpdateOperationsInput | string | null
+    apellido?: StringFieldUpdateOperationsInput | string
     correo?: StringFieldUpdateOperationsInput | string
     contrasena?: StringFieldUpdateOperationsInput | string
     rol?: StringFieldUpdateOperationsInput | string
+    permisos?: UsuarioUpdatepermisosInput | string[]
+    estado?: StringFieldUpdateOperationsInput | string
+    fecha_ingreso?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type Detalle_historialCreateManyUsuarioInput = {
-    ID_detalle?: number
-    ID_historial?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
+  export type DocumentoCreateManyUsuarioInput = {
+    ID_documento?: number
+    nombre_documento: string
+    tipo_documento: string
+    archivo: string
+    descripcion: string
+    folio: string
+    ID_cliente: number
+    ID_proyecto: number
+    ID_estado_documento: number
+    ID_area: number
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosCreateManyUsuarioInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_documento?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
+    fecha: Date | string
+    ID_documento: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
-  export type PermisoCreateManyUsuarioInput = {
-    ID_permiso?: number
-    tipo_permiso?: string | null
-    ID_area?: number | null
-    ID_proyecto?: number | null
+  export type DocumentoUpdateWithoutUsuarioInput = {
+    nombre_documento?: StringFieldUpdateOperationsInput | string
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    area?: AreaUpdateOneRequiredWithoutDocumentosNestedInput
+    cliente?: ClienteUpdateOneRequiredWithoutDocumentosNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutDocumentosNestedInput
+    proyecto?: ProyectoUpdateOneRequiredWithoutDocumentosNestedInput
+    historiales?: Historial_documentosUpdateManyWithoutDocumentoNestedInput
   }
 
-  export type Detalle_historialUpdateWithoutUsuarioInput = {
-    area?: AreaUpdateOneWithoutDetallesNestedInput
-    cliente?: ClienteUpdateOneWithoutDetallesNestedInput
-    historial?: Historial_documentosUpdateOneWithoutDetallesNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDetallesNestedInput
+  export type DocumentoUncheckedUpdateWithoutUsuarioInput = {
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    historiales?: Historial_documentosUncheckedUpdateManyWithoutDocumentoNestedInput
   }
 
-  export type Detalle_historialUncheckedUpdateWithoutUsuarioInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutUsuarioInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_historial?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
+  export type DocumentoUncheckedUpdateManyWithoutUsuarioInput = {
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    nombre_documento?: StringFieldUpdateOperationsInput | string
+    tipo_documento?: StringFieldUpdateOperationsInput | string
+    archivo?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    folio?: StringFieldUpdateOperationsInput | string
+    ID_cliente?: IntFieldUpdateOperationsInput | number
+    ID_proyecto?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    ID_area?: IntFieldUpdateOperationsInput | number
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUpdateWithoutUsuarioInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detalles?: Detalle_historialUpdateManyWithoutHistorialNestedInput
-    area?: AreaUpdateOneWithoutHistorialesNestedInput
-    documento?: DocumentoUpdateOneWithoutHistorialesNestedInput
-    estado?: Estado_documentoUpdateOneWithoutHistorialesNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    documento?: DocumentoUpdateOneRequiredWithoutHistorialesNestedInput
+    estado?: Estado_documentoUpdateOneRequiredWithoutHistorialesNestedInput
   }
 
   export type Historial_documentosUncheckedUpdateWithoutUsuarioInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUncheckedUpdateManyWithoutUsuarioInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUpdateWithoutUsuarioInput = {
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    area?: AreaUpdateOneWithoutPermisosNestedInput
-    proyecto?: ProyectoUpdateOneWithoutPermisosNestedInput
-  }
-
-  export type PermisoUncheckedUpdateWithoutUsuarioInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type PermisoUncheckedUpdateManyWithoutUsuarioInput = {
-    ID_permiso?: IntFieldUpdateOperationsInput | number
-    tipo_permiso?: NullableStringFieldUpdateOperationsInput | string | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_documento?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosCreateManyDocumentoInput = {
     ID_historial?: number
-    fecha?: Date | string | null
-    hora?: Date | string | null
-    ID_usuario?: number | null
-    ID_area?: number | null
-    ID_estado_documento?: number | null
+    fecha: Date | string
+    ID_usuario: number
+    ID_estado_documento: number
+    documento_historial: string
+    descripcion: string
+    created_at?: Date | string
+    updated_at?: Date | string
+    deleted_at?: Date | string | null
   }
 
   export type Historial_documentosUpdateWithoutDocumentoInput = {
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    detalles?: Detalle_historialUpdateManyWithoutHistorialNestedInput
-    area?: AreaUpdateOneWithoutHistorialesNestedInput
-    estado?: Estado_documentoUpdateOneWithoutHistorialesNestedInput
-    usuario?: UsuarioUpdateOneWithoutHistorialesNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    estado?: Estado_documentoUpdateOneRequiredWithoutHistorialesNestedInput
+    usuario?: UsuarioUpdateOneRequiredWithoutHistorialesNestedInput
   }
 
   export type Historial_documentosUncheckedUpdateWithoutDocumentoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-    detalles?: Detalle_historialUncheckedUpdateManyWithoutHistorialNestedInput
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type Historial_documentosUncheckedUpdateManyWithoutDocumentoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    hora?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_estado_documento?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialCreateManyHistorialInput = {
-    ID_detalle?: number
-    ID_usuario?: number | null
-    ID_proyecto?: number | null
-    ID_area?: number | null
-    ID_cliente?: number | null
-  }
-
-  export type Detalle_historialUpdateWithoutHistorialInput = {
-    area?: AreaUpdateOneWithoutDetallesNestedInput
-    cliente?: ClienteUpdateOneWithoutDetallesNestedInput
-    proyecto?: ProyectoUpdateOneWithoutDetallesNestedInput
-    usuario?: UsuarioUpdateOneWithoutDetallesNestedInput
-  }
-
-  export type Detalle_historialUncheckedUpdateWithoutHistorialInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
-  }
-
-  export type Detalle_historialUncheckedUpdateManyWithoutHistorialInput = {
-    ID_detalle?: IntFieldUpdateOperationsInput | number
-    ID_usuario?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_proyecto?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_area?: NullableIntFieldUpdateOperationsInput | number | null
-    ID_cliente?: NullableIntFieldUpdateOperationsInput | number | null
+    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
+    ID_usuario?: IntFieldUpdateOperationsInput | number
+    ID_estado_documento?: IntFieldUpdateOperationsInput | number
+    documento_historial?: StringFieldUpdateOperationsInput | string
+    descripcion?: StringFieldUpdateOperationsInput | string
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    deleted_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
 

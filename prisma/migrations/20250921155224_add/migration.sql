@@ -1,0 +1,3 @@
+-- AlterTable
+ALTER TABLE "Usuario" ADD COLUMN     "estado" TEXT NOT NULL DEFAULT 'activo',
+ADD COLUMN     "fecha_ingreso" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP;

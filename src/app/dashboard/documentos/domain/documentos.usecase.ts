@@ -1,11 +1,11 @@
 import { DocumentoService } from "../infra/documentos.service";
-import { Documento } from "./documentos.entity";
+import { Documento, DocumentoForm } from "./documentos.entity";
 
 export async function obtenerDocumentos() {
   return DocumentoService.getDocumentos();
 }
 
-export async function crearDocumento(documento: Documento) {
+export async function crearDocumento(documento: DocumentoForm) {
   return DocumentoService.crearDocumento(documento);
 }
 

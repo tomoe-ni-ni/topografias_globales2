@@ -7,43 +7,54 @@ import bcrypt from "bcryptjs";
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
-  const { password, rol, nombre, estado } = body;
+  // Aceptar tanto 'contrasena' como 'password' por compatibilidad
+  const password = body.contrasena || body.password;
+  const { rol, nombre, correo, ID_area, apellido, estado } = body;
 
-  if (!password || !rol || !nombre || !estado) {
+  if (!password || !rol || !nombre || !correo) {
     return NextResponse.json({ error: "Campos faltantes" }, { status: 400 });
   }
 
-  let prefijo = "C";
-  if (rol === "admin") prefijo = "A";
-  else if (rol === "client") prefijo = "C";
-
-  const year = new Date().getFullYear().toString().slice(-2);
-  const lastUser = await prisma.usuario.findFirst({
-    where: { codigo_usuario: { startsWith: `${prefijo}${year}` } },
-    orderBy: { id: "desc" },
-  });
-  const correlativo = lastUser
-    ? String(Number(lastUser.codigo_usuario.slice(3)) + 1).padStart(5, "0")
-    : "00001";
-
-  const password_hash = await bcrypt.hash(password, 10);
-  const codigo_usuario = `${prefijo}${year}${correlativo}`;
+  const contrasena = await bcrypt.hash(password, 10);
 
   try {
     const nuevoUsuario = await prisma.usuario.create({
       data: {
-        codigo_usuario,
-        password_hash,
-        rol,
         nombre,
-        estado,
+        apellido: apellido ?? null,
+        correo,
+        contrasena,
+        rol,
+        estado: estado ?? undefined,
+        ID_area: ID_area ?? null,
       },
     });
 
-    return NextResponse.json(nuevoUsuario, { status: 201 });
+    // Buscar el usuario recién creado con el área relacionada
+    const usuarioConArea = await prisma.usuario.findUnique({
+      where: { ID_usuario: nuevoUsuario.ID_usuario },
+      select: {
+        ID_usuario: true,
+        nombre: true,
+        apellido: true,
+        correo: true,
+        rol: true,
+        estado: true,
+        ID_area: true,
+        fecha_ingreso: true,
+        area: { select: { nombre: true } },
+      },
+    });
+
+    // Asegurar que siempre se retornen estado y fecha_ingreso aunque sean null
+    return NextResponse.json({
+      ...usuarioConArea,
+      estado: usuarioConArea?.estado ?? "inactivo",
+      fecha_ingreso: usuarioConArea?.fecha_ingreso ?? "",
+    }, { status: 201 });
   } catch (error) {
     console.error("Error al crear usuario:", error);
-    return NextResponse.json({ error: "Error interno" }, { status: 500 });
+  return NextResponse.json({ error: (error instanceof Error ? error.message : String(error)) || "Error interno", detalle: String(error) }, { status: 500 });
   }
 }
 
@@ -51,33 +62,30 @@ export async function POST(req: NextRequest) {
 export async function GET(req: NextRequest) {
   try {
     const rol = req.nextUrl.searchParams.get("rol");
-    const where: any = { deleted_at: null };
+    const where: any = {};
     if (rol) where.rol = rol;
 
+
     const usuarios = await prisma.usuario.findMany({
-      orderBy: { created_at: "asc" },
       where,
       select: {
-        id: true,
-        codigo_usuario: true,
-        rol: true,
-        nombre: true,
+        ID_usuario: true,
+        fecha_ingreso: true,
         estado: true,
-        created_at: true,
+        nombre: true,
+        apellido: true,
+        correo: true,
+        rol: true,
+        ID_area: true,
+        area: {
+          select: {
+            nombre: true,
+          },
+        },
       },
     });
 
-    const usuariosFormateados = usuarios.map((u) => ({
-      id: u.id,
-      codigo_usuario: u.codigo_usuario,
-      rol: u.rol,
-      nombre: u.nombre ?? "",
-      estado: u.estado ?? "activo",
-      created_at: u.created_at?.toISOString().slice(0, 10) ?? "",
-      // imagen: u.imagen ?? null,
-    }));
-
-    return NextResponse.json(usuariosFormateados);
+    return NextResponse.json(usuarios);
   } catch (error) {
     console.error("Error al obtener usuarios:", error);
     return NextResponse.json({ error: "Error interno" }, { status: 500 });

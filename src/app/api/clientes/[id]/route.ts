@@ -17,7 +17,7 @@ export async function PUT(req: NextRequest, context: any) {
   try {
     // Actualiza cliente
     const cliente = await prisma.cliente.update({
-      where: { id },
+      where: { ID_cliente: id},
       data: {
         nombre,
         apellidos,

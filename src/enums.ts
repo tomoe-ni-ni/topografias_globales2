@@ -13,3 +13,10 @@ export enum TipoDocumento {
   planos = "planos",
   catastrada = "catastro",
 }
+
+export enum Permisos{
+  crear = "crear",
+  leer = "leer",
+  borrar = "borrar",
+  editar = "editar",
+}

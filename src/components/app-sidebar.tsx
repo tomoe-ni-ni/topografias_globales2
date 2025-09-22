@@ -5,12 +5,16 @@ import {
   BookOpen,
   Bot,
   Building2,
+  FileChartColumn,
+  FolderGit,
   Frame,
+  Grid2x2Check,
   LayoutDashboard,
   Map,
   PieChart,
   Settings2,
   SquareTerminal,
+  UsersRound,
   WalletCards,
 } from "lucide-react";
 import * as React from "react";
@@ -75,25 +79,25 @@ const data = {
     {
       title: "Proyectos",
       url: "/dashboard/proyectos",
-      icon: WalletCards,
+      icon: FolderGit,
       items: [],
     },
     {
       title: "Estados de documentos",
       url: "/dashboard/estado_documento",
-      icon: WalletCards,
+      icon: FileChartColumn,
       items: [],
     },
     {
       title: "Area",
       url: "/dashboard/area",
-      icon: WalletCards,
+      icon: Grid2x2Check,
       items: [],
     },
     {
-      title: "Zonas",
-      url: "/dashboard/zona",
-      icon: WalletCards,
+      title: "Clientes",
+      url: "/dashboard/clientes",
+      icon: UsersRound,
       items: [],
     },
     {

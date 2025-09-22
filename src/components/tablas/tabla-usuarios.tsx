@@ -82,6 +82,7 @@ export function TablaUsuarios({
   );
   const [ordenarPor, setOrdenarPor] = useState<keyof Usuarios | null>(null);
   const [ordenDireccion, setOrdenDireccion] = useState<"asc" | "desc">("asc");
+  const [usuarioEdit, setUsuarioEdit] = useState<Usuarios | null>(null);
 
   const elementosPorPagina = 5;
   const totalPaginas = Math.ceil(usuariosFiltrados.length / elementosPorPagina);
@@ -181,7 +182,7 @@ export function TablaUsuarios({
   const confirmarCambioEstado = () => {
     if (usuarioSeleccionado && nuevoEstado) {
       const nuevosUsuarios = usuarios.map((u) =>
-        u.id === usuarioSeleccionado.id ? { ...u, estado: nuevoEstado } : u
+        u.ID_usuario === usuarioSeleccionado.ID_usuario ? { ...u, estado: nuevoEstado } : u
       );
       setUsuarios(nuevosUsuarios);
       setModalEstado(false);
@@ -203,6 +204,7 @@ export function TablaUsuarios({
   // Abrir modal de editar usuario
   const abrirModalEditar = (usuario: Usuarios) => {
     setUsuarioSeleccionado(usuario);
+    setUsuarioEdit(usuario);
     setModalEditar(true);
   };
 
@@ -240,11 +242,25 @@ export function TablaUsuarios({
               </TableHead>
               <TableHead
                 className="cursor-pointer hover:bg-muted/50"
-                onClick={() => ordenarUsuarios("codigo_usuario")}
+                onClick={() => ordenarUsuarios("apellido")}
               >
                 <div className="flex items-center">
-                  Código de usuario
-                  {ordenarPor === "codigo_usuario" &&
+                  Apellido
+                  {ordenarPor === "apellido" &&
+                    (ordenDireccion === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
+              </TableHead>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => ordenarUsuarios("correo")}
+              >
+                <div className="flex items-center">
+                  Correo
+                  {ordenarPor === "correo" &&
                     (ordenDireccion === "asc" ? (
                       <ArrowUp className="ml-1 h-4 w-4" />
                     ) : (
@@ -268,11 +284,16 @@ export function TablaUsuarios({
               </TableHead>
               <TableHead
                 className="cursor-pointer hover:bg-muted/50"
-                onClick={() => ordenarUsuarios("created_at")}
+              >
+                Área
+              </TableHead>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => ordenarUsuarios("fecha_ingreso")}
               >
                 <div className="flex items-center">
-                  Fecha de registro
-                  {ordenarPor === "created_at" &&
+                  Fecha de ingreso
+                  {ordenarPor === "fecha_ingreso" &&
                     (ordenDireccion === "asc" ? (
                       <ArrowUp className="ml-1 h-4 w-4" />
                     ) : (
@@ -284,88 +305,61 @@ export function TablaUsuarios({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {usuariosPaginados.length > 0 ? (
-              usuariosPaginados.map((usuario) => (
-                <TableRow key={usuario.id}>
-                  <TableCell className="font-medium">
-                    <div className="flex items-center space-x-2">
-                      <Avatar>
-                        <AvatarFallback>
-                          {obtenerIniciales(usuario.nombre)}
-                        </AvatarFallback>
-                      </Avatar>
-                      <span>{usuario.nombre}</span>
-                    </div>
-                  </TableCell>
-                  <TableCell>{usuario.codigo_usuario}</TableCell>
-                  <TableCell>
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button
-                          variant="outline"
-                          className={coloresEstado[usuario.estado]}
-                          size="sm"
-                        >
-                          {usuario.estado.charAt(0).toUpperCase() +
-                            usuario.estado.slice(1)}
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="start">
-                        <DropdownMenuItem
-                          onClick={() => abrirModalEstado(usuario, "activo")}
-                          className="text-green-600"
-                        >
-                          Activo
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={() => abrirModalEstado(usuario, "inactivo")}
-                          className="text-red-600"
-                        >
-                          Inactivo
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
-                  </TableCell>
-                  <TableCell>{usuario.created_at}</TableCell>
-                  <TableCell className="text-right">
-                    <DropdownMenu>
-                      <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
-                          <MoreVertical className="h-4 w-4" />
-                          <span className="sr-only">Abrir menú</span>
-                        </Button>
-                      </DropdownMenuTrigger>
-                      <DropdownMenuContent align="end">
-                        <DropdownMenuItem
-                          onClick={() => abrirModalVer(usuario)}
-                        >
-                          <Eye className="mr-2 h-4 w-4" />
-                          <span>Ver</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={() => abrirModalEditar(usuario)}
-                        >
-                          <Pencil className="mr-2 h-4 w-4" />
-                          <span>Editar</span>
-                        </DropdownMenuItem>
-                        <DropdownMenuItem
-                          onClick={() => abrirModalEliminar(usuario)}
-                        >
-                          <Trash2 className="mr-2 h-4 w-4" />
-                          <span>Eliminar</span>
-                        </DropdownMenuItem>
-                      </DropdownMenuContent>
-                    </DropdownMenu>
+            {usuariosPaginados.length > 0
+              ? usuariosPaginados.map((usuario) => (
+                  <TableRow key={usuario.ID_usuario}>
+                    <TableCell className="font-medium">
+                      <div className="flex items-center space-x-2">
+                        <Avatar>
+                          <AvatarFallback>
+                            {obtenerIniciales(usuario.nombre)}
+                          </AvatarFallback>
+                        </Avatar>
+                        <span>{usuario.nombre}</span>
+                      </div>
+                    </TableCell>
+                    <TableCell>{usuario.apellido || ""}</TableCell>
+                    <TableCell>{usuario.correo}</TableCell>
+                    <TableCell>
+                      <Badge className={coloresEstado[usuario.estado ?? ""] || ""}>
+                        {usuario.estado ? usuario.estado.charAt(0).toUpperCase() + usuario.estado.slice(1) : ""}
+                      </Badge>
+                    </TableCell>
+                    <TableCell>{usuario.area?.nombre || "Sin área"}</TableCell>
+                    <TableCell>{usuario.fecha_ingreso ? usuario.fecha_ingreso.split("T")[0] : ""}</TableCell>
+                    <TableCell className="text-right">
+                      <DropdownMenu>
+                        <DropdownMenuTrigger asChild>
+                          <Button variant="ghost" size="icon">
+                            <MoreVertical className="h-4 w-4" />
+                            <span className="sr-only">Abrir menú</span>
+                          </Button>
+                        </DropdownMenuTrigger>
+                        <DropdownMenuContent align="end">
+                          <DropdownMenuItem onClick={() => abrirModalVer(usuario)}>
+                            <Eye className="mr-2 h-4 w-4" />
+                            <span>Ver</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => abrirModalEditar(usuario)}>
+                            <Pencil className="mr-2 h-4 w-4" />
+                            <span>Editar</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem onClick={() => abrirModalEliminar(usuario)}>
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            <span>Eliminar</span>
+                          </DropdownMenuItem>
+                        </DropdownMenuContent>
+                      </DropdownMenu>
+                    </TableCell>
+                  </TableRow>
+                ))
+              : (
+                <TableRow>
+                  <TableCell colSpan={5} className="text-center py-6">
+                    No se encontraron resultados
                   </TableCell>
                 </TableRow>
-              ))
-            ) : (
-              <TableRow>
-                <TableCell colSpan={5} className="text-center py-6">
-                  No se encontraron resultados
-                </TableCell>
-              </TableRow>
-            )}
+              )}
           </TableBody>
         </Table>
       </div>
@@ -465,16 +459,16 @@ export function TablaUsuarios({
                   <p className="text-sm font-medium text-muted-foreground">
                     Estado
                   </p>
-                  <Badge className={coloresEstado[usuarioSeleccionado.estado]}>
-                    {usuarioSeleccionado.estado.charAt(0).toUpperCase() +
-                      usuarioSeleccionado.estado.slice(1)}
+                  <Badge className={coloresEstado[usuarioSeleccionado.estado ?? ""] || ""}>
+                    {(usuarioSeleccionado.estado?.charAt(0).toUpperCase() ?? "") +
+                      (usuarioSeleccionado.estado?.slice(1) ?? "")}
                   </Badge>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
                     Fecha de registro
                   </p>
-                  <p>{usuarioSeleccionado.created_at}</p>
+                  <p>{usuarioSeleccionado.fecha_ingreso ? usuarioSeleccionado.fecha_ingreso.split("T")[0] : ""}</p>
                 </div>
               </div>
             </div>
@@ -501,7 +495,7 @@ export function TablaUsuarios({
             </Button>
             <Button
               variant="destructive"
-              onClick={() => confirmarEliminar(usuarioSeleccionado?.id ?? null)}
+              onClick={() => confirmarEliminar(usuarioSeleccionado?.ID_usuario ?? null)}
             >
               Eliminar
             </Button>
@@ -519,9 +513,13 @@ export function TablaUsuarios({
             </DialogDescription>
           </DialogHeader>
           <EditUserForm
-            usuario={usuarioSeleccionado}
+            usuario={usuarioEdit}
             onClose={() => setModalEditar(false)}
-            onUsuarioEditado={onUsuarioEditado} // 👈 pásala aquí
+            onUsuarioEditado={(usuarioActualizado) => {
+              onUsuarioEditado(usuarioActualizado);
+              setUsuarioEdit(null);
+              setModalEditar(false);
+            }}
           />
         </DialogContent>
       </Dialog>

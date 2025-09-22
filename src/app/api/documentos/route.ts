@@ -14,23 +14,47 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { asignado_a, titulo, descripcion, estado } = await req.json();
   try {
+    const body = await req.json();
+    const {
+      nombre_documento,
+      tipo_documento,
+      archivo,
+      descripcion,
+      folio,
+      ID_cliente,
+      ID_proyecto,
+      ID_estado_documento,
+      ID_area,
+      ID_usuario
+    } = body;
+
     // Validación básica
-    if (!asignado_a || !titulo || !descripcion || !estado) {
+    if (!nombre_documento) {
       return NextResponse.json(
         { error: "Faltan campos obligatorios" },
         { status: 400 }
       );
     }
 
-    const tarea = await prisma.tarea.create({
-      data: { asignado_a, titulo, descripcion, estado },
+    const documento = await prisma.documento.create({
+      data: {
+        nombre_documento,
+        tipo_documento,
+        archivo,
+        descripcion,
+        folio,
+        ID_cliente,
+        ID_proyecto,
+        ID_estado_documento,
+        ID_area,
+        ID_usuario
+      },
     });
-    return NextResponse.json(tarea, { status: 201 });
+    return NextResponse.json(documento, { status: 201 });
   } catch (error) {
     return NextResponse.json(
-      { error: "Error al crear tarea" },
+      { error: "Error al crear documento" },
       { status: 500 }
     );
   }

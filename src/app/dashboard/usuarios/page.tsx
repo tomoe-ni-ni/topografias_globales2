@@ -13,32 +13,39 @@ function Usuarios() {
     fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
+       console.log(data); 
         setUsuarios(data);
       });
   }, []);
 
+
   const agregarUsuario = (usuarioNuevo: Usuarios) => {
     setUsuarios((prev) => [
-      { ...usuarioNuevo, created_at: usuarioNuevo.created_at.split("T")[0] },
+      {
+        ...usuarioNuevo,
+        fecha_ingreso: usuarioNuevo.fecha_ingreso ? usuarioNuevo.fecha_ingreso.split("T")[0] : undefined,
+      },
       ...prev,
     ]);
   };
 
+
   const actualizarUsuario = (usuarioActualizado: Usuarios) => {
     setUsuarios((prev) =>
       prev.map((u) =>
-        u.id === usuarioActualizado.id
+        u.ID_usuario === usuarioActualizado.ID_usuario
           ? {
               ...usuarioActualizado,
-              created_at: usuarioActualizado.created_at.split("T")[0],
+              fecha_ingreso: usuarioActualizado.fecha_ingreso ? usuarioActualizado.fecha_ingreso.split("T")[0] : undefined,
             }
           : u
       )
     );
   };
 
-  const eliminarUsuario = (id: number) => {
-    setUsuarios((prev) => prev.filter((u) => u.id !== id));
+
+  const eliminarUsuario = (id: number | string | null | undefined) => {
+    setUsuarios((prev) => prev.filter((u) => u.ID_usuario !== id));
   };
 
   return (

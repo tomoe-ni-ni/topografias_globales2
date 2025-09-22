@@ -10,22 +10,27 @@ datasource db {
 }
 
 model Cliente {
-  ID_cliente Int                 @id @default(autoincrement())
-  nombre     String
-  apellido   String
-  nombre_departamento   String
-  nombre_provincia   String
-  detalles   Detalle_historial[]
-  documentos Documento[]
+  ID_cliente          Int         @id @default(autoincrement())
+  nombre              String
+  apellido            String
+  nombre_departamento String
+  nombre_provincia    String
+  documentos          Documento[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Proyecto {
-  ID_proyecto Int                 @id @default(autoincrement())
+  ID_proyecto Int         @id @default(autoincrement())
   nombre      String
-  descripcion String?
-  detalles    Detalle_historial[]
+  descripcion String
   documentos  Documento[]
-  permisos    Permiso[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Estado_documento {
@@ -33,87 +38,80 @@ model Estado_documento {
   estado      String
   documentos  Documento[]
   historiales Historial_documentos[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Area {
-  ID_area     Int                    @id @default(autoincrement())
-  nombre      String
-  detalles    Detalle_historial[]
-  documentos  Documento[]
-  historiales Historial_documentos[]
-  permisos    Permiso[]
-  usuarios    Usuario[]
+  ID_area    Int         @id @default(autoincrement())
+  nombre     String
+  documentos Documento[]
+  usuarios   Usuario[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Usuario {
-  ID_usuario  Int                    @id @default(autoincrement())
-  nombre      String
-  apellido    String?
-  correo      String                 @unique
-  contrasena  String
-  rol         String
-  ID_area     Int?
-  detalles    Detalle_historial[]
-  historiales Historial_documentos[]
-  permisos    Permiso[]
-  area        Area?                  @relation(fields: [ID_area], references: [ID_area])
+  ID_usuario    Int                    @id @default(autoincrement())
+  nombre        String
+  apellido      String
+  correo        String                 @unique
+  contrasena    String
+  rol           String
+  permisos      String[]               @default(["crear", "leer", "borrar", "editar"])
+  estado        String                 @default("activo")
+  fecha_ingreso DateTime               @default(now())
+  ID_area       Int
+  documentos    Documento[] 
+  historiales   Historial_documentos[]
+  area          Area                   @relation(fields: [ID_area], references: [ID_area])
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Documento {
-  ID_documento        Int                    @id @default(autoincrement())
+  ID_documento        Int              @id @default(autoincrement())
   nombre_documento    String
-  tipo_documento      String?
-  fecha_ingreso       DateTime?
-  archivo             String?
-  descripcion         String?
-  folio               String?                @db.VarChar(50)
-  ID_cliente          Int?
-  ID_proyecto         Int?
-  ID_estado_documento Int?
-  ID_area             Int?
-  area                Area?                  @relation(fields: [ID_area], references: [ID_area])
-  cliente             Cliente?               @relation(fields: [ID_cliente], references: [ID_cliente])
-  estado              Estado_documento?      @relation(fields: [ID_estado_documento], references: [ID_estado])
-  proyecto            Proyecto?              @relation(fields: [ID_proyecto], references: [ID_proyecto])
+  tipo_documento      String
+  archivo             String
+  descripcion         String
+  folio               String           @db.VarChar(50)
+  ID_cliente          Int
+  ID_proyecto         Int
+  ID_estado_documento Int
+  ID_area             Int
+  ID_usuario          Int 
+  usuario             Usuario          @relation(fields: [ID_usuario], references: [ID_usuario]) 
+  area                Area             @relation(fields: [ID_area], references: [ID_area])
+  cliente             Cliente          @relation(fields: [ID_cliente], references: [ID_cliente])
+  estado              Estado_documento @relation(fields: [ID_estado_documento], references: [ID_estado])
+  proyecto            Proyecto         @relation(fields: [ID_proyecto], references: [ID_proyecto])
   historiales         Historial_documentos[]
+
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }
 
 model Historial_documentos {
-  ID_historial        Int                 @id @default(autoincrement())
-  fecha               DateTime?
-  hora                DateTime?
-  ID_documento        Int?
-  ID_usuario          Int?
-  ID_area             Int?
-  ID_estado_documento Int?
-  detalles            Detalle_historial[]
-  area                Area?               @relation(fields: [ID_area], references: [ID_area])
-  documento           Documento?          @relation(fields: [ID_documento], references: [ID_documento])
-  estado              Estado_documento?   @relation(fields: [ID_estado_documento], references: [ID_estado])
-  usuario             Usuario?            @relation(fields: [ID_usuario], references: [ID_usuario])
-}
+  ID_historial        Int              @id @default(autoincrement())
+  fecha               DateTime
+  ID_documento        Int
+  ID_usuario          Int
+  ID_estado_documento Int
+  documento_historial String
+  descripcion         String
+  documento           Documento        @relation(fields: [ID_documento], references: [ID_documento])
+  estado              Estado_documento @relation(fields: [ID_estado_documento], references: [ID_estado])
+  usuario             Usuario          @relation(fields: [ID_usuario], references: [ID_usuario])
 
-model Detalle_historial {
-  ID_detalle   Int                   @id @default(autoincrement())
-  ID_usuario   Int?
-  ID_historial Int?
-  ID_proyecto  Int?
-  ID_area      Int?
-  ID_cliente   Int?
-  area         Area?                 @relation(fields: [ID_area], references: [ID_area])
-  cliente      Cliente?              @relation(fields: [ID_cliente], references: [ID_cliente])
-  historial    Historial_documentos? @relation(fields: [ID_historial], references: [ID_historial])
-  proyecto     Proyecto?             @relation(fields: [ID_proyecto], references: [ID_proyecto])
-  usuario      Usuario?              @relation(fields: [ID_usuario], references: [ID_usuario])
-}
-
-model Permiso {
-  ID_permiso   Int       @id @default(autoincrement())
-  tipo_permiso String?
-  ID_usuario   Int?
-  ID_area      Int?
-  ID_proyecto  Int?
-  area         Area?     @relation(fields: [ID_area], references: [ID_area])
-  proyecto     Proyecto? @relation(fields: [ID_proyecto], references: [ID_proyecto])
-  usuario      Usuario?  @relation(fields: [ID_usuario], references: [ID_usuario])
+  created_at DateTime @default(now())
+  updated_at DateTime @updatedAt
+  deleted_at DateTime?
 }

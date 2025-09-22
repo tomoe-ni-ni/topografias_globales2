@@ -1,4 +1,4 @@
-import { Documento } from "../domain/documentos.entity";
+import { Documento, DocumentoForm } from "../domain/documentos.entity";
 
 export const DocumentoService = {
   async getDocumentos(): Promise<Documento[]> {
@@ -7,9 +7,9 @@ export const DocumentoService = {
     return res.json();
   },
   async crearDocumento(
-    documento: Omit<Documento, "id" | "created_at" | "updated_at">
+    documento: Omit<DocumentoForm, "ID_documento" | "created_at" | "updated_at">
   ): Promise<Documento> {
-    const res = await fetch("/api/deberes", {
+    const res = await fetch("/api/documentos", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(documento),
@@ -27,7 +27,7 @@ export const DocumentoService = {
     return res.json();
   },
   async eliminarDocumento(id: number): Promise<void> {
-    const res = await fetch(`/api/deberes/${id}`, { method: "DELETE" });
+    const res = await fetch(`/api/documentos/${id}`, { method: "DELETE" });
     if (!res.ok) throw new Error("Error al eliminar documento");
   },
 };

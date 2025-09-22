@@ -1,11 +1,14 @@
 export type Usuarios = {
-  id: number;
-  codigo_usuario: string;
-  rol: string;
+  ID_usuario: number;
   nombre: string;
-  estado: string;
-  created_at: string;
-  // agrega otros campos si los necesitas
+  apellido?: string;
+  correo: string;
+  contrasena?: string;
+  rol: string;
+  estado?: string;
+  ID_area?: number | null;
+  area?: { nombre: string } | null;
+  fecha_ingreso?: string; // si tu backend la retorna
 };
 
 export type UsuarioForm = {

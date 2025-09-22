@@ -125,23 +125,35 @@ exports.Prisma.ClienteScalarFieldEnum = {
   nombre: 'nombre',
   apellido: 'apellido',
   nombre_departamento: 'nombre_departamento',
-  nombre_provincia: 'nombre_provincia'
+  nombre_provincia: 'nombre_provincia',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.ProyectoScalarFieldEnum = {
   ID_proyecto: 'ID_proyecto',
   nombre: 'nombre',
-  descripcion: 'descripcion'
+  descripcion: 'descripcion',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.Estado_documentoScalarFieldEnum = {
   ID_estado: 'ID_estado',
-  estado: 'estado'
+  estado: 'estado',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.AreaScalarFieldEnum = {
   ID_area: 'ID_area',
-  nombre: 'nombre'
+  nombre: 'nombre',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.UsuarioScalarFieldEnum = {
@@ -151,48 +163,43 @@ exports.Prisma.UsuarioScalarFieldEnum = {
   correo: 'correo',
   contrasena: 'contrasena',
   rol: 'rol',
-  ID_area: 'ID_area'
+  permisos: 'permisos',
+  estado: 'estado',
+  fecha_ingreso: 'fecha_ingreso',
+  ID_area: 'ID_area',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.DocumentoScalarFieldEnum = {
   ID_documento: 'ID_documento',
   nombre_documento: 'nombre_documento',
   tipo_documento: 'tipo_documento',
-  fecha_ingreso: 'fecha_ingreso',
   archivo: 'archivo',
   descripcion: 'descripcion',
   folio: 'folio',
   ID_cliente: 'ID_cliente',
   ID_proyecto: 'ID_proyecto',
   ID_estado_documento: 'ID_estado_documento',
-  ID_area: 'ID_area'
+  ID_area: 'ID_area',
+  ID_usuario: 'ID_usuario',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.Historial_documentosScalarFieldEnum = {
   ID_historial: 'ID_historial',
   fecha: 'fecha',
-  hora: 'hora',
   ID_documento: 'ID_documento',
   ID_usuario: 'ID_usuario',
-  ID_area: 'ID_area',
-  ID_estado_documento: 'ID_estado_documento'
-};
-
-exports.Prisma.Detalle_historialScalarFieldEnum = {
-  ID_detalle: 'ID_detalle',
-  ID_usuario: 'ID_usuario',
-  ID_historial: 'ID_historial',
-  ID_proyecto: 'ID_proyecto',
-  ID_area: 'ID_area',
-  ID_cliente: 'ID_cliente'
-};
-
-exports.Prisma.PermisoScalarFieldEnum = {
-  ID_permiso: 'ID_permiso',
-  tipo_permiso: 'tipo_permiso',
-  ID_usuario: 'ID_usuario',
-  ID_area: 'ID_area',
-  ID_proyecto: 'ID_proyecto'
+  ID_estado_documento: 'ID_estado_documento',
+  documento_historial: 'documento_historial',
+  descripcion: 'descripcion',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  deleted_at: 'deleted_at'
 };
 
 exports.Prisma.SortOrder = {
@@ -218,9 +225,7 @@ exports.Prisma.ModelName = {
   Area: 'Area',
   Usuario: 'Usuario',
   Documento: 'Documento',
-  Historial_documentos: 'Historial_documentos',
-  Detalle_historial: 'Detalle_historial',
-  Permiso: 'Permiso'
+  Historial_documentos: 'Historial_documentos'
 };
 
 /**

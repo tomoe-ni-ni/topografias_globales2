@@ -1,4 +1,6 @@
 "use client";
+import { Usuarios } from "@/types/usuarios";
+import { userEditSchema } from "@/zod/schemas/userEdit.schema";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -6,36 +8,31 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
+  FormMessage
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
   Select,
-  SelectContent,
-  SelectItem,
   SelectTrigger,
   SelectValue,
+  SelectContent,
+  SelectItem
 } from "@/components/ui/select";
-import { Typography } from "@/components/ui/typography";
-import { Usuarios } from "@/types/usuarios";
-import { userEditSchema } from "@/zod/schemas/userEdit.schema";
+import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
-
-export default function EditUserForm({
-  usuario,
-  onClose,
-  onUsuarioEditado,
-}: {
+interface EditUserFormProps {
   usuario: Usuarios | null;
   onClose: () => void;
   onUsuarioEditado: (usuarioActualizado: Usuarios) => void;
-}) {
+}
+
+export default function EditUserForm({ usuario, onClose, onUsuarioEditado }: EditUserFormProps) {
   const router = useRouter();
-  const form = useForm<userEditSchema>({
+  const form = useForm<z.infer<typeof userEditSchema>>({
     resolver: zodResolver(userEditSchema),
     defaultValues: {
       nombre: usuario?.nombre || "",
@@ -43,15 +40,15 @@ export default function EditUserForm({
     },
   });
 
-  const onSubmit = async (data: userEditSchema) => {
-    if (!usuario?.id) {
+  const onSubmit = async (data: z.infer<typeof userEditSchema>) => {
+    if (!usuario?.ID_usuario) {
       toast.error("Error al actualizar usuario", {
         description: "Error al actualizar usuario",
       });
       return;
     }
     try {
-      const res = await fetch(`/api/users/${usuario.id}`, {
+      const res = await fetch(`/api/users/${usuario.ID_usuario}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
