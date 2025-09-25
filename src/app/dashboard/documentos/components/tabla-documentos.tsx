@@ -26,11 +26,9 @@ import EditarDocumento from "./editarDocumento";
 
 export function TablaDocumentos({
   documentosData,
-  onDocumentoEditado,
   setDocumentos,
 }: {
   documentosData: Documento[];
-  onDocumentoEditado: (documento: Documento) => void;
   setDocumentos: Dispatch<SetStateAction<Documento[]>>;
 }) {
   const {

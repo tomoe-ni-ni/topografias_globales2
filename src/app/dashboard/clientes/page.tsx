@@ -2,40 +2,21 @@
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
 
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-} from "@/components/ui/dialog";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import AgregarClientes from "./components/agregarClientes";
+import { TablaClientes } from "./components/tablaClientes";
 import { useCliente } from "./hooks/useCliente";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 
 export default function Cliente() {
   const {
     clientes,
+    setClientes,
     loading,
     modalAbierto,
     setModalAbierto,
     agregarCliente,
-    nombreCliente,
-    setNombreCliente,
-    apellidoCliente,
-    setApellidoCliente,
-    departamento,
-    setDepartamento,
-    provincia,
-    setProvincia,
     departamentos,
     provincias,
+    form,
   } = useCliente();
   console.log(clientes);
   return (
@@ -46,76 +27,17 @@ export default function Cliente() {
         </Typography>
         <Button onClick={() => setModalAbierto(true)}>Agregar cliente</Button>
       </div>
-      <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
-        <DialogContent className="w-full">
-          <DialogHeader>
-            <DialogTitle>Agregar nuevo cliente</DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col gap-2">
-            <div>
-              <Label className="block mb-1 font-semibold">Nombre</Label>
-              <Input
-                value={nombreCliente}
-                onChange={(e) => setNombreCliente(e.target.value)}
-                placeholder="Nombre del cliente..."
-              />
-            </div>
-            <div>
-              <Label className="block mb-1 font-semibold">Apellido</Label>
-              <Input
-                value={apellidoCliente}
-                onChange={(e) => setApellidoCliente(e.target.value)}
-                placeholder="Apellido del cliente..."
-              />
-            </div>
-            {/* Select Departamento */}
-            <div>
-              <Label className="block mb-1 font-semibold">Departamento</Label>
-              <Select
-                value={departamento}
-                onValueChange={(value) => {
-                  setDepartamento(value);
-                  setProvincia(""); // reset provincia
-                }}
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecciona un departamento" />
-                </SelectTrigger>
-                <SelectContent>
-                  {departamentos.map((dep) => (
-                    <SelectItem key={dep} value={dep}>
-                      {dep}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
 
-            {/* Select Provincia */}
-            <div>
-              <label className="block mb-1 font-semibold">Provincia</label>
-              <Select
-                value={provincia}
-                onValueChange={setProvincia}
-                disabled={!departamento} // deshabilitado si no hay departamento
-              >
-                <SelectTrigger className="w-full">
-                  <SelectValue placeholder="Selecciona una provincia" />
-                </SelectTrigger>
-                <SelectContent>
-                  {provincias.map((prov) => (
-                    <SelectItem key={prov} value={prov}>
-                      {prov}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
+      <TablaClientes clienteData={clientes} setClientes={setClientes} />
 
-            <Button onClick={agregarCliente}>Agregar</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
+      <AgregarClientes
+        modalAbierto={modalAbierto}
+        setModalAbierto={setModalAbierto}
+        form={form}
+        agregarCliente={agregarCliente}
+        departamentos={departamentos}
+        provincias={provincias}
+      />
     </>
   );
 }

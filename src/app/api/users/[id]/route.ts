@@ -6,7 +6,7 @@ export async function PUT(req: NextRequest, context: any) {
   const { params } = await context;
   const id = Number(params.id);
   const body = await req.json();
-  const { nombre, estado } = body;
+  const { nombre, estado, ID_area } = body;
 
   if (!id || isNaN(id)) {
     return NextResponse.json(
@@ -17,8 +17,8 @@ export async function PUT(req: NextRequest, context: any) {
 
   try {
     const usuarioActualizado = await prisma.usuario.update({
-      where: { id },
-      data: { nombre, estado },
+      where: { ID_usuario: id },
+      data: { nombre, estado, ID_area },
     });
     return NextResponse.json(usuarioActualizado);
   } catch (error) {
@@ -40,12 +40,8 @@ export async function DELETE(req: NextRequest, context: any) {
   }
 
   try {
-    const usuarioEliminado = await prisma.usuario.update({
-      where: { id },
-      data: {
-        deleted_at: new Date(),
-        estado: "inactivo",
-      },
+    const usuarioEliminado = await prisma.usuario.delete({
+      where: { ID_usuario: id },
     });
     return NextResponse.json(usuarioEliminado);
   } catch (error) {

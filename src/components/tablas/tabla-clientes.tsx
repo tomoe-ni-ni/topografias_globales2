@@ -43,10 +43,8 @@ import {
 import { DialogEliminarRow } from "@/components/dialogs/cambioEstado";
 import { Typography } from "@/components/ui/typography";
 import { DetalleCampo } from "../detalleCampo";
-import EditClientForm from "@/app/dashboard/clientes/components/EditClientForm";
-import { cliente } from "../../generated/prisma/index";
 
-export function TablaClientes({
+export function TablaClientesaaaaaaaaaaaa({
   clientesData,
   onClienteEditado,
   onClienteEliminado,

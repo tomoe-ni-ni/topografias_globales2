@@ -26,19 +26,6 @@ export default function Documentos() {
 
   console.log(documentos);
 
-  const actualizarDocumento = (documento: Documento) => {
-    /*setUsuarios((prev) =>
-        prev.map((u) =>
-          u.ID_usuario === usuarioActualizado.ID_usuario
-            ? {
-                ...usuarioActualizado,
-                fecha_ingreso: usuarioActualizado.fecha_ingreso ? usuarioActualizado.fecha_ingreso.split("T")[0] : undefined,
-              }
-            : u
-        )
-      );*/
-  };
-
   return (
     <>
       <div className="flex items-center justify-between mb-4">
@@ -50,7 +37,6 @@ export default function Documentos() {
       {/*llamar la tabla documentos*/}
       <TablaDocumentos
         documentosData={documentos}
-        onDocumentoEditado={actualizarDocumento}
         setDocumentos={setDocumentos}
       />
       {/* Modal para agregar/editar documento */}

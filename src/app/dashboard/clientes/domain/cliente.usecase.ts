@@ -1,16 +1,16 @@
 import { ClienteService } from "../infra/cliente.service";
-import { Cliente } from "./cliente.entity";
+import { Cliente, ClienteForm } from "./cliente.entity";
 
 
 export async function obtenerClientes() {
   return ClienteService.getClientes();
 }
 
-export async function crearCliente(cliente: Cliente) {
+export async function crearCliente(cliente: ClienteForm) {
   return ClienteService.crearCliente(cliente);
 }
 
-export async function actualizarCliente(cliente: Cliente) {
+export async function actualizarCliente(cliente: ClienteForm) {
   return ClienteService.actualizarCliente(cliente);
 }
 

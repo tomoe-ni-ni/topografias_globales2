@@ -1,21 +1,34 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
-import { Cliente } from "../domain/cliente.entity";
+import { Cliente, ClienteForm } from "../domain/cliente.entity";
 import ubigeo from "@/ubigeo.json";
 import { crearCliente, obtenerClientes } from "../domain/cliente.usecase";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import {
+  createClienteSchema,
+  CreateClienteSchema,
+} from "@/zod/schemas/clientes/clientesCreate.schema";
 
 export function useCliente() {
   const { data: session } = useSession();
+  const form = useForm<CreateClienteSchema>({
+    resolver: zodResolver(createClienteSchema),
+    defaultValues: {
+      nombre: "",
+      apellido: "",
+      nombre_departamento: "",
+      nombre_provincia: "",
+    },
+  });
   const [clientes, setClientes] = useState<Cliente[]>([]);
   const [loading, setLoading] = useState(false);
   const [modalAbierto, setModalAbierto] = useState(false);
-  const [nombreCliente, setNombreCliente] = useState("");
-  const [apellidoCliente, setApellidoCliente] = useState("");
-  const [departamento, setDepartamento] = useState("");
-  const [provincia, setProvincia] = useState("");
   const departamentos = Object.keys(ubigeo);
-  const provincias: string[] = departamento
-    ? (ubigeo as Record<string, string[]>)[departamento] || []
+  const provincias: string[] = form.getValues("nombre_departamento")
+    ? (ubigeo as Record<string, string[]>)[
+        form.getValues("nombre_departamento")
+      ] || []
     : [];
 
   useEffect(() => {
@@ -29,20 +42,16 @@ export function useCliente() {
 
   const agregarCliente = async () => {
     if (!session?.user.ID_usuario) return;
-    const cliente: Cliente = {
-      nombre: nombreCliente,
-      apellido: apellidoCliente,
-      nombre_departamento: departamento,
-      nombre_provincia: provincia,
+    const cliente: ClienteForm = {
+      ...form.getValues(),
     };
+
+    console.log(cliente);
 
     try {
       const nueva = await crearCliente(cliente);
       setClientes((prev) => [...prev, nueva]);
-      setNombreCliente("");
-      setApellidoCliente("");
-      setDepartamento("");
-      setProvincia("");
+      form.reset();
       setModalAbierto(false);
     } catch (error) {
       console.error("Error al crear la tarea:", error);
@@ -51,19 +60,13 @@ export function useCliente() {
 
   return {
     clientes,
+    setClientes,
     loading,
     modalAbierto,
     setModalAbierto,
     agregarCliente,
-    nombreCliente,
-    setNombreCliente,
-    apellidoCliente,
-    setApellidoCliente,
-    departamento,
-    setDepartamento,
-    provincia,
-    setProvincia,
     departamentos,
     provincias,
+    form,
   };
 }

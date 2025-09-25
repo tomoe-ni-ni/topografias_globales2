@@ -11,7 +11,15 @@ export async function POST(req: NextRequest) {
   const password = body.contrasena || body.password;
   const { rol, nombre, correo, ID_area, apellido, estado } = body;
 
-  if (!password || !rol || !nombre || !correo) {
+  if (
+    !password ||
+    !rol ||
+    !nombre ||
+    !correo ||
+    !ID_area ||
+    !apellido ||
+    !estado
+  ) {
     return NextResponse.json({ error: "Campos faltantes" }, { status: 400 });
   }
 
@@ -21,7 +29,7 @@ export async function POST(req: NextRequest) {
     const nuevoUsuario = await prisma.usuario.create({
       data: {
         nombre,
-        apellido: apellido ?? null,
+        apellido,
         correo,
         contrasena,
         rol,
@@ -47,14 +55,25 @@ export async function POST(req: NextRequest) {
     });
 
     // Asegurar que siempre se retornen estado y fecha_ingreso aunque sean null
-    return NextResponse.json({
-      ...usuarioConArea,
-      estado: usuarioConArea?.estado ?? "inactivo",
-      fecha_ingreso: usuarioConArea?.fecha_ingreso ?? "",
-    }, { status: 201 });
+    return NextResponse.json(
+      {
+        ...usuarioConArea,
+        estado: usuarioConArea?.estado ?? "inactivo",
+        fecha_ingreso: usuarioConArea?.fecha_ingreso ?? "",
+      },
+      { status: 201 }
+    );
   } catch (error) {
     console.error("Error al crear usuario:", error);
-  return NextResponse.json({ error: (error instanceof Error ? error.message : String(error)) || "Error interno", detalle: String(error) }, { status: 500 });
+    return NextResponse.json(
+      {
+        error:
+          (error instanceof Error ? error.message : String(error)) ||
+          "Error interno",
+        detalle: String(error),
+      },
+      { status: 500 }
+    );
   }
 }
 
@@ -64,7 +83,6 @@ export async function GET(req: NextRequest) {
     const rol = req.nextUrl.searchParams.get("rol");
     const where: any = {};
     if (rol) where.rol = rol;
-
 
     const usuarios = await prisma.usuario.findMany({
       where,

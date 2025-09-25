@@ -1,5 +1,4 @@
-import { Cliente } from "../domain/cliente.entity";
-
+import { Cliente, ClienteForm } from "../domain/cliente.entity";
 
 export const ClienteService = {
   async getClientes(): Promise<Cliente[]> {
@@ -8,7 +7,7 @@ export const ClienteService = {
     return res.json();
   },
   async crearCliente(
-    cliente: Omit<Cliente, "ID_cliente" | "created_at" | "updated_at">
+    cliente: Omit<ClienteForm, "ID_cliente" | "created_at" | "updated_at">
   ): Promise<Cliente> {
     const res = await fetch("/api/clientes", {
       method: "POST",
@@ -18,7 +17,7 @@ export const ClienteService = {
     if (!res.ok) throw new Error("Error al crear cliente");
     return res.json();
   },
-  async actualizarCliente(cliente: Partial<Cliente>): Promise<Cliente> {
+  async actualizarCliente(cliente: Partial<ClienteForm>): Promise<ClienteForm> {
     const res = await fetch(`/api/clientes/${cliente.ID_cliente}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },

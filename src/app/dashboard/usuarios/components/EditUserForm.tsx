@@ -1,6 +1,4 @@
 "use client";
-import { Usuarios } from "@/types/usuarios";
-import { userEditSchema } from "@/zod/schemas/userEdit.schema";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -8,37 +6,46 @@ import {
   FormField,
   FormItem,
   FormLabel,
-  FormMessage
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import {
   Select,
+  SelectContent,
+  SelectItem,
   SelectTrigger,
   SelectValue,
-  SelectContent,
-  SelectItem
 } from "@/components/ui/select";
-import { z } from "zod";
+import { Usuarios } from "@/types/usuarios";
+import { userEditSchema } from "@/zod/schemas/userEdit.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { toast } from "sonner";
+import { z } from "zod";
+import { useArea } from "../../area/hooks/usearea";
 interface EditUserFormProps {
   usuario: Usuarios | null;
   onClose: () => void;
   onUsuarioEditado: (usuarioActualizado: Usuarios) => void;
 }
 
-export default function EditUserForm({ usuario, onClose, onUsuarioEditado }: EditUserFormProps) {
+export default function EditUserForm({
+  usuario,
+  onClose,
+  onUsuarioEditado,
+}: EditUserFormProps) {
   const router = useRouter();
   const form = useForm<z.infer<typeof userEditSchema>>({
     resolver: zodResolver(userEditSchema),
     defaultValues: {
       nombre: usuario?.nombre || "",
       estado: usuario?.estado || "",
+      ID_area: `${usuario?.ID_area}` || "",
     },
   });
+
+  const { areas } = useArea();
 
   const onSubmit = async (data: z.infer<typeof userEditSchema>) => {
     if (!usuario?.ID_usuario) {
@@ -47,11 +54,16 @@ export default function EditUserForm({ usuario, onClose, onUsuarioEditado }: Edi
       });
       return;
     }
+    const dataSend = {
+      nombre: data.nombre,
+      ID_area: parseInt(data.ID_area),
+      estado: data.estado,
+    };
     try {
       const res = await fetch(`/api/users/${usuario.ID_usuario}`, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify(dataSend),
       });
       if (!res.ok) {
         toast.error("Error al actualizar usuario", {
@@ -114,6 +126,36 @@ export default function EditUserForm({ usuario, onClose, onUsuarioEditado }: Edi
             </FormItem>
           )}
         />
+
+        <FormField
+          control={form.control}
+          name="ID_area"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Area</FormLabel>
+              <Select
+                value={field.value ? String(field.value) : ""}
+                onValueChange={field.onChange}
+              >
+                <FormControl className="w-full">
+                  <SelectTrigger>
+                    <SelectValue placeholder="Selecciona un area" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  {areas.map((area) => (
+                    <SelectItem key={area.ID_area} value={String(area.ID_area)}>
+                      {area.nombre}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
         <Button
           type="submit"
           variant={"default"}

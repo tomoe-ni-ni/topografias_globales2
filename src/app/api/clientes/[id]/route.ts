@@ -5,8 +5,7 @@ export async function PUT(req: NextRequest, context: any) {
   const { params } = await context;
   const id = Number(params.id);
   const body = await req.json();
-  const { nombre, apellidos, email, telefono, direccion } = body;
-
+  const { nombre, apellido, nombre_departamento, nombre_provincia } = body;
   if (!id || isNaN(id)) {
     return NextResponse.json(
       { error: "ID no proporcionado o inválido" },
@@ -14,29 +13,31 @@ export async function PUT(req: NextRequest, context: any) {
     );
   }
 
+  console.log(
+    nombre +
+      "nombre" +
+      apellido +
+      "apellido" +
+      nombre_departamento +
+      "departamento" +
+      nombre_provincia +
+      "provincia"
+  );
+
   try {
     // Actualiza cliente
     const cliente = await prisma.cliente.update({
-      where: { ID_cliente: id},
+      where: { ID_cliente: id },
       data: {
         nombre,
-        apellidos,
-        email,
-        telefono,
-        direccion,
-      },
-    });
-    // Actualiza usuario relacionado
-    await prisma.usuario.update({
-      where: { id: cliente.user_id },
-      data: {
-        nombre,
+        apellido,
+        nombre_departamento,
+        nombre_provincia,
       },
     });
 
     const clienteCompleto = await prisma.cliente.findUnique({
-      where: { id: cliente.id },
-      include: { usuario: true },
+      where: { ID_cliente: cliente.ID_cliente },
     });
 
     return NextResponse.json(clienteCompleto);
@@ -60,14 +61,10 @@ export async function DELETE(req: NextRequest, context: any) {
   }
 
   try {
-    const cliente = await prisma.cliente.update({
-      where: { id },
-      data: { deleted_at: new Date() },
+    const cliente = await prisma.cliente.delete({
+      where: { ID_cliente: id },
     });
-    await prisma.usuario.update({
-      where: { id: cliente.user_id },
-      data: { deleted_at: new Date(), estado: "inactivo" },
-    });
+
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json(

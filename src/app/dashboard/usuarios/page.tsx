@@ -13,22 +13,22 @@ function Usuarios() {
     fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
-       console.log(data); 
+        console.log(data);
         setUsuarios(data);
       });
   }, []);
-
 
   const agregarUsuario = (usuarioNuevo: Usuarios) => {
     setUsuarios((prev) => [
       {
         ...usuarioNuevo,
-        fecha_ingreso: usuarioNuevo.fecha_ingreso ? usuarioNuevo.fecha_ingreso.split("T")[0] : undefined,
+        fecha_ingreso: usuarioNuevo.fecha_ingreso
+          ? usuarioNuevo.fecha_ingreso.split("T")[0]
+          : undefined,
       },
       ...prev,
     ]);
   };
-
 
   const actualizarUsuario = (usuarioActualizado: Usuarios) => {
     setUsuarios((prev) =>
@@ -36,13 +36,14 @@ function Usuarios() {
         u.ID_usuario === usuarioActualizado.ID_usuario
           ? {
               ...usuarioActualizado,
-              fecha_ingreso: usuarioActualizado.fecha_ingreso ? usuarioActualizado.fecha_ingreso.split("T")[0] : undefined,
+              fecha_ingreso: usuarioActualizado.fecha_ingreso
+                ? usuarioActualizado.fecha_ingreso.split("T")[0]
+                : undefined,
             }
           : u
       )
     );
   };
-
 
   const eliminarUsuario = (id: number | string | null | undefined) => {
     setUsuarios((prev) => prev.filter((u) => u.ID_usuario !== id));
