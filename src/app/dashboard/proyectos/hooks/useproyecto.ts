@@ -1,3 +1,4 @@
+
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Proyecto } from "../domain/proyecto.entity";
@@ -15,7 +16,7 @@ export function useProyecto() {
     if (session?.user.ID_usuario) {
       setLoading(true);
       obtenerProyectos()
-        .then(setProyectos)
+        .then(setProyectos)         
         .finally(() => setLoading(false));
     }
   }, [session?.user.ID_usuario]);

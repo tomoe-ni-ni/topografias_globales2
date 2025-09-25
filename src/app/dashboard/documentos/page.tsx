@@ -5,7 +5,6 @@ import { ChangeEvent, useState } from "react";
 import { useArea } from "../area/hooks/usearea";
 import { useCliente } from "../clientes/hooks/useCliente";
 import { useEstado } from "../estado_documento/hooks/useestado";
-import { useProyecto } from "../proyectos/hooks/useproyecto";
 import AgregarDocumento from "./components/agregarDocumento";
 import { TablaDocumentos } from "./components/tabla-documentos";
 import { Documento } from "./domain/documentos.entity";

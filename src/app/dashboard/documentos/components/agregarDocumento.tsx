@@ -32,7 +32,7 @@ import { useForm, UseFormReturn } from "react-hook-form";
 import { useArea } from "../../area/hooks/usearea";
 import { useCliente } from "../../clientes/hooks/useCliente";
 import { useEstado } from "../../estado_documento/hooks/useestado";
-import { useProyecto } from "../../proyectos/hooks/useproyecto";
+import { useProyecto } from "../../proyectos/hooks/useProyecto";
 import { DocumentoForm } from "../domain/documentos.entity";
 
 export default function AgregarDocumento({

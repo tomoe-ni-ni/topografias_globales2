@@ -1,7 +1,7 @@
 "use client";
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
-import { useProyecto } from "./hooks/useproyecto";
+import { useProyecto } from "./hooks/useProyecto";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
