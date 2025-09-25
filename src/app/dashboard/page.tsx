@@ -9,5 +9,5 @@ export default async function Page() {
     redirect("/auth/login");
   }
 
-  return <>Welcome {session.user?.name}</>;
+  return <>Bienvenido {session.user?.name}</>;
 }

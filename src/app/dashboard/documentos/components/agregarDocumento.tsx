@@ -5,35 +5,86 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { TipoDocumento } from "@/enums";
 import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@radix-ui/react-select";
-import React from "react";
+  CreateDocumentoSchema,
+  createDocumentoSchema,
+} from "@/zod/schemas/documentos/documentoCreate.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
+import { useForm, UseFormReturn } from "react-hook-form";
+import { useArea } from "../../area/hooks/usearea";
+import { useCliente } from "../../clientes/hooks/useCliente";
+import { useEstado } from "../../estado_documento/hooks/useestado";
+import { useProyecto } from "../../proyectos/hooks/useproyecto";
+import { DocumentoForm } from "../domain/documentos.entity";
 
-export default function agregarDocumento({
+export default function AgregarDocumento({
   modalAbierto,
   setModalAbierto,
   form,
-  setForm,
   archivoState,
   setArchivoState,
   agregarDocumento,
 }: {
   modalAbierto: boolean;
-  setModalAbierto:  any;
-  form: any;
-  setForm: React.Dispatch<React.SetStateAction<any>>;
-  archivoState: any;
-  setArchivoState: React.Dispatch<React.SetStateAction<any>>;
-  agregarDocumento: any;
+  setModalAbierto: Dispatch<SetStateAction<boolean>>;
+  form: UseFormReturn<CreateDocumentoSchema>;
+  archivoState: File | null;
+  setArchivoState: Dispatch<SetStateAction<File | null>>;
+  agregarDocumento: () => Promise<void>;
 }) {
+  const { clientes } = useCliente();
+  const { proyectos } = useProyecto();
+  const { estados } = useEstado();
+  const { areas } = useArea();
+  const handleArchivo = (e: ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0] || null;
+    if (!file) return;
+    setArchivoState(file);
+    form.setValue("archivo", file);
+  };
+  const handleAgregarDocumento = async () => {
+    let archivoPath: string | null = null;
+    if (archivoState) {
+      const formData = new FormData();
+      formData.append("file", archivoState);
+      const res = await fetch("/api/upload", {
+        method: "POST",
+        body: formData,
+      });
+      const data = await res.json();
+      if (data.error) {
+        alert("Error al subir archivo: " + data.error);
+        return;
+      }
+      archivoPath = data.path;
+      form.setValue("archivo", archivoPath ?? "");
+    }
+    await agregarDocumento();
+    setArchivoState(null);
+  };
+
+  const onSubmit = async (data: CreateDocumentoSchema) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
@@ -41,137 +92,223 @@ export default function agregarDocumento({
           <DialogHeader>
             <DialogTitle>Agregar nueva tarea</DialogTitle>
           </DialogHeader>
-          <div className="flex flex-col gap-2">
-            <Input
-              value={form.nombre_documento}
-              onChange={(e) =>
-                setForm((prev) => ({
-                  ...prev,
-                  nombre_documento: e.target.value,
-                }))
-              }
-              placeholder="Nombre del documento..."
-            />
-            <Select
-              value={form.tipo_documento}
-              onValueChange={(value) =>
-                setForm((prev) => ({ ...prev, tipo_documento: value }))
-              }
+          <Form {...form}>
+            <form
+              onSubmit={form.handleSubmit(onSubmit)}
+              className="flex flex-col gap-2"
             >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un tipo de documento" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value={TipoDocumento.planos}>planos</SelectItem>
-                <SelectItem value={TipoDocumento.catastrada}>
-                  catastro
-                </SelectItem>
-              </SelectContent>
-            </Select>
-            <Textarea
-              value={form.descripcion}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, descripcion: e.target.value }))
-              }
-              placeholder="Descripción..."
-            />
-            <Input
-              onChange={handleArchivo}
-              placeholder="subir archivo..."
-              type="file"
-            />
-            <Input
-              value={form.folio}
-              onChange={(e) =>
-                setForm((prev) => ({ ...prev, folio: e.target.value }))
-              }
-              placeholder="Folio..."
-            />
-            <Select
-              value={form.ID_cliente ? String(form.ID_cliente) : ""}
-              onValueChange={(value) =>
-                setForm((prev) => ({ ...prev, ID_cliente: Number(value) }))
-              }
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un cliente" />
-              </SelectTrigger>
-              <SelectContent>
-                {clientes.map((cliente) => (
-                  <SelectItem
-                    key={cliente.ID_cliente}
-                    value={String(cliente.ID_cliente)}
-                  >
-                    {cliente.nombre} {cliente.apellido}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select
-              value={form.ID_proyecto ? String(form.ID_proyecto) : ""}
-              onValueChange={(value) =>
-                setForm((prev) => ({ ...prev, ID_proyecto: Number(value) }))
-              }
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un proyecto" />
-              </SelectTrigger>
-              <SelectContent>
-                {proyectos.map((proyecto) => (
-                  <SelectItem
-                    key={proyecto.ID_proyecto}
-                    value={String(proyecto.ID_proyecto)}
-                  >
-                    {proyecto.nombre}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select
-              value={
-                form.ID_estado_documento ? String(form.ID_estado_documento) : ""
-              }
-              onValueChange={(value) =>
-                setForm((prev) => ({
-                  ...prev,
-                  ID_estado_documento: Number(value),
-                }))
-              }
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un estado" />
-              </SelectTrigger>
-              <SelectContent>
-                {estados.map((estado) => (
-                  <SelectItem
-                    key={estado.ID_estado}
-                    value={String(estado.ID_estado)}
-                  >
-                    {estado.estado}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-            <Select
-              value={form.ID_area ? String(form.ID_area) : ""}
-              onValueChange={(value) =>
-                setForm((prev) => ({ ...prev, ID_area: Number(value) }))
-              }
-            >
-              <SelectTrigger className="w-full">
-                <SelectValue placeholder="Selecciona un area" />
-              </SelectTrigger>
-              <SelectContent>
-                {areas.map((area) => (
-                  <SelectItem key={area.ID_area} value={String(area.ID_area)}>
-                    {area.nombre}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
+              <FormField
+                control={form.control}
+                name="nombre_documento"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input placeholder="Nombre del documento" {...field} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
 
-            <Button onClick={handleAgregarDocumento}>Agregar</Button>
-          </div>
+              <FormField
+                control={form.control}
+                name="tipo_documento"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        value={field.value}
+                        onValueChange={field.onChange}
+                      >
+                        <FormControl className="w-full">
+                          <SelectTrigger>
+                            <SelectValue placeholder="Selecciona un tipo de documento" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value={TipoDocumento.planos}>
+                            planos
+                          </SelectItem>
+                          <SelectItem value={TipoDocumento.catastrada}>
+                            catastro
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="descripcion"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Textarea
+                        value={field.value}
+                        onChange={field.onChange}
+                        placeholder="Descripción..."
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Input
+                onChange={handleArchivo}
+                placeholder="subir archivo..."
+                type="file"
+              />
+
+              <FormField
+                control={form.control}
+                name="folio"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Input
+                        value={field.value}
+                        onChange={field.onChange}
+                        placeholder="Folio..."
+                      />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="ID_cliente"
+                render={({ field }) => (
+                  <FormItem>
+                    <Select
+                      value={field.value ? String(field.value) : ""}
+                      onValueChange={field.onChange}
+                    >
+                      <FormControl className="w-full">
+                        <SelectTrigger>
+                          <SelectValue placeholder="Selecciona un cliente" />
+                        </SelectTrigger>
+                      </FormControl>
+                      <SelectContent>
+                        {clientes.map((cliente) => (
+                          <SelectItem
+                            key={cliente.ID_cliente}
+                            value={String(cliente.ID_cliente)}
+                          >
+                            {cliente.nombre} {cliente.apellido}
+                          </SelectItem>
+                        ))}
+                      </SelectContent>
+                    </Select>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="ID_proyecto"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        value={field.value ? String(field.value) : ""}
+                        onValueChange={field.onChange}
+                      >
+                        <FormControl className="w-full">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Selecciona un proyecto" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {proyectos.map((proyecto) => (
+                            <SelectItem
+                              key={proyecto.ID_proyecto}
+                              value={String(proyecto.ID_proyecto)}
+                            >
+                              {proyecto.nombre}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="ID_estado_documento"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        value={field.value ? String(field.value) : ""}
+                        onValueChange={field.onChange}
+                      >
+                        <FormControl className="w-full">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Selecciona un estado" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {estados.map((estado) => (
+                            <SelectItem
+                              key={estado.ID_estado}
+                              value={String(estado.ID_estado)}
+                            >
+                              {estado.estado}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <FormField
+                control={form.control}
+                name="ID_area"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <Select
+                        value={field.value ? String(field.value) : ""}
+                        onValueChange={field.onChange}
+                      >
+                        <FormControl className="w-full">
+                          <SelectTrigger className="w-full">
+                            <SelectValue placeholder="Selecciona un area" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          {areas.map((area) => (
+                            <SelectItem
+                              key={area.ID_area}
+                              value={String(area.ID_area)}
+                            >
+                              {area.nombre}
+                            </SelectItem>
+                          ))}
+                        </SelectContent>
+                      </Select>
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                )}
+              />
+
+              <Button onClick={handleAgregarDocumento}>Agregar</Button>
+            </form>
+          </Form>
         </DialogContent>
       </Dialog>
     </>

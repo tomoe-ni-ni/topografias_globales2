@@ -1,3 +1,9 @@
+import { Usuarios } from "@/types/usuarios";
+import { Area } from "../../area/domain/area.entity";
+import { Cliente } from "../../clientes/domain/cliente.entity";
+import { Proyecto } from "../../proyectos/domain/proyecto.entity";
+import { EstadoDocumento } from "../../estado_documento/domain/estado.entity";
+
 export type Documento = {
   ID_documento?: number;
   nombre_documento: string;
@@ -10,6 +16,12 @@ export type Documento = {
   ID_estado_documento: number;
   ID_area: number;
   ID_usuario?: string;
+  usuario?: Usuarios;
+  area?: Area;
+  cliente: Cliente;
+  proyecto?: Proyecto;
+  estado: EstadoDocumento;
+  created_at?: string;
 };
 
 export type DocumentoForm = {
@@ -23,4 +35,11 @@ export type DocumentoForm = {
   ID_estado_documento: number;
   ID_area: number;
   ID_usuario?: number;
+};
+
+export type DocumentoFormEdit = {
+  nombre_documento: string;
+  folio: string;
+  descripcion: string;
+  ID_documento: number;
 };

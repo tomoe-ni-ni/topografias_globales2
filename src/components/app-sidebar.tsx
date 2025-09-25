@@ -34,42 +34,12 @@ import { useSession } from "next-auth/react";
 const data = {
   teams: [
     {
-      name: "Control",
+      name: "Topografías Globales",
       logo: Building2,
       plan: "Empresa",
     },
   ],
   navMain: [
-    {
-      title: "Mi horario",
-      url: "/dashboard/horario",
-      icon: LayoutDashboard,
-      items: [],
-    },
-    {
-      title: "Deberes",
-      url: "/dashboard/deberes",
-      icon: ALargeSmall,
-      items: [],
-    },
-    {
-      title: "Horario de profesores",
-      url: "/dashboard/horario-profesores",
-      icon: SquareTerminal,
-      items: [],
-    },
-    {
-      title: "Calendarización 2025",
-      url: "/dashboard/calendarizacion-2025",
-      icon: Frame,
-      items: [],
-    },
-    {
-      title: "Libros (PDF)",
-      url: "/dashboard/libros",
-      icon: BookOpen,
-      items: [],
-    },
     {
       title: "Documentos",
       url: "/dashboard/documentos",
@@ -105,7 +75,7 @@ const data = {
       url: "/dashboard/usuarios",
       icon: WalletCards,
       items: [],
-    }
+    },
 
     // {
     //   title: "Tipos de Permiso",
@@ -155,8 +125,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <Building2 className="size-4" />
           </div>
           <div className="grid flex-1 text-left text-sm leading-tight">
-            <span className="truncate font-medium">{"Edelmira del Pando"}</span>
-            <span className="truncate text-xs">{"Colegio"}</span>
+            <span className="truncate font-medium">
+              {"Topografías Globales"}
+            </span>
+            <span className="truncate text-xs">{"Empresa"}</span>
           </div>
         </SidebarMenuButton>
       </SidebarHeader>
@@ -165,6 +137,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <NavMain items={data.navMain} />
         ) : (
           <div className="flex items-center justify-center h-full w-full">
+            {/* TODO: Loader  */}
             <span className="animate-spin rounded-full border-4 border-gray-300 border-t-blue-500 h-8 w-8"></span>
             <span className="ml-2 text-gray-500">Cargando menú...</span>
           </div>

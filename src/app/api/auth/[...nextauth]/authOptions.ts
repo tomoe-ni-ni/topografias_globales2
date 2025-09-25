@@ -5,6 +5,7 @@ import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { DefaultUser } from "next-auth";
+import { sign } from "crypto";
 
 declare module "next-auth" {
   interface User extends DefaultUser {
@@ -48,12 +49,12 @@ export const authOptions = {
         });
         console.log("userFound", userFound);
         if (!userFound) throw new Error("Usuario no encontrado");
-console.log("userFound", userFound);
+        console.log("userFound", userFound);
         const isPasswordValid = await bcrypt.compare(
           credentials?.contrasena || "",
           userFound.contrasena
         );
-console.log("isPasswordValid", isPasswordValid);
+        console.log("isPasswordValid", isPasswordValid);
         if (!isPasswordValid) throw new Error("Contraseña incorrecta");
 
         return {

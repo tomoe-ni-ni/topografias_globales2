@@ -182,7 +182,9 @@ export function TablaUsuarios({
   const confirmarCambioEstado = () => {
     if (usuarioSeleccionado && nuevoEstado) {
       const nuevosUsuarios = usuarios.map((u) =>
-        u.ID_usuario === usuarioSeleccionado.ID_usuario ? { ...u, estado: nuevoEstado } : u
+        u.ID_usuario === usuarioSeleccionado.ID_usuario
+          ? { ...u, estado: nuevoEstado }
+          : u
       );
       setUsuarios(nuevosUsuarios);
       setModalEstado(false);
@@ -282,9 +284,7 @@ export function TablaUsuarios({
                     ))}
                 </div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
+              <TableHead className="cursor-pointer hover:bg-muted/50">
                 Área
               </TableHead>
               <TableHead
@@ -305,61 +305,76 @@ export function TablaUsuarios({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {usuariosPaginados.length > 0
-              ? usuariosPaginados.map((usuario) => (
-                  <TableRow key={usuario.ID_usuario}>
-                    <TableCell className="font-medium">
-                      <div className="flex items-center space-x-2">
-                        <Avatar>
-                          <AvatarFallback>
-                            {obtenerIniciales(usuario.nombre)}
-                          </AvatarFallback>
-                        </Avatar>
-                        <span>{usuario.nombre}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell>{usuario.apellido || ""}</TableCell>
-                    <TableCell>{usuario.correo}</TableCell>
-                    <TableCell>
-                      <Badge className={coloresEstado[usuario.estado ?? ""] || ""}>
-                        {usuario.estado ? usuario.estado.charAt(0).toUpperCase() + usuario.estado.slice(1) : ""}
-                      </Badge>
-                    </TableCell>
-                    <TableCell>{usuario.area?.nombre || "Sin área"}</TableCell>
-                    <TableCell>{usuario.fecha_ingreso ? usuario.fecha_ingreso.split("T")[0] : ""}</TableCell>
-                    <TableCell className="text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreVertical className="h-4 w-4" />
-                            <span className="sr-only">Abrir menú</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => abrirModalVer(usuario)}>
-                            <Eye className="mr-2 h-4 w-4" />
-                            <span>Ver</span>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => abrirModalEditar(usuario)}>
-                            <Pencil className="mr-2 h-4 w-4" />
-                            <span>Editar</span>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem onClick={() => abrirModalEliminar(usuario)}>
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            <span>Eliminar</span>
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                ))
-              : (
-                <TableRow>
-                  <TableCell colSpan={5} className="text-center py-6">
-                    No se encontraron resultados
+            {usuariosPaginados.length > 0 ? (
+              usuariosPaginados.map((usuario) => (
+                <TableRow key={usuario.ID_usuario}>
+                  <TableCell className="font-medium">
+                    <div className="flex items-center space-x-2">
+                      <Avatar>
+                        <AvatarFallback>
+                          {obtenerIniciales(usuario.nombre)}
+                        </AvatarFallback>
+                      </Avatar>
+                      <span>{usuario.nombre}</span>
+                    </div>
+                  </TableCell>
+                  <TableCell>{usuario.apellido || ""}</TableCell>
+                  <TableCell>{usuario.correo}</TableCell>
+                  <TableCell>
+                    <Badge
+                      className={coloresEstado[usuario.estado ?? ""] || ""}
+                    >
+                      {usuario.estado
+                        ? usuario.estado.charAt(0).toUpperCase() +
+                          usuario.estado.slice(1)
+                        : ""}
+                    </Badge>
+                  </TableCell>
+                  <TableCell>{usuario.area?.nombre || "Sin área"}</TableCell>
+                  <TableCell>
+                    {usuario.fecha_ingreso
+                      ? usuario.fecha_ingreso.split("T")[0]
+                      : ""}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreVertical className="h-4 w-4" />
+                          <span className="sr-only">Abrir menú</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem
+                          onClick={() => abrirModalVer(usuario)}
+                        >
+                          <Eye className="mr-2 h-4 w-4" />
+                          <span>Ver</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => abrirModalEditar(usuario)}
+                        >
+                          <Pencil className="mr-2 h-4 w-4" />
+                          <span>Editar</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => abrirModalEliminar(usuario)}
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Eliminar</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
-              )}
+              ))
+            ) : (
+              <TableRow>
+                <TableCell colSpan={5} className="text-center py-6">
+                  No se encontraron resultados
+                </TableCell>
+              </TableRow>
+            )}
           </TableBody>
         </Table>
       </div>
@@ -459,16 +474,24 @@ export function TablaUsuarios({
                   <p className="text-sm font-medium text-muted-foreground">
                     Estado
                   </p>
-                  <Badge className={coloresEstado[usuarioSeleccionado.estado ?? ""] || ""}>
-                    {(usuarioSeleccionado.estado?.charAt(0).toUpperCase() ?? "") +
-                      (usuarioSeleccionado.estado?.slice(1) ?? "")}
+                  <Badge
+                    className={
+                      coloresEstado[usuarioSeleccionado.estado ?? ""] || ""
+                    }
+                  >
+                    {(usuarioSeleccionado.estado?.charAt(0).toUpperCase() ??
+                      "") + (usuarioSeleccionado.estado?.slice(1) ?? "")}
                   </Badge>
                 </div>
                 <div>
                   <p className="text-sm font-medium text-muted-foreground">
                     Fecha de registro
                   </p>
-                  <p>{usuarioSeleccionado.fecha_ingreso ? usuarioSeleccionado.fecha_ingreso.split("T")[0] : ""}</p>
+                  <p>
+                    {usuarioSeleccionado.fecha_ingreso
+                      ? usuarioSeleccionado.fecha_ingreso.split("T")[0]
+                      : ""}
+                  </p>
                 </div>
               </div>
             </div>
@@ -495,7 +518,9 @@ export function TablaUsuarios({
             </Button>
             <Button
               variant="destructive"
-              onClick={() => confirmarEliminar(usuarioSeleccionado?.ID_usuario ?? null)}
+              onClick={() =>
+                confirmarEliminar(usuarioSeleccionado?.ID_usuario ?? null)
+              }
             >
               Eliminar
             </Button>

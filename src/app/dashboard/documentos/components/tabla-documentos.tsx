@@ -1,41 +1,58 @@
-import { use } from "react";
+"use client";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import {
+  Table, // Import Table component from UI components instead
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Eye, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
+import { Dispatch, SetStateAction } from "react";
 import { Documento } from "../domain/documentos.entity";
 import { useTableDocumento } from "../hooks/useTableDocumento";
-import { ArrowDown, ArrowUp, Badge, ChevronLeft, ChevronRight, Eye, MoreVertical, Pencil, Search, Table, Trash2 } from "lucide-react";
-import { Input } from "@/components/ui/input";
-import { TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import EditUserForm from "../../usuarios/components/EditUserForm";
-import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@radix-ui/react-dropdown-menu";
-import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { obtenerIniciales, coloresEstado } from "@/lib/utils";
+
+import { DialogConfirmacion } from "@/components/dialogs/eliminarRow";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import DetallesDocumento from "./detallesDocumento";
+import EditarDocumento from "./editarDocumento";
 
 export function TablaDocumentos({
   documentosData,
   onDocumentoEditado,
-  onDocumentoEliminado,
+  setDocumentos,
 }: {
   documentosData: Documento[];
   onDocumentoEditado: (documento: Documento) => void;
-  onDocumentoEliminado: (ID_documento: number) => void;
+  setDocumentos: Dispatch<SetStateAction<Documento[]>>;
 }) {
   const {
-    documentos,
     documentosFiltrados,
     busqueda,
     paginaActual,
-    modalEliminar,
-    modalEditar,
     documentoSeleccionado,
-    setModalEliminar,
-    setModalEditar,
     setDocumentoSeleccionado,
     setBusqueda,
     setPaginaActual,
     setDocumentosFiltrados,
-    setDocumentos,
-  } = useTableDocumento();
+    eliminarDocumento,
+    openEliminarDialog,
+    setOpenEliminarDialog,
+    modalVer,
+    setModalVer,
+    modalAbiertoEditar,
+    setModalAbiertoEditar,
+    formEditar,
+    editarDocumento,
+  } = useTableDocumento({ documentos: documentosData, setDocumentos });
+
   return (
     <div className="space-y-4">
       {/* Barra de búsqueda */}
@@ -54,106 +71,108 @@ export function TablaDocumentos({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                <div className="flex items-center">
-                  Usuario
-                </div>
+              <TableHead className="cursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Id Documento</div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                <div className="flex items-center">
-                  Apellido
-                </div>
+              <TableHead className="cursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Nombre Documento</div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                <div className="flex items-center">
-                  Correo
-                </div>
+              <TableHead className="cursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Nombre Cliente</div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                <div className="flex items-center">
-                  Estado
-                </div>
+              <TableHead className="cursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Estado</div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                Área
+              <TableHead className="cursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Tipo</div>
               </TableHead>
-              <TableHead
-                className="cursor-pointer hover:bg-muted/50"
-              >
-                <div className="flex items-center">
-                  Fecha de ingreso
-                </div>
+              <TableHead className="ursor-pointer hover:bg-muted/50">
+                <div className="flex items-center">Acciones</div>
               </TableHead>
-              <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {documentos.length > 0
-              ? documentos.map((documento) => (
-                  <TableRow key={documento.ID_documento}>
-                    <TableCell className="font-medium">
-                      <div className="flex items-center space-x-2">
-                        <Avatar>
-                          <AvatarFallback>
-                            {obtenerIniciales(documento.nombre_documento)}
-                          </AvatarFallback>
-                        </Avatar>
-                        <span>{documento.nombre_documento}</span>
-                      </div>
-                    </TableCell>
-                    <TableCell>{""}</TableCell>
-                    <TableCell>{""}</TableCell>
-                    <TableCell>
-                        {""}
-                    </TableCell>
-                    <TableCell>{""}</TableCell>
-                    <TableCell>{""}</TableCell>
-                    <TableCell className="text-right">
-                      <DropdownMenu>
-                        <DropdownMenuTrigger asChild>
-                          <Button variant="ghost" size="icon">
-                            <MoreVertical className="h-4 w-4" />
-                            <span className="sr-only">Abrir menú</span>
-                          </Button>
-                        </DropdownMenuTrigger>
-                        <DropdownMenuContent align="end">
-                          <DropdownMenuItem>
-                            <Eye className="mr-2 h-4 w-4" />
-                            <span>Ver</span>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem>
-                            <Pencil className="mr-2 h-4 w-4" />
-                            <span>Editar</span>
-                          </DropdownMenuItem>
-                          <DropdownMenuItem >
-                            <Trash2 className="mr-2 h-4 w-4" />
-                            <span>Eliminar</span>
-                          </DropdownMenuItem>
-                        </DropdownMenuContent>
-                      </DropdownMenu>
-                    </TableCell>
-                  </TableRow>
-                ))
-              : (
-                <TableRow>
-                  <TableCell colSpan={5} className="text-center py-6">
-                    No se encontraron resultados
+            {documentosData.length === 0 ? (
+              <TableRow>
+                <TableCell colSpan={6} className="text-center py-4">
+                  No se encontraron resultados
+                </TableCell>
+              </TableRow>
+            ) : (
+              documentosData.map((documento) => (
+                <TableRow key={documento.ID_documento}>
+                  <TableCell>{documento.ID_documento}</TableCell>
+                  <TableCell>{documento.nombre_documento}</TableCell>
+                  <TableCell>
+                    {documento.cliente?.nombre} {documento.cliente?.apellido}
+                  </TableCell>
+                  <TableCell>{documento.estado?.estado}</TableCell>
+                  <TableCell>{documento.tipo_documento}</TableCell>
+                  <TableCell
+                    className="text-right"
+                    onClick={() => setDocumentoSeleccionado(documento)}
+                  >
+                    <DropdownMenu>
+                      <DropdownMenuTrigger asChild>
+                        <Button variant="ghost" size="icon">
+                          <MoreVertical className="h-4 w-4" />
+                          <span className="sr-only">Abrir menú</span>
+                        </Button>
+                      </DropdownMenuTrigger>
+                      <DropdownMenuContent align="end">
+                        <DropdownMenuItem onClick={() => setModalVer(true)}>
+                          <Eye className="mr-2 h-4 w-4" />
+                          <span>Ver</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => setModalAbiertoEditar(true)}
+                        >
+                          <Pencil className="mr-2 h-4 w-4" />
+                          <span>Editar</span>
+                        </DropdownMenuItem>
+                        <DropdownMenuItem
+                          onClick={() => setOpenEliminarDialog(true)}
+                        >
+                          <Trash2 className="mr-2 h-4 w-4" />
+                          <span>Eliminar</span>
+                        </DropdownMenuItem>
+                      </DropdownMenuContent>
+                    </DropdownMenu>
                   </TableCell>
                 </TableRow>
-              )}
+              ))
+            )}
           </TableBody>
         </Table>
       </div>
+
+      {/*  Modal para eliminar documento */}
+      <DialogConfirmacion
+        open={openEliminarDialog}
+        onOpenChange={setOpenEliminarDialog}
+        title="¿Estás seguro?"
+        description="Esta acción no se puede deshacer."
+        onConfirm={eliminarDocumento}
+        confirmText="Sí, eliminar"
+        cancelText="Cancelar"
+        confirmVariant="destructive"
+      />
+
+      {/* Modal de ver documento */}
+      <DetallesDocumento
+        documentoSeleccionado={documentoSeleccionado}
+        setModalVer={setModalVer}
+        modalVer={modalVer}
+      />
+
+      {/* Modal de editar documento */}
+      <EditarDocumento
+        modalAbiertoEditar={modalAbiertoEditar}
+        setModalAbiertoEditar={setModalAbiertoEditar}
+        formEditar={formEditar}
+        editarDocumento={editarDocumento}
+        documentoSeleccionado={documentoSeleccionado}
+      />
     </div>
-  )
+  );
 }

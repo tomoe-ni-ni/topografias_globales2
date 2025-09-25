@@ -6,22 +6,34 @@ import {
   crearDocumento,
   obtenerDocumentos,
 } from "../domain/documentos.usecase";
+import { toast } from "sonner";
+import { useForm } from "react-hook-form";
+import {
+  createDocumentoSchema,
+  CreateDocumentoSchema,
+} from "@/zod/schemas/documentos/documentoCreate.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { parse } from "path";
 
 export function useDocumento() {
   const { data: session } = useSession();
   const [documentos, setDocumentos] = useState<Documento[]>([]);
   const [loading, setLoading] = useState(false);
   const [modalAbierto, setModalAbierto] = useState(false);
-  const [form, setForm] = useState<DocumentoForm>({
-    nombre_documento: "",
-    tipo_documento: TipoDocumento.planos,
-    archivo: "",
-    folio: "",
-    descripcion: "",
-    ID_cliente: 0,
-    ID_proyecto: 0,
-    ID_estado_documento: 0,
-    ID_area: 0,
+
+  const form = useForm<CreateDocumentoSchema>({
+    resolver: zodResolver(createDocumentoSchema),
+    defaultValues: {
+      nombre_documento: "",
+      tipo_documento: TipoDocumento.planos,
+      archivo: "",
+      folio: "",
+      descripcion: "",
+      ID_cliente: "",
+      ID_proyecto: "",
+      ID_estado_documento: "",
+      ID_area: "",
+    },
   });
   const [archivoState, setArchivoState] = useState<File | null>(null);
 
@@ -37,45 +49,44 @@ export function useDocumento() {
   const agregarDocumento = async () => {
     if (!session?.user.ID_usuario) return;
     let archivoNombre = "";
-    if (form.archivo instanceof File) {
-      archivoNombre = form.archivo.name;
-    } else if (typeof form.archivo === "string") {
-      archivoNombre = form.archivo;
+    if (form.getValues("archivo") instanceof File) {
+      archivoNombre = form.getValues("archivo").name;
+    } else if (typeof form.getValues("archivo") === "string") {
+      archivoNombre = form.getValues("archivo");
     }
     const documento: DocumentoForm = {
-      ...form,
+      ...form.getValues(),
       archivo: archivoNombre,
+      ID_area: parseInt(form.getValues("ID_area")),
+      ID_cliente: parseInt(form.getValues("ID_cliente")),
+      ID_estado_documento: parseInt(form.getValues("ID_estado_documento")),
+      ID_proyecto: parseInt(form.getValues("ID_proyecto")),
       ID_usuario: parseInt(session.user.ID_usuario),
     };
+    if (!documento.archivo) {
+      toast.error("Archivo no seleccionado");
+      return;
+    }
+
     try {
       const nueva = await crearDocumento(documento);
       setDocumentos((prev) => [...prev, nueva]);
-      setForm({
-        nombre_documento: "",
-        tipo_documento: TipoDocumento.planos,
-        archivo: "",
-        folio: "",
-        descripcion: "",
-        ID_cliente: 0,
-        ID_proyecto: 0,
-        ID_estado_documento: 0,
-        ID_area: 0,
-      });
+      form.reset();
       setModalAbierto(false);
     } catch (error) {
       console.error("Error al crear el documento:", error);
     }
-   console.log(documento);
+    console.log(documento);
   };
 
   return {
     documentos,
+    setDocumentos,
     loading,
     modalAbierto,
     setModalAbierto,
     agregarDocumento,
     form,
-    setForm,
     archivoState,
     setArchivoState,
   };

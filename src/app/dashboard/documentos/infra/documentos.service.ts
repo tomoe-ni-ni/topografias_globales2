@@ -18,7 +18,7 @@ export const DocumentoService = {
     return res.json();
   },
   async actualizarDocumento(documento: Partial<Documento>): Promise<Documento> {
-    const res = await fetch(`/api/documento/${documento.ID_documento}`, {
+    const res = await fetch(`/api/documentos/${documento.ID_documento}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(documento),

@@ -3,7 +3,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { loginSchema, LoginSchema } from "@/zod/schemas/login.schema";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
@@ -19,8 +19,11 @@ import { Typography } from "@/components/ui/typography";
 import { Eye, EyeClosed } from "lucide-react";
 import Image from "next/image";
 import { toast } from "sonner";
+import { useTheme } from "next-themes";
 
 export default function LoginForm() {
+  const { theme } = useTheme();
+  const [mounted, setMounted] = useState(false);
   const router = useRouter();
   const [showPassword, setShowPassword] = useState(false);
   const form = useForm<LoginSchema>({
@@ -30,6 +33,9 @@ export default function LoginForm() {
       contrasena: "",
     },
   });
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   const onSubmit = async (data: LoginSchema) => {
     const res = await signIn("credentials", {
@@ -52,13 +58,15 @@ export default function LoginForm() {
         className="w-full max-w-sm flex flex-col  gap-4"
       >
         <div className="flex justify-center ">
-          <Image
-            src="/img/logo.png"
-            alt="Logo"
-            height={200}
-            width={200}
-            className="md:hidden flex"
-          />
+          {mounted && (
+            <Image
+              src={theme === "dark" ? "/img/logodark.png" : "/img/logo.png"}
+              alt="Logo"
+              height={200}
+              width={200}
+              className="md:hidden flex"
+            />
+          )}
         </div>
 
         <Typography

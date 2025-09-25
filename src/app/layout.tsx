@@ -4,8 +4,8 @@ import SessionWrapper from "../components/SessionWrapper";
 import { Toaster } from "sonner";
 
 export const metadata: Metadata = {
-  title: "Control",
-  description: "Venta de permisos",
+  title: "Topografías Globales",
+  description: "Aplicación para gestionar las topografías globales",
 };
 
 export default function RootLayout({
@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <html suppressHydrationWarning>
       <body className="antialiased">
-        <Toaster />
+        <Toaster richColors />
         <SessionWrapper>{children}</SessionWrapper>
       </body>
     </html>
