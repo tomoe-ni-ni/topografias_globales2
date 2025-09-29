@@ -48,5 +48,6 @@ export function useProyecto() {
     setNombre,
     descripcion,
     setDescripcion,
+    setProyectos,
   };
 }

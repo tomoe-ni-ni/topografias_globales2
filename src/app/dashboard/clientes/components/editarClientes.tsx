@@ -22,7 +22,7 @@ import {
 import { Dispatch, SetStateAction, useEffect } from "react";
 import { UseFormReturn } from "react-hook-form";
 import { Cliente } from "../domain/cliente.entity";
-import { EditClienteSchema } from "@/zod/schemas/clientes/clientesEditar.schima";
+import { EditClienteSchema } from "@/zod/schemas/clientes/clientesEditar.schema";
 import {
   Select,
   SelectContent,

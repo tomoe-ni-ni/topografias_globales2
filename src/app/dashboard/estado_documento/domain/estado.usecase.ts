@@ -5,7 +5,7 @@ export async function obtenerEstados() {
   return EstadoDocumentoService.getEstados();
 }
 
-export async function crearEstado(estado: EstadoDocumento) {
+export async function crearEstado(estado: Omit<EstadoDocumento, "ID_estado">) {
   return EstadoDocumentoService.crearEstado(estado);
 }
 

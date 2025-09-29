@@ -1,7 +1,7 @@
 import { useSession } from "next-auth/react";
 import { useEffect, useState } from "react";
 import { Area } from "../domain/area.entity";
-import { crearArea, obtenerAreas } from "../domain/area.usecaso";
+import { crearArea, obtenerAreas } from "../domain/area.usecase";
 
 
 export function useArea() {
@@ -43,5 +43,6 @@ export function useArea() {
         agregarArea,
         nombre,
         setNombre,
+        setAreas,
     };
 }  

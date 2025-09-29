@@ -5,4 +5,4 @@ export const editProyectoSchema = z.object({
   descripcion: z.string().min(1, "La descripción es obligatoria"),
 });
 
-export type EditProyectoSchema = z.infer<typeof editProyectoSchema>;
+export type editProyectoSchema = z.infer<typeof editProyectoSchema>;

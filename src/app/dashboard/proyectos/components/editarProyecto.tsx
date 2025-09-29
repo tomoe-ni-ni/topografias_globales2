@@ -1,103 +1,66 @@
+"use client";
+
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { 
-  Dialog, 
-  DialogContent, 
-  DialogHeader, 
-  DialogTitle, 
-  DialogFooter 
-} from "@/components/ui/dialog";
-import { 
-  Form, 
-  FormField, 
-  FormItem, 
-  FormControl, 
-  FormMessage 
-} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Proyecto } from "@/generated/prisma";
-import { EditProyectoSchema } from "@/zod/schemas/proyectos/proyectoEditar.schema";
-import { Dispatch, SetStateAction, useEffect } from "react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { UseFormReturn } from "react-hook-form";
+import { editProyectoSchema } from "@/zod/schemas/proyectos/proyectoEditar.schema";
 
 export default function EditarProyecto({
-  modalAbiertoEditar,
-  setModalAbiertoEditar,
-  formEditar,
-  editarProyecto,
-  proyectoSeleccionado,
+  modalAbierto,
+  setModalAbierto,
+  form,
+  actualizarProyecto,
 }: {
-  modalAbiertoEditar: boolean;
-  setModalAbiertoEditar: Dispatch<SetStateAction<boolean>>;
-  formEditar: UseFormReturn<EditProyectoSchema>;
-  editarProyecto: () => Promise<void>;
-  proyectoSeleccionado: Proyecto | null;
+  modalAbierto: boolean;
+  setModalAbierto: React.Dispatch<React.SetStateAction<boolean>>;
+  form: UseFormReturn<editProyectoSchema>;
+  actualizarProyecto: () => Promise<void>;
 }) {
-  useEffect(() => {
-    if (proyectoSeleccionado) {
-      formEditar.reset({
-        nombre: proyectoSeleccionado.nombre,
-        descripcion: proyectoSeleccionado.descripcion || "",
-      });
-    }
-  }, [proyectoSeleccionado, formEditar]);
-
-  // Al cerrar, limpiamos
-  const handleClose = (open: boolean) => {
-    setModalAbiertoEditar(open);
-    if (!open) {
-      formEditar.reset();
-    }
-  };
-
   return (
-    <Dialog open={modalAbiertoEditar} onOpenChange={handleClose}>
-      <DialogContent className="w-full">
+    <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
+      <DialogContent className="w-full max-w-md">
         <DialogHeader>
           <DialogTitle>Editar proyecto</DialogTitle>
         </DialogHeader>
 
-        <Form {...formEditar}>
+        <Form {...form}>
           <form
-            onSubmit={formEditar.handleSubmit(editarProyecto)}
+            onSubmit={form.handleSubmit(actualizarProyecto)}
             className="flex flex-col gap-4"
           >
+            {/* Nombre */}
             <FormField
-              control={formEditar.control}
+              control={form.control}
               name="nombre"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Nombre</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nombre" {...field} />
+                    <Input placeholder="Ejemplo: Proyecto ERP" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
+            {/* Descripción */}
             <FormField
-              control={formEditar.control}
+              control={form.control}
               name="descripcion"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Textarea {...field} placeholder="Descripción..." />
+                    <Input placeholder="Ejemplo: Sistema para gestión de recursos" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
 
-            <DialogFooter>
-              <Button
-                type="submit"
-                variant="default"
-                className="mt-2 font-semibold transition"
-                disabled={formEditar.formState.isSubmitting}
-              >
-                {formEditar.formState.isSubmitting ? "Guardando..." : "Guardar"}
-              </Button>
-            </DialogFooter>
+            <Button type="submit">Guardar cambios</Button>
           </form>
         </Form>
       </DialogContent>

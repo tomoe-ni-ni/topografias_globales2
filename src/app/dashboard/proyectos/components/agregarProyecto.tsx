@@ -1,11 +1,11 @@
-import { Button } from "@/components/ui/button";
+"use client";
+
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Form, FormField, FormItem, FormControl, FormMessage } from "@/components/ui/form";
-import { CreateProyectoSchema } from "@/zod/schemas/proyectos/proyectoCreate.schema";
-import { Dispatch, SetStateAction } from "react";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { UseFormReturn } from "react-hook-form";
+import { CreateProyectoSchema } from "@/zod/schemas/proyectos/proyectoCreate.schema";
 
 export default function AgregarProyecto({
   modalAbierto,
@@ -14,58 +14,53 @@ export default function AgregarProyecto({
   agregarProyecto,
 }: {
   modalAbierto: boolean;
-  setModalAbierto: Dispatch<SetStateAction<boolean>>;
+  setModalAbierto: React.Dispatch<React.SetStateAction<boolean>>;
   form: UseFormReturn<CreateProyectoSchema>;
   agregarProyecto: () => Promise<void>;
 }) {
-  const handleAgregarProyecto = async () => {
-    try {
-      await agregarProyecto();
-      setModalAbierto(false); // ✅ solo cerrar si no hay error
-      form.reset(); // opcional: limpiar formulario
-    } catch (error) {
-      console.error("Error al agregar proyecto:", error);
-    }
-  };
-
   return (
     <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
-      <DialogContent>
+      <DialogContent className="w-full max-w-md">
         <DialogHeader>
           <DialogTitle>Agregar nuevo proyecto</DialogTitle>
         </DialogHeader>
+
         <Form {...form}>
           <form
-            onSubmit={form.handleSubmit(handleAgregarProyecto)}
-            className="flex flex-col gap-2"
+            onSubmit={form.handleSubmit(agregarProyecto)}
+            className="flex flex-col gap-4"
           >
+            {/* Nombre */}
             <FormField
               control={form.control}
               name="nombre"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Nombre</FormLabel>
                   <FormControl>
-                    <Input placeholder="Nombre del proyecto..." {...field} />
+                    <Input placeholder="Ejemplo: Proyecto ERP" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
+
+            {/* Descripción */}
             <FormField
               control={form.control}
               name="descripcion"
               render={({ field }) => (
                 <FormItem>
+                  <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Textarea placeholder="Descripción del proyecto..." {...field} />
+                    <Input placeholder="Ejemplo: Sistema para gestión de recursos" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
               )}
             />
-            <Button type="submit" className="mt-2 font-semibold transition">
-              Agregar
-            </Button>
+
+            <Button type="submit">Agregar Proyecto</Button>
           </form>
         </Form>
       </DialogContent>

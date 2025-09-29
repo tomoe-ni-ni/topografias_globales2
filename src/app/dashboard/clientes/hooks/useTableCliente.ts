@@ -5,7 +5,7 @@ import ubigeo from "@/ubigeo.json";
 import {
   editClienteSchema,
   EditClienteSchema,
-} from "@/zod/schemas/clientes/clientesEditar.schima";
+} from "@/zod/schemas/clientes/clientesEditar.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Cliente, ClienteForm } from "../domain/cliente.entity";

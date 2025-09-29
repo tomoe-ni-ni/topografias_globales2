@@ -1,59 +1,58 @@
 "use client";
+
 import { Button } from "@/components/ui/button";
 import { Typography } from "@/components/ui/typography";
-import { useProyecto } from "./hooks/useProyecto";
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
 
-export default function useProyectos() {
+import AgregarProyecto from "./components/agregarProyecto";
+import { TablaProyecto } from "./components/tablaProyecto";
+import { useProyecto } from "./hooks/useproyecto";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { createProyectoSchema, CreateProyectoSchema } from "@/zod/schemas/proyectos/proyectoCreate.schema";
+
+export default function ProyectoPage() {
   const {
     proyectos,
+    setProyectos,
     loading,
     modalAbierto,
     setModalAbierto,
     agregarProyecto,
-    nombre,
-    setNombre,
-    descripcion,
-    setDescripcion,
   } = useProyecto();
+
+  // Formulario para agregar
+  const form = useForm<CreateProyectoSchema>({
+    resolver: zodResolver(createProyectoSchema),
+    defaultValues: {
+      nombre: "",
+      descripcion: "",
+    },
+  });
+
   return (
-    <> 
-    <div className="flex items-center justify-between mb-4">
-      <Typography size="large" variant="h1">
-        Mis proyectos
-      </Typography>
-      <Button onClick={() => setModalAbierto(true)}>Agregar proyecto</Button>
-    </div>
-    <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
-        <DialogContent className="w-full">
-          <DialogHeader>
-            <DialogTitle>Agregar nuevo proyecto</DialogTitle>
-          </DialogHeader>
-          <div className="flex flex-col gap-2">
-            <div>
-              <Label className="block mb-1 font-semibold">Nombre</Label>
-              <Input
-                value={nombre}
-                onChange={(e) => setNombre(e.target.value)}
-                placeholder="Nombre del proyecto..."
-              />
-            </div>
-            <div>
-              <Textarea
-              value={descripcion}
-              onChange={(e) => setDescripcion(e.target.value)}
-              placeholder="Descripción de proyecto..."
-            />
-            </div>
+    <>
+      {/* Header */}
+      <div className="flex items-center justify-between mb-4">
+        <Typography size="large" variant="h1">
+          Mis proyectos
+        </Typography>
+        <Button onClick={() => setModalAbierto(true)}>
+          Agregar proyecto
+        </Button>
+      </div>
 
-            <Button onClick={agregarProyecto}>Agregar</Button>
-          </div>
-        </DialogContent>
-      </Dialog>
-    </> 
+      {/* Tabla */}
+      <TablaProyecto proyectos={proyectos} setProyectos={setProyectos} />
 
+
+
+      {/* Modal de Agregar */}
+      <AgregarProyecto
+        modalAbierto={modalAbierto}
+        setModalAbierto={setModalAbierto}
+        form={form}
+        agregarProyecto={agregarProyecto}
+      />
+    </>
   );
 }

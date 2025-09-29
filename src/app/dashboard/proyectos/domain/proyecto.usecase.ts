@@ -13,6 +13,6 @@ export async function actualizarProyecto(proyecto: Proyecto) {
   return ProyectoService.actualizarProyecto(proyecto);
 }
 
-export async function eliminaProyecto(id: number) {
+export async function eliminarProyecto(id: number) {
   return ProyectoService.eliminarProyecto(id);
 }
