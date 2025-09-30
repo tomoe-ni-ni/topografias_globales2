@@ -162,7 +162,7 @@ export default function EditUserForm({
           className="mt-2 font-semibold transition"
           disabled={form.formState.isSubmitting}
         >
-          Entrar
+          Guardar cambios
         </Button>
       </form>
     </Form>

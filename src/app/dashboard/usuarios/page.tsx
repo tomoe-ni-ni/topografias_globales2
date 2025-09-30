@@ -1,8 +1,8 @@
 "use client";
 
 import { TablaUsuarios } from "@/components/tablas/tabla-usuarios";
-import { useEffect, useState } from "react";
 import type { Usuarios } from "@/types/usuarios";
+import { useEffect, useState } from "react";
 
 import CreateUserForm from "./components/CreateUserForm";
 
@@ -13,7 +13,6 @@ function Usuarios() {
     fetch("/api/users")
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
         setUsuarios(data);
       });
   }, []);

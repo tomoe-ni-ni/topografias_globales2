@@ -8,8 +8,6 @@ import {
 } from "@/components/ui/dialog";
 
 import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { EditDocumentoSchema } from "@/zod/schemas/documentos/documentoEditar.schema";
 
 import {
   Form,
@@ -19,10 +17,6 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Dispatch, SetStateAction, useEffect } from "react";
-import { UseFormReturn } from "react-hook-form";
-import { Cliente } from "../domain/cliente.entity";
-import { EditClienteSchema } from "@/zod/schemas/clientes/clientesEditar.schema";
 import {
   Select,
   SelectContent,
@@ -30,13 +24,15 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { EditClienteSchema } from "@/zod/schemas/clientes/clientesEditar.schema";
+import { Dispatch, SetStateAction } from "react";
+import { UseFormReturn } from "react-hook-form";
 
 export default function EditarCliente({
   modalAbiertoEditar,
   setModalAbiertoEditar,
   formEditar,
   editarCliente,
-  clienteSeleccionado,
   departamentos,
   provincias,
 }: {
@@ -44,20 +40,9 @@ export default function EditarCliente({
   setModalAbiertoEditar: Dispatch<SetStateAction<boolean>>;
   formEditar: UseFormReturn<EditClienteSchema>;
   editarCliente: () => Promise<void>;
-  clienteSeleccionado: Cliente | null;
   departamentos: string[];
   provincias: string[];
 }) {
-  useEffect(() => {
-    if (clienteSeleccionado) {
-      formEditar.reset({
-        nombre: clienteSeleccionado?.nombre || "",
-        apellido: clienteSeleccionado?.apellido || "",
-        nombre_departamento: clienteSeleccionado?.nombre_departamento || "",
-        nombre_provincia: clienteSeleccionado?.nombre_provincia || "",
-      });
-    }
-  }, [clienteSeleccionado, formEditar]);
   const departamentoSeleccionado = formEditar.watch("nombre_departamento");
   return (
     <>

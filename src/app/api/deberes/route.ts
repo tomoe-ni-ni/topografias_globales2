@@ -5,7 +5,7 @@ export async function GET(req: NextRequest) {
   const asignado_a = req.nextUrl.searchParams.get("asignado_a");
   const where = asignado_a ? { asignado_a: Number(asignado_a) } : {};
   try {
-    const tareas = await prisma.tarea.findMany({ where });
+    const tareas = await prisma.area.findMany({});
     return NextResponse.json(tareas);
   } catch (error) {
     return NextResponse.json(
@@ -16,18 +16,17 @@ export async function GET(req: NextRequest) {
 }
 
 export async function POST(req: NextRequest) {
-  const { asignado_a, titulo, descripcion, estado } = await req.json();
+  const { asignado_a, titulo, descripcion, nombre } = await req.json();
   try {
-    // Validación básica
-    if (!asignado_a || !titulo || !descripcion || !estado) {
+    if (!asignado_a || !titulo || !descripcion || !nombre) {
       return NextResponse.json(
         { error: "Faltan campos obligatorios" },
         { status: 400 }
       );
     }
 
-    const tarea = await prisma.tarea.create({
-      data: { asignado_a, titulo, descripcion, estado },
+    const tarea = await prisma.area.create({
+      data: { nombre },
     });
     return NextResponse.json(tarea, { status: 201 });
   } catch (error) {

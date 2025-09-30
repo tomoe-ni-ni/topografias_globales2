@@ -4,16 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { nombre,descripcion } = body;
+    const { nombre, descripcion } = body;
 
-    if (
-      !nombre ||
-      !descripcion
-    ) {
+    if (!nombre || !descripcion) {
       return NextResponse.json({ error: "Campos faltantes" }, { status: 400 });
-    };
+    }
 
-    // Crear cliente vinculado al usuario
     const proyecto = await prisma.proyecto.create({
       data: {
         nombre: nombre,
@@ -33,7 +29,11 @@ export async function POST(req: NextRequest) {
 
 export async function GET(req: NextRequest) {
   try {
-    const proyectos = await prisma.proyecto.findMany();
+    const proyectos = await prisma.proyecto.findMany({
+      orderBy: {
+        ID_proyecto: "asc",
+      },
+    });
     return NextResponse.json(proyectos);
   } catch (error) {
     return NextResponse.json(

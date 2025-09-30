@@ -1,17 +1,13 @@
-import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
+import { NextRequest, NextResponse } from "next/server";
 
-// /api/files/[path]?time=60
-export async function GET(
-  req: Request,
-  { params }: { params: { path: string } }
-) {
+export async function GET(req: NextRequest, context: any) {
+  const decodedPath = decodeURIComponent(context.params.path);
   try {
     const { searchParams } = new URL(req.url);
-    const time = Number(searchParams.get("time")) || 60; // segundos
+    const time = Number(searchParams.get("time")) || 60;
 
-    // params.path puede venir como "uploads%2F123.pdf", lo decodificamos
-    const decodedPath = decodeURIComponent(params.path);
+    const decodedPath = decodeURIComponent(context.params.path);
 
     const { data, error } = await supabase.storage
       .from("documentos")

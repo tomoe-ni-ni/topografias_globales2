@@ -1,10 +1,10 @@
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
+import { editAreaSchema } from "@/zod/schemas/area/areaEditar.schema";
 import { Area } from "../domain/area.entity";
 import { actualizarArea, eliminaArea } from "../domain/area.usecase";
-import { editAreaSchema } from "@/zod/schemas/area/areaEditar.schema";
 
 export function useTableArea({
   areas,
@@ -23,7 +23,6 @@ export function useTableArea({
 
   const [areaSeleccionada, setAreaSeleccionada] = useState<Area | null>(null);
 
-  // Formulario de edición
   const formEditar = useForm<editAreaSchema>({
     resolver: zodResolver(editAreaSchema),
     defaultValues: {
@@ -31,7 +30,6 @@ export function useTableArea({
     },
   });
 
-  // Resetear el form cada vez que cambie el área seleccionada
   useEffect(() => {
     if (areaSeleccionada) {
       formEditar.reset({
@@ -40,7 +38,6 @@ export function useTableArea({
     }
   }, [areaSeleccionada, formEditar]);
 
-  // Eliminar área
   const eliminarAreaSeleccionada = async () => {
     if (!areaSeleccionada?.ID_area) return;
 
@@ -55,7 +52,6 @@ export function useTableArea({
     }
   };
 
-  // Editar área
   const editarArea = async () => {
     if (!areaSeleccionada?.ID_area) return;
 

@@ -1,4 +1,3 @@
-// src/lib/prisma.ts
 import { PrismaClient } from "@/generated/prisma";
 
 const globalForPrisma = globalThis as unknown as {
@@ -48,7 +47,7 @@ function createPrismaClient() {
           };
           return query(args);
         },
-       /* async findUnique({ args, query }) {
+        /* async findUnique({ args, query }) {
           return (prisma as any).$extends({}).$allModels.findFirst({
             where: { ...args.where, deleted_at: null },
           });

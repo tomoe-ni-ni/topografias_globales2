@@ -10,18 +10,6 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Campos faltantes" }, { status: 400 });
     }
 
-    console.log(
-      nombre_departamento +
-        "departamento" +
-        nombre_provincia +
-        "provincia" +
-        nombre +
-        "nombre" +
-        apellido +
-        "apellido"
-    );
-
-    // Crear cliente vinculado al usuario
     const cliente = await prisma.cliente.create({
       data: {
         nombre: nombre,
@@ -41,9 +29,13 @@ export async function POST(req: NextRequest) {
   }
 }
 
-export async function GET() {
+export async function GET(req: NextRequest) {
   try {
-    const clientes = await prisma.cliente.findMany();
+    const clientes = await prisma.cliente.findMany({
+      orderBy: {
+        ID_cliente: "asc",
+      },
+    });
     return NextResponse.json(clientes);
   } catch (error) {
     return NextResponse.json(

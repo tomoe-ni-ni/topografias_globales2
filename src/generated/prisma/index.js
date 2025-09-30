@@ -211,7 +211,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "C:\\Users\\piero\\OneDrive\\Escritorio\\Familia\\YO\\proyectos\\topografias_globales2\\src\\generated\\prisma",
+      "value": "C:\\Users\\JOSE DANIEL\\Downloads\\topgrafias-globales\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -225,7 +225,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "C:\\Users\\piero\\OneDrive\\Escritorio\\Familia\\YO\\proyectos\\topografias_globales2\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\JOSE DANIEL\\Downloads\\topgrafias-globales\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {

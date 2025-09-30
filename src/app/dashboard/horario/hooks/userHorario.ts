@@ -26,12 +26,12 @@ export function useHorario() {
   });
 
   useEffect(() => {
-    if (session?.user.id) {
-      obtenerBloques(Number(session.user.id))
+    if (session?.user.ID_usuario) {
+      obtenerBloques(Number(session.user.ID_usuario))
         .then(setBloques)
         .catch(console.error);
     }
-  }, [session?.user.id]);
+  }, [session?.user.ID_usuario]);
 
   const abrirFormulario = (dia: string, hora: string) => {
     const existente = bloques.find((b) => b.dia === dia && b.hora === hora);
@@ -49,9 +49,9 @@ export function useHorario() {
   };
 
   const guardarBloque = async () => {
-    if (!bloqueActivo || !session?.user.id) return;
+    if (!bloqueActivo || !session?.user.ID_usuario) return;
     const nuevoBloque: Bloque = {
-      user_id: Number(session.user.id),
+      user_id: Number(session.user.ID_usuario),
       dia: bloqueActivo.dia,
       hora: bloqueActivo.hora,
       titulo: form.titulo,
@@ -78,10 +78,10 @@ export function useHorario() {
   };
 
   const actualizaBloque = async () => {
-    if (!bloqueActivo || !session?.user.id) return;
+    if (!bloqueActivo || !session?.user.ID_usuario) return;
     const bloqueActualizado: Bloque = {
       id: getBloque(bloqueActivo.dia, bloqueActivo.hora)?.id,
-      user_id: Number(session.user.id),
+      user_id: Number(session.user.ID_usuario),
       dia: bloqueActivo.dia,
       hora: bloqueActivo.hora,
       titulo: form.titulo,
@@ -104,7 +104,7 @@ export function useHorario() {
   };
 
   const eliminaBloque = async () => {
-    if (!bloqueActivo || !session?.user.id) return;
+    if (!bloqueActivo || !session?.user.ID_usuario) return;
     const idBloque = getBloque(bloqueActivo.dia, bloqueActivo.hora)?.id;
 
     try {

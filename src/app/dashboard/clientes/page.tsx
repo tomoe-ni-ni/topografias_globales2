@@ -18,7 +18,7 @@ export default function Cliente() {
     provincias,
     form,
   } = useCliente();
-  console.log(clientes);
+
   return (
     <>
       <div className="flex items-center justify-between mb-4">
@@ -28,7 +28,7 @@ export default function Cliente() {
         <Button onClick={() => setModalAbierto(true)}>Agregar cliente</Button>
       </div>
 
-      <TablaClientes clienteData={clientes} setClientes={setClientes} />
+      <TablaClientes clientes={clientes} setClientes={setClientes} />
 
       <AgregarClientes
         modalAbierto={modalAbierto}

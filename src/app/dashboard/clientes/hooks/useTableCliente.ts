@@ -1,6 +1,6 @@
-import { useSession } from "next-auth/react";
-import { Dispatch, SetStateAction, useState } from "react";
 import ubigeo from "@/ubigeo.json";
+import { useSession } from "next-auth/react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
 
 import {
   editClienteSchema,
@@ -46,12 +46,6 @@ export function useTableCliente({
       ] || []
     : [];
 
-  //   useEffect(() => {
-  //     if (session?.user.ID_usuario) {
-  //       obtenerClientes();
-  //     }
-  //   }, [session?.user.ID_usuario]);
-
   const eliminarCliente = async () => {
     if (!clienteSeleccionado?.ID_cliente) return;
 
@@ -78,8 +72,6 @@ export function useTableCliente({
       ...formEditar.getValues(),
     };
 
-    console.log(cliente);
-
     try {
       const clienteActualizado = await actualizarCliente(cliente);
       setClientes((prev) =>
@@ -95,6 +87,31 @@ export function useTableCliente({
       console.error("Error al editar el cliente:", error);
     }
   };
+
+  useEffect(() => {
+    if (clienteSeleccionado) {
+      formEditar.reset({
+        nombre: clienteSeleccionado?.nombre || "",
+        apellido: clienteSeleccionado?.apellido || "",
+        nombre_departamento: clienteSeleccionado?.nombre_departamento || "",
+        nombre_provincia: clienteSeleccionado?.nombre_provincia || "",
+      });
+    }
+  }, [clienteSeleccionado, formEditar]);
+
+  const dataToRender =
+    busqueda.trim().length > 0
+      ? clientes.filter(
+          (p) =>
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+            p.apellido.toLowerCase().includes(busqueda.toLowerCase()) ||
+            p.nombre_departamento
+              .toLowerCase()
+              .includes(busqueda.toLowerCase()) ||
+            p.nombre_provincia.toLowerCase().includes(busqueda.toLowerCase()) ||
+            p.ID_cliente!.toString().includes(busqueda.toLowerCase())
+        )
+      : clientes;
 
   return {
     clientesFiltrados,
@@ -116,5 +133,6 @@ export function useTableCliente({
     formEditar,
     departamentos,
     provincias,
+    dataToRender,
   };
 }

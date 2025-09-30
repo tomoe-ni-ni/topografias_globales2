@@ -1,11 +1,10 @@
 import { prisma } from "@/lib/prisma";
 import bcrypt from "bcryptjs";
-import { User, Session } from "next-auth";
+import { Session, User } from "next-auth";
 import { JWT } from "next-auth/jwt";
 import CredentialsProvider from "next-auth/providers/credentials";
 
 import { DefaultUser } from "next-auth";
-import { sign } from "crypto";
 
 declare module "next-auth" {
   interface User extends DefaultUser {
@@ -41,24 +40,20 @@ export const authOptions = {
         contrasena: { label: "Password", type: "password" },
       },
       async authorize(credentials, req) {
-        console.log("credentials", credentials);
         const userFound = await prisma.usuario.findUnique({
           where: {
             correo: credentials?.correo,
           },
         });
-        console.log("userFound", userFound);
         if (!userFound) throw new Error("Usuario no encontrado");
-        console.log("userFound", userFound);
         const isPasswordValid = await bcrypt.compare(
           credentials?.contrasena || "",
           userFound.contrasena
         );
-        console.log("isPasswordValid", isPasswordValid);
         if (!isPasswordValid) throw new Error("Contraseña incorrecta");
 
         return {
-          id: String(userFound.ID_usuario), // required by DefaultUser
+          id: String(userFound.ID_usuario),
           ID_usuario: String(userFound.ID_usuario),
           name: userFound.nombre,
           correo: userFound.correo,
@@ -82,7 +77,7 @@ export const authOptions = {
     async session({ session, token }: { session: Session; token: JWT }) {
       if (session.user) {
         session.user.ID_usuario =
-          typeof token.ID_usuario === "string" ? token.ID_usuario : null; // <-- solo string o null
+          typeof token.ID_usuario === "string" ? token.ID_usuario : null;
         session.user.correo = token.correo;
         session.user.rol = token.rol;
       }

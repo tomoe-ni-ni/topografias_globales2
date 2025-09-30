@@ -8,7 +8,7 @@ export type Usuarios = {
   estado?: string;
   ID_area?: number | null;
   area?: { nombre: string } | null;
-  fecha_ingreso?: string; // si tu backend la retorna
+  fecha_ingreso?: string;
 };
 
 export type UsuarioForm = {
@@ -19,5 +19,4 @@ export type UsuarioForm = {
   nombre?: string;
   estado?: string;
   created_at?: string;
-  // agrega otros campos si los necesitas
 };

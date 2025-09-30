@@ -1,11 +1,23 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { UseFormReturn } from "react-hook-form";
 import { CreateAreaSchema } from "@/zod/schemas/area/areaCreate.schema";
+import { UseFormReturn } from "react-hook-form";
 
 export default function AgregarArea({
   modalAbierto,
@@ -30,7 +42,6 @@ export default function AgregarArea({
             onSubmit={form.handleSubmit(agregarArea)}
             className="flex flex-col gap-4"
           >
-            {/* Nombre */}
             <FormField
               control={form.control}
               name="nombre"

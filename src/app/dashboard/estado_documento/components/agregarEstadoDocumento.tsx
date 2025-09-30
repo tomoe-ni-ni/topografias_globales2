@@ -1,12 +1,21 @@
-
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { UseFormReturn } from "react-hook-form";
 
-// 🔹 Esquema para el estado
-// (debes tenerlo en un archivo schemas/estado.schema.ts por ejemplo)
 export type CreateEstadoDocumentoSchema = {
   estado: string;
 };
@@ -41,7 +50,10 @@ export default function AgregarEstadoDocumento({
                 <FormItem>
                   <FormLabel>Estado</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ejemplo: Aprobado, Rechazado..." {...field} />
+                    <Input
+                      placeholder="Ejemplo: Aprobado, Rechazado..."
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

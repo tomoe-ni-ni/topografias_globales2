@@ -46,15 +46,15 @@ export function TablaArea({
     formEditar,
   } = useTableArea({ areas, setAreas });
 
-  // Filtrar áreas por búsqueda (solo por nombre)
   const dataToRender =
     busqueda.trim().length > 0
-      ? areas.filter((a) => a.nombre.toLowerCase().includes(busqueda.toLowerCase()))
+      ? areas.filter((a) =>
+          a.nombre.toLowerCase().includes(busqueda.toLowerCase())
+        )
       : areas;
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -65,7 +65,6 @@ export function TablaArea({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -99,11 +98,15 @@ export function TablaArea({
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => setModalAbiertoEditar(true)}>
+                        <DropdownMenuItem
+                          onClick={() => setModalAbiertoEditar(true)}
+                        >
                           <Pencil className="mr-2 h-4 w-4" />
                           <span>Editar</span>
                         </DropdownMenuItem>
-                        <DropdownMenuItem onClick={() => setOpenEliminarDialog(true)}>
+                        <DropdownMenuItem
+                          onClick={() => setOpenEliminarDialog(true)}
+                        >
                           <Trash2 className="mr-2 h-4 w-4" />
                           <span>Eliminar</span>
                         </DropdownMenuItem>
@@ -117,7 +120,6 @@ export function TablaArea({
         </Table>
       </div>
 
-      {/* Dialog Confirmación Eliminar */}
       <DialogConfirmacion
         open={openEliminarDialog}
         onOpenChange={setOpenEliminarDialog}
@@ -129,7 +131,6 @@ export function TablaArea({
         confirmVariant="destructive"
       />
 
-      {/* Modal de Editar */}
       <EditarArea
         modalAbierto={modalAbiertoEditar}
         setModalAbierto={setModalAbiertoEditar}

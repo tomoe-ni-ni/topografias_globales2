@@ -1,6 +1,11 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -37,7 +42,6 @@ export default function EditarArea({
             onSubmit={form.handleSubmit(actualizarArea)}
             className="flex flex-col gap-4"
           >
-            {/* Nombre */}
             <FormField
               control={form.control}
               name="nombre"

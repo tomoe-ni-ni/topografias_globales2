@@ -13,18 +13,18 @@ export function useLibros() {
   const [modalAbierto, setModalAbierto] = useState(false);
 
   useEffect(() => {
-    if (session?.user.id) {
+    if (session?.user.ID_usuario) {
       setLoading(true);
       LibroService.getLibros()
         .then(setLibros)
         .finally(() => setLoading(false));
     }
-  }, [session?.user.id]);
+  }, [session?.user.ID_usuario]);
 
   const agregarLibro = async () => {
-    if (!session?.user.id) return;
+    if (!session?.user.ID_usuario) return;
     const libro: Omit<Libro, "id"> = {
-      asignado_a: Number(session.user.id),
+      asignado_a: Number(session.user.ID_usuario),
       titulo: nuevoTitulo,
       autor: nuevoAutor,
       archivo: nuevoLibro ? URL.createObjectURL(nuevoLibro) : "",

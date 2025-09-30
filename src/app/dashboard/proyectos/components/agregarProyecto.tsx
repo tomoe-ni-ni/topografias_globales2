@@ -1,11 +1,23 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+    Dialog,
+    DialogContent,
+    DialogHeader,
+    DialogTitle,
+} from "@/components/ui/dialog";
+import {
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { UseFormReturn } from "react-hook-form";
 import { CreateProyectoSchema } from "@/zod/schemas/proyectos/proyectoCreate.schema";
+import { UseFormReturn } from "react-hook-form";
 
 export default function AgregarProyecto({
   modalAbierto,
@@ -30,7 +42,6 @@ export default function AgregarProyecto({
             onSubmit={form.handleSubmit(agregarProyecto)}
             className="flex flex-col gap-4"
           >
-            {/* Nombre */}
             <FormField
               control={form.control}
               name="nombre"
@@ -45,7 +56,6 @@ export default function AgregarProyecto({
               )}
             />
 
-            {/* Descripción */}
             <FormField
               control={form.control}
               name="descripcion"
@@ -53,7 +63,10 @@ export default function AgregarProyecto({
                 <FormItem>
                   <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ejemplo: Sistema para gestión de recursos" {...field} />
+                    <Input
+                      placeholder="Ejemplo: Sistema para gestión de recursos"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

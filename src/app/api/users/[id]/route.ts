@@ -1,9 +1,8 @@
-import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
+import { NextRequest, NextResponse } from "next/server";
 
-// **UPDATE**: Actualizar un usuario existente
 export async function PUT(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   const body = await req.json();
   const { nombre, estado, ID_area } = body;
@@ -27,9 +26,8 @@ export async function PUT(req: NextRequest, context: any) {
   }
 }
 
-// **DELETE**: Eliminar un usuario (borrado lógico)
 export async function DELETE(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
 
   if (!id || isNaN(id)) {

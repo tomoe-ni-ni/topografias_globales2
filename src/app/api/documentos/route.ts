@@ -38,7 +38,6 @@ export async function POST(req: NextRequest) {
       ID_usuario,
     } = body;
 
-    // Validación básica
     if (!nombre_documento) {
       return NextResponse.json(
         { error: "Faltan campos obligatorios" },

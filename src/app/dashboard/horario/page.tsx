@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -11,11 +9,11 @@ import {
 } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
-import { cn } from "@/lib/utils";
 import { Typography } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
+import React from "react";
 import { BlockPicker, ColorResult } from "react-color";
 import { useHorario } from "./hooks/userHorario";
-import { horario } from "../../../generated/prisma/index";
 
 export default function Horario() {
   const {
@@ -49,7 +47,6 @@ export default function Horario() {
       </div>
       <div className="overflow-x-auto">
         <div className="grid min-w-[700px] grid-cols-[80px_repeat(7,1fr)] border rounded-lg overflow-hidden mt-4">
-          {/* Header */}
           <div className="bg-muted p-2 font-bold text-center">Hora</div>
           {dias.map((dia) => (
             <div
@@ -60,7 +57,6 @@ export default function Horario() {
             </div>
           ))}
 
-          {/* Celdas */}
           {horas.map((hora) => (
             <React.Fragment key={hora}>
               <div className="bg-muted p-2 text-sm text-center border-t">
@@ -87,7 +83,6 @@ export default function Horario() {
         </div>
       </div>
 
-      {/* Modal */}
       <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>

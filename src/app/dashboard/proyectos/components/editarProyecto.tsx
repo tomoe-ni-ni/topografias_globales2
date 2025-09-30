@@ -1,22 +1,34 @@
 "use client";
 
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
+import {
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
+} from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { UseFormReturn } from "react-hook-form";
 import { editProyectoSchema } from "@/zod/schemas/proyectos/proyectoEditar.schema";
+import { UseFormReturn } from "react-hook-form";
 
 export default function EditarProyecto({
   modalAbierto,
   setModalAbierto,
-  form,
-  actualizarProyecto,
+  formEditar,
+  editarProyecto,
 }: {
   modalAbierto: boolean;
   setModalAbierto: React.Dispatch<React.SetStateAction<boolean>>;
-  form: UseFormReturn<editProyectoSchema>;
-  actualizarProyecto: () => Promise<void>;
+  formEditar: UseFormReturn<editProyectoSchema>;
+  editarProyecto: () => Promise<void>;
 }) {
   return (
     <Dialog open={modalAbierto} onOpenChange={setModalAbierto}>
@@ -25,14 +37,13 @@ export default function EditarProyecto({
           <DialogTitle>Editar proyecto</DialogTitle>
         </DialogHeader>
 
-        <Form {...form}>
+        <Form {...formEditar}>
           <form
-            onSubmit={form.handleSubmit(actualizarProyecto)}
+            onSubmit={formEditar.handleSubmit(editarProyecto)}
             className="flex flex-col gap-4"
           >
-            {/* Nombre */}
             <FormField
-              control={form.control}
+              control={formEditar.control}
               name="nombre"
               render={({ field }) => (
                 <FormItem>
@@ -45,15 +56,17 @@ export default function EditarProyecto({
               )}
             />
 
-            {/* Descripción */}
             <FormField
-              control={form.control}
+              control={formEditar.control}
               name="descripcion"
               render={({ field }) => (
                 <FormItem>
                   <FormLabel>Descripción</FormLabel>
                   <FormControl>
-                    <Input placeholder="Ejemplo: Sistema para gestión de recursos" {...field} />
+                    <Input
+                      placeholder="Ejemplo: Sistema para gestión de recursos"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>

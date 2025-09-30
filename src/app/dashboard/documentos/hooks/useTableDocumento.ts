@@ -1,17 +1,17 @@
-import { useSession } from "next-auth/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
-import { Documento, DocumentoFormEdit } from "../domain/documentos.entity";
-import {
-  obtenerDocumentos,
-  eliminaDocumento,
-  actualizarDocumento,
-} from "../domain/documentos.usecase";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   editDocumentoSchema,
   EditDocumentoSchema,
 } from "@/zod/schemas/documentos/documentoEditar.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Documento, DocumentoFormEdit } from "../domain/documentos.entity";
+import {
+  actualizarDocumento,
+  eliminaDocumento,
+  obtenerDocumentos,
+} from "../domain/documentos.usecase";
 
 export function useTableDocumento({
   documentos,
@@ -49,11 +49,6 @@ export function useTableDocumento({
   }, [session?.user.ID_usuario]);
 
   const eliminarDocumento = async () => {
-    console.log(
-      "Eliminar documento con ID:",
-      documentoSeleccionado?.ID_documento
-    );
-
     if (!documentoSeleccionado?.ID_documento) return;
 
     try {
@@ -72,8 +67,6 @@ export function useTableDocumento({
   };
 
   const editarDocumento = async () => {
-    console.log(formEditar.getValues());
-
     if (!documentoSeleccionado?.ID_documento) return;
 
     const documento: DocumentoFormEdit = {

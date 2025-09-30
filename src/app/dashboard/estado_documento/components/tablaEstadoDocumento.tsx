@@ -26,10 +26,10 @@ import { useTableEstadoDocumento } from "../hooks/useTableEstado";
 import EditarEstadoDocumento from "./editarEstadoDocumento";
 
 export function TablaEstadoDocumento({
-  estadoData,
+  estados,
   setEstados,
 }: {
-  estadoData: EstadoDocumento[];
+  estados: EstadoDocumento[];
   setEstados: Dispatch<SetStateAction<EstadoDocumento[]>>;
 }) {
   const {
@@ -45,19 +45,11 @@ export function TablaEstadoDocumento({
     setModalAbiertoEditar,
     editarEstadoDocumento,
     formEditar,
-  } = useTableEstadoDocumento({ estados: estadoData, setEstados });
-
-  // Filtrar estados por búsqueda
-  const dataToRender =
-    busqueda.trim().length > 0
-      ? estadoData.filter((est) =>
-          est.estado.toLowerCase().includes(busqueda.toLowerCase())
-        )
-      : estadoData;
+    dataToRender,
+  } = useTableEstadoDocumento({ estados, setEstados });
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -68,7 +60,6 @@ export function TablaEstadoDocumento({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -130,7 +121,6 @@ export function TablaEstadoDocumento({
         </Table>
       </div>
 
-      {/* Dialog Confirmación Eliminar */}
       <DialogConfirmacion
         open={openEliminarDialog}
         onOpenChange={setOpenEliminarDialog}
@@ -142,13 +132,11 @@ export function TablaEstadoDocumento({
         confirmVariant="destructive"
       />
 
-      {/* Modal de Editar */}
       <EditarEstadoDocumento
         modalAbiertoEditar={modalAbiertoEditar}
         setModalAbiertoEditar={setModalAbiertoEditar}
         formEditar={formEditar}
         editarEstado={editarEstadoDocumento}
-        estadoSeleccionado={estadoSeleccionado}
       />
     </div>
   );

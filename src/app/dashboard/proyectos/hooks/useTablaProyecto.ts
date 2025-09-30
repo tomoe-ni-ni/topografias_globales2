@@ -1,12 +1,13 @@
-import { Dispatch, SetStateAction, useState, useEffect } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
+import { editProyectoSchema } from "@/zod/schemas/proyectos/proyectoEditar.schema";
 import { Proyecto } from "../domain/proyecto.entity";
-import { actualizarProyecto, eliminarProyecto } from "../domain/proyecto.usecase";
 import {
-  editProyectoSchema
-} from "@/zod/schemas/proyectos/proyectoEditar.schema";
+  actualizarProyecto,
+  eliminarProyecto,
+} from "../domain/proyecto.usecase";
 
 export function useTableProyecto({
   proyectos,
@@ -26,7 +27,6 @@ export function useTableProyecto({
   const [proyectoSeleccionado, setProyectoSeleccionado] =
     useState<Proyecto | null>(null);
 
-  // Formulario de edición
   const formEditar = useForm<editProyectoSchema>({
     resolver: zodResolver(editProyectoSchema),
     defaultValues: {
@@ -35,7 +35,6 @@ export function useTableProyecto({
     },
   });
 
-  // Resetear el form cada vez que cambie el proyecto seleccionado
   useEffect(() => {
     if (proyectoSeleccionado) {
       formEditar.reset({
@@ -45,14 +44,15 @@ export function useTableProyecto({
     }
   }, [proyectoSeleccionado, formEditar]);
 
-  // Eliminar proyecto
   const eliminarProyectoSeleccionado = async () => {
     if (!proyectoSeleccionado?.ID_proyecto) return;
 
     try {
       await eliminarProyecto(proyectoSeleccionado.ID_proyecto);
       setProyectos(
-        proyectos.filter((p) => p.ID_proyecto !== proyectoSeleccionado.ID_proyecto)
+        proyectos.filter(
+          (p) => p.ID_proyecto !== proyectoSeleccionado.ID_proyecto
+        )
       );
       setOpenEliminarDialog(false);
     } catch (error) {
@@ -60,7 +60,6 @@ export function useTableProyecto({
     }
   };
 
-  // Editar proyecto
   const editarProyecto = async () => {
     if (!proyectoSeleccionado?.ID_proyecto) return;
 
@@ -85,6 +84,15 @@ export function useTableProyecto({
     }
   };
 
+  const dataToRender =
+    busqueda.trim().length > 0
+      ? proyectos.filter(
+          (p) =>
+            p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
+            p.descripcion.toLowerCase().includes(busqueda.toLowerCase())
+        )
+      : proyectos;
+
   return {
     proyectosFiltrados,
     busqueda,
@@ -103,5 +111,6 @@ export function useTableProyecto({
     setModalAbiertoEditar,
     editarProyecto,
     formEditar,
+    dataToRender,
   };
 }

@@ -2,7 +2,7 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Table, // Import Table component from UI components instead
+  Table,
   TableBody,
   TableCell,
   TableHead,
@@ -53,7 +53,6 @@ export function TablaDocumentos({
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -64,7 +63,6 @@ export function TablaDocumentos({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -144,7 +142,6 @@ export function TablaDocumentos({
         </Table>
       </div>
 
-      {/*  Modal para eliminar documento */}
       <DialogConfirmacion
         open={openEliminarDialog}
         onOpenChange={setOpenEliminarDialog}
@@ -156,14 +153,12 @@ export function TablaDocumentos({
         confirmVariant="destructive"
       />
 
-      {/* Modal de ver documento */}
       <DetallesDocumento
         documentoSeleccionado={documentoSeleccionado}
         setModalVer={setModalVer}
         modalVer={modalVer}
       />
 
-      {/* Modal de editar documento */}
       <EditarDocumento
         modalAbiertoEditar={modalAbiertoEditar}
         setModalAbiertoEditar={setModalAbiertoEditar}

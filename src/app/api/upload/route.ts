@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
 import { supabase } from "@/lib/supabaseClient";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   try {
@@ -7,7 +7,10 @@ export async function POST(req: Request) {
     const file = formData.get("file") as File | null;
 
     if (!file) {
-      return NextResponse.json({ error: "No se envió archivo" }, { status: 400 });
+      return NextResponse.json(
+        { error: "No se envió archivo" },
+        { status: 400 }
+      );
     }
 
     const fileExt = file.name.split(".").pop();
@@ -15,13 +18,11 @@ export async function POST(req: Request) {
     const filePath = `uploads/${fileName}`;
 
     const { error } = await supabase.storage
-      .from("documentos") // bucket privado
+      .from("documentos")
       .upload(filePath, file);
 
     if (error) throw error;
 
-    // Aquí deberías guardar filePath en tu tabla de BD
-    // Por ahora devolvemos el path
     return NextResponse.json({ path: filePath });
   } catch (err: any) {
     console.error(err);

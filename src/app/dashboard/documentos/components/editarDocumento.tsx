@@ -45,9 +45,7 @@ export default function EditarDocumento({
     }
   }, [documentoSeleccionado, formEditar]);
 
-  const onSubmit = async (data: EditDocumentoSchema) => {
-    console.log(data);
-  };
+  const onSubmit = async (data: EditDocumentoSchema) => {};
 
   return (
     <>

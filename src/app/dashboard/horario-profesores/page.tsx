@@ -1,10 +1,4 @@
 "use client";
-import { useHorarioProfesores } from "./hooks/useHorarioProfesores";
-import { Typography } from "@/components/ui/typography";
-import { Card, CardContent } from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { cn } from "@/lib/utils";
-import { Fragment } from "react";
 import {
   Select,
   SelectContent,
@@ -12,6 +6,10 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+import { Typography } from "@/components/ui/typography";
+import { cn } from "@/lib/utils";
+import { Fragment } from "react";
+import { useHorarioProfesores } from "./hooks/useHorarioProfesores";
 
 const dias = ["Lun", "Mar", "Mié", "Jue", "Vie", "Sáb", "Dom"];
 const horas = Array.from({ length: 10 }, (_, i) => `${8 + i}:00`);
@@ -56,7 +54,6 @@ export default function HorarioProfesores() {
       {!loading && profesorSeleccionado && (
         <div className="overflow-x-auto">
           <div className="grid min-w-[700px] grid-cols-[80px_repeat(7,1fr)] border rounded-lg overflow-hidden mt-4">
-            {/* Header */}
             <div className="bg-muted p-2 font-bold text-center">Hora</div>
             {dias.map((dia) => (
               <div
@@ -66,7 +63,6 @@ export default function HorarioProfesores() {
                 {dia}
               </div>
             ))}
-            {/* Celdas */}
             {horas.map((hora) => (
               <Fragment key={hora}>
                 <div className="bg-muted p-2 text-sm text-center border-t">

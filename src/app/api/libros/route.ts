@@ -1,10 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 
-// GET: Listar libros
 export async function GET() {
   try {
-    const libros = await prisma.libro.findMany();
+    const libros = await prisma.area.findMany();
     return NextResponse.json(libros);
   } catch (error) {
     console.error("Error real:", error);
@@ -15,12 +14,11 @@ export async function GET() {
   }
 }
 
-// POST: Crear libro
 export async function POST(req: NextRequest) {
-  const { titulo, autor, archivo, asignado_a } = await req.json();
+  const { titulo, autor, archivo, nombre } = await req.json();
   try {
-    const libro = await prisma.libro.create({
-      data: { titulo, autor, archivo, asignado_a },
+    const libro = await prisma.area.create({
+      data: { nombre },
     });
     return NextResponse.json(libro, { status: 201 });
   } catch (error) {

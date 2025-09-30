@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   const body = await req.json();
   const { nombre_documento, descripcion, folio } = body;
@@ -39,7 +39,7 @@ export async function PUT(req: NextRequest, context: any) {
 }
 
 export async function DELETE(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
 
   if (!id || isNaN(id)) {

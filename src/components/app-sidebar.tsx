@@ -1,19 +1,13 @@
 "use client";
 
 import {
-  ALargeSmall,
-  BookOpen,
-  Bot,
   Building2,
   FileChartColumn,
   FolderGit,
   Frame,
   Grid2x2Check,
-  LayoutDashboard,
   Map,
   PieChart,
-  Settings2,
-  SquareTerminal,
   UsersRound,
   WalletCards,
 } from "lucide-react";
@@ -76,19 +70,6 @@ const data = {
       icon: WalletCards,
       items: [],
     },
-
-    // {
-    //   title: "Tipos de Permiso",
-    //   url: "#",
-    //   icon: Settings2,
-    //   items: [],
-    // },
-    // {
-    //   title: "Tareas",
-    //   url: "/dashboard/tareas",
-    //   icon: Bot,
-    //   items: [],
-    // },
   ],
   projects: [
     {
@@ -137,12 +118,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
           <NavMain items={data.navMain} />
         ) : (
           <div className="flex items-center justify-center h-full w-full">
-            {/* TODO: Loader  */}
             <span className="animate-spin rounded-full border-4 border-gray-300 border-t-blue-500 h-8 w-8"></span>
             <span className="ml-2 text-gray-500">Cargando menú...</span>
           </div>
         )}
-        {/* <NavProjects projects={data.projects} /> */}
       </SidebarContent>
       <SidebarFooter>
         <NavUser />

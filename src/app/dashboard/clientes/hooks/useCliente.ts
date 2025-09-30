@@ -1,14 +1,14 @@
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { Cliente, ClienteForm } from "../domain/cliente.entity";
 import ubigeo from "@/ubigeo.json";
-import { crearCliente, obtenerClientes } from "../domain/cliente.usecase";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
 import {
   createClienteSchema,
   CreateClienteSchema,
 } from "@/zod/schemas/clientes/clientesCreate.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { Cliente, ClienteForm } from "../domain/cliente.entity";
+import { crearCliente, obtenerClientes } from "../domain/cliente.usecase";
 
 export function useCliente() {
   const { data: session } = useSession();
@@ -45,8 +45,6 @@ export function useCliente() {
     const cliente: ClienteForm = {
       ...form.getValues(),
     };
-
-    console.log(cliente);
 
     try {
       const nueva = await crearCliente(cliente);

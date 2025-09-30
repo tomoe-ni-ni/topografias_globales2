@@ -22,17 +22,12 @@ import {
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { TipoDocumento } from "@/enums";
-import {
-  CreateDocumentoSchema,
-  createDocumentoSchema,
-} from "@/zod/schemas/documentos/documentoCreate.schema";
-import { zodResolver } from "@hookform/resolvers/zod";
+import { CreateDocumentoSchema } from "@/zod/schemas/documentos/documentoCreate.schema";
 import { ChangeEvent, Dispatch, SetStateAction } from "react";
-import { useForm, UseFormReturn } from "react-hook-form";
+import { UseFormReturn } from "react-hook-form";
 import { useArea } from "../../area/hooks/usearea";
 import { useCliente } from "../../clientes/hooks/useCliente";
 import { useEstado } from "../../estado_documento/hooks/useestado";
-import { DocumentoForm } from "../domain/documentos.entity";
 import { useProyecto } from "../../proyectos/hooks/useproyecto";
 
 export default function AgregarDocumento({
@@ -81,9 +76,7 @@ export default function AgregarDocumento({
     setArchivoState(null);
   };
 
-  const onSubmit = async (data: CreateDocumentoSchema) => {
-    console.log(data);
-  };
+  const onSubmit = async (data: CreateDocumentoSchema) => {};
 
   return (
     <>

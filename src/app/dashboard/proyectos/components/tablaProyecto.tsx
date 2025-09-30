@@ -22,7 +22,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 
 import { Proyecto } from "../domain/proyecto.entity";
-import { useTableProyecto } from "../hooks/useTablaProyecto"; // ✅ ojo, nombre consistente
+import { useTableProyecto } from "../hooks/useTablaProyecto";
 import EditarProyecto from "./editarProyecto";
 
 export function TablaProyecto({
@@ -45,21 +45,11 @@ export function TablaProyecto({
     setModalAbiertoEditar,
     editarProyecto,
     formEditar,
+    dataToRender,
   } = useTableProyecto({ proyectos, setProyectos });
-
-  // Filtrar proyectos por búsqueda
-  const dataToRender =
-    busqueda.trim().length > 0
-      ? proyectos.filter(
-          (p) =>
-            p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-            p.descripcion.toLowerCase().includes(busqueda.toLowerCase())
-        )
-      : proyectos;
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -70,7 +60,6 @@ export function TablaProyecto({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -128,7 +117,6 @@ export function TablaProyecto({
         </Table>
       </div>
 
-      {/* Dialog Confirmación Eliminar */}
       <DialogConfirmacion
         open={openEliminarDialog}
         onOpenChange={setOpenEliminarDialog}
@@ -140,12 +128,11 @@ export function TablaProyecto({
         confirmVariant="destructive"
       />
 
-      {/* Modal de Editar */}
       <EditarProyecto
         modalAbierto={modalAbiertoEditar}
         setModalAbierto={setModalAbiertoEditar}
-        form={formEditar}
-        actualizarProyecto={editarProyecto}
+        formEditar={formEditar}
+        editarProyecto={editarProyecto}
       />
     </div>
   );

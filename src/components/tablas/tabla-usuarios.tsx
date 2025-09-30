@@ -1,5 +1,6 @@
 "use client";
 
+import EditUserForm from "@/app/dashboard/usuarios/components/EditUserForm";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -26,7 +27,6 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { useEffect, useState } from "react";
 import { Usuarios } from "@/types/usuarios";
 import {
   ArrowDown,
@@ -39,10 +39,9 @@ import {
   Search,
   Trash2,
 } from "lucide-react";
-import EditUserForm from "@/app/dashboard/usuarios/components/EditUserForm";
+import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-// Función para obtener iniciales
 const obtenerIniciales = (nombre: string) => {
   return nombre
     .split(" ")
@@ -52,7 +51,6 @@ const obtenerIniciales = (nombre: string) => {
     .substring(0, 2);
 };
 
-// Colores para los estados
 const coloresEstado: Record<string, string> = {
   activo: "bg-green-100 text-green-800 hover:bg-green-200",
   inactivo: "bg-red-100 text-red-800 hover:bg-red-200",
@@ -87,13 +85,11 @@ export function TablaUsuarios({
   const elementosPorPagina = 5;
   const totalPaginas = Math.ceil(usuariosFiltrados.length / elementosPorPagina);
 
-  // Inicializar datos
   useEffect(() => {
     setUsuarios(usuariosData);
     setUsuariosFiltrados(Array.isArray(usuariosData) ? usuariosData : []);
   }, [usuariosData]);
 
-  // Filtrar usuarios cuando cambia la búsqueda
   useEffect(() => {
     if (busqueda.trim() === "") {
       setUsuariosFiltrados(Array.isArray(usuarios) ? usuarios : []);
@@ -108,7 +104,6 @@ export function TablaUsuarios({
     setPaginaActual(1);
   }, [busqueda, usuarios]);
 
-  // Ordenar usuarios
   const ordenarUsuarios = (campo: keyof Usuarios) => {
     if (ordenarPor === campo) {
       setOrdenDireccion(ordenDireccion === "asc" ? "desc" : "asc");
@@ -117,7 +112,6 @@ export function TablaUsuarios({
       setOrdenDireccion("asc");
     }
   };
-  // Confirmar eliminación de usuario
   const confirmarEliminar = async (id: number | null) => {
     if (!id) return;
     const res = await fetch(`/api/users/${id}`, { method: "DELETE" });
@@ -130,7 +124,6 @@ export function TablaUsuarios({
     }
   };
 
-  // Ordenar usuarios filtrados
   const usuariosOrdenados = [...(usuariosFiltrados ?? [])].sort((a, b) => {
     if (!ordenarPor) return 0;
 
@@ -157,18 +150,15 @@ export function TablaUsuarios({
     return 0;
   });
 
-  // Obtener usuarios para la página actual
   const usuariosPaginados = usuariosOrdenados.slice(
     (paginaActual - 1) * elementosPorPagina,
     paginaActual * elementosPorPagina
   );
 
-  // Cambiar de página
   const cambiarPagina = (pagina: number) => {
     setPaginaActual(pagina);
   };
 
-  // Abrir modal de cambio de estado
   const abrirModalEstado = (
     usuario: Usuarios,
     estado: "activo" | "inactivo"
@@ -178,7 +168,6 @@ export function TablaUsuarios({
     setModalEstado(true);
   };
 
-  // Confirmar cambio de estado
   const confirmarCambioEstado = () => {
     if (usuarioSeleccionado && nuevoEstado) {
       const nuevosUsuarios = usuarios.map((u) =>
@@ -191,19 +180,16 @@ export function TablaUsuarios({
     }
   };
 
-  // Abrir modal de ver usuario
   const abrirModalVer = (usuario: Usuarios) => {
     setUsuarioSeleccionado(usuario);
     setModalVer(true);
   };
 
-  // Abrir modal de eliminar usuario
   const abrirModalEliminar = (usuario: Usuarios) => {
     setUsuarioSeleccionado(usuario);
     setModalEliminar(true);
   };
 
-  // Abrir modal de editar usuario
   const abrirModalEditar = (usuario: Usuarios) => {
     setUsuarioSeleccionado(usuario);
     setUsuarioEdit(usuario);
@@ -212,7 +198,6 @@ export function TablaUsuarios({
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -223,7 +208,6 @@ export function TablaUsuarios({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -379,7 +363,6 @@ export function TablaUsuarios({
         </Table>
       </div>
 
-      {/* Paginación */}
       {usuariosFiltrados.length > 0 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground">
@@ -423,7 +406,6 @@ export function TablaUsuarios({
         </div>
       )}
 
-      {/* Modal de cambio de estado */}
       <Dialog open={modalEstado} onOpenChange={setModalEstado}>
         <DialogContent>
           <DialogHeader>
@@ -442,7 +424,6 @@ export function TablaUsuarios({
         </DialogContent>
       </Dialog>
 
-      {/* Modal de ver usuario */}
       <Dialog open={modalVer} onOpenChange={setModalVer}>
         <DialogContent>
           <DialogHeader>
@@ -502,7 +483,6 @@ export function TablaUsuarios({
         </DialogContent>
       </Dialog>
 
-      {/* Modal de eliminar usuario */}
       <Dialog open={modalEliminar} onOpenChange={setModalEliminar}>
         <DialogContent>
           <DialogHeader>
@@ -528,7 +508,6 @@ export function TablaUsuarios({
         </DialogContent>
       </Dialog>
 
-      {/* Modal de editar usuario */}
       <Dialog open={modalEditar} onOpenChange={setModalEditar}>
         <DialogContent>
           <DialogHeader>

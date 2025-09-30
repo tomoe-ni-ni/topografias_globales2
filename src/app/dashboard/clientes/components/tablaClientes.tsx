@@ -2,32 +2,32 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-  Table, // Import Table component from UI components instead
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
+    Table,
+    TableBody,
+    TableCell,
+    TableHead,
+    TableHeader,
+    TableRow,
 } from "@/components/ui/table";
-import { Eye, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
+import { MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 
 import { DialogConfirmacion } from "@/components/dialogs/eliminarRow";
 import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuItem,
+    DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { Cliente } from "../domain/cliente.entity";
 import { useTableCliente } from "../hooks/useTableCliente";
 import EditarCliente from "./editarClientes";
 
 export function TablaClientes({
-  clienteData,
+  clientes,
   setClientes,
 }: {
-  clienteData: Cliente[];
+  clientes: Cliente[];
   setClientes: Dispatch<SetStateAction<Cliente[]>>;
 }) {
   const {
@@ -50,11 +50,11 @@ export function TablaClientes({
     formEditar,
     departamentos,
     provincias,
-  } = useTableCliente({ clientes: clienteData, setClientes });
+    dataToRender,
+  } = useTableCliente({ clientes, setClientes });
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -65,7 +65,6 @@ export function TablaClientes({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -91,14 +90,14 @@ export function TablaClientes({
             </TableRow>
           </TableHeader>
           <TableBody>
-            {clienteData.length === 0 ? (
+            {dataToRender.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={6} className="text-center py-4">
                   No se encontraron resultados
                 </TableCell>
               </TableRow>
             ) : (
-              clienteData.map((cliente) => (
+              dataToRender.map((cliente) => (
                 <TableRow key={cliente.ID_cliente}>
                   <TableCell>{cliente.ID_cliente}</TableCell>
                   <TableCell>{cliente.nombre}</TableCell>
@@ -139,7 +138,6 @@ export function TablaClientes({
         </Table>
       </div>
 
-      {/*  Modal para eliminar documento */}
       <DialogConfirmacion
         open={openEliminarDialog}
         onOpenChange={setOpenEliminarDialog}
@@ -151,20 +149,11 @@ export function TablaClientes({
         confirmVariant="destructive"
       />
 
-      {/* Modal de ver documento */}
-      {/* <DetallesDocumento
-        documentoSeleccionado={documentoSeleccionado}
-        setModalVer={setModalVer}
-        modalVer={modalVer}
-      /> */}
-
-      {/* Modal de editar documento */}
       <EditarCliente
         modalAbiertoEditar={modalAbiertoEditar}
         setModalAbiertoEditar={setModalAbiertoEditar}
         formEditar={formEditar}
         editarCliente={editarCliente}
-        clienteSeleccionado={clienteSeleccionado}
         departamentos={departamentos}
         provincias={provincias}
       />

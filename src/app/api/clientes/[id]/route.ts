@@ -2,7 +2,7 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function PUT(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   const body = await req.json();
   const { nombre, apellido, nombre_departamento, nombre_provincia } = body;
@@ -13,19 +13,7 @@ export async function PUT(req: NextRequest, context: any) {
     );
   }
 
-  console.log(
-    nombre +
-      "nombre" +
-      apellido +
-      "apellido" +
-      nombre_departamento +
-      "departamento" +
-      nombre_provincia +
-      "provincia"
-  );
-
   try {
-    // Actualiza cliente
     const cliente = await prisma.cliente.update({
       where: { ID_cliente: id },
       data: {
@@ -36,11 +24,7 @@ export async function PUT(req: NextRequest, context: any) {
       },
     });
 
-    const clienteCompleto = await prisma.cliente.findUnique({
-      where: { ID_cliente: cliente.ID_cliente },
-    });
-
-    return NextResponse.json(clienteCompleto);
+    return NextResponse.json(cliente);
   } catch (error) {
     return NextResponse.json(
       { error: "Error al actualizar cliente/usuario" },
@@ -50,7 +34,7 @@ export async function PUT(req: NextRequest, context: any) {
 }
 
 export async function DELETE(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
 
   if (!id || isNaN(id)) {

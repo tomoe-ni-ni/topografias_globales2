@@ -1,8 +1,14 @@
 "use client";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { toast } from "sonner";
+import { useArea } from "@/app/dashboard/area/hooks/usearea";
+import HeaderPage from "@/components/headerPage";
 import { Button } from "@/components/ui/button";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import {
   Form,
   FormControl,
@@ -12,21 +18,6 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { Typography } from "@/components/ui/typography";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
-import { Fragment, useState } from "react";
-import { useArea } from "@/app/dashboard/area/hooks/usearea";
-import { Usuarios } from "@/types/usuarios";
-import {
-  CreateUserSchema,
-  createUserSchema,
-} from "@/zod/schemas/userCreate.schema";
 import {
   Select,
   SelectContent,
@@ -35,7 +26,15 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { EstadoUsuario, RolUsuario } from "@/enums";
-import HeaderPage from "@/components/headerPage";
+import { Usuarios } from "@/types/usuarios";
+import {
+  CreateUserSchema,
+  createUserSchema,
+} from "@/zod/schemas/userCreate.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { Fragment, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
 
 export default function CreateUserForm({
   onUsuarioCreado,
@@ -52,18 +51,18 @@ export default function CreateUserForm({
       contrasena: "",
       rol: RolUsuario.client,
       estado: EstadoUsuario.activo,
-  ID_area: "",
+      ID_area: "",
     },
   });
   const { areas, loading } = useArea();
 
   const onSubmit = async (data: CreateUserSchema) => {
     try {
-      // Mapear password -> contrasena si el esquema aún usa 'password'
       const payload = {
         ...data,
         contrasena: (data as any).contrasena ?? (data as any).password ?? "",
-  ID_area: data.ID_area && data.ID_area !== "" ? Number(data.ID_area) : null,
+        ID_area:
+          data.ID_area && data.ID_area !== "" ? Number(data.ID_area) : null,
       };
       delete (payload as any).password;
       const res = await fetch("/api/users", {
@@ -168,10 +167,7 @@ export default function CreateUserForm({
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel>Rol</FormLabel>
-                    <Select
-                      value={field.value}
-                      onValueChange={field.onChange}
-                    >
+                    <Select value={field.value} onValueChange={field.onChange}>
                       <FormControl className="w-full">
                         <SelectTrigger>
                           <SelectValue placeholder="Selecciona un rol" />
@@ -237,7 +233,10 @@ export default function CreateUserForm({
                       <SelectContent>
                         {areas && areas.length > 0 ? (
                           areas.map((area) => (
-                            <SelectItem key={area.ID_area} value={String(area.ID_area)}>
+                            <SelectItem
+                              key={area.ID_area}
+                              value={String(area.ID_area)}
+                            >
                               {area.nombre}
                             </SelectItem>
                           ))

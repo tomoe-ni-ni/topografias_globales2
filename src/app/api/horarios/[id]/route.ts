@@ -2,10 +2,10 @@ import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   try {
-    const horario = await prisma.horario.findUnique({ where: { id } });
+    const horario = await prisma.area.findUnique({ where: { ID_area: id } });
     if (!horario) {
       return NextResponse.json(
         { error: "Horario no encontrado" },
@@ -22,11 +22,11 @@ export async function GET(req: NextRequest, context: any) {
 }
 
 export async function PUT(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   const data = await req.json();
   try {
-    const horario = await prisma.horario.update({ where: { id }, data });
+    const horario = await prisma.area.update({ where: { ID_area: id }, data });
     return NextResponse.json(horario);
   } catch (error) {
     return NextResponse.json(
@@ -37,10 +37,10 @@ export async function PUT(req: NextRequest, context: any) {
 }
 
 export async function DELETE(req: NextRequest, context: any) {
-  const { params } = await context;
+  const params = await context.params;
   const id = Number(params.id);
   try {
-    await prisma.horario.delete({ where: { id } });
+    await prisma.area.delete({ where: { ID_area: id } });
     return NextResponse.json({ success: true });
   } catch (error) {
     return NextResponse.json(

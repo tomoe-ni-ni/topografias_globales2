@@ -1,13 +1,10 @@
-import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
-import { nanoid } from "nanoid";
 import bcrypt from "bcryptjs";
+import { NextRequest, NextResponse } from "next/server";
 
-// **CREATE**: Crear un nuevo usuario
 export async function POST(req: NextRequest) {
   const body = await req.json();
 
-  // Aceptar tanto 'contrasena' como 'password' por compatibilidad
   const password = body.contrasena || body.password;
   const { rol, nombre, correo, ID_area, apellido, estado } = body;
 
@@ -38,7 +35,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Buscar el usuario recién creado con el área relacionada
     const usuarioConArea = await prisma.usuario.findUnique({
       where: { ID_usuario: nuevoUsuario.ID_usuario },
       select: {
@@ -54,7 +50,6 @@ export async function POST(req: NextRequest) {
       },
     });
 
-    // Asegurar que siempre se retornen estado y fecha_ingreso aunque sean null
     return NextResponse.json(
       {
         ...usuarioConArea,
@@ -77,7 +72,6 @@ export async function POST(req: NextRequest) {
   }
 }
 
-// **READ (ALL)**: Obtener todos los usuarios o filtrar por rol
 export async function GET(req: NextRequest) {
   try {
     const rol = req.nextUrl.searchParams.get("rol");
@@ -85,21 +79,11 @@ export async function GET(req: NextRequest) {
     if (rol) where.rol = rol;
 
     const usuarios = await prisma.usuario.findMany({
-      where,
-      select: {
-        ID_usuario: true,
-        fecha_ingreso: true,
-        estado: true,
-        nombre: true,
-        apellido: true,
-        correo: true,
-        rol: true,
-        ID_area: true,
-        area: {
-          select: {
-            nombre: true,
-          },
-        },
+      include: {
+        area: true,
+      },
+      orderBy: {
+        ID_usuario: "asc",
       },
     });
 

@@ -1,13 +1,13 @@
-import { Dispatch, SetStateAction, useState } from "react";
-import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 
-import { EstadoDocumento } from "../domain/estado.entity";
-import { actualizarEstado, eliminarEstado } from "../domain/estado.usecase";
 import {
   editEstadoDocumentoSchema,
   EditEstadoDocumentoSchema,
 } from "@/zod/schemas/estado_documento/estadoDocumentoEditar.schema";
+import { EstadoDocumento } from "../domain/estado.entity";
+import { actualizarEstado, eliminarEstado } from "../domain/estado.usecase";
 
 export function useTableEstadoDocumento({
   estados,
@@ -16,7 +16,9 @@ export function useTableEstadoDocumento({
   estados: EstadoDocumento[];
   setEstados: Dispatch<SetStateAction<EstadoDocumento[]>>;
 }) {
-  const [estadosFiltrados, setEstadosFiltrados] = useState<EstadoDocumento[]>([]);
+  const [estadosFiltrados, setEstadosFiltrados] = useState<EstadoDocumento[]>(
+    []
+  );
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
 
@@ -27,15 +29,21 @@ export function useTableEstadoDocumento({
   const [estadoSeleccionado, setEstadoSeleccionado] =
     useState<EstadoDocumento | null>(null);
 
-  // Formulario de edición
   const formEditar = useForm<EditEstadoDocumentoSchema>({
     resolver: zodResolver(editEstadoDocumentoSchema),
     defaultValues: {
-      estado: estadoSeleccionado?.estado || "",
+      estado: "",
     },
   });
 
-  // Eliminar estado
+  useEffect(() => {
+    if (estadoSeleccionado) {
+      formEditar.reset({
+        estado: estadoSeleccionado.estado || "",
+      });
+    }
+  }, [estadoSeleccionado, formEditar]);
+
   const eliminarEstadoDocumento = async () => {
     if (!estadoSeleccionado?.ID_estado) return;
 
@@ -50,17 +58,16 @@ export function useTableEstadoDocumento({
     }
   };
 
-  // Editar estado
   const editarEstadoDocumento = async () => {
     if (!estadoSeleccionado?.ID_estado) return;
 
-    const estadoData: EstadoDocumento = {
+    const estado: EstadoDocumento = {
       ID_estado: estadoSeleccionado.ID_estado,
       ...formEditar.getValues(),
     };
 
     try {
-      const estadoActualizado = await actualizarEstado(estadoData);
+      const estadoActualizado = await actualizarEstado(estado);
       setEstados((prev) =>
         prev.map((est) =>
           est.ID_estado === estadoSeleccionado.ID_estado
@@ -74,6 +81,13 @@ export function useTableEstadoDocumento({
       console.error("Error al editar el estado:", error);
     }
   };
+
+  const dataToRender =
+    busqueda.trim().length > 0
+      ? estados.filter((est) =>
+          est.estado.toLowerCase().includes(busqueda.toLowerCase())
+        )
+      : estados;
 
   return {
     estadosFiltrados,
@@ -93,5 +107,6 @@ export function useTableEstadoDocumento({
     setModalAbiertoEditar,
     editarEstadoDocumento,
     formEditar,
+    dataToRender,
   };
 }

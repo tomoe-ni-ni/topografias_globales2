@@ -1,48 +1,53 @@
-import { useSession } from "next-auth/react";
+import {
+  CreateAreaSchema,
+  createAreaSchema,
+} from "@/zod/schemas/area/areaCreate.schema";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Area } from "../domain/area.entity";
 import { crearArea, obtenerAreas } from "../domain/area.usecase";
 
-
 export function useArea() {
-    const { data: session, status } = useSession();
-    const [areas, setAreas] = useState<Area[]>([]);
-    const [loading, setLoading] = useState(false);
-    const [modalAbierto, setModalAbierto] = useState(false);
-    const [nombre, setNombre] = useState("");
+  const [areas, setAreas] = useState<Area[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [modalAbierto, setModalAbierto] = useState(false);
 
-    useEffect(() => {
-        if (session?.user.ID_usuario) {
-            setLoading(true);
-            obtenerAreas()
-                .then(setAreas)
-                .finally(() => setLoading(false));
-        }
-    }, [session?.user.ID_usuario]);
+  const form = useForm<CreateAreaSchema>({
+    resolver: zodResolver(createAreaSchema),
+    defaultValues: {
+      nombre: "",
+    },
+  });
 
-    const agregarArea = async () => {
-        if (!session?.user.ID_usuario) return;
-        const area: Area = {
-            nombre: nombre,
-        };
-        try {
-            const nueva = await crearArea(area);
-            setAreas((prev) => [...prev, nueva]);
-            setNombre("");
-            setModalAbierto(false);
-        } catch (error) {
-            console.error("Error al crear la tarea:", error);
-        }
+  useEffect(() => {
+    setLoading(true);
+    obtenerAreas()
+      .then(setAreas)
+      .finally(() => setLoading(false));
+  }, []);
+
+  const agregarArea = async () => {
+    const area: Area = {
+      ...form.getValues(),
     };
+    try {
+      const nueva = await crearArea(area);
+      setAreas((prev) => [...prev, nueva]);
+      form.reset();
+      setModalAbierto(false);
+    } catch (error) {
+      console.error("Error al crear la tarea:", error);
+    }
+  };
 
-    return {
-        areas,
-        loading,
-        modalAbierto,
-        setModalAbierto,
-        agregarArea,
-        nombre,
-        setNombre,
-        setAreas,
-    };
-}  
+  return {
+    areas,
+    setAreas,
+    loading,
+    modalAbierto,
+    setModalAbierto,
+    agregarArea,
+    form,
+  };
+}

@@ -1,13 +1,4 @@
-import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import {
   Dialog,
   DialogContent,
@@ -16,35 +7,43 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import { toast } from "sonner";
-import { Cliente } from "@/types/clientes";
-
 import {
-  Search,
-  ArrowUp,
-  ArrowDown,
-  MoreVertical,
-  Eye,
-  Pencil,
-  Trash2,
-  ChevronLeft,
-  ChevronRight,
-  Badge,
-} from "lucide-react";
-import { Input } from "@/components/ui/input";
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+import { Cliente } from "@/types/clientes";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
+
+import { DialogEliminarRow } from "@/components/dialogs/cambioEstado";
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
-import { coloresEstado, fechaLocal, obtenerIniciales } from "@/lib/utils";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import { DialogEliminarRow } from "@/components/dialogs/cambioEstado";
+import { Input } from "@/components/ui/input";
 import { Typography } from "@/components/ui/typography";
+import { coloresEstado, fechaLocal, obtenerIniciales } from "@/lib/utils";
+import {
+  ArrowDown,
+  ArrowUp,
+  ChevronLeft,
+  ChevronRight,
+  Eye,
+  MoreVertical,
+  Pencil,
+  Search,
+  Trash2,
+} from "lucide-react";
 import { DetalleCampo } from "../detalleCampo";
 
-export function TablaClientesaaaaaaaaaaaa({
+export function TablaClientes({
   clientesData,
   onClienteEditado,
   onClienteEliminado,
@@ -77,7 +76,6 @@ export function TablaClientesaaaaaaaaaaaa({
     setClientesFiltrados(Array.isArray(clientesData) ? clientesData : []);
   }, [clientesData]);
 
-  // Ordenar clientes
   const ordenarClientes = (campo: keyof Cliente) => {
     if (ordenarPor === campo) {
       setOrdenDireccion(ordenDireccion === "asc" ? "desc" : "asc");
@@ -86,7 +84,6 @@ export function TablaClientesaaaaaaaaaaaa({
       setOrdenDireccion("asc");
     }
   };
-  // Confirmar eliminación de cliente
   const confirmarEliminar = async (id: number | null) => {
     if (!id) return;
     const res = await fetch(`/api/clientes/${id}`, { method: "DELETE" });
@@ -99,7 +96,6 @@ export function TablaClientesaaaaaaaaaaaa({
     }
   };
 
-  // Ordenar clientes filtrados
   const clientesOrdenados = [...(clientesFiltrados ?? [])].sort((a, b) => {
     if (!ordenarPor) return 0;
 
@@ -126,18 +122,15 @@ export function TablaClientesaaaaaaaaaaaa({
     return 0;
   });
 
-  // Obtener clientes para la página actual
   const clientesPaginados = clientesOrdenados.slice(
     (paginaActual - 1) * elementosPorPagina,
     paginaActual * elementosPorPagina
   );
 
-  // Cambiar de página
   const cambiarPagina = (pagina: number) => {
     setPaginaActual(pagina);
   };
 
-  // Abrir modal de cambio de estado
   const abrirModalEstado = (
     cliente: Cliente,
     estado: "activo" | "inactivo"
@@ -147,7 +140,6 @@ export function TablaClientesaaaaaaaaaaaa({
     setModalEstado(true);
   };
 
-  // Confirmar cambio de estado
   const confirmarCambioEstado = () => {
     if (clienteSeleccionado && nuevoEstado) {
       const nuevosClientes = clientes.map((c) =>
@@ -158,19 +150,16 @@ export function TablaClientesaaaaaaaaaaaa({
     }
   };
 
-  // Abrir modal de ver cliente
   const abrirModalVer = (cliente: Cliente) => {
     setClienteSeleccionado(cliente);
     setModalVer(true);
   };
 
-  // Abrir modal de eliminar cliente
   const abrirModalEliminar = (cliente: Cliente) => {
     setClienteSeleccionado(cliente);
     setModalEliminar(true);
   };
 
-  // Abrir modal de editar cliente
   const abrirModalEditar = (cliente: Cliente) => {
     setClienteSeleccionado(cliente);
     setModalEditar(true);
@@ -178,7 +167,6 @@ export function TablaClientesaaaaaaaaaaaa({
 
   return (
     <div className="space-y-4">
-      {/* Barra de búsqueda */}
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
@@ -189,7 +177,6 @@ export function TablaClientesaaaaaaaaaaaa({
         />
       </div>
 
-      {/* Tabla */}
       <div className="border rounded-md">
         <Table>
           <TableHeader>
@@ -208,16 +195,13 @@ export function TablaClientesaaaaaaaaaaaa({
                     ))}
                 </div>
               </TableHead>
-              {/* Codigo de usuario */}
               <TableHead className="cursor-pointer hover:bg-muted/50">
                 <div className="flex items-center">Código de usuario</div>
               </TableHead>
 
-              {/* Estado */}
               <TableHead className="cursor-pointer hover:bg-muted/50">
                 <div className="flex items-center">Estado</div>
               </TableHead>
-              {/* telefono */}
               <TableHead
                 className="cursor-pointer hover:bg-muted/50"
                 onClick={() => ordenarClientes("telefono")}
@@ -340,7 +324,6 @@ export function TablaClientesaaaaaaaaaaaa({
         </Table>
       </div>
 
-      {/* Paginación */}
       {clientesFiltrados.length > 0 && (
         <div className="flex items-center justify-between">
           <div className="text-sm text-muted-foreground">
@@ -384,7 +367,6 @@ export function TablaClientesaaaaaaaaaaaa({
         </div>
       )}
 
-      {/* Modal de cambio de estado */}
       <DialogEliminarRow
         open={modalEstado}
         onOpenChange={setModalEstado}
@@ -397,7 +379,6 @@ export function TablaClientesaaaaaaaaaaaa({
         }
         onConfirm={confirmarCambioEstado}
       />
-      {/* Modal eliminar cliente */}
       <DialogEliminarRow
         open={modalEliminar}
         onOpenChange={setModalEliminar}
@@ -413,7 +394,6 @@ export function TablaClientesaaaaaaaaaaaa({
         cancelText="Cancelar"
       />
 
-      {/* Modal ver cliente */}
       <Dialog open={modalVer} onOpenChange={setModalVer}>
         <DialogContent>
           <DialogHeader>
@@ -477,7 +457,6 @@ export function TablaClientesaaaaaaaaaaaa({
         </DialogContent>
       </Dialog>
 
-      {/* Modal de editar cliente */}
       <Dialog open={modalEditar} onOpenChange={setModalEditar}>
         <DialogContent className=" md:max-w-2xl  xl:max-w-4xl">
           <DialogHeader>
@@ -486,11 +465,11 @@ export function TablaClientesaaaaaaaaaaaa({
               Aquí puedes editar los detalles del cliente.
             </DialogDescription>
           </DialogHeader>
-          <EditClientForm
+          {/* <EditClientForm
             cliente={clienteSeleccionado}
             onClose={() => setModalEditar(false)}
             onClienteEditado={onClienteEditado}
-          />
+          /> */}
         </DialogContent>
       </Dialog>
     </div>

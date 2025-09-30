@@ -1,11 +1,10 @@
-import { useState, useEffect } from "react";
 import { useSession } from "next-auth/react";
+import { useState } from "react";
 import { Tarea } from "../domain/deberes.entity";
 import {
   actualizarTarea,
   crearTarea,
   eliminaTarea,
-  obtenerTareas,
 } from "../domain/deberes.usecase";
 
 export function useTareas() {
@@ -16,19 +15,8 @@ export function useTareas() {
   const [nuevaDescripcion, setNuevaDescripcion] = useState("");
   const [modalAbierto, setModalAbierto] = useState(false);
 
-  useEffect(() => {
-    if (session?.user.id) {
-      setLoading(true);
-      obtenerTareas(Number(session.user.id))
-        .then(setTareas)
-        .finally(() => setLoading(false));
-    }
-  }, [session?.user.id]);
-
   const agregarTarea = async () => {
-    if (!session?.user.id) return;
     const tarea: Tarea = {
-      asignado_a: Number(session.user.id),
       titulo: nuevaTarea,
       descripcion: nuevaDescripcion,
       estado: "pendiente",

@@ -1,4 +1,3 @@
-
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -42,7 +41,6 @@ export default function AgregarClientes({
   departamentos: string[];
   provincias: string[];
 }) {
-  // Obtenemos el valor actual del departamento seleccionado y lo actualizamos en tiempo real
   const departamentoSeleccionado = form.watch("nombre_departamento");
 
   return (

@@ -1,19 +1,18 @@
 import { TipoDocumento } from "@/enums";
-import { useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
-import { Documento, DocumentoForm } from "../domain/documentos.entity";
-import {
-  crearDocumento,
-  obtenerDocumentos,
-} from "../domain/documentos.usecase";
-import { toast } from "sonner";
-import { useForm } from "react-hook-form";
 import {
   createDocumentoSchema,
   CreateDocumentoSchema,
 } from "@/zod/schemas/documentos/documentoCreate.schema";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { parse } from "path";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "sonner";
+import { Documento, DocumentoForm } from "../domain/documentos.entity";
+import {
+  crearDocumento,
+  obtenerDocumentos,
+} from "../domain/documentos.usecase";
 
 export function useDocumento() {
   const { data: session } = useSession();
@@ -76,7 +75,6 @@ export function useDocumento() {
     } catch (error) {
       console.error("Error al crear el documento:", error);
     }
-    console.log(documento);
   };
 
   return {
