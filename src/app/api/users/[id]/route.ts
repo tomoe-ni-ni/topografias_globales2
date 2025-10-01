@@ -18,6 +18,7 @@ export async function PUT(req: NextRequest, context: any) {
     const usuarioActualizado = await prisma.usuario.update({
       where: { ID_usuario: id },
       data: { nombre, estado, ID_area },
+      include: {area: true},
     });
     return NextResponse.json(usuarioActualizado);
   } catch (error) {
