@@ -7,7 +7,8 @@ export default async function Page() {
 
   if (!session) {
     redirect("/auth/login");
+  }else{
+    redirect("/dashboard/reportes");
   }
-
-  return <>Bienvenido {session.user?.name}</>;
+  return <div>Dashboard</div>;
 }

@@ -2,6 +2,7 @@
 
 import {
   Building2,
+  ChartNoAxesCombined,
   FileChartColumn,
   FolderGit,
   Frame,
@@ -34,6 +35,12 @@ const data = {
     },
   ],
   navMain: [
+    {
+      title: "Reportes",
+      url: "/dashboard/reportes",
+      icon: ChartNoAxesCombined,
+      items: [],
+    },
     {
       title: "Documentos",
       url: "/dashboard/documentos",
