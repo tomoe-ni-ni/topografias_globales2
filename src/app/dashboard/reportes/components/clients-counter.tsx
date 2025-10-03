@@ -6,7 +6,6 @@ import { useContadorClientes } from "../hooks/useContadorClientes"
 
 export function ClientsCounter() {
   const { totalClients, loading } = useContadorClientes()
-  const percentageChange = 12.5 // luego lo calculamos con clientesPorMes
 
   return (
     <Card className="border-border bg-card">
@@ -20,10 +19,6 @@ export function ClientsCounter() {
         <div className="flex items-baseline gap-2">
           <div className="text-4xl font-bold text-card-foreground">
             {loading ? "..." : totalClients?.toLocaleString()}
-          </div>
-          <div className="flex items-center gap-1 text-sm font-medium text-accent">
-            <TrendingUp className="h-4 w-4" />
-            <span>+{percentageChange}%</span>
           </div>
         </div>
         <p className="mt-2 text-sm text-muted-foreground">

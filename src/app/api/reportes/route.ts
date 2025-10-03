@@ -78,10 +78,17 @@ export async function GET(req: Request) {
         data = await prisma.estado_documento.findMany({
           select: {
             estado: true,
-            _count: { select: { documentos: true } },
+            _count: {
+              select: {
+                documentos: {
+                  where: { deleted_at: null }, // 👈 validar que documentos no estén eliminados
+                },
+              },
+            },
           },
         });
-
+        console.log("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa");
+        console.log(data);
         data = data.map((item) => ({
           name: item.estado,
           value: item._count.documentos,

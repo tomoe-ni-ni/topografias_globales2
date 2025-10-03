@@ -1,8 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import { ChartBarDefault } from "./components/prueba";
-import { LineChart, BarChart } from "lucide-react";
-import { CartesianGrid, XAxis, YAxis, Tooltip, Line, Bar } from "recharts";
 import { ClientsCounter } from "./components/clients-counter";
 import { ClientsMonthlyChart } from "./components/clients-monthly-chart";
 import { DocumentStatusChart } from "./components/document-status-chart";
@@ -13,7 +10,6 @@ export default function Page() {
   async function obtenerReporte(tipo: string) {
     const res = await fetch(`/api/reportes?tipo=${tipo}`);
     const data = await res.json();
-    console.log(data);
     return data;
   }
 

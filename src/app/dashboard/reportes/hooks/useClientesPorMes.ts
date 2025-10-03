@@ -1,39 +1,67 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from "react";
 
-// Función para convertir Date a nombre de mes corto en español
+const ALL_MONTHS = [
+  "ENE",
+  "FEB",
+  "MAR",
+  "ABR",
+  "MAY",
+  "JUN",
+  "JUL",
+  "AGO",
+  "SEP",
+  "OCT",
+  "NOV",
+  "DIC",
+];
+
 function getMonthName(dateString: string): string {
-  const date = new Date(dateString)
-  return date.toLocaleString("es-ES", { month: "short" }).toUpperCase()
+  const [year, month] = dateString.split("-");
+  const monthIndex = parseInt(month, 10) - 1;
+  return ALL_MONTHS[monthIndex] ?? "";
 }
 
 export function useClientesPorMes() {
-  const [data, setData] = useState<{ month: string; clients: number }[]>([])
-  const [loading, setLoading] = useState(true)
+  const [data, setData] = useState<{ month: string; clients: number }[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       try {
-        const res = await fetch("/api/reportes?tipo=clientesPorMes")
-        if (!res.ok) throw new Error("Error al obtener clientes por mes")
-        const raw = await res.json()
+        const res = await fetch("/api/reportes?tipo=clientesPorMes");
+        if (!res.ok) throw new Error("Error al obtener clientes por mes");
+        const raw = await res.json();
 
-        // Transformar formato
-        const formatted = raw.map((item: { mes: string; cantidad: number }) => ({
-          month: getMonthName(item.mes),
-          clients: item.cantidad,
-        }))
+        const formatted = raw.map(
+          (item: { mes: string; cantidad: number }) => ({
+            month: getMonthName(item.mes),
+            clients: item.cantidad,
+          })
+        );
 
-        setData(formatted)
+        const map = new Map<string, number>(
+          formatted.map((f: { month: string; clients: number }) => [
+            f.month,
+            f.clients,
+          ])
+        );
+
+        const completed = ALL_MONTHS.map((m) => ({
+          month: m,
+          clients: map.get(m) ?? 0,
+        }));
+
+        setData(completed);
       } catch (error) {
-        console.error(error)
+        console.error(error);
       } finally {
-        setLoading(false)
+        setLoading(false);
       }
     }
-    fetchData()
-  }, [])
+    fetchData();
+  }, []);
 
-  return { data, loading }
+  return { data, loading };
 }
