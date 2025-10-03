@@ -9,7 +9,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Eye, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, Eye, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 import { Documento } from "../domain/documentos.entity";
 import { useTableDocumento } from "../hooks/useTableDocumento";
@@ -21,6 +21,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Paginacion } from "@/components/paginacion";
 import DetallesDocumento from "./detallesDocumento";
 import EditarDocumento from "./editarDocumento";
 
@@ -32,14 +33,18 @@ export function TablaDocumentos({
   setDocumentos: Dispatch<SetStateAction<Documento[]>>;
 }) {
   const {
-    documentosFiltrados,
+    documentosFiltradosYOrdenados,
+    documentosPaginados,
     busqueda,
     paginaActual,
+    elementosPorPagina,
+    ordenColumna,
+    direccionOrden,
     documentoSeleccionado,
     setDocumentoSeleccionado,
     setBusqueda,
     setPaginaActual,
-    setDocumentosFiltrados,
+    handleOrdenar,
     eliminarDocumento,
     openEliminarDialog,
     setOpenEliminarDialog,
@@ -67,35 +72,88 @@ export function TablaDocumentos({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Id Documento</div>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("ID_documento")}
+              >
+                <div className="flex items-center">
+                  Id Documento
+                  {ordenColumna === "ID_documento" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Nombre Documento</div>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("nombre_documento")}
+              >
+                <div className="flex items-center">
+                  Nombre Documento
+                  {ordenColumna === "nombre_documento" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Nombre Cliente</div>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("cliente")}
+              >
+                <div className="flex items-center">
+                  Nombre Cliente
+                  {ordenColumna === "cliente" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Estado</div>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("estado")}
+              >
+                <div className="flex items-center">
+                  Estado
+                  {ordenColumna === "estado" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Tipo</div>
+              <TableHead 
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("tipo_documento")}
+              >
+                <div className="flex items-center">
+                  Tipo
+                  {ordenColumna === "tipo_documento" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="ursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Acciones</div>
-              </TableHead>
+              <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {documentosData.length === 0 ? (
+            {documentosPaginados.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={6} className="text-center py-4">
                   No se encontraron resultados
                 </TableCell>
               </TableRow>
             ) : (
-              documentosData.map((documento) => (
+              documentosPaginados.map((documento) => (
                 <TableRow key={documento.ID_documento}>
                   <TableCell>{documento.ID_documento}</TableCell>
                   <TableCell>{documento.nombre_documento}</TableCell>
@@ -104,13 +162,14 @@ export function TablaDocumentos({
                   </TableCell>
                   <TableCell>{documento.estado?.estado}</TableCell>
                   <TableCell>{documento.tipo_documento}</TableCell>
-                  <TableCell
-                    className="text-right"
-                    onClick={() => setDocumentoSeleccionado(documento)}
-                  >
+                  <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setDocumentoSeleccionado(documento)}
+                        >
                           <MoreVertical className="h-4 w-4" />
                           <span className="sr-only">Abrir menú</span>
                         </Button>
@@ -141,6 +200,13 @@ export function TablaDocumentos({
           </TableBody>
         </Table>
       </div>
+
+      <Paginacion
+        paginaActual={paginaActual}
+        totalElementos={documentosFiltradosYOrdenados.length}
+        elementosPorPagina={elementosPorPagina}
+        onCambioPagina={setPaginaActual}
+      />
 
       <DialogConfirmacion
         open={openEliminarDialog}

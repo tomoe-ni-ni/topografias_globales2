@@ -10,7 +10,14 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
+import {
+  ArrowDown,
+  ArrowUp,
+  MoreVertical,
+  Pencil,
+  Search,
+  Trash2,
+} from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 
 import { DialogConfirmacion } from "@/components/dialogs/eliminarRow";
@@ -24,6 +31,7 @@ import {
 import { Proyecto } from "../domain/proyecto.entity";
 import { useTableProyecto } from "../hooks/useTablaProyecto";
 import EditarProyecto from "./editarProyecto";
+import { Paginacion } from "@/components/paginacion";
 
 export function TablaProyecto({
   proyectos,
@@ -35,9 +43,16 @@ export function TablaProyecto({
   const {
     proyectosFiltrados,
     busqueda,
-    setBusqueda,
+    paginaActual,
     proyectoSeleccionado,
+    ordenarPor,
+    ordenDireccion,
+    elementosPorPagina,
+    proyectosPaginados,
     setProyectoSeleccionado,
+    setBusqueda,
+    setPaginaActual,
+    ordenarProyectos,
     openEliminarDialog,
     setOpenEliminarDialog,
     eliminarProyectoSeleccionado,
@@ -45,7 +60,6 @@ export function TablaProyecto({
     setModalAbiertoEditar,
     editarProyecto,
     formEditar,
-    dataToRender,
   } = useTableProyecto({ proyectos, setProyectos });
 
   return (
@@ -64,32 +78,72 @@ export function TablaProyecto({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead>ID Proyecto</TableHead>
-              <TableHead>Nombre</TableHead>
-              <TableHead>Descripción</TableHead>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => ordenarProyectos("ID_proyecto")}
+              >
+                <div className="flex items-center">
+                  ID Proyecto
+                  {ordenarPor === "ID_proyecto" &&
+                    (ordenDireccion === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
+              </TableHead>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => ordenarProyectos("nombre")}
+              >
+                <div className="flex items-center">
+                  Nombre
+                  {ordenarPor === "nombre" &&
+                    (ordenDireccion === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
+              </TableHead>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => ordenarProyectos("descripcion")}
+              >
+                <div className="flex items-center">
+                  Descripción
+                  {ordenarPor === "descripcion" &&
+                    (ordenDireccion === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
+              </TableHead>
               <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {dataToRender.length === 0 ? (
+            {proyectosPaginados.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={4} className="text-center py-4">
                   No se encontraron resultados
                 </TableCell>
               </TableRow>
             ) : (
-              dataToRender.map((proyecto) => (
+              proyectosPaginados.map((proyecto) => (
                 <TableRow key={proyecto.ID_proyecto}>
                   <TableCell>{proyecto.ID_proyecto}</TableCell>
                   <TableCell>{proyecto.nombre}</TableCell>
                   <TableCell>{proyecto.descripcion}</TableCell>
-                  <TableCell
-                    className="text-right"
-                    onClick={() => setProyectoSeleccionado(proyecto)}
-                  >
+                  <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setProyectoSeleccionado(proyecto)}
+                        >
                           <MoreVertical className="h-4 w-4" />
                           <span className="sr-only">Abrir menú</span>
                         </Button>
@@ -116,6 +170,13 @@ export function TablaProyecto({
           </TableBody>
         </Table>
       </div>
+
+      <Paginacion
+        paginaActual={paginaActual}
+        totalElementos={proyectosFiltrados.length}
+        elementosPorPagina={elementosPorPagina}
+        onCambioPagina={setPaginaActual}
+      />
 
       <DialogConfirmacion
         open={openEliminarDialog}

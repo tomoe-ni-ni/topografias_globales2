@@ -1,6 +1,6 @@
 import ubigeo from "@/ubigeo.json";
 import { useSession } from "next-auth/react";
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 
 import {
   editClienteSchema,
@@ -11,6 +11,9 @@ import { useForm } from "react-hook-form";
 import { Cliente, ClienteForm } from "../domain/cliente.entity";
 import { actualizarCliente, eliminaCliente } from "../domain/cliente.usecase";
 
+type OrdenColumna = "ID_cliente" | "nombre" | "apellido" | "nombre_departamento" | "nombre_provincia";
+type DireccionOrden = "asc" | "desc";
+
 export function useTableCliente({
   clientes,
   setClientes,
@@ -19,12 +22,14 @@ export function useTableCliente({
   setClientes: Dispatch<SetStateAction<Cliente[]>>;
 }) {
   const { data: session } = useSession();
-  const [clientesFiltrados, setClientesFiltrados] = useState<Cliente[]>([]);
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
   const [openEliminarDialog, setOpenEliminarDialog] = useState(false);
   const [modalVer, setModalVer] = useState(false);
   const [modalAbiertoEditar, setModalAbiertoEditar] = useState(false);
+  const [ordenColumna, setOrdenColumna] = useState<OrdenColumna | null>(null);
+  const [direccionOrden, setDireccionOrden] = useState<DireccionOrden>("asc");
+  const elementosPorPagina = 5;
 
   const [clienteSeleccionado, setClienteSeleccionado] =
     useState<Cliente | null>(null);
@@ -45,6 +50,85 @@ export function useTableCliente({
         formEditar.getValues("nombre_departamento")
       ] || []
     : [];
+
+  // Función para cambiar el ordenamiento
+  const handleOrdenar = (columna: OrdenColumna) => {
+    if (ordenColumna === columna) {
+      setDireccionOrden(direccionOrden === "asc" ? "desc" : "asc");
+    } else {
+      setOrdenColumna(columna);
+      setDireccionOrden("asc");
+    }
+  };
+
+  // Filtrar y ordenar clientes
+  const clientesFiltradosYOrdenados = useMemo(() => {
+    let resultado = [...clientes];
+
+    // Filtrar según búsqueda
+    if (busqueda.trim()) {
+      const busquedaLower = busqueda.toLowerCase();
+      resultado = resultado.filter(
+        (cliente) =>
+          cliente.nombre?.toLowerCase().includes(busquedaLower) ||
+          cliente.apellido?.toLowerCase().includes(busquedaLower) ||
+          cliente.nombre_departamento?.toLowerCase().includes(busquedaLower) ||
+          cliente.nombre_provincia?.toLowerCase().includes(busquedaLower) ||
+          cliente.ID_cliente?.toString().includes(busquedaLower)
+      );
+    }
+
+    // Ordenar
+    if (ordenColumna) {
+      resultado.sort((a, b) => {
+        let valorA: any;
+        let valorB: any;
+
+        switch (ordenColumna) {
+          case "ID_cliente":
+            valorA = a.ID_cliente;
+            valorB = b.ID_cliente;
+            break;
+          case "nombre":
+            valorA = a.nombre?.toLowerCase() || "";
+            valorB = b.nombre?.toLowerCase() || "";
+            break;
+          case "apellido":
+            valorA = a.apellido?.toLowerCase() || "";
+            valorB = b.apellido?.toLowerCase() || "";
+            break;
+          case "nombre_departamento":
+            valorA = a.nombre_departamento?.toLowerCase() || "";
+            valorB = b.nombre_departamento?.toLowerCase() || "";
+            break;
+          case "nombre_provincia":
+            valorA = a.nombre_provincia?.toLowerCase() || "";
+            valorB = b.nombre_provincia?.toLowerCase() || "";
+            break;
+          default:
+            return 0;
+        }
+
+        if (valorA < valorB) return direccionOrden === "asc" ? -1 : 1;
+        if (valorA > valorB) return direccionOrden === "asc" ? 1 : -1;
+        return 0;
+      });
+    }
+
+    return resultado;
+  }, [clientes, busqueda, ordenColumna, direccionOrden]);
+
+  // Calcular clientes paginados
+  const clientesPaginados = useMemo(() => {
+    const inicio = (paginaActual - 1) * elementosPorPagina;
+    const fin = inicio + elementosPorPagina;
+    return clientesFiltradosYOrdenados.slice(inicio, fin);
+  }, [clientesFiltradosYOrdenados, paginaActual, elementosPorPagina]);
+
+  // Resetear página cuando cambia la búsqueda u ordenamiento
+  useEffect(() => {
+    setPaginaActual(1);
+  }, [busqueda, ordenColumna, direccionOrden]);
 
   const eliminarCliente = async () => {
     if (!clienteSeleccionado?.ID_cliente) return;
@@ -99,29 +183,19 @@ export function useTableCliente({
     }
   }, [clienteSeleccionado, formEditar]);
 
-  const dataToRender =
-    busqueda.trim().length > 0
-      ? clientes.filter(
-          (p) =>
-            p.nombre.toLowerCase().includes(busqueda.toLowerCase()) ||
-            p.apellido.toLowerCase().includes(busqueda.toLowerCase()) ||
-            p.nombre_departamento
-              .toLowerCase()
-              .includes(busqueda.toLowerCase()) ||
-            p.nombre_provincia.toLowerCase().includes(busqueda.toLowerCase()) ||
-            p.ID_cliente!.toString().includes(busqueda.toLowerCase())
-        )
-      : clientes;
-
   return {
-    clientesFiltrados,
+    clientesFiltradosYOrdenados,
+    clientesPaginados,
     busqueda,
     paginaActual,
+    elementosPorPagina,
+    ordenColumna,
+    direccionOrden,
     clienteSeleccionado,
     setClienteSeleccionado,
     setBusqueda,
     setPaginaActual,
-    setClientesFiltrados,
+    handleOrdenar,
     openEliminarDialog,
     setOpenEliminarDialog,
     eliminarCliente,
@@ -133,6 +207,5 @@ export function useTableCliente({
     formEditar,
     departamentos,
     provincias,
-    dataToRender,
   };
 }

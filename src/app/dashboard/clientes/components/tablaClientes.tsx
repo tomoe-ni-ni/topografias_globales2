@@ -2,23 +2,24 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
-    Table,
-    TableBody,
-    TableCell,
-    TableHead,
-    TableHeader,
-    TableRow,
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
 } from "@/components/ui/table";
-import { MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
+import { ArrowDown, ArrowUp, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
 import { Dispatch, SetStateAction } from "react";
 
 import { DialogConfirmacion } from "@/components/dialogs/eliminarRow";
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { Paginacion } from "@/components/paginacion";
 import { Cliente } from "../domain/cliente.entity";
 import { useTableCliente } from "../hooks/useTableCliente";
 import EditarCliente from "./editarClientes";
@@ -31,14 +32,18 @@ export function TablaClientes({
   setClientes: Dispatch<SetStateAction<Cliente[]>>;
 }) {
   const {
-    clientesFiltrados,
+    clientesFiltradosYOrdenados,
+    clientesPaginados,
     busqueda,
     paginaActual,
+    elementosPorPagina,
+    ordenColumna,
+    direccionOrden,
     clienteSeleccionado,
     setClienteSeleccionado,
     setBusqueda,
     setPaginaActual,
-    setClientesFiltrados,
+    handleOrdenar,
     openEliminarDialog,
     setOpenEliminarDialog,
     eliminarCliente,
@@ -50,7 +55,6 @@ export function TablaClientes({
     formEditar,
     departamentos,
     provincias,
-    dataToRender,
   } = useTableCliente({ clientes, setClientes });
 
   return (
@@ -58,7 +62,7 @@ export function TablaClientes({
       <div className="relative">
         <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
         <Input
-          placeholder="Buscar por nombre o código de documento..."
+          placeholder="Buscar por nombre, apellido, departamento o provincia..."
           className="pl-8"
           value={busqueda}
           onChange={(e) => setBusqueda(e.target.value)}
@@ -69,48 +73,102 @@ export function TablaClientes({
         <Table>
           <TableHeader>
             <TableRow>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Id Cliente</div>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("ID_cliente")}
+              >
+                <div className="flex items-center">
+                  Id Cliente
+                  {ordenColumna === "ID_cliente" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Nombre</div>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("nombre")}
+              >
+                <div className="flex items-center">
+                  Nombre
+                  {ordenColumna === "nombre" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Apellido</div>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("apellido")}
+              >
+                <div className="flex items-center">
+                  Apellido
+                  {ordenColumna === "apellido" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Departamento</div>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("nombre_departamento")}
+              >
+                <div className="flex items-center">
+                  Departamento
+                  {ordenColumna === "nombre_departamento" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="cursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Provincia</div>
+              <TableHead
+                className="cursor-pointer hover:bg-muted/50"
+                onClick={() => handleOrdenar("nombre_provincia")}
+              >
+                <div className="flex items-center">
+                  Provincia
+                  {ordenColumna === "nombre_provincia" &&
+                    (direccionOrden === "asc" ? (
+                      <ArrowUp className="ml-1 h-4 w-4" />
+                    ) : (
+                      <ArrowDown className="ml-1 h-4 w-4" />
+                    ))}
+                </div>
               </TableHead>
-              <TableHead className="ursor-pointer hover:bg-muted/50">
-                <div className="flex items-center">Acciones</div>
-              </TableHead>
+              <TableHead className="text-right">Acciones</TableHead>
             </TableRow>
           </TableHeader>
           <TableBody>
-            {dataToRender.length === 0 ? (
+            {clientesPaginados.length === 0 ? (
               <TableRow>
                 <TableCell colSpan={6} className="text-center py-4">
                   No se encontraron resultados
                 </TableCell>
               </TableRow>
             ) : (
-              dataToRender.map((cliente) => (
+              clientesPaginados.map((cliente) => (
                 <TableRow key={cliente.ID_cliente}>
                   <TableCell>{cliente.ID_cliente}</TableCell>
                   <TableCell>{cliente.nombre}</TableCell>
                   <TableCell>{cliente.apellido}</TableCell>
                   <TableCell>{cliente.nombre_departamento}</TableCell>
                   <TableCell>{cliente.nombre_provincia}</TableCell>
-                  <TableCell
-                    className="text-right"
-                    onClick={() => setClienteSeleccionado(cliente)}
-                  >
+                  <TableCell className="text-right">
                     <DropdownMenu>
                       <DropdownMenuTrigger asChild>
-                        <Button variant="ghost" size="icon">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={() => setClienteSeleccionado(cliente)}
+                        >
                           <MoreVertical className="h-4 w-4" />
                           <span className="sr-only">Abrir menú</span>
                         </Button>
@@ -137,6 +195,13 @@ export function TablaClientes({
           </TableBody>
         </Table>
       </div>
+
+      <Paginacion
+        paginaActual={paginaActual}
+        totalElementos={clientesFiltradosYOrdenados.length}
+        elementosPorPagina={elementosPorPagina}
+        onCambioPagina={setPaginaActual}
+      />
 
       <DialogConfirmacion
         open={openEliminarDialog}
