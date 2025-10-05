@@ -2,16 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts"
-import { ChartContainer } from "@/components/ui/chart"
 import { FileText } from "lucide-react"
 import { useDocumentosPorMes } from "../hooks/useDocumentosPorMes"
-
-const chartConfig = {
-  documents: {
-    label: "Documentos",
-    color: "hsl(var(--chart-1))",
-  },
-}
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
@@ -42,7 +34,7 @@ export function DocumentsChart() {
         {loading ? (
           <p className="text-muted-foreground text-sm">Cargando...</p>
         ) : (
-          <ChartContainer config={chartConfig} className="h-[250px] w-full sm:h-[300px]">
+          <div className="h-[250px] sm:h-[300px] w-full">
             <ResponsiveContainer width="100%" height="100%">
               <AreaChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <defs>
@@ -81,7 +73,7 @@ export function DocumentsChart() {
                 />
               </AreaChart>
             </ResponsiveContainer>
-          </ChartContainer>
+          </div>
         )}
       </CardContent>
     </Card>

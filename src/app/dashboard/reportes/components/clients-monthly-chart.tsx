@@ -2,16 +2,8 @@
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts"
-import { ChartContainer } from "@/components/ui/chart"
 import { UserPlus } from "lucide-react"
 import { useClientesPorMes } from "../hooks/useClientesPorMes"
-
-const chartConfig = {
-  clients: {
-    label: "Clientes",
-    color: "hsl(var(--chart-2))",
-  },
-}
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
@@ -42,7 +34,8 @@ export function ClientsMonthlyChart() {
         {loading ? (
           <p className="text-muted-foreground text-sm">Cargando...</p>
         ) : (
-          <ChartContainer config={chartConfig} className="h-[250px] w-full sm:h-[300px]">
+          // 👇 contenedor flexible, solo define alto, ancho 100%
+          <div className="w-full h-[250px] sm:h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
                 <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
@@ -73,7 +66,7 @@ export function ClientsMonthlyChart() {
                 />
               </BarChart>
             </ResponsiveContainer>
-          </ChartContainer>
+          </div>
         )}
       </CardContent>
     </Card>
