@@ -191,7 +191,6 @@ exports.Prisma.DocumentoScalarFieldEnum = {
 
 exports.Prisma.Historial_documentosScalarFieldEnum = {
   ID_historial: 'ID_historial',
-  fecha: 'fecha',
   ID_documento: 'ID_documento',
   ID_usuario: 'ID_usuario',
   ID_estado_documento: 'ID_estado_documento',

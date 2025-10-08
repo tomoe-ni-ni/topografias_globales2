@@ -8724,7 +8724,6 @@ export namespace Prisma {
 
   export type Historial_documentosMinAggregateOutputType = {
     ID_historial: number | null
-    fecha: Date | null
     ID_documento: number | null
     ID_usuario: number | null
     ID_estado_documento: number | null
@@ -8737,7 +8736,6 @@ export namespace Prisma {
 
   export type Historial_documentosMaxAggregateOutputType = {
     ID_historial: number | null
-    fecha: Date | null
     ID_documento: number | null
     ID_usuario: number | null
     ID_estado_documento: number | null
@@ -8750,7 +8748,6 @@ export namespace Prisma {
 
   export type Historial_documentosCountAggregateOutputType = {
     ID_historial: number
-    fecha: number
     ID_documento: number
     ID_usuario: number
     ID_estado_documento: number
@@ -8779,7 +8776,6 @@ export namespace Prisma {
 
   export type Historial_documentosMinAggregateInputType = {
     ID_historial?: true
-    fecha?: true
     ID_documento?: true
     ID_usuario?: true
     ID_estado_documento?: true
@@ -8792,7 +8788,6 @@ export namespace Prisma {
 
   export type Historial_documentosMaxAggregateInputType = {
     ID_historial?: true
-    fecha?: true
     ID_documento?: true
     ID_usuario?: true
     ID_estado_documento?: true
@@ -8805,7 +8800,6 @@ export namespace Prisma {
 
   export type Historial_documentosCountAggregateInputType = {
     ID_historial?: true
-    fecha?: true
     ID_documento?: true
     ID_usuario?: true
     ID_estado_documento?: true
@@ -8905,7 +8899,6 @@ export namespace Prisma {
 
   export type Historial_documentosGroupByOutputType = {
     ID_historial: number
-    fecha: Date
     ID_documento: number
     ID_usuario: number
     ID_estado_documento: number
@@ -8937,7 +8930,6 @@ export namespace Prisma {
 
   export type Historial_documentosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
-    fecha?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
     ID_estado_documento?: boolean
@@ -8953,7 +8945,6 @@ export namespace Prisma {
 
   export type Historial_documentosSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
-    fecha?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
     ID_estado_documento?: boolean
@@ -8969,7 +8960,6 @@ export namespace Prisma {
 
   export type Historial_documentosSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     ID_historial?: boolean
-    fecha?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
     ID_estado_documento?: boolean
@@ -8985,7 +8975,6 @@ export namespace Prisma {
 
   export type Historial_documentosSelectScalar = {
     ID_historial?: boolean
-    fecha?: boolean
     ID_documento?: boolean
     ID_usuario?: boolean
     ID_estado_documento?: boolean
@@ -8996,7 +8985,7 @@ export namespace Prisma {
     deleted_at?: boolean
   }
 
-  export type Historial_documentosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_historial" | "fecha" | "ID_documento" | "ID_usuario" | "ID_estado_documento" | "documento_historial" | "descripcion" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["historial_documentos"]>
+  export type Historial_documentosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"ID_historial" | "ID_documento" | "ID_usuario" | "ID_estado_documento" | "documento_historial" | "descripcion" | "created_at" | "updated_at" | "deleted_at", ExtArgs["result"]["historial_documentos"]>
   export type Historial_documentosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     documento?: boolean | DocumentoDefaultArgs<ExtArgs>
     estado?: boolean | Estado_documentoDefaultArgs<ExtArgs>
@@ -9022,7 +9011,6 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       ID_historial: number
-      fecha: Date
       ID_documento: number
       ID_usuario: number
       ID_estado_documento: number
@@ -9458,7 +9446,6 @@ export namespace Prisma {
    */
   interface Historial_documentosFieldRefs {
     readonly ID_historial: FieldRef<"Historial_documentos", 'Int'>
-    readonly fecha: FieldRef<"Historial_documentos", 'DateTime'>
     readonly ID_documento: FieldRef<"Historial_documentos", 'Int'>
     readonly ID_usuario: FieldRef<"Historial_documentos", 'Int'>
     readonly ID_estado_documento: FieldRef<"Historial_documentos", 'Int'>
@@ -9984,7 +9971,6 @@ export namespace Prisma {
 
   export const Historial_documentosScalarFieldEnum: {
     ID_historial: 'ID_historial',
-    fecha: 'fecha',
     ID_documento: 'ID_documento',
     ID_usuario: 'ID_usuario',
     ID_estado_documento: 'ID_estado_documento',
@@ -10565,7 +10551,6 @@ export namespace Prisma {
     OR?: Historial_documentosWhereInput[]
     NOT?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
     ID_historial?: IntFilter<"Historial_documentos"> | number
-    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
     ID_documento?: IntFilter<"Historial_documentos"> | number
     ID_usuario?: IntFilter<"Historial_documentos"> | number
     ID_estado_documento?: IntFilter<"Historial_documentos"> | number
@@ -10581,7 +10566,6 @@ export namespace Prisma {
 
   export type Historial_documentosOrderByWithRelationInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
     ID_estado_documento?: SortOrder
@@ -10600,7 +10584,6 @@ export namespace Prisma {
     AND?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
     OR?: Historial_documentosWhereInput[]
     NOT?: Historial_documentosWhereInput | Historial_documentosWhereInput[]
-    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
     ID_documento?: IntFilter<"Historial_documentos"> | number
     ID_usuario?: IntFilter<"Historial_documentos"> | number
     ID_estado_documento?: IntFilter<"Historial_documentos"> | number
@@ -10616,7 +10599,6 @@ export namespace Prisma {
 
   export type Historial_documentosOrderByWithAggregationInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
     ID_estado_documento?: SortOrder
@@ -10637,7 +10619,6 @@ export namespace Prisma {
     OR?: Historial_documentosScalarWhereWithAggregatesInput[]
     NOT?: Historial_documentosScalarWhereWithAggregatesInput | Historial_documentosScalarWhereWithAggregatesInput[]
     ID_historial?: IntWithAggregatesFilter<"Historial_documentos"> | number
-    fecha?: DateTimeWithAggregatesFilter<"Historial_documentos"> | Date | string
     ID_documento?: IntWithAggregatesFilter<"Historial_documentos"> | number
     ID_usuario?: IntWithAggregatesFilter<"Historial_documentos"> | number
     ID_estado_documento?: IntWithAggregatesFilter<"Historial_documentos"> | number
@@ -11144,7 +11125,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateInput = {
-    fecha: Date | string
     documento_historial: string
     descripcion: string
     created_at?: Date | string
@@ -11157,7 +11137,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedCreateInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_usuario: number
     ID_estado_documento: number
@@ -11169,7 +11148,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosUpdateInput = {
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     documento_historial?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11182,7 +11160,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_usuario?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
@@ -11195,7 +11172,6 @@ export namespace Prisma {
 
   export type Historial_documentosCreateManyInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_usuario: number
     ID_estado_documento: number
@@ -11207,7 +11183,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosUpdateManyMutationInput = {
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     documento_historial?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -11217,7 +11192,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateManyInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_usuario?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
@@ -11678,7 +11652,6 @@ export namespace Prisma {
 
   export type Historial_documentosCountOrderByAggregateInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
     ID_estado_documento?: SortOrder
@@ -11698,7 +11671,6 @@ export namespace Prisma {
 
   export type Historial_documentosMaxOrderByAggregateInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
     ID_estado_documento?: SortOrder
@@ -11711,7 +11683,6 @@ export namespace Prisma {
 
   export type Historial_documentosMinOrderByAggregateInput = {
     ID_historial?: SortOrder
-    fecha?: SortOrder
     ID_documento?: SortOrder
     ID_usuario?: SortOrder
     ID_estado_documento?: SortOrder
@@ -12574,7 +12545,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateWithoutEstadoInput = {
-    fecha: Date | string
     documento_historial: string
     descripcion: string
     created_at?: Date | string
@@ -12586,7 +12556,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedCreateWithoutEstadoInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_usuario: number
     documento_historial: string
@@ -12643,7 +12612,6 @@ export namespace Prisma {
     OR?: Historial_documentosScalarWhereInput[]
     NOT?: Historial_documentosScalarWhereInput | Historial_documentosScalarWhereInput[]
     ID_historial?: IntFilter<"Historial_documentos"> | number
-    fecha?: DateTimeFilter<"Historial_documentos"> | Date | string
     ID_documento?: IntFilter<"Historial_documentos"> | number
     ID_usuario?: IntFilter<"Historial_documentos"> | number
     ID_estado_documento?: IntFilter<"Historial_documentos"> | number
@@ -12835,7 +12803,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateWithoutUsuarioInput = {
-    fecha: Date | string
     documento_historial: string
     descripcion: string
     created_at?: Date | string
@@ -12847,7 +12814,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedCreateWithoutUsuarioInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_estado_documento: number
     documento_historial: string
@@ -13080,7 +13046,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosCreateWithoutDocumentoInput = {
-    fecha: Date | string
     documento_historial: string
     descripcion: string
     created_at?: Date | string
@@ -13092,7 +13057,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedCreateWithoutDocumentoInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_usuario: number
     ID_estado_documento: number
     documento_historial: string
@@ -13650,7 +13614,6 @@ export namespace Prisma {
 
   export type Historial_documentosCreateManyEstadoInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_usuario: number
     documento_historial: string
@@ -13710,7 +13673,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosUpdateWithoutEstadoInput = {
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     documento_historial?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13722,7 +13684,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateWithoutEstadoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_usuario?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string
@@ -13734,7 +13695,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateManyWithoutEstadoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_usuario?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string
@@ -13890,7 +13850,6 @@ export namespace Prisma {
 
   export type Historial_documentosCreateManyUsuarioInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_documento: number
     ID_estado_documento: number
     documento_historial: string
@@ -13950,7 +13909,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosUpdateWithoutUsuarioInput = {
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     documento_historial?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13962,7 +13920,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateWithoutUsuarioInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string
@@ -13974,7 +13931,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateManyWithoutUsuarioInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_documento?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string
@@ -13986,7 +13942,6 @@ export namespace Prisma {
 
   export type Historial_documentosCreateManyDocumentoInput = {
     ID_historial?: number
-    fecha: Date | string
     ID_usuario: number
     ID_estado_documento: number
     documento_historial: string
@@ -13997,7 +13952,6 @@ export namespace Prisma {
   }
 
   export type Historial_documentosUpdateWithoutDocumentoInput = {
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     documento_historial?: StringFieldUpdateOperationsInput | string
     descripcion?: StringFieldUpdateOperationsInput | string
     created_at?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -14009,7 +13963,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateWithoutDocumentoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_usuario?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string
@@ -14021,7 +13974,6 @@ export namespace Prisma {
 
   export type Historial_documentosUncheckedUpdateManyWithoutDocumentoInput = {
     ID_historial?: IntFieldUpdateOperationsInput | number
-    fecha?: DateTimeFieldUpdateOperationsInput | Date | string
     ID_usuario?: IntFieldUpdateOperationsInput | number
     ID_estado_documento?: IntFieldUpdateOperationsInput | number
     documento_historial?: StringFieldUpdateOperationsInput | string

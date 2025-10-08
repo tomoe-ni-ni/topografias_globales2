@@ -101,7 +101,6 @@ model Documento {
 
 model Historial_documentos {
   ID_historial        Int              @id @default(autoincrement())
-  fecha               DateTime
   ID_documento        Int
   ID_usuario          Int
   ID_estado_documento Int

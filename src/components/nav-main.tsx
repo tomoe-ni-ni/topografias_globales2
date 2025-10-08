@@ -4,12 +4,13 @@ import { ChevronRight, type LucideIcon } from "lucide-react";
 
 import {
   SidebarGroup,
-  SidebarGroupLabel,
   SidebarMenu,
   SidebarMenuButton,
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
+import { useTheme } from "next-themes";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export function NavMain({
   items,
@@ -25,22 +26,37 @@ export function NavMain({
     }[];
   }[];
 }) {
+  const pathname = usePathname();
+  const { theme } = useTheme();
+
   return (
     <SidebarGroup className="mt-4">
       <SidebarMenu>
-        {items.map((item) => (
-          <Link key={item.title} href={item.url}>
-            <div key={item.title}>
-              <SidebarMenuItem>
-                <SidebarMenuButton tooltip={item.title}>
-                  {item.icon && <item.icon />}
-                  <span>{item.title}</span>
-                  <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
-                </SidebarMenuButton>
-              </SidebarMenuItem>
-            </div>
-          </Link>
-        ))}
+        {items.map((item) => {
+          const isActive = pathname === item.url;
+          return (
+            <Link key={item.title} href={item.url}>
+              <div key={item.title}>
+                <SidebarMenuItem>
+                  <SidebarMenuButton
+                    tooltip={item.title}
+                    className={
+                      isActive
+                        ? theme == "dark"
+                          ? "bg-white text-black"
+                          : "bg-black text-white"
+                        : ""
+                    }
+                  >
+                    {item.icon && <item.icon />}
+                    <span>{item.title}</span>
+                    <ChevronRight className="ml-auto transition-transform duration-200 group-data-[state=open]/collapsible:rotate-90" />
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </div>
+            </Link>
+          );
+        })}
       </SidebarMenu>
     </SidebarGroup>
   );

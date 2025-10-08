@@ -24,6 +24,7 @@ import {
 import { Paginacion } from "@/components/paginacion";
 import DetallesDocumento from "./detallesDocumento";
 import EditarDocumento from "./editarDocumento";
+import Link from "next/link";
 
 export function TablaDocumentos({
   documentosData,
@@ -185,6 +186,14 @@ export function TablaDocumentos({
                           <Pencil className="mr-2 h-4 w-4" />
                           <span>Editar</span>
                         </DropdownMenuItem>
+                        <Link
+                          href={`/dashboard/historial-documento/${documento.ID_documento}`}
+                        >
+                          <DropdownMenuItem>
+                            <Pencil className="mr-2 h-4 w-4" />
+                            <span>Actualizar documentos</span>
+                          </DropdownMenuItem>
+                        </Link>
                         <DropdownMenuItem
                           onClick={() => setOpenEliminarDialog(true)}
                         >

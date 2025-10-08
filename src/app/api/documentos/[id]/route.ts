@@ -62,3 +62,26 @@ export async function DELETE(req: NextRequest, context: any) {
     );
   }
 }
+export async function GET(req: NextRequest, context: any) {
+  const params = await context.params;
+  const id = Number(params.id);
+
+  if (!id || isNaN(id)) {
+    return NextResponse.json(
+      { error: "ID no proporcionado o inválido" },
+      { status: 400 }
+    );
+  }
+  try {
+    const historiales = await prisma.documento.findUnique({
+      where: { ID_documento: id },
+      include: { usuario: true, estado: true, area: true, proyecto: true, cliente: true },
+    });
+    return NextResponse.json(historiales);
+  } catch (error) {
+    return NextResponse.json(
+      { error: "Error al obtener historial" },
+      { status: 500 }
+    );
+  }
+}
