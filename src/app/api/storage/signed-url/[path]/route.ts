@@ -1,24 +1,20 @@
 import { supabase } from "@/lib/supabaseClient";
 import { NextRequest, NextResponse } from "next/server";
 
-interface RouteContext {
-  params: {
-    path: string;
-  };
-}
-
-export async function GET(request: NextRequest, context: RouteContext) {
+export async function GET(
+  request: NextRequest,
+  context: any // 👈 truco compatible con Next.js 15
+) {
   try {
-    // Obtener el parámetro de tiempo (por defecto 3600 segundos)
     const { searchParams } = new URL(request.url);
     const time = Number(searchParams.get("time")) || 3600;
 
-    // Decodificar el path
+    // Extraer el parámetro "path"
     const decodedPath = decodeURIComponent(context.params.path);
 
     console.log("Generando URL para:", decodedPath);
 
-    // Crear URL firmada
+    // Crear URL firmada con Supabase
     const { data, error } = await supabase.storage
       .from("documentos")
       .createSignedUrl(decodedPath, time);
