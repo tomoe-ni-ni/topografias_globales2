@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { HistorialDocumento } from "../domain/historialDocumento.entity";
 
-type OrdenColumna = "ID_historial" | "documento_historial" | "fecha" | "estado" | "usuario";
+type OrdenColumna = "ID_historial" | "documento_historial" | "created_at" | "estado" | "usuario";
 type DireccionOrden = "asc" | "desc";
 
 export function useTableHistorialDocumento({
@@ -59,7 +59,7 @@ export function useTableHistorialDocumento({
             valorA = a.documento_historial?.toLowerCase() || "";
             valorB = b.documento_historial?.toLowerCase() || "";
             break;
-          case "fecha":
+          case "created_at":
             valorA = new Date(a.created_at || "").getTime();
             valorB = new Date(b.created_at || "").getTime();
             break;

@@ -96,11 +96,11 @@ export function TablaHistorialDocumento({
               </TableHead>
               <TableHead
                 className="cursor-pointer hover:bg-muted/50"
-                onClick={() => handleOrdenar("fecha")}
+                onClick={() => handleOrdenar("created_at")}
               >
                 <div className="flex items-center">
-                  Fecha
-                  {ordenColumna === "fecha" &&
+                  Fecha de cambio
+                  {ordenColumna === "created_at" &&
                     (direccionOrden === "asc" ? (
                       <ArrowUp className="ml-1 h-4 w-4" />
                     ) : (

@@ -15,7 +15,6 @@ export async function GET(req: NextRequest, context: any) {
     const historiales = await prisma.historial_documentos.findMany({
       where: { ID_documento: id },
       include: { usuario: true, estado: true },
-      orderBy: { fecha: "desc" },
     });
     return NextResponse.json(historiales);
   } catch (error) {
@@ -51,7 +50,6 @@ export async function PUT(req: NextRequest, context: any) {
     const historial = await prisma.historial_documentos.update({
       where: { ID_historial: id },
       data: {
-        fecha: fecha ? new Date(fecha) : undefined,
         ID_documento,
         ID_usuario,
         ID_estado_documento,

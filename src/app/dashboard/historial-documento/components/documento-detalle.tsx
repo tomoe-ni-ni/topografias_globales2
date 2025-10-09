@@ -10,8 +10,12 @@ import {
   Calendar,
 } from "lucide-react";
 import { Documento } from "../../documentos/domain/documentos.entity";
+import { useState } from "react";
+import { Button } from "@/components/ui/button";
 
 export function DocumentoDetalle({ documento }: { documento: Documento | undefined }) {
+  const [cargandoUrl, setCargandoUrl] = useState(false);
+
   let color = "";
   if (documento?.estado?.estado === "Iniciado") {
     color = "bg-green-500";
@@ -20,6 +24,39 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
   } else if (documento?.estado?.estado === "Rechazado") {
     color = "bg-red-500";
   }
+
+  const verDocumento = async () => {
+    if (!documento?.archivo) {
+      alert("No hay archivo disponible");
+      return;
+    }
+
+    setCargandoUrl(true);
+    try {
+      // Generar URL firmada con duración de 1 hora (3600 segundos)
+      const response = await fetch(
+        `/api/storage/signed-url/${encodeURIComponent(documento.archivo)}?time=3600`
+      );
+      
+      if (!response.ok) {
+        throw new Error("Error al generar URL del documento");
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      // Abrir en nueva pestaña
+      window.open(data.url, "_blank");
+    } catch (error: any) {
+      console.error("Error al abrir documento:", error);
+      alert("Error al abrir el documento: " + error.message);
+    } finally {
+      setCargandoUrl(false);
+    }
+  };
 
   return (
     <Card>
@@ -108,15 +145,15 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
         {/* Archivo */}
         <div className="space-y-2">
           <h3 className="font-semibold">Archivo</h3>
-          <a
-            href={documento?.archivo}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-sm text-primary hover:underline inline-flex items-center gap-2"
+          <Button
+            onClick={verDocumento}
+            disabled={!documento?.archivo || cargandoUrl}
+            variant="outline"
+            className="inline-flex items-center gap-2"
           >
             <FileText className="h-4 w-4" />
-            Ver documento
-          </a>
+            {cargandoUrl ? "Abriendo..." : "Ver documento"}
+          </Button>
         </div>
       </CardContent>
     </Card>
