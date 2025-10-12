@@ -49,7 +49,7 @@ export default function CreateUserForm({
       apellido: "",
       correo: "",
       contrasena: "",
-      rol: RolUsuario.client,
+      rol: RolUsuario.ingeniero,
       estado: EstadoUsuario.activo,
       ID_area: "",
     },
@@ -177,8 +177,8 @@ export default function CreateUserForm({
                         <SelectItem value={RolUsuario.admin}>
                           Administrador
                         </SelectItem>
-                        <SelectItem value={RolUsuario.client}>
-                          Cliente
+                        <SelectItem value={RolUsuario.ingeniero}>
+                          Ingeniero
                         </SelectItem>
                       </SelectContent>
                     </Select>

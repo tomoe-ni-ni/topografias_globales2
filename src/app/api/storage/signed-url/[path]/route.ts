@@ -3,14 +3,15 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   request: NextRequest,
-  context: any // 👈 truco compatible con Next.js 15
+  context: any
 ) {
   try {
     const { searchParams } = new URL(request.url);
     const time = Number(searchParams.get("time")) || 3600;
 
-    // Extraer el parámetro "path"
-    const decodedPath = decodeURIComponent(context.params.path);
+    // Await params antes de usar sus propiedades
+    const params = await context.params;
+    const decodedPath = decodeURIComponent(params.path);
 
     console.log("Generando URL para:", decodedPath);
 

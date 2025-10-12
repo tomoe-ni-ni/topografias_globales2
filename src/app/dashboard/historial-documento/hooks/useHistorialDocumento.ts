@@ -6,12 +6,16 @@ export function useHistorialDocumento({ id }: { id: number }) {
   const [documento, setDocumento] = useState<Documento>();
   const [loading, setLoading] = useState(false);
 
-  useEffect(() => {
+  const cargarDocumento = () => {
     setLoading(true);
     obtenerDocumentoById(id)
       .then(setDocumento)
       .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    cargarDocumento();
   }, [id]);
 
-  return { documento, loading };
+  return { documento, loading, cargarDocumento };
 }

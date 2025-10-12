@@ -15,6 +15,8 @@ import {
   Eye,
   MoreVertical,
   Search,
+  Trash2,
+  FileText,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -27,11 +29,15 @@ import { HistorialDocumento } from "../domain/historialDocumento.entity";
 import { useTableHistorialDocumento } from "../hooks/useTableHistorialDocumento";
 import DetallesHistorial from "../components/detalles-historial";
 import { Badge } from "@/components/ui/badge";
+import { DialogConfirmacion } from "@/components/dialogs/eliminarRow";
+import { Dispatch, SetStateAction } from "react";
 
 export function TablaHistorialDocumento({
   historiales,
+  setHistoriales,
 }: {
   historiales: HistorialDocumento[];
+  setHistoriales: Dispatch<SetStateAction<HistorialDocumento[]>>;
 }) {
   const {
     historialesFiltradosYOrdenados,
@@ -48,7 +54,12 @@ export function TablaHistorialDocumento({
     handleOrdenar,
     modalVer,
     setModalVer,
-  } = useTableHistorialDocumento({ historiales });
+    openEliminarDialog,
+    setOpenEliminarDialog,
+    eliminarHistorial,
+    verDocumento,
+    cargandoUrl,
+  } = useTableHistorialDocumento({ historiales, setHistoriales });
 
   return (
     <div className="space-y-4">
@@ -185,9 +196,18 @@ export function TablaHistorialDocumento({
                           </Button>
                         </DropdownMenuTrigger>
                         <DropdownMenuContent align="end">
-                          <DropdownMenuItem onClick={() => setModalVer(true)}>
-                            <Eye className="mr-2 h-4 w-4" />
-                            <span>Ver detalles</span>
+                          <DropdownMenuItem 
+                            onClick={() => verDocumento(historial.documento_historial)}
+                            disabled={cargandoUrl}
+                          >
+                            <FileText className="mr-2 h-4 w-4" />
+                            <span>{cargandoUrl ? "Abriendo..." : "Ver documento"}</span>
+                          </DropdownMenuItem>
+                          <DropdownMenuItem
+                            onClick={() => setOpenEliminarDialog(true)}
+                          >
+                            <Trash2 className="mr-2 h-4 w-4" />
+                            <span>Eliminar</span>
                           </DropdownMenuItem>
                         </DropdownMenuContent>
                       </DropdownMenu>
@@ -205,6 +225,17 @@ export function TablaHistorialDocumento({
         totalElementos={historialesFiltradosYOrdenados.length}
         elementosPorPagina={elementosPorPagina}
         onCambioPagina={setPaginaActual}
+      />
+
+      <DialogConfirmacion
+        open={openEliminarDialog}
+        onOpenChange={setOpenEliminarDialog}
+        title="¿Estás seguro?"
+        description="Esta acción no se puede deshacer."
+        onConfirm={eliminarHistorial}
+        confirmText="Sí, eliminar"
+        cancelText="Cancelar"
+        confirmVariant="destructive"
       />
 
       <DetallesHistorial

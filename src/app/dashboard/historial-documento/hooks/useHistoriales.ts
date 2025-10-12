@@ -16,7 +16,13 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 
-export function useHistoriales({ id }: { id: number }) {
+export function useHistoriales({ 
+  id, 
+  onHistorialCreado 
+}: { 
+  id: number;
+  onHistorialCreado?: () => void;
+}) {
   const { data: session } = useSession();
   const [historiales, setHistoriales] = useState<HistorialDocumento[]>([]);
   const [loading, setLoading] = useState(false);
@@ -64,8 +70,16 @@ export function useHistoriales({ id }: { id: number }) {
       setHistoriales((prev) => [...prev, nueva]);
       form.reset();
       setModalAbierto(false);
+      
+      // Llamar callback para actualizar el documento
+      if (onHistorialCreado) {
+        onHistorialCreado();
+      }
+      
+      toast.success("Historial agregado correctamente");
     } catch (error) {
       console.error("Error al crear el historial:", error);
+      toast.error("Error al crear el historial");
     }
   };
 

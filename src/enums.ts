@@ -1,6 +1,6 @@
 export enum RolUsuario {
   admin = "admin",
-  client = "client",
+  ingeniero = "ingeniero",
 }
 
 export enum EstadoUsuario {

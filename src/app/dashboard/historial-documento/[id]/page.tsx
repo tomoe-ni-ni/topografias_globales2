@@ -10,7 +10,7 @@ import AgregarHistorial from "../components/agregarHistorial";
 export default function DocumentoPage() {
   const params = useParams();
   console.log(params.id);
-  const { documento, loading: loadingDoc } = useHistorialDocumento({
+  const { documento, loading: loadingDoc, cargarDocumento } = useHistorialDocumento({
     id: Number(params.id),
   });
 
@@ -26,6 +26,7 @@ export default function DocumentoPage() {
     setArchivoState,
   } = useHistoriales({
     id: Number(params.id),
+    onHistorialCreado: cargarDocumento, // Recargar documento cuando se crea historial
   });
 
   if (loadingDoc) {
@@ -42,7 +43,10 @@ export default function DocumentoPage() {
           title="Historial de Cambios"
           textButton="Agregar cambio"
         />
-        <TablaHistorialDocumento historiales={historiales} />
+        <TablaHistorialDocumento 
+          historiales={historiales} 
+          setHistoriales={setHistoriales}
+        />
       </div>
       <AgregarHistorial
         modalAbierto={modalAbierto}

@@ -1,19 +1,24 @@
 import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { HistorialDocumento } from "../domain/historialDocumento.entity";
+import { eliminaHistorialDocumento } from "../domain/historialDocumento.usecase";
 
 type OrdenColumna = "ID_historial" | "documento_historial" | "created_at" | "estado" | "usuario";
 type DireccionOrden = "asc" | "desc";
 
 export function useTableHistorialDocumento({
   historiales,
+  setHistoriales,
 }: {
   historiales: HistorialDocumento[];
+  setHistoriales: Dispatch<SetStateAction<HistorialDocumento[]>>;
 }) {
   const [busqueda, setBusqueda] = useState("");
   const [paginaActual, setPaginaActual] = useState(1);
   const [ordenColumna, setOrdenColumna] = useState<OrdenColumna | null>(null);
   const [direccionOrden, setDireccionOrden] = useState<DireccionOrden>("asc");
   const [modalVer, setModalVer] = useState(false);
+  const [openEliminarDialog, setOpenEliminarDialog] = useState(false);
+  const [cargandoUrl, setCargandoUrl] = useState(false);
   const [historialSeleccionado, setHistorialSeleccionado] = useState<HistorialDocumento | null>(null);
   const elementosPorPagina = 5;
 
@@ -96,6 +101,55 @@ export function useTableHistorialDocumento({
     setPaginaActual(1);
   }, [busqueda, ordenColumna, direccionOrden]);
 
+  // Función para eliminar historial
+  const eliminarHistorial = async () => {
+    if (!historialSeleccionado?.ID_historial) return;
+
+    try {
+      await eliminaHistorialDocumento(historialSeleccionado.ID_historial);
+      setHistoriales(
+        historiales.filter(
+          (hist) => hist.ID_historial !== historialSeleccionado.ID_historial
+        )
+      );
+      setOpenEliminarDialog(false);
+    } catch (error) {
+      console.error("Error al eliminar el historial:", error);
+    }
+  };
+
+  // Función para ver documento usando URL firmada de Supabase
+  const verDocumento = async (path: string) => {
+    if (!path) {
+      alert("No hay archivo disponible");
+      return;
+    }
+
+    setCargandoUrl(true);
+    try {
+      const response = await fetch(
+        `/api/storage/signed-url/${encodeURIComponent(path)}?time=3600`
+      );
+      
+      if (!response.ok) {
+        throw new Error("Error al generar URL del documento");
+      }
+
+      const data = await response.json();
+      
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      window.open(data.url, "_blank");
+    } catch (error: any) {
+      console.error("Error al abrir documento:", error);
+      alert("Error al abrir el documento: " + error.message);
+    } finally {
+      setCargandoUrl(false);
+    }
+  };
+
   return {
     historialesFiltradosYOrdenados,
     historialesPaginados,
@@ -111,5 +165,10 @@ export function useTableHistorialDocumento({
     handleOrdenar,
     modalVer,
     setModalVer,
+    openEliminarDialog,
+    setOpenEliminarDialog,
+    eliminarHistorial,
+    verDocumento,
+    cargandoUrl,
   };
 }
