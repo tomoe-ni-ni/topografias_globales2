@@ -77,6 +77,12 @@ const data = {
       icon: WalletCards,
       items: [],
     },
+    {
+      title: "ChatBot",
+      url: "/dashboard/chat",
+      icon: WalletCards,
+      items: [],
+    },
   ],
   projects: [
     {
