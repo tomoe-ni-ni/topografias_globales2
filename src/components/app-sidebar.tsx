@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  Bot,
   Building2,
   ChartNoAxesCombined,
   FileChartColumn,
@@ -80,7 +81,7 @@ const data = {
     {
       title: "ChatBot",
       url: "/dashboard/chat",
-      icon: WalletCards,
+      icon: Bot,
       items: [],
     },
   ],

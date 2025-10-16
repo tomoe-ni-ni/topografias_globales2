@@ -51,7 +51,6 @@ export function useTableCliente({
       ] || []
     : [];
 
-  // Función para cambiar el ordenamiento
   const handleOrdenar = (columna: OrdenColumna) => {
     if (ordenColumna === columna) {
       setDireccionOrden(direccionOrden === "asc" ? "desc" : "asc");
@@ -61,11 +60,9 @@ export function useTableCliente({
     }
   };
 
-  // Filtrar y ordenar clientes
   const clientesFiltradosYOrdenados = useMemo(() => {
     let resultado = [...clientes];
 
-    // Filtrar según búsqueda
     if (busqueda.trim()) {
       const busquedaLower = busqueda.toLowerCase();
       resultado = resultado.filter(
@@ -78,7 +75,6 @@ export function useTableCliente({
       );
     }
 
-    // Ordenar
     if (ordenColumna) {
       resultado.sort((a, b) => {
         let valorA: any;
@@ -118,14 +114,12 @@ export function useTableCliente({
     return resultado;
   }, [clientes, busqueda, ordenColumna, direccionOrden]);
 
-  // Calcular clientes paginados
   const clientesPaginados = useMemo(() => {
     const inicio = (paginaActual - 1) * elementosPorPagina;
     const fin = inicio + elementosPorPagina;
     return clientesFiltradosYOrdenados.slice(inicio, fin);
   }, [clientesFiltradosYOrdenados, paginaActual, elementosPorPagina]);
 
-  // Resetear página cuando cambia la búsqueda u ordenamiento
   useEffect(() => {
     setPaginaActual(1);
   }, [busqueda, ordenColumna, direccionOrden]);

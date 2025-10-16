@@ -2,7 +2,12 @@ import { Dispatch, SetStateAction, useEffect, useMemo, useState } from "react";
 import { HistorialDocumento } from "../domain/historialDocumento.entity";
 import { eliminaHistorialDocumento } from "../domain/historialDocumento.usecase";
 
-type OrdenColumna = "ID_historial" | "documento_historial" | "created_at" | "estado" | "usuario";
+type OrdenColumna =
+  | "ID_historial"
+  | "documento_historial"
+  | "created_at"
+  | "estado"
+  | "usuario";
 type DireccionOrden = "asc" | "desc";
 
 export function useTableHistorialDocumento({
@@ -19,10 +24,10 @@ export function useTableHistorialDocumento({
   const [modalVer, setModalVer] = useState(false);
   const [openEliminarDialog, setOpenEliminarDialog] = useState(false);
   const [cargandoUrl, setCargandoUrl] = useState(false);
-  const [historialSeleccionado, setHistorialSeleccionado] = useState<HistorialDocumento | null>(null);
+  const [historialSeleccionado, setHistorialSeleccionado] =
+    useState<HistorialDocumento | null>(null);
   const elementosPorPagina = 5;
 
-  // Función para cambiar el ordenamiento
   const handleOrdenar = (columna: OrdenColumna) => {
     if (ordenColumna === columna) {
       setDireccionOrden(direccionOrden === "asc" ? "desc" : "asc");
@@ -32,11 +37,9 @@ export function useTableHistorialDocumento({
     }
   };
 
-  // Filtrar y ordenar historiales
   const historialesFiltradosYOrdenados = useMemo(() => {
     let resultado = [...historiales];
 
-    // Filtrar según búsqueda
     if (busqueda.trim()) {
       const busquedaLower = busqueda.toLowerCase();
       resultado = resultado.filter(
@@ -49,7 +52,6 @@ export function useTableHistorialDocumento({
       );
     }
 
-    // Ordenar
     if (ordenColumna) {
       resultado.sort((a, b) => {
         let valorA: any;
@@ -73,8 +75,12 @@ export function useTableHistorialDocumento({
             valorB = b.estado?.estado?.toLowerCase() || "";
             break;
           case "usuario":
-            valorA = `${a.usuario?.nombre || ""} ${a.usuario?.apellido || ""}`.toLowerCase();
-            valorB = `${b.usuario?.nombre || ""} ${b.usuario?.apellido || ""}`.toLowerCase();
+            valorA = `${a.usuario?.nombre || ""} ${
+              a.usuario?.apellido || ""
+            }`.toLowerCase();
+            valorB = `${b.usuario?.nombre || ""} ${
+              b.usuario?.apellido || ""
+            }`.toLowerCase();
             break;
           default:
             return 0;
@@ -89,19 +95,16 @@ export function useTableHistorialDocumento({
     return resultado;
   }, [historiales, busqueda, ordenColumna, direccionOrden]);
 
-  // Calcular historiales paginados
   const historialesPaginados = useMemo(() => {
     const inicio = (paginaActual - 1) * elementosPorPagina;
     const fin = inicio + elementosPorPagina;
     return historialesFiltradosYOrdenados.slice(inicio, fin);
   }, [historialesFiltradosYOrdenados, paginaActual, elementosPorPagina]);
 
-  // Resetear página cuando cambia la búsqueda u ordenamiento
   useEffect(() => {
     setPaginaActual(1);
   }, [busqueda, ordenColumna, direccionOrden]);
 
-  // Función para eliminar historial
   const eliminarHistorial = async () => {
     if (!historialSeleccionado?.ID_historial) return;
 
@@ -118,7 +121,6 @@ export function useTableHistorialDocumento({
     }
   };
 
-  // Función para ver documento usando URL firmada de Supabase
   const verDocumento = async (path: string) => {
     if (!path) {
       alert("No hay archivo disponible");
@@ -130,13 +132,13 @@ export function useTableHistorialDocumento({
       const response = await fetch(
         `/api/storage/signed-url/${encodeURIComponent(path)}?time=3600`
       );
-      
+
       if (!response.ok) {
         throw new Error("Error al generar URL del documento");
       }
 
       const data = await response.json();
-      
+
       if (data.error) {
         throw new Error(data.error);
       }

@@ -16,10 +16,10 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useSession } from "next-auth/react";
 import { toast } from "sonner";
 
-export function useHistoriales({ 
-  id, 
-  onHistorialCreado 
-}: { 
+export function useHistoriales({
+  id,
+  onHistorialCreado,
+}: {
   id: number;
   onHistorialCreado?: () => void;
 }) {
@@ -70,12 +70,11 @@ export function useHistoriales({
       setHistoriales((prev) => [...prev, nueva]);
       form.reset();
       setModalAbierto(false);
-      
-      // Llamar callback para actualizar el documento
+
       if (onHistorialCreado) {
         onHistorialCreado();
       }
-      
+
       toast.success("Historial agregado correctamente");
     } catch (error) {
       console.error("Error al crear el historial:", error);

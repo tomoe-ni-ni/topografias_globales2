@@ -1,21 +1,16 @@
 import { supabase } from "@/lib/supabaseClient";
 import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  request: NextRequest,
-  context: any
-) {
+export async function GET(request: NextRequest, context: any) {
   try {
     const { searchParams } = new URL(request.url);
     const time = Number(searchParams.get("time")) || 3600;
 
-    // Await params antes de usar sus propiedades
     const params = await context.params;
     const decodedPath = decodeURIComponent(params.path);
 
     console.log("Generando URL para:", decodedPath);
 
-    // Crear URL firmada con Supabase
     const { data, error } = await supabase.storage
       .from("documentos")
       .createSignedUrl(decodedPath, time);

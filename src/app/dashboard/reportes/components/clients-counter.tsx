@@ -1,11 +1,11 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Users, TrendingUp } from "lucide-react"
-import { useContadorClientes } from "../hooks/useContadorClientes"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Users, TrendingUp } from "lucide-react";
+import { useContadorClientes } from "../hooks/useContadorClientes";
 
 export function ClientsCounter() {
-  const { totalClients, loading } = useContadorClientes()
+  const { totalClients, loading } = useContadorClientes();
 
   return (
     <Card className="border-border bg-card">
@@ -26,5 +26,5 @@ export function ClientsCounter() {
         </p>
       </CardContent>
     </Card>
-  )
+  );
 }

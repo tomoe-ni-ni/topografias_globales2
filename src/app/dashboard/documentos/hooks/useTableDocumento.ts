@@ -51,23 +51,20 @@ export function useTableDocumento({
     }
   }, [session?.user.ID_usuario]);
 
-  // Función para cambiar el ordenamiento
   const handleOrdenar = (columna: OrdenColumna) => {
     if (ordenColumna === columna) {
-      // Si es la misma columna, cambiar dirección
+      
       setDireccionOrden(direccionOrden === "asc" ? "desc" : "asc");
     } else {
-      // Nueva columna, ordenar ascendente
+      
       setOrdenColumna(columna);
       setDireccionOrden("asc");
     }
   };
 
-  // Filtrar y ordenar documentos
   const documentosFiltradosYOrdenados = useMemo(() => {
     let resultado = [...documentos];
 
-    // Filtrar según búsqueda
     if (busqueda.trim()) {
       const busquedaLower = busqueda.toLowerCase();
       resultado = resultado.filter(
@@ -79,7 +76,6 @@ export function useTableDocumento({
       );
     }
 
-    // Ordenar
     if (ordenColumna) {
       resultado.sort((a, b) => {
         let valorA: any;
@@ -119,14 +115,12 @@ export function useTableDocumento({
     return resultado;
   }, [documentos, busqueda, ordenColumna, direccionOrden]);
 
-  // Calcular documentos paginados
   const documentosPaginados = useMemo(() => {
     const inicio = (paginaActual - 1) * elementosPorPagina;
     const fin = inicio + elementosPorPagina;
     return documentosFiltradosYOrdenados.slice(inicio, fin);
   }, [documentosFiltradosYOrdenados, paginaActual, elementosPorPagina]);
 
-  // Resetear página cuando cambia la búsqueda u ordenamiento
   useEffect(() => {
     setPaginaActual(1);
   }, [busqueda, ordenColumna, direccionOrden]);

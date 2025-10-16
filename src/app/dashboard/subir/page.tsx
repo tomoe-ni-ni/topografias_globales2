@@ -32,7 +32,9 @@ export default function UploadPage() {
 
   const getSignedUrl = async () => {
     if (!filePath) return;
-    const res = await fetch(`/api/files/${encodeURIComponent(filePath)}?time=60`);
+    const res = await fetch(
+      `/api/files/${encodeURIComponent(filePath)}?time=60`
+    );
     const data = await res.json();
     if (data.url) {
       setSignedUrl(data.url);
@@ -58,7 +60,9 @@ export default function UploadPage() {
 
       {filePath && (
         <div className="space-y-2">
-          <p className="text-sm text-gray-700">Archivo guardado en: {filePath}</p>
+          <p className="text-sm text-gray-700">
+            Archivo guardado en: {filePath}
+          </p>
           <button
             onClick={getSignedUrl}
             className="px-4 py-2 bg-green-600 text-white rounded-lg"

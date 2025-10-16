@@ -1,26 +1,39 @@
-"use client"
+"use client";
 
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Bar, BarChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip } from "recharts"
-import { UserPlus } from "lucide-react"
-import { useClientesPorMes } from "../hooks/useClientesPorMes"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  Tooltip,
+} from "recharts";
+import { UserPlus } from "lucide-react";
+import { useClientesPorMes } from "../hooks/useClientesPorMes";
 
 const CustomTooltip = ({ active, payload }: any) => {
   if (active && payload && payload.length) {
     return (
       <div className="rounded-lg border border-border bg-background p-3 shadow-lg">
-        <p className="text-sm font-semibold text-foreground">{payload[0].payload.month}</p>
+        <p className="text-sm font-semibold text-foreground">
+          {payload[0].payload.month}
+        </p>
         <p className="text-sm text-muted-foreground">
-          <span className="font-medium text-foreground">{payload[0].value}</span> clientes nuevos
+          <span className="font-medium text-foreground">
+            {payload[0].value}
+          </span>{" "}
+          clientes nuevos
         </p>
       </div>
-    )
+    );
   }
-  return null
-}
+  return null;
+};
 
 export function ClientsMonthlyChart() {
-  const { data, loading } = useClientesPorMes()
+  const { data, loading } = useClientesPorMes();
 
   return (
     <Card className="border-border bg-card">
@@ -34,11 +47,16 @@ export function ClientsMonthlyChart() {
         {loading ? (
           <p className="text-muted-foreground text-sm">Cargando...</p>
         ) : (
-          // 👇 contenedor flexible, solo define alto, ancho 100%
           <div className="w-full h-[250px] sm:h-[300px]">
             <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={data} margin={{ top: 10, right: 10, left: 0, bottom: 0 }}>
-                <CartesianGrid strokeDasharray="3 3" className="stroke-border" />
+              <BarChart
+                data={data}
+                margin={{ top: 10, right: 10, left: 0, bottom: 0 }}
+              >
+                <CartesianGrid
+                  strokeDasharray="3 3"
+                  className="stroke-border"
+                />
                 <XAxis
                   dataKey="month"
                   tickLine={false}
@@ -70,5 +88,5 @@ export function ClientsMonthlyChart() {
         )}
       </CardContent>
     </Card>
-  )
+  );
 }

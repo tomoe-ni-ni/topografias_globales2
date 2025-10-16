@@ -25,7 +25,6 @@ export default function Chatbot() {
   const [loading, setLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  // Auto-scroll al último mensaje
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -75,12 +74,11 @@ export default function Chatbot() {
 
   return (
     <div className="flex flex-col h-[calc(100vh-4rem)]">
-      {/* Header - Fijo */}
       <Card className="rounded-none border-x-0 border-t-0 flex-shrink-0">
         <div className="p-4">
           <h1 className="text-2xl font-bold text-foreground flex items-center gap-2">
             <Bot className="w-8 h-8 text-primary" />
-            TaskFlow Pro Assistant
+            Asistente BOT
           </h1>
           <p className="text-sm text-muted-foreground">
             Pregúntame sobre el proyecto
@@ -88,7 +86,6 @@ export default function Chatbot() {
         </div>
       </Card>
 
-      {/* Messages - Con scroll independiente */}
       <div className="flex-1 overflow-y-auto p-4 space-y-4 min-h-0">
         {messages.map((msg, idx) => (
           <div
@@ -189,11 +186,9 @@ export default function Chatbot() {
           </div>
         )}
 
-        {/* Referencia para auto-scroll */}
         <div ref={messagesEndRef} />
       </div>
 
-      {/* Input - Fijo en la parte inferior */}
       <Card className="rounded-none border-x-0 border-b-0 flex-shrink-0">
         <div className="p-4">
           <div className="max-w-4xl mx-auto flex gap-2">
@@ -201,7 +196,9 @@ export default function Chatbot() {
               type="text"
               value={input}
               onChange={(e) => setInput(e.target.value)}
-              onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && handleSend()}
+              onKeyDown={(e) =>
+                e.key === "Enter" && !e.shiftKey && handleSend()
+              }
               placeholder="Escribe tu pregunta aquí..."
               disabled={loading}
               className="flex-1"

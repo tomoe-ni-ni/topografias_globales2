@@ -13,7 +13,11 @@ import { Documento } from "../../documentos/domain/documentos.entity";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 
-export function DocumentoDetalle({ documento }: { documento: Documento | undefined }) {
+export function DocumentoDetalle({
+  documento,
+}: {
+  documento: Documento | undefined;
+}) {
   const [cargandoUrl, setCargandoUrl] = useState(false);
 
   let color = "";
@@ -33,22 +37,22 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
 
     setCargandoUrl(true);
     try {
-      // Generar URL firmada con duración de 1 hora (3600 segundos)
       const response = await fetch(
-        `/api/storage/signed-url/${encodeURIComponent(documento.archivo)}?time=3600`
+        `/api/storage/signed-url/${encodeURIComponent(
+          documento.archivo
+        )}?time=3600`
       );
-      
+
       if (!response.ok) {
         throw new Error("Error al generar URL del documento");
       }
 
       const data = await response.json();
-      
+
       if (data.error) {
         throw new Error(data.error);
       }
 
-      // Abrir en nueva pestaña
       window.open(data.url, "_blank");
     } catch (error: any) {
       console.error("Error al abrir documento:", error);
@@ -76,7 +80,6 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
         </div>
       </CardHeader>
       <CardContent className="space-y-6">
-        {/* Información Principal */}
         <div className="grid gap-4 md:grid-cols-2">
           <div className="space-y-2">
             <div className="flex items-center gap-2 text-sm">
@@ -132,7 +135,6 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
 
         <Separator />
 
-        {/* Descripción */}
         <div className="space-y-2">
           <h3 className="font-semibold">Descripción</h3>
           <p className="text-sm text-muted-foreground leading-relaxed">
@@ -142,7 +144,6 @@ export function DocumentoDetalle({ documento }: { documento: Documento | undefin
 
         <Separator />
 
-        {/* Archivo */}
         <div className="space-y-2">
           <h3 className="font-semibold">Archivo</h3>
           <Button
