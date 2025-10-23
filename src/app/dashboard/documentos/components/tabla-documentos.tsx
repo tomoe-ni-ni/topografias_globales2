@@ -9,8 +9,17 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { ArrowDown, ArrowUp, Eye, MoreVertical, Pencil, Search, Trash2 } from "lucide-react";
-import { Dispatch, SetStateAction } from "react";
+import { 
+  ArrowDown, 
+  ArrowUp, 
+  Eye, 
+  MoreVertical, 
+  Pencil, 
+  Search, 
+  Trash2,
+  FileText 
+} from "lucide-react";
+import { Dispatch, SetStateAction, useState } from "react";
 import { Documento } from "../domain/documentos.entity";
 import { useTableDocumento } from "../hooks/useTableDocumento";
 
@@ -56,6 +65,39 @@ export function TablaDocumentos({
     formEditar,
     editarDocumento,
   } = useTableDocumento({ documentos: documentosData, setDocumentos });
+
+  const [cargandoUrl, setCargandoUrl] = useState(false);
+
+  const verDocumento = async (archivoPath: string | null | undefined) => {
+    if (!archivoPath) {
+      alert("No hay archivo disponible");
+      return;
+    }
+
+    setCargandoUrl(true);
+    try {
+      const response = await fetch(
+        `/api/storage/signed-url/${encodeURIComponent(archivoPath)}?time=3600`
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al generar URL del documento");
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      window.open(data.url, "_blank");
+    } catch (error: any) {
+      console.error("Error al abrir documento:", error);
+      alert("Error al abrir el documento: " + error.message);
+    } finally {
+      setCargandoUrl(false);
+    }
+  };
 
   return (
     <div className="space-y-4">
@@ -176,9 +218,12 @@ export function TablaDocumentos({
                         </Button>
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
-                        <DropdownMenuItem onClick={() => setModalVer(true)}>
-                          <Eye className="mr-2 h-4 w-4" />
-                          <span>Ver</span>
+                        <DropdownMenuItem 
+                          onClick={() => verDocumento(documento.archivo)}
+                          disabled={!documento.archivo || cargandoUrl}
+                        >
+                          <FileText className="mr-2 h-4 w-4" />
+                          <span>{cargandoUrl ? "Abriendo..." : "Ver archivo"}</span>
                         </DropdownMenuItem>
                         <DropdownMenuItem
                           onClick={() => setModalAbiertoEditar(true)}

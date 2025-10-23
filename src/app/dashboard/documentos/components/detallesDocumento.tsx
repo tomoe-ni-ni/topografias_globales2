@@ -6,7 +6,8 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
-import React, { Dispatch, SetStateAction } from "react";
+import { FileText } from "lucide-react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { Documento } from "../domain/documentos.entity";
 
 export default function DetallesDocumento({
@@ -18,6 +19,41 @@ export default function DetallesDocumento({
   setModalVer: Dispatch<SetStateAction<boolean>>;
   modalVer: boolean;
 }) {
+  const [cargandoUrl, setCargandoUrl] = useState(false);
+
+  const verDocumento = async () => {
+    if (!documentoSeleccionado?.archivo) {
+      alert("No hay archivo disponible");
+      return;
+    }
+
+    setCargandoUrl(true);
+    try {
+      const response = await fetch(
+        `/api/storage/signed-url/${encodeURIComponent(
+          documentoSeleccionado.archivo
+        )}?time=3600`
+      );
+
+      if (!response.ok) {
+        throw new Error("Error al generar URL del documento");
+      }
+
+      const data = await response.json();
+
+      if (data.error) {
+        throw new Error(data.error);
+      }
+
+      window.open(data.url, "_blank");
+    } catch (error: any) {
+      console.error("Error al abrir documento:", error);
+      alert("Error al abrir el documento: " + error.message);
+    } finally {
+      setCargandoUrl(false);
+    }
+  };
+
   return (
     <Dialog open={modalVer} onOpenChange={setModalVer}>
       <DialogContent>
@@ -43,7 +79,15 @@ export default function DetallesDocumento({
                 <p className="text-sm font-medium text-muted-foreground">
                   Archivo
                 </p>
-                <p className="cursor-pointer italic underline">{"ver aqui"}</p>
+                <Button
+                  variant="link"
+                  className="p-0 h-auto font-normal"
+                  onClick={verDocumento}
+                  disabled={!documentoSeleccionado.archivo || cargandoUrl}
+                >
+                  <FileText className="mr-1 h-4 w-4" />
+                  {cargandoUrl ? "Abriendo..." : "Ver archivo"}
+                </Button>
               </div>
               <div>
                 <p className="text-sm font-medium text-muted-foreground">
@@ -84,7 +128,7 @@ export default function DetallesDocumento({
             </div>
             <div>
               <p className="text-sm font-medium text-muted-foreground">
-                Descripcion del documento
+                Descripción del documento
               </p>
               <p>{documentoSeleccionado.descripcion}</p>
             </div>
